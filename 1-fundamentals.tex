@@ -460,3 +460,229 @@ Now we are ready to find \(A\), and give a proof of the original statement in \a
     
     This then implies \(A = \sqrt{2 \pi}\), which shows the result as desired.
 \end{proof}
+
+\subsection{Properties of the Probability Measure}
+
+
+Let \(\para{\Omega, \mathcal{F}, \Prob}\) be a probability space. We give some useful properties of the probability measure \(\Prob\), other than those on the example sheets.
+
+\begin{proposition}[Countable Subadditivity]
+    \label{prop:countable-subadditivity}%
+    If \(\para{A_n}\) is a collection in \(\mathcal{F}\), then
+    \[
+        \Prob\para{\bigcup_{n \in \NN} A_n} \leq \sum_{n \in \NN} \Prob\para{A_n}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Define \(B_1 = A_1\), and for \(n \geq 2\), we let
+    \[
+        B_n = A_n \setminus \para{A_1 \cup A_2 \cup \cdots \cup A_{n - 1}}.
+    \]
+
+    Then \(\para{B_n}\) is a disjoint collection of sets in \(\mathcal{F}\), and we have
+    \[
+        \bigcup_{n \in \NN} B_n = \bigcup_{n \in \NN} A_n,
+    \]
+    so by the countable additivity property (see \autoref{def:probability-measure}, second point), we have
+    \[
+        \Prob\para{\bigcup A_n} = \Prob\para{\bigcup B_n} = \sum \Prob\para{B_n} \leq \sum \Prob\para{A_n}
+    \]
+    since \(B_n \subseteq A_n\).
+\end{proof}
+
+\begin{proposition}[Continuity of Probability Measure]
+    \label{prop:continuity-of-probability-measure}%
+    For some \emph{increasing} sequence of events \(\para{A_n}_{n \in \NN}\) in \(\mathcal{F}\) (i.e., we have \(A_n \subseteq A_{n + 1}\) for all \(n \in \NN\)), then we have \(\para{\Prob\para{A_n}}\) is increasing in \(n\), and converges to the limit
+    \[
+        \Prob\para{A_n} \to \Prob\para{\bigcup_{n = 1}^{\infty} A_n}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    We define \(B_1 = A_1\), and for \(n \geq 2\), take
+    \[
+        B_n = A_n \setminus \bigcup_{m = 1}^{n - 1} A_m.
+    \]
+
+    Then \(\para{B_n}\) are disjoint, and we have
+    \[
+        \bigcup_{k = 1}^{n} B_k = A_n,
+    \]
+    so
+    \[
+        \Prob\para{A_n} = \Prob\para{\bigcup_{k = 1}^{n} B_k} = \sum_{k = 1}^{n} \Prob\para{B_k} \to \sum_{k = 1}^{\infty} \Prob\para{B_k}.
+    \]
+
+    By the countable additivity property, we have
+    \[
+        \Prob\para{\bigcup_{k = 1}^{\infty} B_k} = \sum_{k = 1}^{\infty} \Prob\para{B_k},
+    \]
+    and we also have
+    \[
+        \bigcup_{k = 1}^{\infty} B_k = \bigcup_{k = 1}^{\infty} A_k,
+    \]
+    Therefore
+    \[
+        \sum_{k = 1}^{\infty} \Prob\para{B_k} = \Prob\para{\bigcup_{k = 1}^{\infty} A_k},
+    \]
+    which finishes our proof.
+\end{proof}
+
+\begin{corollary}[Countinuity of Probability Measure for Decreasing Events]
+    \label{cor:continuity-probability-measure-decreasing-sequence}%
+     For some \emph{decreasing} sequence of events \(\para{A_n}_{n \in \NN}\) in \(\mathcal{F}\) (i.e., we have \(A_n \supseteq A_{n + 1}\) for all \(n \in \NN\)), then we have \(\para{\Prob\para{A_n}}\) is decreasing in \(n\), and converges to the limit
+    \[
+        \Prob\para{A_n} \to \Prob\para{\bigcap_{n = 1}^{\infty} A_n}.
+    \]
+\end{corollary}
+
+\begin{proof}
+    We apply \autoref{prop:continuity-of-probability-measure} by taking the complements.
+\end{proof}
+
+\begin{remark}
+    There is \emph{no} topology involved in play here -- this continuity is different, and the definition we gave above is what is meant for this probability measure.
+\end{remark}
+
+We recall that in terms of the cardinality (the cardinality measure on finite sets) that we have the Inclusion--Exclusion Principle. A similar formula holds for two events, \(A, B \in \mathcal{F}\), which says
+\[
+    \Prob\para{A \cup B} = \Prob\para{A} + \Prob\para{B} - \Prob\para{A \cap B}.
+\]
+
+Applying this again to three events \(A, B, C \in \mathcal{F}\), we have
+\begin{align*}
+    \Prob\para{A \cup B \cup C} &=  \Prob\para{\para{A \cup B} \cup C}\\
+    &= \Prob\para{A \cup B} + \Prob\para{C} - \Prob\para{\para{A \cap C} \cup \para{B \cap C}} \\
+    &= \Prob\para{A} + \Prob\para{B} + \Prob\para{C} - \Prob\para{A \cap B} - \Prob\para{A \cap C} - \Prob\para{B \cap C} + \Prob\para{A \cap B \cap C}.
+\end{align*}
+
+This leads to \autoref{prop:inclusion-exclusion}, the Inclusion--Exclusion Formula.
+
+\begin{proposition}[Inclusion--Exclusion Formula]
+    \label{prop:inclusion-exclusion}%%
+    If we have events \(A_1, A_2, \ldots, \mathcal{F}\), then we have
+    \[
+        \Prob\para{\bigcup_{i = 1}^{n} A_i} = \sum_{k = 1}^{n} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    This holds for \(n = 2\) events. Assume it holds for \(n - 1\) events.
+
+    We have
+    \begin{align*}
+        \Prob\para{\bigcup_{i = 1}^{n} A_i} &= \Prob\para{\bigcup_{i = 1}^{n - 1} A_i \cup A_n} \\
+        &= \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} + \Prob\para{A_n} - \Prob\para{\bigcup_{i = 1}^{n - 1} A_i \cap A_n} \\
+        &= \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} + \Prob\para{A_n} - \Prob\para{\bigcup_{i = 1}^{n - 1} \para{A_i \cap A_n}}.
+    \end{align*}
+
+    No, we apply the induction hypothesis to the terms
+    \[
+        \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} \quad \text{and} \quad \Prob\para{\bigcup_{i = 1}^{n - 1} \para{A_i \cap A_n}},
+    \]
+    and hence
+    \[
+        \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} = \sum_{k = 1}^{n - 1} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}},
+    \]
+    and if we let \(B_i = A_i \cap A_n\),
+    \[
+        \Prob\para{\bigcup_{i = 1}^{n - 1} B_i} = \sum_{k = 1}^{n - 1} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k} \cap A_n}.
+    \]
+
+    This gives exactly as desired.
+\end{proof}
+
+\begin{remark}
+    Let \(\Omega\) be a finite set, and \(\para{\Omega, \mathcal{F}, \Prob}\) be a probability space, where \(\Prob\) is the uniform measure
+    \[
+        \Prob\para{A} = \frac{\abs{A}}{\abs{\Omega}}.
+    \]
+
+    Taking \(A_1, A_2, \ldots, A_n \in \mathcal{F}\), applying \autoref{prop:inclusion-exclusion} (Inclusion--Exclusion Formula) to \(\Prob\para{\bigcup_{i = 1}^{n} A_i}\), we have
+    \[
+        \abs{A_1 \cup A_2 \cup \cdots \cup A_n} = \sum_{k = 1}^{n} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_n \leq n} \abs{A_{i_1} \cap \cdots \cap A_{i_n}},
+    \]
+    the Inclusion--Exclusion Principle on cardinalities. So the measure version implies the cardinality one.
+\end{remark}
+
+Now, if we truncate the above sums, in the small cases, we see for \(n = 2\)
+\[
+    \Prob\para{A \cup B} \leq \Prob\para{A} + \Prob\para{B},
+\]
+and for \(n = 3\),
+\[
+    \Prob\para{A \cup B \cup C} \geq \Prob\para{A} + \Prob\para{B} + \Prob\para{C} - \Prob\para{A \cap B} - \Prob\para{A \cap C} - \Prob\para{B \cap C}
+\]
+but
+\[
+    \Prob\para{A \cup B \cup C} \leq \Prob\para{A} + \Prob\para{B} + \Prob\para{C}.
+\]
+
+This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
+
+\begin{proposition}[Bonferroni Inequalities]
+    \label{prop:bonferroni-inequality}%
+    We have
+    \[
+        \Prob\para{\bigcup_{i = 1}^{n} A_i} \begin{cases}
+            \leq \sum_{k = 1}^{n} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}, & r \text{ is odd}, \\
+            \geq \sum_{k = 1}^{n} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}, & r \text{ is even}.
+        \end{cases}
+    \]
+\end{proposition}
+
+\begin{proof}
+    The base case is true for \(n = 2\). We assume these inequalities hold for \(n - 1\) events.
+
+    If \(r\) is odd, let \(B_i = A_i \cap A_n\), and we have
+    \[
+        \Prob\para{\bigcup_{i = 1}^{n} A_i} = \Prob\para{i = 1}^{n - 1} A_i + \Prob\para{A_n} - \Prob\para{B_1 \cup B_2 \cup \cdots \cup B_{n - 1}}.
+    \]
+
+    We apply the induction hypothesis to \(r\) is odd for \(A_i\), giving
+    \[
+        \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} \leq \sum_{k = 1}^{r} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_n \leq n - 1} \Prob\para{A_{i_1} \cap \cdots \cap A_{i_n}},
+    \]
+    and to \(r - 1\) is even for \(B_i\), giving
+    \[
+        \Prob\para{\bigcup_{i = 1}^{n - 1} B_i} \leq \sum_{k = 1}^{r - 1} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_n \leq n - 1} \Prob\para{A_{i_1} \cap \cdots \cap A_{i_n} \cap A_n}.
+    \]
+
+    Substituting these in finishes the proof for \(r\) is odd, and the proof is similar for \(r\) is even.
+\end{proof}
+
+\begin{example}[Counting Surjective Functions]
+    Let
+    \[
+        \Omega = \brce{\functiondomain{f}{\brce{1, 2, \ldots, n}}{\brce{1, 2, \ldots, m}}},
+    \]
+    and take the subset
+    \[
+        A = \set{f \in \Omega}{f \text{ is surjective}}.
+    \]
+
+    We want to find \(\abs{A}\). We define
+    \[
+        A_i = \set{f \in \Omega}{i \notin \img f}.
+    \]
+
+    Then we have
+    \[
+        A = A_1\compl \cap A_2\compl \cap \cdots \cap A_m\compl = \para{A_1 \cup A_2 \cup \cdots \cup A_m}\compl.
+    \]
+
+    Now, we have
+    \[
+        \abs{A} = \abs{\Omega} - \abs{A_1 \cup \cdots \cup A_m},
+    \]
+    and by the Inclusion--Exclusion Principle, we have
+    \begin{align*}
+        \abs{A_1 \cup \cdots \cup A_m} &= \sum_{k = 1}^{m} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq m} \abs{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}} \\
+        &= \sum_{k = 1}^{m} \para{-1}^{k + 1} \binom{m}{k} \para{m - k}^n,
+    \end{align*}
+    so we have
+    \[
+        \abs{A} = \sum_{k = 0}^{m} \para{-1}^{k} \binom{m}{k} \para{m - k}^{n}.
+    \]
+\end{example}
