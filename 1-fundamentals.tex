@@ -690,3 +690,241 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
         \abs{A} = \sum_{k = 0}^{m} \para{-1}^{k} \binom{m}{k} \para{m - k}^{n}.
     \]
 \end{example}
+
+\begin{example}[Derangements]
+    \label{ex:derangements}%
+    \emph{Derangements} are permutations with no fixed points. Let the event space be
+    \[
+        \Omega = \brce{\text{permutations of }\brce{1, 2, \ldots, n}}
+    \]
+    and the event of derangements be
+    \[
+        A = \brce{\text{derangements}} = \set{f \in \Omega}{\forall i = 1, 2, \ldots, n: f\para{i} \neq i}.
+    \]
+
+    What is the probability of \(A\)?
+
+    For every \(i = 1, 2, \ldots, n\), we let
+    \[
+        A_i = \set{f \in \Omega}{f\para{i} = i}.
+    \]
+
+    Then, we have
+    \[
+        A = A_1\compl \cap A_2\compl \cap \cdots \cap A_n\compl = \para{\bigcup_{i = 1}^{n} A_i} \compl.
+    \]
+
+    Therefore, by the additivity of the probability measure, we have
+    \[
+        \Prob\para{A} = 1 - \Prob\para{\bigcup_{i = 1}^{n} A_i}.
+    \]
+
+    Using \autoref{thm:inclusion-exclusion} (Inclusion--Exclusion formula), we have
+    \[
+        \Prob\para{\bigcup_{i = 1}^{n} A_i} = \sum_{k = 1}^{n} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}.
+    \]
+
+    We have
+    \[
+        \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}} = \frac{\para{n - k}!}{n!}
+    \]
+    since we have \(k\) points fixed in the permutations, and therefore \(\para{n - k}\) places free.
+    
+    Hence,
+    \begin{align*}
+        \Prob\para{\bigcup_{i = 1}^{n} A_i} &= \sum_{k = 1}^{n} \para{-1}^{k + 1} \binom{n}{k} \frac{\para{n - k}!}{n!} \\
+        &= \sum_{k = 1}^{n} \para{-1}^{k + 1} \frac{1}{k!}.
+    \end{align*}
+
+    Hence, we have
+    \[
+        \Prob\para{A} = 1 - \sum_{k = 1}^{n} \para{-1}^{k + 1} \frac{1}{k!} = \sum_{k = 0}^{n} \frac{\para{-1}^{k}}{k!}.
+    \]
+
+    As \(n \to \infty\), we have the behaviour that
+    \[
+        \Prob\para{A} \to \frac{1}{e}.
+    \]
+\end{example}
+
+\subsection{Independence}
+
+Let \(\para{\Omega, \mathcal{F}, \Prob}\) be a probability space.
+
+\begin{definition}[Independence]
+    \label{def:independence}%
+    We say two events \(A, B \in \mathcal{F}\) are \emph{independent}, denoted as \(A \indp B\), if
+    \[
+        \Prob\para{A \cap B} = \Prob\para{A} \cdot \Prob\para{B}.
+    \]
+
+    A \emph{countable collection} of events \(\para{A_n}_{n \in \NN}\) is said to be \emph{independent}, if for any (countable) collection of indices \(I = \brce{i_1, i_2, \ldots, i_k} \subseteq \NN\), we have
+    \[
+        \Prob\para{\bigcap_{i \in I} A_i} = \prod_{i \in I} \Prob\para{A_i}.
+    \]
+\end{definition}
+
+\begin{remark}
+    Pairwise independence \textbf{does not imply} independence.
+\end{remark}
+
+\begin{example}[Pairwise Independence does not imply Independence]
+    \label{ex:pairwise-indep-does-not-imply-indep}
+    We toss a fair coin twice. The sample space is
+    \[
+        \Omega = \brce{\para{0, 0}, \para{0, 1}, \para{1, 0}, \para{1, 1}}
+    \]
+    equipped with probability measure
+    \[
+        \Prob\para{\omega} = \frac{1}{4}
+    \]  
+    for all \(\omega \in \Omega\). Take
+    \[
+        A = \brce{\para{0, 0}, \para{0, 1}}, B = \brce{\para{0, 0}, \para{1, 0}}, C = \brce{\para{1, 0}, \para{0, 1}}.
+    \]
+
+    We have
+    \[
+        \Prob\para{A} = \Prob\para{B} = \Prob\para{C} = \frac{1}{2},
+    \]
+    and
+    \[
+        \Prob\para{A \cap B} = \Prob\para{A \cap C} = \Prob\para{B \cap C} = \frac{1}{4},
+    \]
+    so \(\brce{A, B, C}\) are \emph{pairwise} independent. But they are not \emph{independent}, since
+    \[
+        \Prob\para{A \cap B \cap C} = \Prob\para{\emptyset} = 0.
+    \]
+\end{example}
+
+\begin{proposition}[Independence implies Independence of Complement]
+    \label{prop:indep-compl}%
+    If \(A \indp B\), then \(A \indp B\compl\).
+\end{proposition}
+
+\begin{proof}
+    Investigating the probability, we have
+    \begin{align*}
+        \Prob\para{A \cap B\compl} &= \Prob\para{A} - \Prob\para{A \cap B} \\
+        &= \Prob\para{A} - \Prob\para{A} \cdot \Prob\para{B} \\
+        &= \Prob\para{A} \para{1 - \Prob\para{B}} \\
+        &= \Prob\para{A} \Prob\para{B\compl}.
+    \end{align*}
+\end{proof}
+
+An idea closely related is conditional probability.
+
+\begin{definition}[Conditional Probability]
+    \label{def:conditional-prob}%
+    Let \(B \in \mathcal{F}\) with non-zero measure, \(\Prob\para{B} > 0\).
+
+    For any \(A \in \mathcal{F}\), we define the conditional probability of \(A\) given \(B\), is given by
+    \[
+        \Prob\Conditional{A}{B} = \frac{\Prob\para{A \cap B}}{\Prob\para{B}}.
+    \]
+\end{definition}
+
+If \(A \indp B\), then we have
+\[
+    \Prob\Conditional{A}{B} = \Prob\para{A}.
+\]
+
+\begin{proposition}[Countable Additivity Property for Conditional Probability]
+    \label{prop:countable-additivity-conditional}%
+    Let \(\para{A_n}_{n \in \NN}\) be a disjoint sequence of events in \(\mathcal{F}\). Then we have
+    \[
+        \Prob\Conditional{\bigcup_n A_n}{B} = \sum_{n} \Prob\Conditional{A_n}{B}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    By definition, we have
+    \begin{align*}
+        \Prob\Conditional{\bigcup_{n} A_n}{B} &= \frac{\Prob\para{\bigcup_n A_n \cap B}}{\Prob\para{B}} \\
+        &= \frac{\Prob\para{\bigcup_n \para{A_n \cap B}}}{\Prob\para{B}} \\
+        &= \sum_{n} \frac{\Prob\para{A_n \cap B}}{\Prob{B}} \\
+        &= \sum_{n} \Prob\Conditional{A_n}{B}.
+    \end{align*}
+\end{proof}
+
+\begin{theorem}[Law of Total Probability]
+    \label{thm:law-total-probability}%
+    Suppose that the events \(\para{B_n}_{n \in \NN}\) is a \emph{partition} of \(\Omega\), i.e. pairwise disjoint with union \(\Omega\), with positive measure. i.e. \(\Prob\para{B_n} > 0\).
+
+    Let \(A \in \mathcal{F}\). We have
+    \[
+        \Prob\para{A} = \sum_{n} \Prob\Conditional{A}{B_n} \Prob\para{B_n}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \Prob\para{A} &= \Prob\para{A \cap \bigcup_{n} B_n} \\
+        &= \Prob\para{\bigcup_n \para{B_n \cap A}} \\
+        &= \sum_{n} \Prob\para{B_n \cap A} \\
+        &= \sum_{n} \Prob\Conditional{A}{B_n} \Prob\para{B_n}.
+    \end{align*}
+\end{proof}
+
+\begin{corollary}[Bayes' Formula]
+    \label{cor:bayes}%
+    Let \(\para{B_n}\) be a partition of \(\Omega\) with positive measure. We have
+    \[
+        \Prob\Conditional{B_n}{A} = \frac{\Prob\Conditional{A}{B_n} \cdot \Prob\para{B_n}}{\sum_{k} \Prob\Conditional{A}{B_k} \cdot \Prob\para{B_k}}.
+    \]
+\end{corollary}
+
+\begin{proof}
+    Indeed, we have
+    \begin{align*}
+        \Prob\Conditional{B_n}{A} &= \frac{\Prob\para{B_n \cap A}}{\Prob\para{A}} \\
+        &= \frac{\Prob\Conditional{A}{B_n} \cdot \Prob\para{B_n}}{\Prob\para{A}},
+    \end{align*}
+    and we apply \autoref{thm:law-total-probability} for the numerator.
+\end{proof}
+
+This formula is the basis of Bayesian statistics. If we know the probability of \(\Prob\para{B_n}\), and we have a model which gives us \(\Prob\Conditional{A}{B_k}\), with this formula we can find the posterior probability of \(B_n\) given that \(A\) occurs.
+
+\begin{example}[False Positives for a Rare Condition]
+    \label{ex:false-positives}%
+    Suppose that a condition A affects \(0.1\%\) of the population. We have a medical test which is positive for \(98\%\) of the affected population, and \(1\%\) of those unaffected.
+
+    Pick an individual at random. What is the probability they suffer from A given they tested positive?
+
+    We define the events
+    \[
+        A = \brce{\text{individuals suffering from A}},
+    \]
+    and
+    \[
+        P = \brce{\text{individuals tests positive}}.
+    \]
+
+    We want to find \(\Prob\Conditional{A}{P}\). The given conditions state that
+    \[
+        \Prob\para{A} = 0.001, \quad \Prob\Conditional{P}{A} = 0.98, \quad \text{and} \quad \Prob\Conditional{P}{A\compl} = 0.01.
+    \]
+
+    Hence, using \autoref{cor:bayes} (Bayes' Formula), we have
+    \begin{align*}
+        \Prob\Conditional{A}{P} &= \frac{\Prob\Conditional{P}{A} \cdot \Prob\para{A}}{\Prob\Conditional{P}{A} \cdot \Prob\para{A} + \Prob\Conditional{P}{A\compl} \cdot \Prob\para{A\compl}} = 0.089 \approx 0.09
+    \end{align*}
+    so
+    \[
+        \Prob\Conditional{A}{P} \approx 0.09.
+    \]
+
+    This is counterintuitive. We have that
+    \[
+        \Prob\Conditional{A}{P} = \frac{1}{1 + \frac{\Prob\Conditional{P}{A\compl} \cdot \Prob\para{A\compl}}{\Prob\Conditional{P}{A} \cdot \Prob{A}}}.
+    \]
+
+    We have \(\Prob\para{A\compl}\) and \(\Prob\Conditional{P}{A}\) are both very close to \(1\), so the relevant ratio simplifies to \(\frac{\Prob\Conditional{P}{A\compl}}{A}\). But
+    \[
+        \Prob\Conditional{P}{A\compl} \gg \Prob\para{A}
+    \]
+    and this makes \(\Prob\Conditional{A}{P}\) is \emph{very small}.
+
+    Let's put in some concrete numbers. Suppose we have a population of \(1000\) people, with \(1\) suffering from A. Among the \(999\) not suffering, about \(10\) people will test positive. In total, there will be \(11\) people testing positive. Among those we pick one at random. So the probability of being positive, given they actually test positive, is only \(\frac{1}{11}\).
+\end{example}
