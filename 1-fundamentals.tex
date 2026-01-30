@@ -640,7 +640,7 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
 
     If \(r\) is odd, let \(B_i = A_i \cap A_n\), and we have
     \[
-        \Prob\para{\bigcup_{i = 1}^{n} A_i} = \Prob\para{i = 1}^{n - 1} A_i + \Prob\para{A_n} - \Prob\para{B_1 \cup B_2 \cup \cdots \cup B_{n - 1}}.
+        \Prob\para{\bigcup_{i = 1}^{n} A_i} = \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} + \Prob\para{A_n} - \Prob\para{B_1 \cup B_2 \cup \cdots \cup B_{n - 1}}.
     \]
 
     We apply the induction hypothesis to \(r\) is odd for \(A_i\), giving
@@ -917,10 +917,10 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
 
     This is counterintuitive. We have that
     \[
-        \Prob\Conditional{A}{P} = \frac{1}{1 + \frac{\Prob\Conditional{P}{A\compl} \cdot \Prob\para{A\compl}}{\Prob\Conditional{P}{A} \cdot \Prob{A}}}.
+        \Prob\Conditional{A}{P} = \frac{1}{1 + \frac{\Prob\Conditional{P}{A\compl} \cdot \Prob\para{A\compl}}{\Prob\Conditional{P}{A} \cdot \Prob\para{A}}}.
     \]
 
-    We have \(\Prob\para{A\compl}\) and \(\Prob\Conditional{P}{A}\) are both very close to \(1\), so the relevant ratio simplifies to \(\frac{\Prob\Conditional{P}{A\compl}}{A}\). But
+    We have \(\Prob\para{A\compl}\) and \(\Prob\Conditional{P}{A}\) are both very close to \(1\), so the relevant ratio simplifies to \(\frac{\Prob\Conditional{P}{A\compl}}{\Prob\para{A}}\). But
     \[
         \Prob\Conditional{P}{A\compl} \gg \Prob\para{A}
     \]
