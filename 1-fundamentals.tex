@@ -747,7 +747,7 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
     \]
 \end{example}
 
-\subsection{Independence}
+\subsection{Independence and Conditional Probability}
 
 Let \(\para{\Omega, \mathcal{F}, \Prob}\) be a probability space.
 
@@ -867,13 +867,13 @@ If \(A \indp B\), then we have
     \end{align*}
 \end{proof}
 
-\begin{corollary}[Bayes' Formula]
-    \label{cor:bayes}%
+\begin{theorem}[Bayes' Formula]
+    \label{thm:bayes}%
     Let \(\para{B_n}\) be a partition of \(\Omega\) with positive measure. We have
     \[
         \Prob\Conditional{B_n}{A} = \frac{\Prob\Conditional{A}{B_n} \cdot \Prob\para{B_n}}{\sum_{k} \Prob\Conditional{A}{B_k} \cdot \Prob\para{B_k}}.
     \]
-\end{corollary}
+\end{theorem}
 
 \begin{proof}
     Indeed, we have
@@ -881,7 +881,7 @@ If \(A \indp B\), then we have
         \Prob\Conditional{B_n}{A} &= \frac{\Prob\para{B_n \cap A}}{\Prob\para{A}} \\
         &= \frac{\Prob\Conditional{A}{B_n} \cdot \Prob\para{B_n}}{\Prob\para{A}},
     \end{align*}
-    and we apply \autoref{thm:law-total-probability} for the numerator.
+    and we apply \autoref{thm:law-total-probability} (Law of Total Probability) for the numerator.
 \end{proof}
 
 This formula is the basis of Bayesian statistics. If we know the probability of \(\Prob\para{B_n}\), and we have a model which gives us \(\Prob\Conditional{A}{B_k}\), with this formula we can find the posterior probability of \(B_n\) given that \(A\) occurs.
@@ -906,7 +906,7 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
         \Prob\para{A} = 0.001, \quad \Prob\Conditional{P}{A} = 0.98, \quad \text{and} \quad \Prob\Conditional{P}{A\compl} = 0.01.
     \]
 
-    Hence, using \autoref{cor:bayes} (Bayes' Formula), we have
+    Hence, using \autoref{thm:bayes} (Bayes' Formula), we have
     \begin{align*}
         \Prob\Conditional{A}{P} &= \frac{\Prob\Conditional{P}{A} \cdot \Prob\para{A}}{\Prob\Conditional{P}{A} \cdot \Prob\para{A} + \Prob\Conditional{P}{A\compl} \cdot \Prob\para{A\compl}} = 0.089 \approx 0.09
     \end{align*}
