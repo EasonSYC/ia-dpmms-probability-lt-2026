@@ -1,0 +1,59 @@
+\section{Discrete Random Variables}
+
+We in this section study the probability spaces of the form \(\para{\Omega, \mathcal{F}, \Prob}\) where
+\[
+    \Omega = \brce{\omega_1, \omega_2, \ldots} \quad \text{and} \quad \mathcal{F} = \powerset\para{\Omega}.
+\]
+
+The reason we study this countable case is as follows. If we know the probability of all the singletons \(\Prob\para{\brce{\omega_i}}\), then for all \(A \subseteq \Omega\), we have
+\[
+    \Prob\para{A} = \Prob\para{\bigcup_{\omega_i \in A} \brce{\omega_i}} = \sum_{\omega_i \in A} \Prob\para{\brce{\omega_i}}.
+\]
+
+This allows us to pinpoint the distribution just by investigating the singletons.
+
+\subsection{Discrete Probability Distribution}
+
+\begin{definition}[Discrete Probability Distribution]
+    \label{def:discrete-probability-distribution}%
+    We call \(\para{\Prob\para{\brce{\omega_i}}}_i\) a \emph{discrete probability distribution}, and we write
+    \[
+        p_i = \Prob\para{\brce{\omega_i}}
+    \]
+    for all \(i\).
+\end{definition}
+
+We have:
+\begin{itemize}
+    \item \(p_i \geq 0\) for all \(i\), and
+    \item \(\sum_i p_i = 1\).
+\end{itemize}
+
+\begin{examples}[Examples of Discrete Probability Distributions]
+    \label{ex:discrete-probability-distribution}%
+    \begin{enumerate}
+        \item The \emph{Bernoulli distribution} is the simplest non-trivial discrete probability distribution, denoted as \(\Bernoulli\para{p}\) for \(p \in \ccintv{0}{1}\). It models the outcome of the toss of a biased coin. Let \(\Omega = \brce{0, 1}\), and we have
+        \[
+            p_0 = \Prob\para{\brce{0}} = 1 - p \quad \text{and} \quad p_1 = \Prob\para{\brce{1}} = p
+        \]
+        where \(p \in \ccintv{0}{1}\).
+
+        \item The \emph{Binomial distribution}, denoted as \(\Binomial\para{n, p}\), for \(n \in \NN\) and \(p \in \ccintv{0}{1}\). This is the sum of \(n\) independent \(p\)-Bernoulli random variables. We have
+        \[
+            p_k = \Prob\para{\brce{k}}= \binom{n}{k} p^k \para{1 - p}^{n - k}
+        \]
+        where the sample space is \(\Omega = \brce{0, 1, \ldots, n}\). In particular, when \(n = 1\), the Binomial distribution is the Bernoulli distribution.
+
+        \item The \emph{Multinomial distribution} is denotes as \(\Multinomial\para{n, p_1, \ldots, p_k}\), with \(p_i \geq 0\) and \(\sum_{i = 1}^{k} p_i = 1\). We have \(n\) balls, and each ball goes into box \(i\) with probability \(p_i\).
+        
+        We have for \(\sum_{i = 1}^{k} n_i\), that
+        \[
+            p_{\para{n_1, n_2, \ldots, n_k}} = \binom{n}{n_1, n_2, \ldots, n_k} p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k}.
+        \]
+
+        Our sample space is given by
+        \[
+            \Omega = \set{\para{n_1, n_2, \ldots, n_k} \in \NN^k}{\sum_{i = 1}^{k} n_i = n}.
+        \]
+    \end{enumerate}
+\end{examples}

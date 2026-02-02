@@ -928,3 +928,129 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
 
     Let's put in some concrete numbers. Suppose we have a population of \(1000\) people, with \(1\) suffering from A. Among the \(999\) not suffering, about \(10\) people will test positive. In total, there will be \(11\) people testing positive. Among those we pick one at random. So the probability of being positive, given they actually test positive, is only \(\frac{1}{11}\).
 \end{example}
+
+\begin{example}[Children and Thursday]
+    \label{ex:children-thursday}%
+    \begin{enumerate}
+        \item What is the probability that I have \(2\) boys, given I have \(2\) children, one of whom is a boy?
+    
+            Since no further information is given, we take all outcomes to be equally likely.
+
+            We denote the events
+            \[
+                \mathrm{BG} = \brce{\text{elder child is a boy, younger is a girl}},
+            \]
+            and the events \(\mathrm{GB}, \mathrm{GG}, \mathrm{BB}\). We want to find
+            \[
+                \Prob\Conditional{\mathrm{BB}}{\mathrm{BB} \cup \mathrm{BG} \cup \mathrm{GB}} = \frac{\Prob\para{\mathrm{BB}}}{\Prob\para{\mathrm{BB} \cup \mathrm{BG} \cup \mathrm{GB}}} = \frac{\frac{1}{4}}{\frac{3}{4}} = \frac{1}{3}.
+            \]
+
+        \item What is the probability that I have \(2\) boys, given the eldest one is a boy?
+        
+            We have
+            \[
+                \Prob\Conditional{\mathrm{BB}}{\mathrm{BB} \cup \mathrm{BG}} = \frac{1}{2}.
+            \]
+
+        \item What is the probability that I have \(2\) boys, given that one of them is a boy born on a Thursday?
+        
+        Let
+        \[
+            \mathrm{TG} = \brce{\text{elder boy is a boy on Thursday, younger is a girl}},
+        \]
+        and \(\mathrm{GT}\) similarly, and
+        \[
+            \mathrm{TN} = \brce{\text{elder boy is a boy on Thursday, younger is a boy not born on Thursday}},
+        \]
+        and \(\mathrm{NT, TT}\) similarly. We want to find
+        \begin{align*}
+            &\phantom{=} \Prob\Conditional{\mathrm{TT} \cup \mathrm{TN} \cup \mathrm{NT}}{\mathrm{TT} \cup \mathrm{TG} \cup \mathrm{GT} \cup \mathrm{TN} \cup \mathrm{NT}} \\
+            &= \frac{\Prob\para{\mathrm{TT} \cup \mathrm{TN} \cup \mathrm{NT}}}{\Prob\para{\mathrm{TT} \cup \mathrm{TG} \cup \mathrm{GT} \cup \mathrm{TN} \cup \mathrm{NT}}} \\
+            &= \frac{\frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \frac{1}{7} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \mathbf{\frac{6}{7}} + \frac{1}{2} \cdot \mathbf{\frac{6}{7}} \cdot \frac{1}{2} \cdot \frac{1}{7}}{\frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \frac{1}{7} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \mathbf{\frac{6}{7}} \cdot 2}
+ \\
+            &= \frac{13}{27}.
+        \end{align*}
+    \end{enumerate}
+\end{example}
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{cccc}
+        All Applicants & Admitted & Rejected & \% Admitted \\
+        \hline
+        State & 25 & 25 & 50\% \\
+        Independent & 28 & 22 & 56\%
+    \end{tabular}
+    
+    \vspace{1em}
+
+    \begin{tabular}{cccc}
+        London Schools & Admitted & Rejected & \% Admitted \\
+        \hline
+        State & 15 & 22 & 41\% \\
+        Independent & 5 & 8 & 38\%
+    \end{tabular}
+    
+    \vspace{1em}
+
+    \begin{tabular}{cccc}
+        Cambridge Schools & Admitted & Rejected & \% Admitted \\
+        \hline
+        State & 10 & 3 & 77\% \\
+        Independent & 23 & 14 & 62\%
+    \end{tabular}
+
+    \caption{Data of Admissions}
+    \label{tab:simpson-paradox-data}
+\end{table}
+
+\begin{example}[Simpson's Paradox]
+    \label{ex:simpson-paradox}%
+    We refer to \autoref{tab:simpson-paradox-data}. This phenomenon is called \emph{cofounding} in statistics. It arises when we aggregate data from disparate populations.
+
+    Let
+    \begin{align*}
+        A &= \brce{\text{individual is admitted}}, \\
+        B &= \brce{\text{individual is from London}}, \\
+        B\compl &= \brce{\text{individual is from Cambridge}}, \\
+        C &= \brce{\text{state school}}, \\
+        C\compl &= \brce{\text{independent school}}.
+    \end{align*}
+
+    We notice that from the latter two tables, that
+    \begin{align*}
+        \Prob\Conditional{A}{B \cap C} &> \Prob\Conditional{A}{B \cap C \compl}, \\
+        \Prob\Conditional{A}{B\compl \cap C} &> \Prob\Conditional{A}{B\compl \cap C \compl}.
+    \end{align*}
+
+    However, we have from the first table, that
+    \[
+        \Prob\Conditional{A}{C} < \Prob\Conditional{A}{C\compl}.
+    \]
+
+    Observe that from countable additivity of conditional probability,
+    \begin{align*}
+        \Prob\Conditional{A}{C} &= \Prob\Conditional{A \cap B}{C} + \Prob\Conditional{A \cap B\compl}{C} \\
+        &= \frac{\Prob\para{A \cap B \cap C}}{\Prob\para{C}} + \frac{\Prob\para{A \cap B\compl \cap C}}{\Prob\para{C}} \\
+        &= \frac{\Prob\Conditional{A}{B \cap C} \cdot \Prob{B \cap C}}{\Prob\para{C}} + \frac{\Prob\Conditional{A}{B \compl \cap C} \cdot \Prob\para{B\compl \cap C}}{\Prob\para{C}} \\
+        &= \Prob\Conditional{A}{B \cap C} \cdot \Prob\Conditional{B}{C} + \Prob\Conditional{A}{B\compl \cap C} \cdot \Prob\Conditional{B \compl}{C} \\
+        &> \Prob\Conditional{A}{B \cap C\compl} \cdot \Prob\Conditional{B}{C} + \Prob\Conditional{A}{B\compl \cap C\compl} \cdot \Prob \Conditional{B\compl}{C}.
+    \end{align*}
+
+    Now, note that if \(\Prob\Conditional{B}{C} = \Prob\Conditional{B}{C\compl}\), which is not valid here, then we would get
+    \begin{align*}
+        \Prob\Conditional{A}{C} &> \Prob\Conditional{A}{B \cap C\compl} \cdot \Prob\Conditional{B}{C} + \Prob\Conditional{A}{B\compl \cap C\compl} \cdot \Prob \Conditional{B\compl}{C} \\
+        &= \Prob\Conditional{A}{B \cap C\compl} \cdot \Prob\Conditional{B}{C\compl} + \Prob\Conditional{A}{B\compl \cap C\compl} \cdot \Prob \Conditional{B\compl}{C\compl} \\
+        &= \Prob\Conditional{A}{C\compl}
+    \end{align*}
+    hence this does not hold.
+
+    Effectively, we are dealing with inequalities
+    \[
+        \frac{a_1}{a_2} > \frac{b_1}{b_2} \quad \text{and} \quad \frac{c_1}{c_2} > \frac{d_1}{d_2},
+    \]
+    but we cannot say anything about
+    \[
+        \frac{a_1 + c_1}{a_2 + c_2} \quad \text{and} \quad \frac{b_1 + d_1}{b_2 + d_2}.
+    \]
+\end{example}
