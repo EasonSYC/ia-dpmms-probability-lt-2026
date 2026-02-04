@@ -242,9 +242,9 @@ for all \(x_1 \in \img X_1, x_2 \in \img X_2\).
         \Prob\para{X_k = 0} &= 1 - p = \Prob\para{\omega_k = 0}.
     \end{align*}
 
-    We have \(X_k \sim \Bernoulli\para{p}\). Indeed, \(X_1, X_2, \ldots, X_N\) are independent random variables, since for all \(x_1, x_2, \ldots, x_n \in \brce{0, 1}\),
+    We have \(X_k \sim \Bernoulli\para{p}\). Indeed, \(X_1, X_2, \ldots, X_N\) are independent random variables, since for all \(x_1, x_2, \ldots, x_N \in \brce{0, 1}\),
     \begin{align*}
-        \Prob\para{X_1 = x_1, X_2 = x_2, \ldots, X_N = x_N} &= \Prob_{k = 1}^{N} p^{x_k} \para{1 - p}^{1 - x_k} \\
+        \Prob\para{X_1 = x_1, X_2 = x_2, \ldots, X_N = x_N} &= \prod_{k = 1}^{N} p^{x_k} \para{1 - p}^{1 - x_k} \\
         &= \prod_{i = 1}^{N} \Prob\para{X_i = x_i}.
     \end{align*}
 \end{example}
