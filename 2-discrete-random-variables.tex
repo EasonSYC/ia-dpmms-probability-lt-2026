@@ -55,5 +55,196 @@ We have:
         \[
             \Omega = \set{\para{n_1, n_2, \ldots, n_k} \in \NN^k}{\sum_{i = 1}^{k} n_i = n}.
         \]
+
+        \item The \emph{Geometric distribution}, denoted as \(\Geometric\para{p}\), is described as follows. We toss a \(p\)-coin, having result Head with probability \(p\). We toss it independently, until we see the first Head. The probability of the event of tossing \(k\) coins until the first head (inclusive) is given by
+        \[
+            p_k = \para{1 - p}^{k - 1} \cdot p
+        \]
+        where our sample space is given by
+        \[
+            \Omega = \brce{1, 2, \ldots}.
+        \]
+
+        Alternatively, we may define the geometric distribution where \(k\) starts from zero, where we use the event of tossing \(k\) coins before the first head (exclusive), giving the probability
+        \[
+            p'_k = \para{1 - p}^{k} \cdot p
+        \]
+        where now our sample space is given by
+        \[
+            \Omega' = \brce{0, 1, 2, \ldots}.
+        \]
+
+        It would be nice to specify whether a geometric distribution starts from \(0\) or from \(1\).
+
+        \item The \emph{Poisson distribution}, denoted as \(\Poisson\para{\lambda}\), with parameter \(\lambda\), is described as follows. Suppose customers arrive into a shop in \(\ccintv{0}{1}\), and we discretize \(\ccintv{0}{1}\) into the collection of sub-intervals
+        \[
+            \set{\ccintv{\frac{i - 1}{N}}{\frac{i}{N}}}{i = 1, 2, \ldots, N},
+        \]
+        and in each interval we toss a \(p\)-coin to decide whether a customer would arrive, independently. In this sub-interval approximation, the probability that \(k\) customers have arrived is given by the binomial distribution \(\Binomial\para{N, p}\), so having a probability of
+        \[
+            \binom{N}{k} \cdot p^k \cdot \para{1 - p}^{N - k}
+        \]
+        for \(k = 0, 1, 2, \ldots, N\).
+
+        We take \(p = \frac{\lambda}{N}\), where \(\lambda > 0\) and \(p < 1\) (the motivation for this is that the shorter the interval, the lower the probability that a customer would arrive, and we would like to split the `constant rate' up into the intervals). We let \(N \to \infty\) and fix \(k\), and hence
+        \[
+            p_k = \lim_{N \to \infty} \frac{N!}{k! \para{N - k}!} \cdot \para{\frac{\lambda}{N}}^k \cdot \para{1 - \frac{\lambda}{N}}^{N - k}.
+        \]
+
+        Evaluating this limit gives us
+        \begin{align*}
+            p_k &= \lim_{N \to \infty} \brac{\frac{\lambda^k}{k!} \cdot \frac{N \para{N - 1} \cdots \para{N - k + 1}}{N^k} \para{1 - \frac{\lambda}{N}}^{N - k}}\\
+            &= \frac{\lambda^k}{k!} \cdot 1 \cdot e^{-\lambda} \\
+            &= e^{-\lambda} \cdot \frac{\lambda^{k}}{k!}.
+        \end{align*}
+
+        Indeed, we have
+        \[
+            \sum_{k = 0}^{\infty} p_k = 1
+        \]
+        and the sample space is given by
+        \[
+            \Omega = \brce{0, 1, 2, \ldots}.
+        \]
+
+        The Poisson distribution can be used to model the number of occurrences of an event in a given interval of time.
     \end{enumerate}
 \end{examples}
+
+\subsection{Random Variable}
+
+\begin{definition}[Random Variable]
+    \label{def:random-variable}%
+    For a probability space \(\para{\Omega, \mathcal{F}, \Prob}\), a \emph{random variable} is a function \(\functiondomain{X}{\Omega}{\RR}\) with the property that for all \(x \in \RR\), we have
+    \[
+        \set{\omega \in \Omega}{X\para{\omega} \leq x} = X\inverse \para{\ocintv{-\infty}{\omega}} \in \mathcal{F}.
+    \]
+\end{definition}
+
+\begin{notation}
+    As an abuse of notation, we denote for all \(x \in \RR\),
+    \[
+        \brce{X \leq x} = \set{\omega \in \Omega}{X\para{\omega} \leq x}
+    \]
+    and for all \(A \subseteq \RR\)
+    \[
+        \brce{X \in A} = X\inverse\para{A} = \set{\omega \in \Omega}{X\para{\omega} \in A}.
+    \]
+\end{notation}
+
+\begin{definition}[Indicator Random Variable]
+    \label{def:indicator-random-variable}%
+    The \emph{indicator} of a set \(A \in \mathcal{F}\) is denoted as
+    \[
+        \indicator_{A} \para{\omega} = \indicator\para{\omega \in A} = \begin{cases}
+            1, & \omega \in A, \\ 0, & \omega \in A\compl.
+        \end{cases}
+    \]
+
+    Since \(A \in \mathcal{F}\), \(\indicator_{A}\) is indeed a random variable, and we may restrict the co-domain to
+    \[
+        \functiondomain{\indicator_{A}}{\Omega}{\brce{0, 1}}.
+    \]
+\end{definition}
+
+
+\begin{definition}[Probability Distribution Function]
+    \label{def:probability-distribution-function}%
+    The \emph{probability distribution function} or \emph{cumulative distribution function} of a random variable \(X\) is, for \(x \in \RR\),
+    \[
+        \function{F_X}{\RR}{\ccintv{0}{1}}{x}{\Prob\para{X \leq x}.}
+    \]
+\end{definition}
+
+\begin{definition}[Random Variable in \(\RR^n\)]
+    \label{def:random-variable-rn}%
+    The combined function
+    \[
+        X = \para{X_1, X_2, \ldots, X_n}
+    \]
+    is called a \emph{random variable in \(\RR^n\)}, if
+    \[
+        \functiondomain{\para{X_1, X_2, \ldots, X_n}}{\Omega}{\RR^n},
+    \]
+    with the additional restriction that for all \(x_1, x_2, \ldots, x_n \in \RR\), we have
+    \begin{align*}
+        &\phantom{=} X\inverse\para{\ocintv{-\infty}{x_1} \times \ocintv{-\infty}{x_2} \times \cdots \times \ocintv{-\infty}{x_n}} \\
+        &= \set{\omega \in \Omega}{X_1 \para{\omega} \leq x_1 \land X_2 \para{\omega} \leq x_2 \land \cdots \land X_n \para{\omega} \leq x_n} \\
+        &\in \mathcal{F}.
+    \end{align*}
+
+    Equivalently, this restriction can be stated as that all \(X_i\)s are real random variables, since
+    \[
+        \brce{X_1 \leq x_1, \ldots, X_n \leq x_n} = \brce{X_1 \leq x_1} \cap \brce{X_2 \leq x_2} \cap \cdots \cap \brce{X_n \leq x_n}.
+    \]
+\end{definition}
+
+We now restrict back our view to discrete probability distributions.
+
+\begin{definition}[Discrete Random Variable]
+    \label{def:discrete-random-variable}%
+    A random variable \(X\) is called \emph{discrete} if it takes values in a countable set, i.e., \(\img \para{X} \subseteq \RR\) is countable.
+\end{definition}
+
+\begin{definition}[Probability Mass Function]
+    \label{def:probability-mass-function}%
+    Suppose a discrete random variable \(X\) satisfies \(\img X = S \subseteq \RR\), which is countable. For every \(x \in S\), we denote
+    \[
+        p_x = \Prob\para{X = x} = \Prob\para{\set{\omega \in \Omega}{X\para{\omega = x}}},
+    \]
+    and we call \(\para{p_x}_{x \in S}\) the \emph{probability mass function} or the \emph{distribution} of \(X\).
+\end{definition}
+
+From the definition of a probability mass function, we have for all \(A \subseteq S\), that
+\[
+    \Prob\para{X \in A} = \sum_{x \in A} p_x.
+\]
+
+If the \(p_x\)s are the Bernoulli distribution, then we say \(X\) is a Bernoulli \emph{random variable}, and it has the Bernoulli \emph{distribution}. Similar terminology applies for the other distributions as well.
+
+Recall that two events \(A, B\) are independent, if
+\[
+    \Prob \para{A \cap B} = \Prob\para{A} \cdot \Prob\para{B}.
+\]
+
+We may extend this notion to random variables as well.
+
+\begin{definition}[Independence of Random Variables]
+    \label{def:independence-random-variable}%
+    Let \(X_1, X_2, \ldots, X_n\) be discrete random variables, satisfying \(\img X_i = S_i\) for \(i = 1, 2, \ldots, n\). Then they are \emph{independent}, if for any \(x_i \in S_i\) for \(i = 1, 2, \ldots, n\), that
+    \[
+        \Prob\para{X_1 = x_1, X_2 = x_2, \ldots, X_n = x_n} = \Prob\para{X_1 = x_1} \cdot \Prob\para{X_2 = x_2} \cdots \Prob\para{X_n = x_n},
+    \]
+    where the left-hand side notation denotes the intersection of all the events.
+\end{definition}
+
+In particular, for two random variables \(X_1, X_2\), they are independent if
+\[
+    \Prob\para{X_1 = x_1, X_2 = x_2} = \Prob\para{X_1 = x_1} \cdot \Prob\para{X_2 = x_2},
+\]
+for all \(x_1 \in \img X_1, x_2 \in \img X_2\).
+
+\begin{example}[Independence of Bernoulli Random Variables]
+    \label{ex:independence-bernoulli}
+    We toss a \(p\)-coin \(N\) independently, with
+    \[
+        \Omega = \brce{0, 1}^N.
+    \]
+
+    Let \(\omega = \para{\omega_1, \ldots, \omega_N} \in \Omega\), where \(\omega_i\) be the outcome of the \(i\)-th toss. We hence have
+    \[
+        p_\omega = \Prob\para{\brce{\omega}} = \prod_{k = 1}^{N} p^{\omega_k} \para{1 - p}^{1 - \omega_k}
+    \]
+
+    For all \(k = 1, 2, \ldots, N\), we define \(\functiondomain{X_k}{\Omega}{\brce{0, 1}}\), with \(X_k\para{\omega} = \omega_k\). For example, we have
+    \begin{align*}
+        \Prob\para{X_k = 1} &= p = \Prob\para{\omega_k = 1} \\
+        \Prob\para{X_k = 0} &= 1 - p = \Prob\para{\omega_k = 0}.
+    \end{align*}
+
+    We have \(X_k \sim \Bernoulli\para{p}\). Indeed, \(X_1, X_2, \ldots, X_N\) are independent random variables, since for all \(x_1, x_2, \ldots, x_n \in \brce{0, 1}\),
+    \begin{align*}
+        \Prob\para{X_1 = x_1, X_2 = x_2, \ldots, X_N = x_N} &= \Prob_{k = 1}^{N} p^{x_k} \para{1 - p}^{1 - x_k} \\
+        &= \prod_{i = 1}^{N} \Prob\para{X_i = x_i}.
+    \end{align*}
+\end{example}
