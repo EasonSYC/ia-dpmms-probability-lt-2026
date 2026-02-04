@@ -29,87 +29,158 @@ We have:
     \item \(\sum_i p_i = 1\).
 \end{itemize}
 
-\begin{examples}[Examples of Discrete Probability Distributions]
-    \label{ex:discrete-probability-distribution}%
-    \begin{enumerate}
-        \item The \emph{Bernoulli distribution} is the simplest non-trivial discrete probability distribution, denoted as \(\Bernoulli\para{p}\) for \(p \in \ccintv{0}{1}\). It models the outcome of the toss of a biased coin. Let \(\Omega = \brce{0, 1}\), and we have
-        \[
-            p_0 = \Prob\para{\brce{0}} = 1 - p \quad \text{and} \quad p_1 = \Prob\para{\brce{1}} = p
-        \]
-        where \(p \in \ccintv{0}{1}\).
+\subsection{Common Discrete Probability Distributions}
 
-        \item The \emph{Binomial distribution}, denoted as \(\Binomial\para{n, p}\), for \(n \in \NN\) and \(p \in \ccintv{0}{1}\). This is the sum of \(n\) independent \(p\)-Bernoulli random variables. We have
-        \[
-            p_k = \Prob\para{\brce{k}}= \binom{n}{k} p^k \para{1 - p}^{n - k}
-        \]
-        where the sample space is \(\Omega = \brce{0, 1, \ldots, n}\). In particular, when \(n = 1\), the Binomial distribution is the Bernoulli distribution.
+Now we see some common examples of discrete probability distributions.
 
-        \item The \emph{Multinomial distribution} is denotes as \(\Multinomial\para{n, p_1, \ldots, p_k}\), with \(p_i \geq 0\) and \(\sum_{i = 1}^{k} p_i = 1\). We have \(n\) balls, and each ball goes into box \(i\) with probability \(p_i\).
-        
-        We have for \(\sum_{i = 1}^{k} n_i\), that
-        \[
-            p_{\para{n_1, n_2, \ldots, n_k}} = \binom{n}{n_1, n_2, \ldots, n_k} p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k}.
-        \]
+\begin{example}[Tossing a Biased Coin]
+    \label{ex:tossing-biased-coin}%
+    We toss a biased coin with probability \(p\) landing on its head and probability \(\para{1 - p}\) landing on its tail. Then we may model this as
+    \[
+        \Prob\para{\text{landing on tail}} = 1 - p \quad \text{and} \quad \Prob\para{\text{landing on head}} = p.
+    \]
+\end{example}
 
-        Our sample space is given by
-        \[
-            \Omega = \set{\para{n_1, n_2, \ldots, n_k} \in \NN^k}{\sum_{i = 1}^{k} n_i = n}.
-        \]
+This is modelled by the simplest non-trivial discrete probability distribution, the Bernoulli distribution.
 
-        \item The \emph{Geometric distribution}, denoted as \(\Geometric\para{p}\), is described as follows. We toss a \(p\)-coin, having result Head with probability \(p\). We toss it independently, until we see the first Head. The probability of the event of tossing \(k\) coins until the first head (inclusive) is given by
-        \[
-            p_k = \para{1 - p}^{k - 1} \cdot p
-        \]
-        where our sample space is given by
-        \[
-            \Omega = \brce{1, 2, \ldots}.
-        \]
+\begin{definition}[Bernoulli Distribution]
+    \label{def:bernoulli-distribution}%
+    The \emph{Bernoulli distribution}, denoted as \(\Bernoulli\para{p}\) for \(p \in \ccintv{0}{1}\), is defined as follows. The sample space is \(\Omega = \brce{0, 1}\), and the distribution is defined by
+    \[
+        p_0 = \Prob\para{\brce{0}} = 1 - p \quad \text{and} \quad p_1 = \Prob\para{\brce{1}} = p.
+    \]
+\end{definition}
 
-        Alternatively, we may define the geometric distribution where \(k\) starts from zero, where we use the event of tossing \(k\) coins before the first head (exclusive), giving the probability
-        \[
-            p'_k = \para{1 - p}^{k} \cdot p
-        \]
-        where now our sample space is given by
-        \[
-            \Omega' = \brce{0, 1, 2, \ldots}.
-        \]
+Now, what happens if we toss multiple \(p\)-coins? 
 
-        It would be nice to specify whether a geometric distribution starts from \(0\) or from \(1\).
+\begin{example}[Tossing Multiple \(p\)-coins]
+    \label{ex:tossing-multiple-biased-coins}%
+    Now, we toss \(n\) such biased coins. Then we may model this as
+    \[
+        \Prob\para{\text{landing on heads }k\text{ times}} = \binom{n}{k} p^k \para{1 - p}^{n - k}.
+    \]
+\end{example}
 
-        \item The \emph{Poisson distribution}, denoted as \(\Poisson\para{\lambda}\), with parameter \(\lambda\), is described as follows. Suppose customers arrive into a shop in \(\ccintv{0}{1}\), and we discretize \(\ccintv{0}{1}\) into the collection of sub-intervals
-        \[
-            \set{\ccintv{\frac{i - 1}{N}}{\frac{i}{N}}}{i = 1, 2, \ldots, N},
-        \]
-        and in each interval we toss a \(p\)-coin to decide whether a customer would arrive, independently. In this sub-interval approximation, the probability that \(k\) customers have arrived is given by the binomial distribution \(\Binomial\para{N, p}\), so having a probability of
-        \[
-            \binom{N}{k} \cdot p^k \cdot \para{1 - p}^{N - k}
-        \]
-        for \(k = 0, 1, 2, \ldots, N\).
+\begin{definition}[Binomial Distribution]
+    \label{def:binomial-distribution}%
+    The \emph{Binomial distribution}, denoted as \(\Binomial\para{n, p}\), for \(n \in \NN\) and \(p \in \ccintv{0}{1}\), is defined as follows.. The sample space is \(\Omega = \brce{0, 1, \ldots, n}\), and the distribution is defined by
+    \[
+        p_k = \Prob\para{\brce{k}}= \binom{n}{k} p^k \para{1 - p}^{n - k}
+    \]
+    where \(k = 0, 1, \ldots, n\).
+\end{definition}
 
-        We take \(p = \frac{\lambda}{N}\), where \(\lambda > 0\) and \(p < 1\) (the motivation for this is that the shorter the interval, the lower the probability that a customer would arrive, and we would like to split the `constant rate' up into the intervals). We let \(N \to \infty\) and fix \(k\), and hence
-        \[
-            p_k = \lim_{N \to \infty} \frac{N!}{k! \para{N - k}!} \cdot \para{\frac{\lambda}{N}}^k \cdot \para{1 - \frac{\lambda}{N}}^{N - k}.
-        \]
+This could be thought of the sum of \emph{independent} Bernoulli random variables as well, as we will see later. Indeed, when \(n = 1\), the Binomial distribution is simply the Bernoulli distribution.
 
-        Evaluating this limit gives us
-        \begin{align*}
-            p_k &= \lim_{N \to \infty} \brac{\frac{\lambda^k}{k!} \cdot \frac{N \para{N - 1} \cdots \para{N - k + 1}}{N^k} \para{1 - \frac{\lambda}{N}}^{N - k}}\\
-            &= \frac{\lambda^k}{k!} \cdot 1 \cdot e^{-\lambda} \\
-            &= e^{-\lambda} \cdot \frac{\lambda^{k}}{k!}.
-        \end{align*}
+The Binomial distribution is a generalisation of the Bernoulli distribution by having multiple trials. Similarly, we can generalise the Binomial distribution by introducing multiple possible outcomes.
 
-        Indeed, we have
-        \[
-            \sum_{k = 0}^{\infty} p_k = 1
-        \]
-        and the sample space is given by
-        \[
-            \Omega = \brce{0, 1, 2, \ldots}.
-        \]
+\begin{example}[Throwing Balls into Boxes]
+    \label{ex:throwing-balls-into-boxes}%
+    We throw \(n\) balls into \(k\) boxes, landing into each box with probability \(p_1, p_2, \ldots, p_k\) with \(\sum p_i = 1\) and \(p_i \in \ccintv{0}{1}\). Then, the probability of having \(n_i\) balls in each of the \(k\) boxes, where \(\sum n_i = n\), is given by
+    \[
+        \binom{n}{n_1, n_2, \ldots, n_k} p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k}
+    \]
+    using the multinomial coefficient.
+\end{example}
 
-        The Poisson distribution can be used to model the number of occurrences of an event in a given interval of time.
-    \end{enumerate}
-\end{examples}
+Alternatively, we can also model this as a polyhedron landing on different faces, with unequal probability (as opposing to a coin only having two sides). Although, obviously, there are no polyhedrons with at most 3 faces, but this is probably good enough.
+
+\begin{example}[Polyhedron landing on Different sides]
+    \label{ex:polyhedron-different-sides}%
+    We have a \(k\)-sided polyhedron with a probability of \(p_i\) landing on side \(i\). Throwing the polyhedron \(n\) times, the probability that it being landing on side \(i\) for \(n_i\) times respectively, for \(\sum n_i = n\), gives the same probability distribution as above.
+\end{example}
+
+\begin{definition}[Multinomial Distribution]
+    \label{def:multinomial-distribution}%
+    The \emph{Multinomial distribution}, denoted as \(\Multinomial\para{n, p_1, \ldots, p_k}\), with \(p_i \geq 0\) and \(\sum_{i = 1}^{k} p_i = 1\), is defined as follows. The sample space is
+    \[
+        \Omega = \set{\para{n_1, n_2, \ldots, n_k} \in \NN^k}{\sum_{i = 1}^{k} n_i = n},
+    \]
+    and the distribution is given by
+    \[
+        p_{\para{n_1, n_2, \ldots, n_k}} = \binom{n}{n_1, n_2, \ldots, n_k} p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k},
+    \]
+    for \(\sum_{i = 1}^{k} n_i = n\).
+\end{definition}
+
+So far, our sample space has been finite. But we can also define discrete distributions over infinite sample spaces.
+
+\begin{example}[Tossing Coins until a Head]
+    \label{ex:tossing-coins-until-head}%
+    We toss a \(p\)-coin, having result Head with probability \(p\). We toss it independently, until we see the first Head. The probability of the event of tossing \(k\) coins until the first head (inclusive), is given by
+    \[
+        \Prob\para{\text{the first head is the }k\text{th coin}} = \para{1 - p}^{k - 1} \cdot p.
+    \]
+\end{example}
+
+\begin{definition}[Geometric Distribution]
+    \label{def:geometric-distribution}%
+    The \emph{Geometric distribution}, denoted as \(\Geometric\para{p}\), with \(p \in \ccintv{0}{1}\), is defined as follows. The sample space is
+    \[
+        \Omega = \brce{1, 2, \ldots},
+    \]
+    and the distribution is given by
+    \[
+        p_k = \para{1 - p}^{k - 1} \cdot p,
+    \]
+    for \(k \in \Omega\).
+\end{definition}
+
+There is a slight caveat to the geometric distribution -- some people prefer modelling the distribution starting from \(0\), i.e., the number of toss \emph{before, but not including} the final toss getting the head. In this case, the sample space would start from zero, given by
+\[
+    \Omega' = \brce{0, 1, 2, \ldots}
+\]
+and the probability distribution is given by
+\[
+    p'_k = \para{1 - p}^{k} \cdot p.
+\]
+
+It would be nice to specify whether a geometric distribution starts from \(0\) or from \(1\).
+
+The final distribution to introduce is not very intuitive when first seeing the distribution expression -- but the following example gives a motivation.
+
+\begin{example}[Constant Average Rate]
+    We suppose that customers arrive into a shop in \(\ccintv{0}{1}\) at a constant rate, with an average of \(\lambda > 0\) customers arriving. To model this, we discretise \(\ccintv{0}{1}\) into a collection of sub-intervals
+    \[
+        \set{\ccintv{\frac{i - 1}{N}}{\frac{i}{N}}}{i = 1, 2, \ldots, N},
+    \]
+    and in each interval we toss a \(p\)-coin to decide whether a customer would arrive, independently. In this sub-interval approximation, the probability that \(k\) customers have arrived is given by the binomial distribution \(\Binomial\para{N, p}\), so having a probability of
+    \[
+        \binom{N}{k} \cdot p^k \cdot \para{1 - p}^{N - k}
+    \]
+    for \(k = 0, 1, 2, \ldots, N\).
+
+    By our model, assuming there is an average of \(\lambda\) customers arriving in the whole interval, so in each sub-interval, we take \(p = \frac{\lambda}{N}\). (We may take \(N\) to be big such that \(p < 1\).) The shorter the intervals split up, the better this models the continuous arrivals. So we fix \(k\) and let \(N \to \infty\), giving the probabilities
+    \[
+        \Prob\para{k\text{ customers arrive}} = \lim_{N \to \infty} \frac{N!}{k! \para{N - k}!} \cdot \para{\frac{\lambda}{N}}^k \cdot \para{1 - \frac{\lambda}{N}}^{N - k}.
+    \]
+
+    Evaluating this limit gives us
+    \begin{align*}
+        p_k &= \lim_{N \to \infty} \brac{\frac{\lambda^k}{k!} \cdot \frac{N \para{N - 1} \cdots \para{N - k + 1}}{N^k} \para{1 - \frac{\lambda}{N}}^{N - k}}\\
+        &= \frac{\lambda^k}{k!} \cdot 1 \cdot e^{-\lambda} \\
+        &= e^{-\lambda} \cdot \frac{\lambda^{k}}{k!},
+    \end{align*}
+    and this is indeed a probability distribution since
+    \[
+        \sum_{k = 0}^{\infty} p_k = 1
+    \]
+\end{example}
+
+\begin{definition}[Poisson Distribution]
+    \label{def:poisson-distribution}%
+    The \emph{Poisson distribution}, denoted as \(\Poisson\para{\lambda}\), for parameter \(\lambda > 0\), is defined as follows. The sample space is
+    \[
+        \Omega = \brce{0, 1, 2, \ldots},
+    \]
+    and the distribution is given by
+    \[
+        p_k = e^{-\lambda} \cdot \frac{\lambda^k}{k!}
+    \]
+    for \(k \in \Omega\).
+\end{definition}
+
+The Poisson distribution can be used to model the number of occurrences of an event in a given interval of time.
 
 \subsection{Random Variable}
 

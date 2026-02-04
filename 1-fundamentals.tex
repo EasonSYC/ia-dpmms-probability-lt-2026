@@ -67,101 +67,126 @@ We may conclude some properties of the probability measure \(\Prob\) from the de
 \subsection{Equally Likely Outcomes}
 Now we consider some examples of probability spaces, where the outcomes are finite, and all outcomes are equally likely.
 
-\begin{examples}[Equally likely outcomes]
-    \label{ex:equally-likely-outcomes}%
-    \begin{enumerate}
-        \item \emph{Rolling a fair die.} We consider the outcomes \(\Omega = \brce{1, 2, \ldots, 6}\), and \(\mathcal{F} = \powerset\para{\Omega}\) for all subsets of \(\Omega\).
+\begin{example}[Rolling a Fair Die]
+    \label{ex:rolling-a-fair-die}%
+    We consider the outcomes \(\Omega = \brce{1, 2, \ldots, 6}\), and \(\mathcal{F} = \powerset\para{\Omega}\) for all subsets of \(\Omega\) (since \(\Omega\) is countable).
         
-        We naturally take for all \(\omega \in \Omega\),
-        \[
-            \Prob\para{\brce{\omega}} = \frac{1}{6},
-        \]
-        and for all \(A \subseteq \Omega\), we take
-        \[
-            \Prob\para{A} = \frac{\abs{A}}{6}.
-        \]
+    We naturally take for all \(\omega \in \Omega\),
+    \[
+        \Prob\para{\brce{\omega}} = \frac{1}{6},
+    \]
+    and for all \(A \subseteq \Omega\), we take
+    \[
+        \Prob\para{A} = \frac{\abs{A}}{6}.
+    \]
 
-        All outcomes are equally likely.
+    All outcomes are equally likely.
+\end{example}
 
-        \item \emph{Equally likely outcomes.} For any finite set \(\Omega = \brce{\omega_1, \omega_2, \ldots, \omega_n}\), take \(\mathcal{F} = \powerset\para{\Omega}\). We define
-        \[
-            \function{\Prob}{\mathcal{F}}{\ccintv{0}{1}}{A}{\frac{\abs{A}}{\abs{\Omega}}.}
-        \]
+Lots of situations are like this in real life, and we refer to such setup as \emph{classical probability}, with \emph{equally likely outcomes}.
 
-        This models the experiment of picking a random element of \(\Omega\). For all \(\omega \in \Omega\),
-        \[
-            \Prob\para{\brce{\omega}} = \frac{1}{\abs{\Omega}}
-        \]
+\begin{definition}[Equally Likely Outcomes]
+    \label{def:equally-likely-outcomes}%
+    For any finite set \(\Omega = \brce{\omega_1, \omega_2, \ldots, \omega_n}\), take \(\mathcal{F} = \powerset\para{\Omega}\). We define the probability measure to be
+    \[
+        \function{\Prob}{\mathcal{F}}{\ccintv{0}{1}}{A}{\frac{\abs{A}}{\abs{\Omega}}.}
+    \]
 
-        \item \emph{Picking balls from a bag.} Suppose we have \(n\) balls labelled \(\brce{1, \ldots, n}\), and they are indistinguishable by touch. Pick \(k \leq n\) balls \emph{at random} (any outcome is equally likely) without replacement. We let the outcomes be
-        \[
-            \Omega = \set{A \subseteq \brce{1, 2, \ldots, n}}{\abs{A} = k}
-        \]
-        and hence
-        \[
-            \abs{\Omega} = \binom{n}{k}.
-        \]
+    This is called the \emph{uniform probability distribution}.
+\end{definition}
 
-        Hence, for any \(\omega \in \Omega\), we have
-        \[
-            \Prob\para{\brce{\omega}} = \frac{1}{\binom{n}{k}}.
-        \]
+This models the experiment of picking a \emph{random} element of \(\Omega\). For all \(\omega \in \Omega\),
+\[
+    \Prob\para{\brce{\omega}} = \frac{1}{\abs{\Omega}}
+\]
 
-        \item \emph{Deck of cards.} In a well-shuffled deck of 52 cards, take
-        \[
-            \Omega = \brce{\text{all permutations of 52 cards}}
-        \]
-        and hence
-        \[
-            \abs{\Omega} = 52! = 80,658,175,170,943,878,571,660,636,856,403,766,975,289,505,440,883,277,824,000,000,000,000.
-        \]
+We look at some more examples on calculating the probability under such setup. Effectively, those are combinatorial problems counting the size of sets.
+
+This example is more about counting the size of the \emph{sample space} which is the denominator.
+
+\begin{example}[Picking Balls from a Bag]
+    \label{ex:picking-balls-from-bag}%
+    Suppose we have \(n\) balls labelled \(\brce{1, \ldots, n}\), and they are indistinguishable by touch. Pick \(k \leq n\) balls \emph{at random} (any outcome is equally likely) without replacement. We let the outcomes be
+    \[
+        \Omega = \set{A \subseteq \brce{1, 2, \ldots, n}}{\abs{A} = k}
+    \]
+    and hence
+    \[
+        \abs{\Omega} = \binom{n}{k}.
+    \]
+
+    Hence, for any \(\omega \in \Omega\), we have
+    \[
+        \Prob\para{\brce{\omega}} = \frac{1}{\binom{n}{k}}.
+    \]
+\end{example}
+
+The following examples also require counting on the numerator, which is the cardinality of the event.
+
+\begin{example}[Deck of Cards]
+    \label{ex:deck-of-cards}%
+    In a well-shuffled deck of 52 cards, take
+    \[
+        \Omega = \brce{\text{all permutations of 52 cards}}
+    \]
+    and hence
+    \[
+        \abs{\Omega} = 52! = 80,658,175,170,943,878,571,660,636,856,403,766,975,289,505,440,883,277,824,000,000,000,000.
+    \]
+    
+    Take \(\mathcal{F} = \powerset\para{\Omega}\). Then
+    \[
+        \Prob\para{\text{top 2 cards are aces}} = \frac{4 \times 3 \times 50!}{52!}.
+    \]
+\end{example}
+
+The next example uses results on set cardinalities.
+
+\begin{example}[Largest Digit]
+    \label{ex:largest-digit}%
+    Consider a string of \(n\) random digits from \(0, 1, \ldots, 9\). Let
+    \[
+        \Omega = \brce{0, 1, \ldots, 9}^n,
+    \]
+    and we have \(\abs{\Omega} = 10^n\).
+
+    Let the event \(A_k = \brce{\text{no digit exceeds }k}\), then
+    \[
+        \Prob\para{A_k} = \frac{\para{k + 1}^{n}}{10^n}.
+    \]
+
+    Now we consider the event \(B_k = \brce{\text{the largest digit is equal to }k}\), then note \(B_k = A_k \setminus A_{k - 1}\), so
+    \[
+        \Prob\para{B_k} = \Prob\para{A_k \setminus A_{k - 1}} = \Prob\para{A_k} - \Prob\para{A_{k - 1}} = \frac{\para{k + 1}^n - k^n}{10^n}.
+    \]
+\end{example}
+
+\begin{example}[Birthday Problem]
+    \label{ex:birthbay-problem}%
+    There are \(n\) people. What is the probability that at least 2 of them share the same birthday?
         
-        Take \(\mathcal{F} = \powerset\para{\Omega}\). Then
-        \[
-            \Prob\para{\text{top 2 cards are aces}} = \frac{4 \times 3 \times 50!}{52!}.
-        \]
+    Assume each birthday is equally likely to be one of \(\brce{1, 2, \ldots, 365}\). Take
+    \[
+        \Omega = \brce{1, 2, \ldots, 365}^n,
+    \]
+    and take \(\mathcal{F} = \powerset\para{\Omega}\). Hence, for all \(\omega \in \Omega\), we have
+    \[
+        \Prob\para{\brce{\omega}} = \frac{1}{365^n}.
+    \]
 
-        \item \emph{Largest Digit.} Consider a string of \(n\) random digits from \(0, 1, \ldots, 9\). Let
-        \[
-            \Omega = \brce{0, 1, \ldots, 9}^n,
-        \]
-        and we have \(\abs{\Omega} = 10^n\).
+    Consider the event \(A = \brce{\text{at least 2 people have the same birthday}}\).
 
-        Let the event \(A_k = \brce{\text{no digit exceeds }k}\), then
-        \[
-            \Prob\para{A_k} = \frac{\para{k + 1}^{n}}{10^n}.
-        \]
+    Then \(A\compl = \brce{\text{all }n\text{ birthdays are different}}\). Hence,
+    \[
+        \Prob\para{A\compl} = \frac{365 \times 364 \times \cdots \times \para{365 - n + 1}}{365^n}
+    \]
+    and hence
+    \[
+        \Prob\para{A} = 1 - \Prob\para{A\compl}.
+    \]
 
-        Now we consider the event \(B_k = \brce{\text{the largest digit is equal to }k}\), then note \(B_k = A_k \setminus A_{k - 1}\), so
-        \[
-            \Prob\para{B_k} = \Prob\para{A_k \setminus A_{k - 1}} = \Prob\para{A_k} - \Prob\para{A_{k - 1}} = \frac{\para{k + 1}^n - k^n}{10^n}.
-        \]
-
-        \item \emph{Birthday problem}. There are \(n\) people. What is the probability that at least 2 of them share the same birthday?
-        
-        Assume each birthday is equally likely to be one of \(\brce{1, 2, \ldots, 365}\). Take
-        \[
-            \Omega = \brce{1, 2, \ldots, 365}^n,
-        \]
-        and take \(\mathcal{F} = \powerset\para{\Omega}\). Hence, for all \(\omega \in \Omega\), we have
-        \[
-            \Prob\para{\brce{\omega}} = \frac{1}{365^n}.
-        \]
-
-        Consider the event \(A = \brce{\text{at least 2 people have the same birthday}}\).
-
-        Then \(A\compl = \brce{\text{all }n\text{ birthdays are different}}\). Hence,
-        \[
-            \Prob\para{A\compl} = \frac{365 \times 364 \times \cdots \times \para{365 - n + 1}}{365^n}
-        \]
-        and hence
-        \[
-            \Prob\para{A} = 1 - \Prob\para{A\compl}.
-        \]
-
-        Note that \(n = 22\) gives \(\Prob\para{A} \approx 0.476\), and \(n = 23\) gives \(\Prob\para{A} \approx 0.507\)!
-    \end{enumerate}
-\end{examples}
+    Note that \(n = 22\) gives \(\Prob\para{A} \approx 0.476\), and \(n = 23\) gives \(\Prob\para{A} \approx 0.507\).
+\end{example}
 
 \subsection{Combinatorial Analysis}
 We start off by investigating some easy problems in combinatorics.
@@ -185,7 +210,7 @@ We start off by investigating some easy problems in combinatorics.
     \]
 \end{definition}
 
-\begin{example}[Increasing Functions]
+\begin{examples}[Increasing and Strictly Increasing Functions]
     \label{ex:increasing-functions}%
     We say \(f\) is \emph{strictly increasing} if \(x < y\) implies \(f\para{x} < f\para{y}\), and \(f\) is \emph{(weakly) increasing}, if \(x \leq y\) implies \(f\para{x} \leq f\para{y}\).
 
@@ -210,7 +235,7 @@ We start off by investigating some easy problems in combinatorics.
         \]
         such increasing functions in \(\mathcal{F}\para{k, n}\).
     \end{enumerate}
-\end{example}
+\end{examples}
 
 \subsection{Stirling's Formula}
 
