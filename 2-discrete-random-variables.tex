@@ -318,4 +318,213 @@ for all \(x_1 \in \img X_1, x_2 \in \img X_2\).
         \Prob\para{X_1 = x_1, X_2 = x_2, \ldots, X_N = x_N} &= \prod_{k = 1}^{N} p^{x_k} \para{1 - p}^{1 - x_k} \\
         &= \prod_{i = 1}^{N} \Prob\para{X_i = x_i}.
     \end{align*}
+
+    We let the sum of the random variables be
+    \[
+        S_N\para{\omega} = X_1 \para{\omega} + \cdots + X_N \para{\omega} = \text{number of heads in }N\text{ tosses}.
+    \]
+
+    Therefore,
+    \[
+        \Prob\para{S_N = k} = \binom{N}{k} \cdot p^k \cdot \para{1 - p}^{N - k}
+    \]
+    and we therefore see \(S_N \sim \Binomial\para{N, p}\) -- sum of independent Bernoulli random variables is a Binomial random variable.
 \end{example}
+
+\subsection{Expectation}
+
+Let \(\Omega\) be finite or uncountable, and let \(\functiondomain{X}{\Omega}{\RR}\) be a discrete random variable.
+
+We say \(X\) is \emph{non-negative} if \(X \geq 0\). We first define the expectation for a non-negative random variable (see later for motivation).
+
+\begin{definition}[Expectation of Non-Negative Random Variable]
+    \label{def:expectation-non-negative}%
+    The \emph{expectation}, or \emph{mean/average} of a non-negative random variable is given by
+    \[
+        \Expt \brac{X} = \sum_{\omega \in \Omega} \Prob\para{\brce{\omega}} \cdot X\para{\omega}.
+    \]
+\end{definition}
+
+Equivalently, we may define the expectation as follows. If we let the range of the random variable be \(\Omega_X = \set{X\para{x}}{\omega \in \Omega}\), and partition the sample space as
+\[
+    \Omega = \bigcup_{x \in \Omega_X} \brce{X = x},
+\]
+then the expectation satisfies
+\begin{align*}
+    \Expt\brac{X} &= \sum_{\omega \in \Omega} X\para{\omega} \Prob\para{\brce{\omega}} \\
+    &= \sum_{x \in \Omega_X} \sum_{\omega \in \brce{X = x}} X\para{\omega} \cdot \Prob\para{\brce{\omega}} \\
+    &= \sum_{x \in \Omega_X} \sum_{\omega \in \brce{X = x}} x \cdot \Prob\para{\brce{\omega}} \\
+    &= \sum_{x \in \Omega_X} x \sum_{\omega \in \brce{X = x}} \cdot \Prob\para{\brce{\omega}} \\
+    &= \sum_{x \in \Omega_X} x \cdot \Prob\para{X = x}.
+\end{align*}
+
+In other words, the expectation of \(X\) is the average of the values \(x\) taken by \(X\), with weights given by the corresponding probabilities \(\Prob\para{X = x}\).
+
+\begin{example}[Expectation of Binomial Random Variable]
+    \label{ex:expectation-binomial}%
+    Let \(X \sim \Binomial\para{N, p}\). This has probability mass function
+    \[
+        \Prob\para{X = k} = \binom{N}{k} p^k \para{1 - p}^{N - k}.
+    \]
+
+    By definition,
+    \begin{align*}
+        \Expt\brac{X} &= \sum_{k = 0}^{N} k \Prob\para{X = k} \\
+        &= \sum_{k = 0}^{N} k \binom{N}{k} p^k \para{1 - p}^{N - k} \\
+        &= \sum_{k = 0}^{N} k \cdot \frac{N!}{\para{N - k}! k!} p^k \para{1 - p}^{N - k} \\
+        &= \sum_{k = 1}^{N} N \cdot \frac{\para{N - 1}!}{\para{N - k}! \para{k - 1}!} p^k \para{1 - p}^{N - k} \\
+        &= \sum_{k = 0}^{N - 1} N \binom{N - 1}{k} p^{k} \para{1 - p}^{N - k - 1} p \\
+        &= Np \para{p + 1 - p}^{N - 1} \\
+        &= Np.
+    \end{align*}
+\end{example}
+
+\begin{example}[Expectation of Poisson Random Variable]
+    \label{ex:expectation-poisson}%
+    Let \(X \sim \Poisson\para{\lambda}\) with \(\lambda > 0\). We have
+    \[
+        \Prob\para{X = k} = e^{-\lambda} \cdot \frac{\lambda^k}{k!}.
+    \]
+
+    By definition,
+    \begin{align*}
+        \Expt\brac{X} &= \sum_{k = 0}^{\infty} k \cdot \Prob\para{X = k} \\
+        &= \sum_{k = 1}^{\infty} k \cdot e^{-\lambda} \cdot \frac{\lambda^k}{k!} \\
+        &= e^{-\lambda} \cdot \lambda \cdot \sum_{k = 1}^{\infty} \frac{\lambda^{k - 1}}{\para{k - 1}!} \\
+        &=\lambda.
+    \end{align*}
+\end{example}
+
+Now we define the expectation of a general random variable \(X\). The reason why we defined it for a non-negative random variable first, is due the sum being over a \emph{set}, which has no built-in ordering to specify the sum. It is always fine to rearrange a non-negative sum, since it either absolutely converges or always diverges, and rearranging does not change its sum.
+
+However, if we straight-away define it for a general random variable using the same sum, and if the series is only \emph{conditionally convergent}, then changing the order of summation will change the limit, which makes the expectation change. Therefore, we will formalise this considering the sum of the positive and negative values separately.
+
+Let \(X^+ = \max\brce{X, 0}\) and \(X^- = \min\brce{-X, 0}\).
+
+We therefore have \(X = X^+ - X^-\) and \(\abs{X} = X^+ + X^-\).
+
+Suppose \(X\) is discrete. Using \autoref{def:expectation-non-negative}, we have already defined \(\Expt\brac{X^+}\) and \(\Expt\brac{X^-}\).
+
+\begin{definition}[Expectation of General Random Variable]
+    \label{def:expectation-general-random-variable}%
+    Let \(X\) be a discrete random variable and \(X^+\) and \(X^-\) be defined as above. If at least one of \(\Expt\brac{X^+}\) and \(\Expt\brac{X^-}\) is finite, then we define the \emph{expectation} of \(X\) as
+    \[
+        \Expt\brac{X} = \Expt\brac{X^+} - \Expt\brac{X^-}.
+    \]
+
+    If both of them are infinite, then the expectation of \(X\) is \emph{undefined}.
+\end{definition}
+
+When we write \(\Expt\brac{X}\), we implicitly imply that it is defined.
+
+\begin{definition}[Integrablility of Random Variable]
+    \label{def:integrability-random-variable}%
+    If \(\Expt\brac{\abs{X}} < \infty\), then we say \(X\) is \emph{integrable}.
+\end{definition}
+
+When \(\Expt\brac{X}\) is well-defined, then we have
+\[
+    \Expt\brac{X} = \sum_{x \in \Omega_X} x \Prob\para{X = x}.
+\]
+
+\begin{proposition}[Properties of Expectation]
+    \label{prop:properties-expectation}%
+    \begin{enumerate}
+        \item If \(X \geq 0\), then \(\Expt\brac{X} \geq 0\).
+        \item If \(X \geq 0\) and \(\Expt\brac{X} = 0 \), then \(\Prob\para{X = 0} = 1\).
+        \item If \(c \in \RR\), then \(\Expt\brac{cX} = c \Expt\brac{X}\), and \(\Expt\brac{c + X} = c + \Expt\brac{X}\).
+        \item If \(X\) and \(Y\) are random variables, then \(\Expt\brac{X + Y} = \Expt{X} + \Expt{Y}\),
+        \item Let \(c_1, \ldots, c_n \in \RR\), and \(X_1, \ldots, X_n\) be integrable random variables. Then we have
+        \[
+            \Expt \brac{\sum_{i = 1}^{n} c_i X_i} = \sum_{i = 1}^{n} c_i \Expt \brac{X_i}.
+        \]
+        \item Suppose \(X_1, X_2, \ldots\) are non-negative random variables. Then
+        \[
+            \Expt\brac{\sum_{n \in \NN} X_n} = \sum_{n \in \NN} \Expt\brac{X_n}.
+        \]
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}[on Linearity over Countable Collection]
+    We have
+    \begin{align*}
+        \Expt\brac{\sum_{n \in \NN} X_n} &= \sum_{\omega \in \Omega} \para{\sum_{n \in \NN} X_n \para{\omega}} \cdot \Prob\para{\brce{\omega}} \\
+        &= \sum_{n \in \NN} \sum_{\omega \ni \Omega} X_n \para{\omega} \Prob\para{\brce{\omega}} \\
+        &= \sum_{n \in \NN} \Expt\brac{X_n}.
+    \end{align*}
+\end{proof}
+
+\begin{example}[Expectation of Indicator]
+    \label{ex:expectation-indicator}%
+    Recall the definition of the \emph{indicator} of an event \(A \in \mathcal{F}\) is \(\indicator\para{A}\). Let \(X = \indicator\para{A}\), then \(X\para{\omega} = \indicator\para{\omega \in A}\). Therefore, \(\Expt\brac{X} = \Prob\para{A}\).
+\end{example}
+
+\begin{proposition}[Expectation of Function of Random Variable]
+    \label{prop:expectation-function-random-variable}%
+    Let \(\functiondomain{X}{\Omega}{\RR}\) be a random variable, and let \(\functiondomain{g}{\RR}{\RR}\). We define
+    \[
+        g\para{X} \para{\omega} = g\para{X\para{\omega}}.
+    \]
+
+    Then
+    \[
+        \Expt\brac{g\para{X}} = \sum_{x \in \Omega_X} g\para{x} \cdot \Prob\para{X = x}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Set \(Y = g\para{X}\). Then we have
+    \[
+        \Expt\brac{Y} = \sum_{y \in \Omega_Y} y \cdot \Prob\para{Y = y}.
+    \]
+
+    Now, note that the event can be simplified as
+    \begin{align*}
+        \brce{Y = y} &= \set{\omega \in \Omega}{Y \para{\omega} = y} \\
+        &= \set{\omega \in \Omega}{g\para{X\para{\omega}} = y} \\
+        &= \set{\omega \in \Omega}{X\para{\omega} \in g\inverse \para{\brce{y}}} \\
+        &= \brce{X \in g\inverse \para{\brce{y}}}.
+    \end{align*}
+
+    Therefore,
+    \begin{align*}
+        \Expt\brac{Y} &= \sum_{y \in \Omega_Y} y \cdot \Prob\para{X \in g\inverse\para{\brce{y}}} \\
+        &= \sum_{y \in \Omega_Y} y \cdot \sum_{x \in g\inverse\para{\brce{y}}} \Prob\para{X = x} \\
+        &= \sum_{y \in \Omega_Y} \sum_{x \in g\inverse\para{\brce{y}}} g\para{x} \cdot \Prob\para{X = x} \\
+        &= \sum_{x \in \Omega_X} g\para{x} \Prob\para{X = x}.
+    \end{align*}
+\end{proof}
+
+\begin{proposition}[Expectation of Natural Number-Values Random Variables]
+    \label{prop:expt-natural-number-random-variable}%
+    Suppose \(X \geq 0\) and takes integer values. Then we have
+    \[
+        \Expt\brac{X} = \sum_{k = 1}^{\infty} \Prob\para{X \geq k} = \sum_{k = 0}^{\infty} \Prob\para{X > k}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Since \(X \geq 0\) and \(X \in \NN\), we have
+    \[
+        X = \sum_{k = 1}^{\infty} \indicator \para{X \geq k} = \sum_{k = 0}^{\infty} \indicator \para{X > k}.
+    \]
+
+    Indeed, this is true for any \(X = x \in \NN\), since
+    \[
+        x = \sum_{k = 1}^{x} 1 = \sum_{k = 1}^{x} \indicator \para{x \geq k} = \sum_{k = 1}^{\infty} \indicator \para{x \geq k}
+    \]
+    and similarly for the strict inequality case.
+
+    Hence,
+    \[
+        X \para{\omega} = \sum_{k = 1}^{\infty} \indicator \para{X \para{\omega} \geq k} = \sum_{k = 0}^{\infty} \indicator \para{X \para{\omega} > k}.
+    \]
+
+    Taking the expectation, we get
+    \begin{align*}
+        \Expt\brac{X} &= \Expt\brac{\sum_{k = 1}^{\infty} \indicator\para{X \geq k}} \\
+        &= \sum_{k = 1}^{\infty} \Expt\brac{\indicator\para{X \geq k}} \\
+        &= \sum_{k = 1}^{\infty} \Prob\para{X \geq k},
+    \end{align*}
+    and similarly for the strict case.
+\end{proof}
