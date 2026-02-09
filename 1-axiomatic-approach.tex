@@ -1,0 +1,64 @@
+\section{Axiomatic Approach}
+
+\begin{definition}[\(\sigma\)-Algebra]
+    \label{def:sigma-algebra}%
+    Suppose \(\Omega\) is a set, and \(\mathcal{F} \subseteq \powerset\para{\Omega}\) is a collection of subsets of \(\Omega\). We say \(\mathcal{F}\) is a \emph{\(\sigma\)-algebra}, if the following hold:
+    \begin{enumerate}
+        \item \(\Omega \in \mathcal{F}\);
+        \item if \(A \in \mathcal{F}\), then the complement \(A\compl \in \mathcal{F}\);
+        \item if \(\para{A_n}_{n \in \NN}\) is a countable collection of sets in \(\mathcal{F}\) (i.e. \(A_n \in \mathcal{F}\) for all \(n \in \NN\)), then
+        \[
+            \bigcup_{n \in \NN} A_n \in \mathcal{F}.
+        \]
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Probability Measure]
+    \label{def:probability-measure}%
+    Suppose \(\mathcal{F}\) is a \(\sigma\)-algebra on \(\Omega\). A function
+    \[
+        \functiondomain{\Prob}{\mathcal{F}}{\ccintv{0}{1}}
+    \]
+    is called a \emph{probability measure} if
+    \begin{enumerate}
+        \item \(\Prob\para{\Omega} = 1\);
+        \item for any countable disjoint collection \(\para{A_n}_{n \in \NN}\) in \(\mathcal{F}\), we have
+        \[
+            \Prob\para{\bigcup_{n \in \NN} A_n} = \sum_{n \in \NN} \Prob\para{A_n}.
+        \]
+    \end{enumerate}
+
+    The value of \(\Prob\para{A}\) for some \(A \in \mathcal{F}\) is the \emph{probability of \(A\)}.
+\end{definition}
+
+\begin{definition}[Probability Space]
+    \label{def:probability-space}%
+    For a set \(\Omega\), a \(\sigma\)-algebra \(\mathcal{F}\) on \(\Omega\), and a probability measure \(\Prob\) on \(\mathcal{F}\) and \(\Omega\), the triple
+    \[
+        \para{\Omega, \mathcal{F}, \Prob}
+    \]
+    is a \emph{probability space}.
+\end{definition}
+
+\begin{definition}[Outcomes, Events]
+    \label{def:outcome-event}%
+    The elements of the set \(\Omega\) are called \emph{outcomes}, and the elements of the \(\sigma\)-algebra \(\mathcal{F}\) are called \emph{events}.
+\end{definition}
+
+\begin{remark}
+    By convention, if \(\Omega\) is countable, then we take \(\mathcal{F}\) to be \(\powerset\para{\Omega}\), the set of all subsets of \(\Omega\).
+\end{remark}
+
+We note that we talk about probability of \emph{events}, rather than \emph{outcomes} -- the probability function is defined from \(\mathcal{F}\), the \(\sigma\)-algebra.
+
+We may conclude some properties of the probability measure \(\Prob\) from the definition.
+
+\begin{proposition}[Properties of \(\Prob\)]
+    \label{prop:properties-prob}%
+    \begin{itemize}
+        \item \(\Prob\para{A\compl} = 1 - \Prob\para{A}\).
+        \item \(\Prob\para{\emptyset} = 0\).
+        \item \(\Prob\para{A} \leq \Prob\para{B}\) if \(A \subseteq B\).
+        \item \(\Prob\para{A \cup B} = \Prob\para{A} + \Prob\para{B} - \Prob\para{A \cap B}\).
+    \end{itemize}
+\end{proposition}

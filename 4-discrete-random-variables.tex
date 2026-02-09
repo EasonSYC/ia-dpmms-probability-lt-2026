@@ -1,0 +1,332 @@
+\section{Discrete Random Variables}
+
+We in this section study the probability spaces of the form \(\para{\Omega, \mathcal{F}, \Prob}\) where
+\[
+    \Omega = \brce{\omega_1, \omega_2, \ldots} \quad \text{and} \quad \mathcal{F} = \powerset\para{\Omega}.
+\]
+
+The reason we study this countable case is as follows. If we know the probability of all the singletons \(\Prob\para{\brce{\omega_i}}\), then for all \(A \subseteq \Omega\), we have
+\[
+    \Prob\para{A} = \Prob\para{\bigcup_{\omega_i \in A} \brce{\omega_i}} = \sum_{\omega_i \in A} \Prob\para{\brce{\omega_i}}.
+\]
+
+This allows us to pinpoint the distribution just by investigating the singletons.
+
+\subsection{Discrete Probability Distribution}
+
+\begin{definition}[Discrete Probability Distribution]
+    \label{def:discrete-probability-distribution}%
+    We call \(\para{\Prob\para{\brce{\omega_i}}}_i\) a \emph{discrete probability distribution}, and we write
+    \[
+        p_i = \Prob\para{\brce{\omega_i}}
+    \]
+    for all \(i\).
+\end{definition}
+
+We have:
+\begin{itemize}
+    \item \(p_i \geq 0\) for all \(i\), and
+    \item \(\sum_i p_i = 1\).
+\end{itemize}
+
+\subsection{Common Discrete Probability Distributions}
+
+Now we see some common examples of discrete probability distributions.
+
+\begin{example}[Tossing a Biased Coin]
+    \label{ex:tossing-biased-coin}%
+    We toss a biased coin with probability \(p\) landing on its head and probability \(\para{1 - p}\) landing on its tail. Then we may model this as
+    \[
+        \Prob\para{\text{landing on tail}} = 1 - p \quad \text{and} \quad \Prob\para{\text{landing on head}} = p.
+    \]
+\end{example}
+
+This is modelled by the simplest non-trivial discrete probability distribution, the Bernoulli distribution.
+
+\begin{definition}[Bernoulli Distribution]
+    \label{def:bernoulli-distribution}%
+    The \emph{Bernoulli distribution}, denoted as \(\Bernoulli\para{p}\) for \(p \in \ccintv{0}{1}\), is defined as follows. The sample space is \(\Omega = \brce{0, 1}\), and the distribution is defined by
+    \[
+        p_0 = \Prob\para{\brce{0}} = 1 - p \quad \text{and} \quad p_1 = \Prob\para{\brce{1}} = p.
+    \]
+\end{definition}
+
+Now, what happens if we toss multiple \(p\)-coins? 
+
+\begin{example}[Tossing Multiple \(p\)-coins]
+    \label{ex:tossing-multiple-biased-coins}%
+    Now, we toss \(n\) such biased coins. Then we may model this as
+    \[
+        \Prob\para{\text{landing on heads }k\text{ times}} = \binom{n}{k} p^k \para{1 - p}^{n - k}.
+    \]
+\end{example}
+
+\begin{definition}[Binomial Distribution]
+    \label{def:binomial-distribution}%
+    The \emph{Binomial distribution}, denoted as \(\Binomial\para{n, p}\), for \(n \in \NN\) and \(p \in \ccintv{0}{1}\), is defined as follows. The sample space is \(\Omega = \brce{0, 1, \ldots, n}\), and the distribution is defined by
+    \[
+        p_k = \Prob\para{\brce{k}}= \binom{n}{k} p^k \para{1 - p}^{n - k}
+    \]
+    where \(k = 0, 1, \ldots, n\).
+\end{definition}
+
+This could be thought of the sum of \emph{independent} Bernoulli random variables as well, as we will see later. Indeed, when \(n = 1\), the Binomial distribution is simply the Bernoulli distribution.
+
+The Binomial distribution is a generalisation of the Bernoulli distribution by having multiple trials. Similarly, we can generalise the Binomial distribution by introducing multiple possible outcomes.
+
+\begin{example}[Throwing Balls into Boxes]
+    \label{ex:throwing-balls-into-boxes}%
+    We throw \(n\) balls into \(k\) boxes, landing into each box with probability \(p_1, p_2, \ldots, p_k\) with \(\sum p_i = 1\) and \(p_i \in \ccintv{0}{1}\). Then, the probability of having \(n_i\) balls in each of the \(k\) boxes, where \(\sum n_i = n\), is given by
+    \[
+        \binom{n}{n_1, n_2, \ldots, n_k} p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k}
+    \]
+    using the multinomial coefficient.
+\end{example}
+
+Alternatively, we can also model this as a polyhedron landing on different faces, with unequal probability (as opposing to a coin only having two sides). Although, obviously, there are no polyhedrons with at most 3 faces, but this is probably good enough.
+
+\begin{example}[Polyhedron landing on Different sides]
+    \label{ex:polyhedron-different-sides}%
+    We have a \(k\)-sided polyhedron with a probability of \(p_i\) landing on side \(i\). Throwing the polyhedron \(n\) times, the probability that it being landing on side \(i\) for \(n_i\) times respectively, for \(\sum n_i = n\), gives the same probability distribution as above.
+\end{example}
+
+\begin{definition}[Multinomial Distribution]
+    \label{def:multinomial-distribution}%
+    The \emph{Multinomial distribution}, denoted as \(\Multinomial\para{n, p_1, \ldots, p_k}\), with \(p_i \geq 0\) and \(\sum_{i = 1}^{k} p_i = 1\), is defined as follows. The sample space is
+    \[
+        \Omega = \set{\para{n_1, n_2, \ldots, n_k} \in \NN^k}{\sum_{i = 1}^{k} n_i = n},
+    \]
+    and the distribution is given by
+    \[
+        p_{\para{n_1, n_2, \ldots, n_k}} = \binom{n}{n_1, n_2, \ldots, n_k} p_1^{n_1} p_2^{n_2} \cdots p_k^{n_k},
+    \]
+    for \(\sum_{i = 1}^{k} n_i = n\).
+\end{definition}
+
+So far, our sample space has been finite. But we can also define discrete distributions over infinite sample spaces.
+
+\begin{example}[Tossing Coins until a Head]
+    \label{ex:tossing-coins-until-head}%
+    We toss a \(p\)-coin, having result Head with probability \(p\). We toss it independently, until we see the first Head. The probability of the event of tossing \(k\) coins until the first head (inclusive), is given by
+    \[
+        \Prob\para{\text{the first head is the }k\text{th coin}} = \para{1 - p}^{k - 1} \cdot p.
+    \]
+\end{example}
+
+\begin{definition}[Geometric Distribution]
+    \label{def:geometric-distribution}%
+    The \emph{Geometric distribution}, denoted as \(\Geometric\para{p}\), with \(p \in \ccintv{0}{1}\), is defined as follows. The sample space is
+    \[
+        \Omega = \brce{1, 2, \ldots},
+    \]
+    and the distribution is given by
+    \[
+        p_k = \para{1 - p}^{k - 1} \cdot p,
+    \]
+    for \(k \in \Omega\).
+\end{definition}
+
+There is a slight caveat to the geometric distribution -- some people prefer modelling the distribution starting from \(0\), i.e., the number of toss \emph{before, but not including} the final toss getting the head. In this case, the sample space would start from zero, given by
+\[
+    \Omega' = \brce{0, 1, 2, \ldots}
+\]
+and the probability distribution is given by
+\[
+    p'_k = \para{1 - p}^{k} \cdot p.
+\]
+
+It would be nice to specify whether a geometric distribution starts from \(0\) or from \(1\).
+
+The final distribution to introduce is not very intuitive when first seeing the distribution expression -- but the following example gives a motivation.
+
+\begin{example}[Constant Average Rate]
+    We suppose that customers arrive into a shop in \(\ccintv{0}{1}\) at a constant rate, with an average of \(\lambda > 0\) customers arriving. To model this, we discretise \(\ccintv{0}{1}\) into a collection of sub-intervals
+    \[
+        \set{\ccintv{\frac{i - 1}{N}}{\frac{i}{N}}}{i = 1, 2, \ldots, N},
+    \]
+    and in each interval we toss a \(p\)-coin to decide whether a customer would arrive, independently. In this sub-interval approximation, the probability that \(k\) customers have arrived is given by the binomial distribution \(\Binomial\para{N, p}\), so having a probability of
+    \[
+        \binom{N}{k} \cdot p^k \cdot \para{1 - p}^{N - k}
+    \]
+    for \(k = 0, 1, 2, \ldots, N\).
+
+    By our model, assuming there is an average of \(\lambda\) customers arriving in the whole interval, so in each sub-interval, we take \(p = \frac{\lambda}{N}\). (We may take \(N\) to be big such that \(p < 1\).) The shorter the intervals split up, the better this models the continuous arrivals. So we fix \(k\) and let \(N \to \infty\), giving the probabilities
+    \[
+        \Prob\para{k\text{ customers arrive}} = \lim_{N \to \infty} \frac{N!}{k! \para{N - k}!} \cdot \para{\frac{\lambda}{N}}^k \cdot \para{1 - \frac{\lambda}{N}}^{N - k}.
+    \]
+
+    Evaluating this limit gives us
+    \begin{align*}
+        p_k &= \lim_{N \to \infty} \brac{\frac{\lambda^k}{k!} \cdot \frac{N \para{N - 1} \cdots \para{N - k + 1}}{N^k} \para{1 - \frac{\lambda}{N}}^{N - k}}\\
+        &= \frac{\lambda^k}{k!} \cdot 1 \cdot e^{-\lambda} \\
+        &= e^{-\lambda} \cdot \frac{\lambda^{k}}{k!},
+    \end{align*}
+    and this is indeed a probability distribution since
+    \[
+        \sum_{k = 0}^{\infty} p_k = 1
+    \]
+\end{example}
+
+\begin{definition}[Poisson Distribution]
+    \label{def:poisson-distribution}%
+    The \emph{Poisson distribution}, denoted as \(\Poisson\para{\lambda}\), for parameter \(\lambda > 0\), is defined as follows. The sample space is
+    \[
+        \Omega = \brce{0, 1, 2, \ldots},
+    \]
+    and the distribution is given by
+    \[
+        p_k = e^{-\lambda} \cdot \frac{\lambda^k}{k!}
+    \]
+    for \(k \in \Omega\).
+\end{definition}
+
+The Poisson distribution can be used to model the number of occurrences of an event in a given interval of time.
+
+\subsection{Random Variable}
+
+\begin{definition}[Random Variable]
+    \label{def:random-variable}%
+    For a probability space \(\para{\Omega, \mathcal{F}, \Prob}\), a \emph{random variable} is a function \(\functiondomain{X}{\Omega}{\RR}\) with the property that for all \(x \in \RR\), we have
+    \[
+        \set{\omega \in \Omega}{X\para{\omega} \leq x} = X\inverse \para{\ocintv{-\infty}{\omega}} \in \mathcal{F}.
+    \]
+\end{definition}
+
+\begin{notation}
+    As an abuse of notation, we denote for all \(x \in \RR\),
+    \[
+        \brce{X \leq x} = \set{\omega \in \Omega}{X\para{\omega} \leq x}
+    \]
+    and for all \(A \subseteq \RR\)
+    \[
+        \brce{X \in A} = X\inverse\para{A} = \set{\omega \in \Omega}{X\para{\omega} \in A}.
+    \]
+\end{notation}
+
+\begin{definition}[Indicator Random Variable]
+    \label{def:indicator-random-variable}%
+    The \emph{indicator} of a set \(A \in \mathcal{F}\) is denoted as
+    \[
+        \indicator_{A} \para{\omega} = \indicator\para{\omega \in A} = \begin{cases}
+            1, & \omega \in A, \\ 0, & \omega \in A\compl.
+        \end{cases}
+    \]
+
+    Since \(A \in \mathcal{F}\), \(\indicator_{A}\) is indeed a random variable, and we may restrict the co-domain to
+    \[
+        \functiondomain{\indicator_{A}}{\Omega}{\brce{0, 1}}.
+    \]
+\end{definition}
+
+
+\begin{definition}[Probability Distribution Function]
+    \label{def:probability-distribution-function}%
+    The \emph{probability distribution function} or \emph{cumulative distribution function} of a random variable \(X\) is, for \(x \in \RR\),
+    \[
+        \function{F_X}{\RR}{\ccintv{0}{1}}{x}{\Prob\para{X \leq x}.}
+    \]
+\end{definition}
+
+\begin{definition}[Random Variable in \(\RR^n\)]
+    \label{def:random-variable-rn}%
+    The combined function
+    \[
+        X = \para{X_1, X_2, \ldots, X_n}
+    \]
+    is called a \emph{random variable in \(\RR^n\)}, if
+    \[
+        \functiondomain{\para{X_1, X_2, \ldots, X_n}}{\Omega}{\RR^n},
+    \]
+    with the additional restriction that for all \(x_1, x_2, \ldots, x_n \in \RR\), we have
+    \begin{align*}
+        &\phantom{=} X\inverse\para{\ocintv{-\infty}{x_1} \times \ocintv{-\infty}{x_2} \times \cdots \times \ocintv{-\infty}{x_n}} \\
+        &= \set{\omega \in \Omega}{X_1 \para{\omega} \leq x_1 \land X_2 \para{\omega} \leq x_2 \land \cdots \land X_n \para{\omega} \leq x_n} \\
+        &\in \mathcal{F}.
+    \end{align*}
+
+    Equivalently, this restriction can be stated as that all \(X_i\)s are real random variables, since
+    \[
+        \brce{X_1 \leq x_1, \ldots, X_n \leq x_n} = \brce{X_1 \leq x_1} \cap \brce{X_2 \leq x_2} \cap \cdots \cap \brce{X_n \leq x_n}.
+    \]
+\end{definition}
+
+We now restrict back our view to discrete probability distributions.
+
+\begin{definition}[Discrete Random Variable]
+    \label{def:discrete-random-variable}%
+    A random variable \(X\) is called \emph{discrete} if it takes values in a countable set, i.e., \(\img \para{X} \subseteq \RR\) is countable.
+\end{definition}
+
+\begin{definition}[Probability Mass Function]
+    \label{def:probability-mass-function}%
+    Suppose a discrete random variable \(X\) satisfies \(\img X = S \subseteq \RR\), which is countable. For every \(x \in S\), we denote
+    \[
+        p_x = \Prob\para{X = x} = \Prob\para{\set{\omega \in \Omega}{X\para{\omega = x}}},
+    \]
+    and we call \(\para{p_x}_{x \in S}\) the \emph{probability mass function} or the \emph{distribution} of \(X\).
+\end{definition}
+
+From the definition of a probability mass function, we have for all \(A \subseteq S\), that
+\[
+    \Prob\para{X \in A} = \sum_{x \in A} p_x.
+\]
+
+If the \(p_x\)s are the Bernoulli distribution, then we say \(X\) is a Bernoulli \emph{random variable}, and it has the Bernoulli \emph{distribution}. Similar terminology applies for the other distributions as well.
+
+Recall that two events \(A, B\) are independent, if
+\[
+    \Prob \para{A \cap B} = \Prob\para{A} \cdot \Prob\para{B}.
+\]
+
+We may extend this notion to random variables as well.
+
+\begin{definition}[Independence of Random Variables]
+    \label{def:independence-random-variable}%
+    Let \(X_1, X_2, \ldots, X_n\) be discrete random variables, satisfying \(\img X_i = S_i\) for \(i = 1, 2, \ldots, n\). Then they are \emph{independent}, if for any \(x_i \in S_i\) for \(i = 1, 2, \ldots, n\), that
+    \[
+        \Prob\para{X_1 = x_1, X_2 = x_2, \ldots, X_n = x_n} = \Prob\para{X_1 = x_1} \cdot \Prob\para{X_2 = x_2} \cdots \Prob\para{X_n = x_n},
+    \]
+    where the left-hand side notation denotes the intersection of all the events.
+\end{definition}
+
+In particular, for two random variables \(X_1, X_2\), they are independent if
+\[
+    \Prob\para{X_1 = x_1, X_2 = x_2} = \Prob\para{X_1 = x_1} \cdot \Prob\para{X_2 = x_2},
+\]
+for all \(x_1 \in \img X_1, x_2 \in \img X_2\).
+
+\begin{example}[Independence of Bernoulli Random Variables]
+    \label{ex:independence-bernoulli}
+    We toss a \(p\)-coin \(N\) independently, with
+    \[
+        \Omega = \brce{0, 1}^N.
+    \]
+
+    Let \(\omega = \para{\omega_1, \ldots, \omega_N} \in \Omega\), where \(\omega_i\) be the outcome of the \(i\)-th toss. We hence have
+    \[
+        p_\omega = \Prob\para{\brce{\omega}} = \prod_{k = 1}^{N} p^{\omega_k} \para{1 - p}^{1 - \omega_k}
+    \]
+
+    For all \(k = 1, 2, \ldots, N\), we define \(\functiondomain{X_k}{\Omega}{\brce{0, 1}}\), with \(X_k\para{\omega} = \omega_k\). For example, we have
+    \begin{align*}
+        \Prob\para{X_k = 1} &= p = \Prob\para{\omega_k = 1} \\
+        \Prob\para{X_k = 0} &= 1 - p = \Prob\para{\omega_k = 0}.
+    \end{align*}
+
+    We have \(X_k \sim \Bernoulli\para{p}\). Indeed, \(X_1, X_2, \ldots, X_N\) are independent random variables, since for all \(x_1, x_2, \ldots, x_N \in \brce{0, 1}\),
+    \begin{align*}
+        \Prob\para{X_1 = x_1, X_2 = x_2, \ldots, X_N = x_N} &= \prod_{k = 1}^{N} p^{x_k} \para{1 - p}^{1 - x_k} \\
+        &= \prod_{i = 1}^{N} \Prob\para{X_i = x_i}.
+    \end{align*}
+
+    We let the sum of the random variables be
+    \[
+        S_N\para{\omega} = X_1 \para{\omega} + \cdots + X_N \para{\omega} = \text{number of heads in }N\text{ tosses}.
+    \]
+
+    Therefore,
+    \[
+        \Prob\para{S_N = k} = \binom{N}{k} \cdot p^k \cdot \para{1 - p}^{N - k}
+    \]
+    and we therefore see \(S_N \sim \Binomial\para{N, p}\) -- sum of independent Bernoulli random variables is a Binomial random variable.
+\end{example}
