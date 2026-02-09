@@ -528,3 +528,311 @@ When \(\Expt\brac{X}\) is well-defined, then we have
     \end{align*}
     and similarly for the strict case.
 \end{proof}
+
+The indicator random variable gives an alternative proof of \autoref{thm:inclusion-exclusion} (Inclusion--Exclusion Formula).
+
+\begin{proof}[of \autoref{thm:inclusion-exclusion} (Inclusion--Exclusion Formula), using Indicator Functions]
+    First, note that for events \(A, B \in \mathcal{F}\),
+    \begin{itemize}
+        \item \(\indicator\para{A\compl} = 1 - \indicator\para{A}\);
+        \item \(\indicator\para{A \cap B} = \indicator\para{A} \cdot \indicator\para{B}\); and for the union,
+        \item \(\indicator\para{A \cup B} = 1 - \para{1 - \indicator\para{A}} \para{1 - \indicator\para{B}}\).
+    \end{itemize}
+
+    More generally, for any \(A_1, A_2, \ldots, A_n \in \mathcal{F}\), we have
+    \begin{align*}
+        \indicator\para{A_1 \cup A_2 \cup \cdots \cup A_n} &= 1 - \prod_{i = 1}^{n} \para{1 - \indicator\para{A_i}} \\
+        &= \sum_{i = 1}^{n} \indicator \para{A_i} - \sum_{i_1 < i_2} \indicator\para{A_{i_1} \cap A_{i_2}} + \cdots + \para{-1}^{n + 1} \indicator\para{A_1 \cap \cdots \cap A_n}.
+    \end{align*}
+
+    We may take the expectation on both sides, and use that
+    \[
+        \Expt\brac{\indicator\para{A}} = \Prob\para{A}.
+    \]
+
+    Hence,
+    \[
+        \Prob\para{A_1 \cup A_2 \cup \cdots \cup A_n} = \sum_{k = 1}^{n} \sum_{1 \leq i_1 < i_2 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_n}}.
+    \]
+\end{proof}
+
+\subsection{Variance}
+
+Defining the expectation allows us to define several other important things about a random variable.
+
+\begin{definition}[Moment]
+    \label{def:moment}%
+    Let \(X\) be a random variable, and \(r \in \NN\). \(\Expt\brac{X^r}\), i well-defined, is the \emph{\(r\)-th moment} of \(X\).
+\end{definition}
+
+\begin{definition}[Variance]
+    \label{def:variance}%
+    The \emph{variance} of \(X\) is given as
+    \[
+        \Var\para{X} = \Expt\brac{\para{X - \Expt\brac{X}}^2}.
+    \]
+\end{definition}
+
+The variance is a `measure' of how well concentrated \(X\) is around its expectation. The smaller the variance, the more concentrated \(X\) is.
+
+\begin{definition}[Standard Deviation]
+    \label{def:std-deviation}%
+    \(\sqrt{\Var\para{X}}\) is known as the \emph{standard deviation}.
+\end{definition}
+
+\begin{proposition}[Properties of the Variance]
+    \label{prop:properties-of-variance}%
+    \begin{itemize}
+        \item \(\Var\para{X} \geq 0\).
+        \item If \(\Var\para{X} = 0\), then \(\Prob\para{X = \Expt\brac{X}} = 1\).
+        \item If \(c \in \RR\), then \(\Var\para{cX} = c^2 \Var\para{X}\), and \(\Var\para{X + c} = \Var\para{X}\).
+    \end{itemize}
+\end{proposition}
+
+\begin{proposition}[Alternative Formulation of Variance]
+    \label{prop:alt-formulation}%
+    We have
+    \[
+        \Var\para{X} = \Expt\brac{X^2} - \Expt\brac{X}^2.
+    \]
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \Var\para{X} &= \Expt\brac{X^2 - 2X \Expt\brac{X} + \para{\Expt\brac{X}}^2} \\
+        &= \Expt\brac{X^2} - 2 \Expt\brac{X} \Expt\brac{X} + \para{\Expt\brac{X}}^2 \\
+        &= \Expt\brac{X^2} - \para{\Expt\brac{X}}^2.
+    \end{align*}
+\end{proof}
+
+\begin{proposition}[Variance as a Minimalisation]
+    \label{prop:variance-minimalisation}%
+    We have
+    \[
+        \Var\para{X} = \min_{x \in \RR} \Expt\brac{\para{X - c}^2},
+    \]
+    obtained for \(c = \Expt\brac{X}\).
+\end{proposition}
+
+\begin{proof}
+    We let
+    \[
+        f\para{c} = \Expt\brac{\para{X - c}^2}.
+    \]
+
+    Then, we have
+    \[
+        f\para{c} = \Expt\brac{X^2} = 2c \Expt\brac{X} + c^2.
+    \]
+
+    Hence, differentiating gives that
+    \[
+        f'\para{c} = -2 \Expt\brac{X} + 2c
+    \]
+    and hence
+    \[
+        \min_{c \in \RR} f\para{c} = f\para{\Expt\para{X}} = \Var\para{X}.
+    \]
+\end{proof}
+
+\begin{examples}[Variances of Common Random Variables]
+    \label{ex:variance-rv}%
+    \begin{enumerate}
+        \item If \(X \sim \Binomial\para{n, p}\), then \(\Expt\brac{X} = np\).
+        
+        We have
+        \[
+            \Var\para{X} = \Expt\brac{X\para{X - 1}} + \Expt\brac{X} - \para{\Expt\brac{X}}^2.
+        \]
+
+        We can find
+        \begin{align*}
+            \Expt\brac{X \para{X - 1}} &= \sum_{k = 2}^{n} k\para{k - 1} \cdot \frac{n!}{k! \para{n - k}!} \cdot p^k \cdot \para{1 - p}^{n - k} \\
+            &= \para{n - 1} n p^2 \sum_{k = 0}^{n - 2} \binom{n - 2}{k} p^k \para{1 - p}^{n - 2 - k} \\
+            &= \para{n - 1} n p^2.
+        \end{align*}
+
+        Substituting this back, we have
+        \[
+            \Var\para{X} = \para{n - 1} np^2 + np - \para{np}^2 = np \para{1 - p}.
+        \]
+
+        (We will see that using that a binomial random variable is the sum of independent Bernoulli random variables, we may find this using that variance is linear for independent variables.)
+
+        \item Let \(X \sim \Poisson\para{\lambda}\) for \(\lambda > 0\), and recall that \(\Expt\brac{X} = \lambda\).
+        
+        We have
+        \begin{align*}
+            \Expt\brac{X \para{X - 1}} &= \sum_{k = 2}^{\infty} k \para{k - 1} e^{-\lambda} \frac{\lambda^k}{k!} \\
+            &= e^{-\lambda} \lambda^2 \sum_{k = 2}^{\infty} \frac{\lambda^{k - 2}}{\para{k - 2}!} \\
+            &= \lambda^2
+        \end{align*}
+        and hence
+        \[
+            \Var\para{X} = \lambda^2 + \lambda - \lambda^2 = \lambda.
+        \]
+    \end{enumerate}
+\end{examples}
+
+\subsection{Covariance}
+
+\begin{definition}[Covariance]
+    \label{def:covariance}%
+    Let \(X\) and \(Y\) be random variables. We let
+    \[
+        \Cov\para{X, Y} = \Expt\brac{\para{X - \Expt\brac{X}} \para{Y - \Expt\brac{Y}}}
+    \]
+    be the \emph{covariance} of \(X\) and \(Y\).
+\end{definition}
+
+It is a `measure' of how dependent \(X\) and \(Y\) are.
+
+\begin{proposition}[Properties of Covariance]
+    \label{prop:properties-of-covariance}%
+    \begin{itemize}
+        \item \(\Cov\para{X, Y} = \Cov\para{Y, X}\). 
+        \item \(\Cov\para{X, X} = \Var\para{X}\).
+        \item \(\Cov\para{X, Y} = \Expt\brac{X Y} - \Expt\brac{X} \Expt\brac{Y}\).
+        \item For \(c in \RR\), \(\Cov\para{cX, Y} = c \Cov\para{X, Y}\), and \(\Cov\para{c + X, Y} = \Cov\para{X, Y}\).
+        \item For \(c \in \RR\), \(\Cov\para{c, X} = 0\).
+    \end{itemize}
+\end{proposition}
+
+This gives us a nice formula on the variance of a sum as well.
+
+\begin{proposition}[Variance of Sum]
+    \label{prop:variance-of-sum}%
+    We have
+    \[
+        \Var\para{X + Y} = \Var\para{X} + \Var\para{Y} + 2 \Cov\para{X, Y}.
+    \]    
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \Var\para{X + Y} &= \Expt\brac{\para{\para{X - \Expt\para{X}} + \para{Y - \Expt\para{Y}}}^2} \\
+        &= \Var\para{X} + 2 \Cov\para{X, Y} + \Var\para{Y}.
+    \end{align*}
+\end{proof}
+
+\begin{proposition}[Linearity of Covariance]
+    \label{prop:linearity-of-covariance}%
+    For random variables \(X, Y\) and \(Z\), we have
+    \[
+        \Cov\para{X + Y, Z} = \Cov\para{X, Z} + \Cov\para{Y, Z}.
+    \]
+
+    More generally, we for any real constants  \(c_1, c_2, \ldots, c_n\) and \(d_1, d_2, \ldots, d_m\) and random variables \(X_1, X_2, \ldots, X_n\) and \(Y_1, Y_2, \ldots, Y_m\), that
+    \[
+        \Cov\para{\sum_{i = 1}^{n} c_i X_i, \sum_{j = 1}^{m} d_j Y_j} = \sum_{i = 1}^{n} \sum_{j = 1}^{m} c_i d_j \Cov\para{X_i, Y_j}.
+    \]
+\end{proposition}
+
+\begin{corollary}[Variance of Sum]
+    \label{cor:variance-of-sum}%
+    We have
+    \[
+        \Var\para{\sum_{i = 1}^{n} X_i} = \Cov\para{\sum_{i = 1}^{n} X_i, \sum_{i = 1}^{n} X_i} = \sum_{i = 1}^{n} \Var\para{X_i} + \sum_{i \neq j} \Cov\para{X_i, X_j}.
+    \]
+\end{corollary}
+
+We stated before that the covariance is a `measure' of how independent two random variables are. We first see some important properties on independence that will help with this.
+
+\begin{lemma}[Independence implies Pairwise Independence]
+    \label{lem:indep-pairwise-indep}%
+    Let \(X_1, X_2, X_3\) be independent, i.e.,
+    \[
+        \Prob\para{X_1 = x_1, X_2 = x_2, X_3 = x_3} = \prod_{i = 1}^{3} \Prob\para{X_i = x_i}.
+    \]
+
+    Then \(X_1\) is independent of \(X_2\).
+\end{lemma}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \Prob\para{X_1 = x_1, X_2 = x_2} &= \sum_{x_3} \Prob\para{X_1 = x_1, X_2 = x_2, X_3 = x_3} \\
+        &= \sum_{x_3} \Prob\para{X_1 = x_1} \Prob\para{X_2 = x_2} \Prob\para{X_3 = x_3} \\
+        &= \Prob\para{X_1 = x_1} \Prob\para{X_2 = x_2} \sum_{x_3} \Prob\para{X_3 = x_3} \\
+        &= \Prob\para{X_1 = x_1} \Prob\para{X_2 = x_2}.
+    \end{align*}
+\end{proof}
+
+\begin{lemma}[Independence and Expectation of Product]
+    \label{lem:independence-expectation-product}%
+    Let \(X\) and \(Y\) be independent random variables, and \(\functiondomain{f}{g}{\RR}{\RR_{+}}\). Then
+    \[
+        \Expt\brac{f\para{X} g\para{Y}} = \Expt\brac{f\para{X}} \Expt\brac{g\para{Y}}.
+    \]
+\end{lemma}
+
+\begin{proof}
+    Let \(Z = \para{X, Y}\), and define
+    \[  
+        h\para{Z} = f\para{X} g\para{Y}.
+    \]
+
+    Then we have
+    \begin{align*}
+        \Expt\brac{h\para{Z}} &= \sum_{\para{x, y}} h\para{x, y} \Prob\para{Z = \para{x, y}} \\
+        &= \sum_{\para{x, y}} f\para{x} g\para{y} \Prob\para{X = x, Y = y} \\
+        &= \sum_{x, y} f\para{x} g\para{y} \Prob\para{X = x} \Prob\para{Y = y} \\
+        &= \sum_{x} f\para{x} \Prob\para{X = x} \sum_{y} g\para{y} \Prob\para{Y = y} \\
+        &= \Expt\brac{f\para{X}} \cdot \Expt\brac{g\para{Y}}.
+    \end{align*}
+\end{proof}
+
+\begin{proposition}[Independence gives Zero Covariance]
+    If \(X\) and \(Y\) are independent, then
+    \[
+        \Cov\para{X, Y} = 0.
+    \]
+\end{proposition}
+
+\begin{proof}
+    This follows from \autoref{lem:independence-expectation-product}, since
+    \[
+        \Expt\brac{X - \Expt\brac{X}} = \Expt\brac{Y - \Expt\brac{Y}} = 0.
+    \]
+\end{proof}
+
+The converse does not hold -- in general, for two random variables \(X\) and \(Y\), \(\Cov\para{X, Y} = 0\) does \textbf{not} tell us that \(X\) and \(Y\) are independent.
+
+\begin{example}[Zero Variance but Not Independent]
+    \label{ex:zero-variance-no-independent}%
+    Let \(X_1, X_2, X_3 \sim \Bernoulli\para{\frac{1}{2}}\). Set
+    \[
+        Y_1 = 2 X_1 - 1, \quad Y_2 = 2 X_2 - 1,
+    \]
+    and
+    \[
+        Z_1 = Y_1 \cdot X_3, \quad Z_2 = Y_2 \cdot X_3.
+    \]
+
+    Then
+    \[
+        \Expt\brac{Y_1} = \Expt\brac{Y_2} = 0.
+    \]
+
+    By independence,
+    \[
+        \Expt\brac{Z_1} = \Expt\brac{Y_1 \cdot X_3} = \Expt\brac{Y_1} \cdot \Expt\brac{X_3} = 0,
+    \]
+    and similarly \(\Expt\brac{Z_2} = 0\).
+
+    Therefore,
+    \[
+        \Cov\para{Z_1, Z_2} = \Expt\brac{Z_1 \cdot Z_2} = \Expt\brac{Y_1 \cdot Y_2 \cdot X_3^2} = 0.
+    \]
+
+    We want to show \(Z_1\) is not independent of \(Z_2\). Indeed,
+    \[
+        \Prob\para{Z_1 = 0, Z_2 = 0} = \Prob{X_3 = 0} = \frac{1}{2},
+    \]
+    but
+    \[
+        \Prob\para{Z_1 = 0} = \Prob\para{Z_2 = 0} = \frac{1}{2}.
+    \]
+\end{example}
