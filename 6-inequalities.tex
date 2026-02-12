@@ -160,8 +160,8 @@ This means that \(\Prob\para{X = t_0 Y}\) and this means \(X\) is a multiple of 
 
 The definition is illustrated in \autoref{fig:convex-fn}.
 
-\begin{theorem}[Jenson's Inequality]
-    \label{thm:jenson}%
+\begin{theorem}[Jensen's Inequality]
+    \label{thm:jensen}%
     Let \(X\) be a random variable, and \(\functiondomain{f}{\RR}{\RR}\) be a convex function. Then
     \[
         \Expt\brac{f\para{X}} \geq f\para{\Expt\brac{X}}.
@@ -229,8 +229,8 @@ The definition is illustrated in \autoref{fig:convex-fn}.
         \end{axis}
     \end{tikzpicture}
 
-    \caption{Jenson's Inequality}
-    \label{fig:jenson-inequality}
+    \caption{Jensen's Inequality}
+    \label{fig:jensen-inequality}
 \end{figure}
 
 A trick to remembering the direction of the inequality is that since
@@ -246,7 +246,7 @@ and note \(f\para{x} = x^2\) is convex and
     \Expt\brac{X^2} \geq \para{\Expt\brac{X}}^2.
 \]
 
-To visualise \autoref{thm:jenson} (Jenson's Inequality), \autoref{fig:jenson-inequality} considers a uniform distribution over \(\brce{x_1, x_2, x_3, x_4}\), and the centre of the quadrilateral is marked red, with \(y\)-coordinate \(\Expt\brac{f\para{X}}\), while \(f\para{\Expt\brac{X}}\) is marked as the blue dot on the curve.
+To visualise \autoref{thm:jensen} (Jensen's Inequality), \autoref{fig:jensen-inequality} considers a uniform distribution over \(\brce{x_1, x_2, x_3, x_4}\), and the centre of the quadrilateral is marked red, with \(y\)-coordinate \(\Expt\brac{f\para{X}}\), while \(f\para{\Expt\brac{X}}\) is marked as the blue dot on the curve.
 
 We first produce useful lemmas for the proof.
 
@@ -331,9 +331,9 @@ We first produce useful lemmas for the proof.
     for all \(z \in \RR\), with the equal sign taking place if \(z = m\).
 \end{proof}
 
-Now we use \autoref{lem:convex-fn-tangents} to prove \autoref{thm:jenson} (Jenson's Inequality).
+Now we use \autoref{lem:convex-fn-tangents} to prove \autoref{thm:jensen} (Jensen's Inequality).
 
-\begin{proof}[of \autoref{thm:jenson} (Jenson's Inequality)]
+\begin{proof}[of \autoref{thm:jensen} (Jensen's Inequality)]
     Let \(m = \Expt\brac{X}\). By the claim, there is some \(a, b \in \RR\), such that
     \[
         f\para{m} = am + b
