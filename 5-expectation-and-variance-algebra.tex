@@ -505,3 +505,25 @@ The converse does not hold -- in general, for two random variables \(X\) and \(Y
         \Prob\para{Z_1 = 0} = \Prob\para{Z_2 = 0} = \frac{1}{2}.
     \]
 \end{example}
+
+Similarly, let \(X_1, \ldots, X_n\) be independent random variables. Then
+\[
+    \Var\para{\sum_{i = 1}^{n} X_i} = \sum_{i = 1}^{n} \Var\para{X_i}.
+\]
+
+\begin{example}[Binomial as a sum of Bernoulli Random Variables]
+    \label{ex:binomial-sum-bernoulli}%
+    Let \(S_n \sim \Binomial\para{n, p}\). We recall last time that \(\Var\para{S_n} = n p \para{1 - p}\).
+
+    Now, recall that
+    \[
+        S_n = X_1 + X_2 + \cdots + X_n
+    \]
+    where \(X_i\) are independent and identically distributed, with \(X_i \sim \Bernoulli\para{p}\).
+
+    Therefore,
+    \[
+        \Var\para{S_n} = \sum_{i = 1}^{n} \Var\para{X_i} = np \para{1 - p}
+    \]
+    as desired.
+\end{example}
