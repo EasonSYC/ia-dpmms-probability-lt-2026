@@ -1,0 +1,197 @@
+\section{Joint Distribution}
+
+Recall that, if \(X\) is a discrete random variable then the distribution of \(X\) is \(\para{\Prob\para{X = x}}_x\).
+
+\subsection{Joint Distribution}
+
+\begin{definition}[Joint Distribution for Discrete Variables]
+    \label{def:joint-distribution-discrete}%
+    Let \(X_1, \ldots, X_n\) be discrete random variables. Their \emph{joint distribution} is defined to be
+    \[
+        \Prob\para{X_1 = x_1, \ldots, X_n = x_n}
+    \]
+    for all possible values of \(x_1, x_2, \ldots, x_n\).
+\end{definition}
+
+Note that we could recover the individual distribution of a single random variable from this as well. Indeed, we have
+\[
+    \Prob\para{X_1 = x_1} = \sum_{x_2, \ldots, x_n \in \RR} \Prob\para{X_1 = x_1, \ldots, X_n = x_n}
+\]
+where we note that this sum is countable since \(x_i\)s only take countably many values. We call this the \emph{marginal distribution} of \(X_1\).
+
+\begin{definition}[Conditional Distribution for Discrete Variables]
+    \label{def:conditional-distribution-discrete}%
+    Let \(X\) and \(Y\) be two discrete random variables. The \emph{conditional distribution} of \(X\), given \(Y = y\) (where \(y\) is fixed) is defined to be
+    \[
+        \Prob\para{\Conditional{X = x}{Y = y}} = \frac{\Prob\para{X = x, Y = y}}{\Prob\para{Y = y}}
+    \]
+    for all possible values of \(x\).
+\end{definition}
+
+By \autoref{thm:law-total-probability} (Law of Total Probability), we have
+\[
+    \Prob\para{X = x} = \sum_{y \in \RR} \Prob\para{\Conditional{X = x}{Y = y}} \cdot \Prob\para{Y = y}
+\]
+noting that this sum is similarly countable.
+
+\subsection{Sum of Random Variables}
+
+\begin{example}[Distribution of Sum of Random Variables]
+    \label{ex:distribution-sum-discrete}%
+    Let \(X\) and \(Y\) be two independent random variables. We = want to understand the distribution of \(X + Y\). We have
+    \begin{align*}
+        \Prob\para{X + Y = z} &= \sum_{y \in \RR} \Prob\para{X + Y = z, Y = y} \\
+        &= \sum_{y \in \RR} \Prob\para{X = z - y, Y = y} \\
+        &= \sum_{y \in \RR} \Prob\para{X = z - y} \cdot \Prob\para{Y = y}.
+    \end{align*}
+\end{example}
+
+\begin{definition}[Convolution of Distribution for Discrete Variables]
+    \label{def:convolution-distribution-discrete}%
+    Let \(X, Y\) be two discrete random variables. Then the distribution of \(X + Y\), given by
+    \[
+        \sum_{y \in \RR} \Prob\para{X = z - y} \cdot \Prob\para{Y = y}
+    \]
+    is known as the \emph{convolution} of the two random variables.
+\end{definition}
+
+\begin{example}[Sum of Poisson Random Variables]
+    Let \(X \sim \Poisson\para{\lambda}\), \(Y \sim \Poisson\para{\mu}\), \(\lambda, \mu > 0\) and \(X \indp Y\). We may show that the sum of two independent Poisson random variables is another Poisson random variable.
+
+    \begin{align*}
+        \Prob\para{X + Y = n} &= \sum_{k = 0}^{n} \Prob\para{X = n - k} \cdot \Prob\para{Y = k} \\
+        &= \sum_{k = 0}^{m} e^{-\lambda} \cdot \frac{\lambda^{n - k}}{\para{n - k}!} \cdot e^{-\mu} \cdot \frac{\mu^k}{k!} \\
+        &= e^{-\para{\lambda + \mu}}{n!} \cdot \sum_{k = 0}^{n} \binom{n}{k} \cdot \lambda^{n - k} \cdot \mu^k \\
+        &= e^{-\para{\lambda + \mu}} \cdot \frac{\para{\lambda + \mu}^n}{n!}.
+    \end{align*}
+
+    Therefore, we have
+    \[
+        \Prob\para{X + Y = n} = e^{-\para{\lambda + \mu}} \cdot \frac{\para{\lambda + \mu}^n}{n!}
+    \]
+    and hence
+    \[
+        X + Y \sim \Poisson \para{\lambda + \mu}.
+    \]
+
+    Indeed, if \(\lambda = \mu\), let \(X_n, Y_n \sim \Binomial\para{n, \frac{\lambda}{n}}\) and \(X_n \indp Y_n\). We know a Poisson distribution is a limit of binomial random variables, and indeed
+    \[
+        X_n + Y_n \sim \Binomial\para{2n, \frac{\lambda}{n}}.
+    \]
+\end{example}
+
+\subsection{Conditional Expectation}
+
+\begin{definition}[Conditonal Expectation upon an Event]
+    \label{def:conditional-expectation-upon-event}%
+    The \emph{conditional expectation} of a random variable \(X\) with respect to an event \(B\), where \(\Prob\para{B} > 0\), is given by
+    \[
+        \Expt\brac{\Conditional{X}{B}} = \frac{\Expt\brac{X \cdot \indicator\para{B}}}{\Prob\para{B}}.
+    \]
+\end{definition}
+
+Note that with \(X = \indicator\para{A}\), we do recover consistent definitions with conditional probability of events.
+
+\[
+    \Expt\brac{\Conditional{\indicator\para{A}}{B}} = \frac{\Expt\brac{\indicator\para{A} \cdot \indicator\para{B}}}{\Prob\para{B}} = \frac{\Expt\brac{\indicator\para{A \cap B}}}{\Prob\para{B}} = \frac{\Prob\para{A \cap B}}{\Prob\para{B}} = \Prob\para{\Conditional{A}{B}}.
+\]
+
+\begin{theorem}[Law of Total Expectation]
+    \label{thm:law-of-total-expectation}%
+    Let \(X\) be a random variable, \(\para{\Omega_i}\) be a partition of \(\Omega\) into disjoint sets, with \(\Prob\para{\Omega_i} > 0\) for all \(i = 1, 2, \ldots ,n\). Then we have
+    \[
+        \Expt\brac{X} = \sum_{i = 1}^{n} \Expt\brac{\Conditional{X}{\Omega_n}} \cdot \Prob\para{\Omega_n}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \Expt\brac{X} &= \Expt\brac{X \cdot \indicator\para{\Omega}} \\
+        &= \Expt\brac{X \cdot \sum_{i = 1}^{n} \indicator \para{\Omega_i}} \\
+        &= \sum_{i = 1}^{n} \Expt\brac{X \cdot \indicator \para{\Omega_i}} \\
+        &= \sum_{i = 1}^{N} \Expt\brac{\Conditional{X}{\Omega_n}} \cdot \Prob\para{\Omega_n}
+    \end{align*}
+\end{proof}
+
+The conditional expectation of \(X\) given \(Y = y\) is defined similarly, since \(Y = y\) is an event:
+\[
+    \Expt\brac{\Conditional{X}{Y = y}} = \frac{\Expt\brac{X \cdot \indicator\para{Y = y}}}{\Prob\para{Y = y}}.
+\]
+
+\begin{proposition}[Conditional Expectation upon Random Variable Event]
+    \label{prop:conditional-expectation-random-variable}%
+    We have
+    \[
+        \Expt\brac{\Conditional{X}{Y = y}} = \sum_{x \in \RR} x \cdot \Prob\para{\Conditional{X = x}{Y = y}}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \Expt\brac{\Conditional{X}{Y = y}} &= \frac{\Expt\brac{X \cdot \indicator\para{Y = y}}}{\Prob\para{Y = y}} \\
+        &= \sum_{x \in \RR} x \cdot \frac{\Prob\para{X = x, Y = y}}{\Prob\para{Y = y}} \\
+        &= \sum_{x \in \RR} x \cdot \Prob\para{\Conditional{X = x}{Y = y}}.
+    \end{align*}
+\end{proof}
+
+This shows that the conditional expectation is consistent with the expectation of the conditional random variable.
+
+\begin{definition}[Conditional Expectation Distribution]
+    \label{def:conditional-expectation-distribution}%
+    We define \(\Expt\brac{\Conditional{X}{Y}}\) as a random variable as
+    \[
+        \Expt\brac{\Conditional{X}{Y}} = g\para{Y} = \sum_{y \in \RR} g\para{y} \cdot \indicator\para{Y = y},
+    \]
+    where
+    \[
+        g\para{y} = \Expt\brac{\Conditional{X}{Y = y}}.
+    \]
+\end{definition}
+
+This notation may seem confusing at the start. For example, if \(g\para{y} = y^2\), we have
+\[
+    \Expt\brac{\Conditional{X}{Y}} = g\para{Y} = Y^2.
+\]
+
+Intuitively, this is the \textbf{best approximation} of \(X\) using the random variable \(Y\). In the two extreme cases, if \(X = f\para{Y}\), then we have
+\[
+    \Expt\brac{\Conditional{X}{Y}} = f\para{Y},
+\]
+and if \(X \indp Y\), we have
+\[
+    \Expt\brac{\Conditional{X}{Y}} = \Expt\brac{X}.
+\]
+
+\begin{example}[Conditional Expectation for Tossing \(p\)-Coin]
+    \label{ex:conditional-expectatio-tossing-p-coin}%
+    Toss a \(p\)-coin independently for \(n\) times. Let \(X_i\) be the indicator that the \(i\)th toss is a head, for \(i = 1, 2, \ldots, n\), and let \(Y_n = X_1 + X_2 + \cdots + X_n\).
+
+    We set \(g\para{y} = \Expt\brac{\Conditional{X_1}{Y_n = y}}\). Note that
+    \begin{align*}
+        g\para{y} &= \Expt\brac{\Conditional{X_1}{Y_n = y}} \\
+        &= \frac{\Expt\brac{X_1 \cdot \indicator\para{Y_n = y}}}{\Prob\para{Y_n = y}} \\
+        &= \frac{\Prob\para{X_1 = 1, Y_n = y}}{\Prob\para{Y_n = y}} \\
+        &= \frac{p \cdot \binom{n - 1}{y - 1} \cdot p^{y - 1} \cdot \para{1 - p}^{n - y}}{\binom{n}{y} \cdot p^y \cdot \para{1 - p}^{n - y}} \\
+        &= \frac{y}{n}.
+    \end{align*}
+
+    Hence,
+    \[
+        \Expt\brac{\Conditional{X_1}{Y_n}} = \frac{Y_n}{n}.
+    \]
+\end{example}
+
+\begin{proposition}[Properties of Conditional Expectation Distribution]
+    \label{prop:conditional-expectation-distribution-property}%
+    For any \(c \in \RR\), we have
+    \begin{itemize}
+        \item \(\Expt\brac{\Conditional{cX}{Y}} = c \Expt\brac{\Conditional{X}{Y}}\).
+        \item \(\Expt\brac{\Conditional{c + X}{Y}} = c + \Expt\brac{\Conditional{X}{Y}}\) and \(\Expt\brac{\Conditional{c}{Y}} = c\).
+        \item If \(X_1, X_2, \ldots, X_n\) and \(Y\) are random variables, then we have
+        \[
+            \Expt\brac{\Conditional{\sum_{i = 1}^{n} X_i}{Y}} = \sum_{i = 1}^{n} \Expt\brac{\Conditional{X_i}{Y}}.
+        \]
+    \end{itemize}
+\end{proposition}

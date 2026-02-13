@@ -379,3 +379,39 @@ which implies that
 \]
 
 But this now forces \(X = m\), so \(\Prob\para{X = m} = 1\).
+
+There is a nice result due to Jensen's Inequality.
+
+\begin{theorem}[AM--GM Inequality]
+    \label{thm:am-gm}
+    Let \(f\) be a convex function. Then we have for all \(x_1, \ldots, x_N \in \RR\), we have
+    \[
+        \frac{1}{n} \sum_{k = 1}^{n} f\para{x_k} \geq f\para{\frac{\sum_{k = 1}^{n} x_k}{n}}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    We take \(X\) to be a random variable, with \(X \sim \Uniform \brce{x_1, x_2, \ldots, x_n}\), with \(\Prob\para{X = x_i} = \frac{1}{n}\) for \(i = 1, 2, \ldots, n\).
+
+    Hence,
+    \[
+        \frac{1}{n} \sum_{k = 1}^{n} f\para{x_k} = \Expt\brac{f\para{X}} = \sum_{x \in \RR} f\para{x} \Prob\para{X = x}.
+    \]
+
+    By \autoref{thm:jensen} (Jensen's Inequality), we have
+    \[
+        \Expt\brac{f\para{X}} \geq f\para{\Expt\brac{X}} = f\para{\frac{\sum_{k = 1}^{n} x_k}{n}}.
+    \]
+\end{proof}
+
+\begin{remark}
+    The more commonly seen AM--GM inequality is a corollary of this. Let \(f\para{x} = - \log x\), for \(x > 0\). Take \(x_1, \ldots, x_n > 0\), we have
+    \[
+        - \frac{1}{n} \sum_{k = 1}^{n} \log x_k \geq - \log \para{\frac{\sum_{k = 1}^{n} x_k}{n}}.
+    \]
+
+    Exponentiating both sides, we get
+    \[
+        \para{\prod_{k = 1}^{n} x_k}^{\frac{1}{n}} \leq \frac{1}{n} \sum_{k = 1}^{n} x_k.
+    \]
+\end{remark}
