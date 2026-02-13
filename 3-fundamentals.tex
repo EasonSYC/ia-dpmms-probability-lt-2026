@@ -355,30 +355,30 @@ An idea closely related is conditional probability.
 
     For any \(A \in \mathcal{F}\), we define the conditional probability of \(A\) given \(B\), is given by
     \[
-        \Prob\Conditional{A}{B} = \frac{\Prob\para{A \cap B}}{\Prob\para{B}}.
+        \Prob\para{\Conditional{A}{B}} = \frac{\Prob\para{A \cap B}}{\Prob\para{B}}.
     \]
 \end{definition}
 
 If \(A \indp B\), then we have
 \[
-    \Prob\Conditional{A}{B} = \Prob\para{A}.
+    \Prob\para{\Conditional{A}{B}} = \Prob\para{A}.
 \]
 
 \begin{proposition}[Countable Additivity Property for Conditional Probability]
     \label{prop:countable-additivity-conditional}%
     Let \(\para{A_n}_{n \in \NN}\) be a disjoint sequence of events in \(\mathcal{F}\). Then we have
     \[
-        \Prob\Conditional{\bigcup_n A_n}{B} = \sum_{n} \Prob\Conditional{A_n}{B}.
+        \Prob\para{\Conditional{\bigcup_n A_n}{B}} = \sum_{n} \Prob\para{\Conditional{A_n}{B}}.
     \]
 \end{proposition}
 
 \begin{proof}
     By definition, we have
     \begin{align*}
-        \Prob\Conditional{\bigcup_{n} A_n}{B} &= \frac{\Prob\para{\bigcup_n A_n \cap B}}{\Prob\para{B}} \\
+        \Prob\para{\Conditional{\bigcup_{n} A_n}{B}} &= \frac{\Prob\para{\bigcup_n A_n \cap B}}{\Prob\para{B}} \\
         &= \frac{\Prob\para{\bigcup_n \para{A_n \cap B}}}{\Prob\para{B}} \\
-        &= \sum_{n} \frac{\Prob\para{A_n \cap B}}{\Prob{B}} \\
-        &= \sum_{n} \Prob\Conditional{A_n}{B}.
+        &= \sum_{n} \frac{\Prob\para{A_n \cap B}}{\Prob\para{B}} \\
+        &= \sum_{n} \Prob\para{\Conditional{A_n}{B}}.
     \end{align*}
 \end{proof}
 
@@ -388,7 +388,7 @@ If \(A \indp B\), then we have
 
     Let \(A \in \mathcal{F}\). We have
     \[
-        \Prob\para{A} = \sum_{n} \Prob\Conditional{A}{B_n} \Prob\para{B_n}.
+        \Prob\para{A} = \sum_{n} \Prob\para{\Conditional{A}{B_n}} \Prob\para{B_n}.
     \]
 \end{theorem}
 
@@ -398,7 +398,7 @@ If \(A \indp B\), then we have
         \Prob\para{A} &= \Prob\para{A \cap \bigcup_{n} B_n} \\
         &= \Prob\para{\bigcup_n \para{B_n \cap A}} \\
         &= \sum_{n} \Prob\para{B_n \cap A} \\
-        &= \sum_{n} \Prob\Conditional{A}{B_n} \Prob\para{B_n}.
+        &= \sum_{n} \Prob\para{\Conditional{A}{B_n}} \Prob\para{B_n}.
     \end{align*}
 \end{proof}
 
@@ -406,20 +406,20 @@ If \(A \indp B\), then we have
     \label{thm:bayes}%
     Let \(\para{B_n}\) be a partition of \(\Omega\) with positive measure. We have
     \[
-        \Prob\Conditional{B_n}{A} = \frac{\Prob\Conditional{A}{B_n} \cdot \Prob\para{B_n}}{\sum_{k} \Prob\Conditional{A}{B_k} \cdot \Prob\para{B_k}}.
+        \Prob\para{\Conditional{B_n}{A}} = \frac{\Prob\para{\Conditional{A}{B_n}} \cdot \Prob\para{B_n}}{\sum_{k} \Prob\para{\Conditional{A}{B_k}} \cdot \Prob\para{B_k}}.
     \]
 \end{theorem}
 
 \begin{proof}
     Indeed, we have
     \begin{align*}
-        \Prob\Conditional{B_n}{A} &= \frac{\Prob\para{B_n \cap A}}{\Prob\para{A}} \\
-        &= \frac{\Prob\Conditional{A}{B_n} \cdot \Prob\para{B_n}}{\Prob\para{A}},
+        \Prob\para{\Conditional{B_n}{A}} &= \frac{\Prob\para{B_n \cap A}}{\Prob\para{A}} \\
+        &= \frac{\Prob\para{\Conditional{A}{B_n}} \cdot \Prob\para{B_n}}{\Prob\para{A}},
     \end{align*}
     and we apply \autoref{thm:law-total-probability} (Law of Total Probability) for the numerator.
 \end{proof}
 
-This formula is the basis of Bayesian statistics. If we know the probability of \(\Prob\para{B_n}\), and we have a model which gives us \(\Prob\Conditional{A}{B_k}\), with this formula we can find the posterior probability of \(B_n\) given that \(A\) occurs.
+This formula is the basis of Bayesian statistics. If we know the probability of \(\Prob\para{B_n}\), and we have a model which gives us \(\Prob\para{\Conditional{A}{B_k}}\), with this formula we can find the posterior probability of \(B_n\) given that \(A\) occurs.
 
 \begin{example}[False Positives for a Rare Condition]
     \label{ex:false-positives}%
@@ -436,30 +436,30 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
         P = \brce{\text{individuals tests positive}}.
     \]
 
-    We want to find \(\Prob\Conditional{A}{P}\). The given conditions state that
+    We want to find \(\Prob\para{\Conditional{A}{P}}\). The given conditions state that
     \[
-        \Prob\para{A} = 0.001, \quad \Prob\Conditional{P}{A} = 0.98, \quad \text{and} \quad \Prob\Conditional{P}{A\compl} = 0.01.
+        \Prob\para{A} = 0.001, \quad \Prob\para{\Conditional{P}{A}} = 0.98, \quad \text{and} \quad \Prob\para{\Conditional{P}{A\compl}} = 0.01.
     \]
 
     Hence, using \autoref{thm:bayes} (Bayes' Formula), we have
     \begin{align*}
-        \Prob\Conditional{A}{P} &= \frac{\Prob\Conditional{P}{A} \cdot \Prob\para{A}}{\Prob\Conditional{P}{A} \cdot \Prob\para{A} + \Prob\Conditional{P}{A\compl} \cdot \Prob\para{A\compl}} = 0.089 \approx 0.09
+        \Prob\para{\Conditional{A}{P}} &= \frac{\Prob\para{\Conditional{P}{A}} \cdot \Prob\para{A}}{\Prob\para{\Conditional{P}{A}} \cdot \Prob\para{A} + \Prob\para{\Conditional{P}{A\compl}} \cdot \Prob\para{A\compl}} = 0.089 \approx 0.09
     \end{align*}
     so
     \[
-        \Prob\Conditional{A}{P} \approx 0.09.
+        \Prob\para{\Conditional{A}{P}} \approx 0.09.
     \]
 
     This is counterintuitive. We have that
     \[
-        \Prob\Conditional{A}{P} = \frac{1}{1 + \frac{\Prob\Conditional{P}{A\compl} \cdot \Prob\para{A\compl}}{\Prob\Conditional{P}{A} \cdot \Prob\para{A}}}.
+        \Prob\para{\Conditional{A}{P}} = \frac{1}{1 + \frac{\Prob\para{\Conditional{P}{A\compl}} \cdot \Prob\para{A\compl}}{\Prob\para{\Conditional{P}{A}} \cdot \Prob\para{A}}}.
     \]
 
-    We have \(\Prob\para{A\compl}\) and \(\Prob\Conditional{P}{A}\) are both very close to \(1\), so the relevant ratio simplifies to \(\frac{\Prob\Conditional{P}{A\compl}}{\Prob\para{A}}\). But
+    We have \(\Prob\para{A\compl}\) and \(\Prob\para{\Conditional{P}{A}}\) are both very close to \(1\), so the relevant ratio simplifies to \(\frac{\Prob\para{\Conditional{P}{A\compl}}}{\Prob\para{A}}\). But
     \[
-        \Prob\Conditional{P}{A\compl} \gg \Prob\para{A}
+        \Prob\para{\Conditional{P}{A\compl}} \gg \Prob\para{A}
     \]
-    and this makes \(\Prob\Conditional{A}{P}\) is \emph{very small}.
+    and this makes \(\Prob\para{\Conditional{A}{P}}\) is \emph{very small}.
 
     Let's put in some concrete numbers. Suppose we have a population of \(1000\) people, with \(1\) suffering from A. Among the \(999\) not suffering, about \(10\) people will test positive. In total, there will be \(11\) people testing positive. Among those we pick one at random. So the probability of being positive, given they actually test positive, is only \(\frac{1}{11}\).
 \end{example}
@@ -477,14 +477,14 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
             \]
             and the events \(\mathrm{GB}, \mathrm{GG}, \mathrm{BB}\). We want to find
             \[
-                \Prob\Conditional{\mathrm{BB}}{\mathrm{BB} \cup \mathrm{BG} \cup \mathrm{GB}} = \frac{\Prob\para{\mathrm{BB}}}{\Prob\para{\mathrm{BB} \cup \mathrm{BG} \cup \mathrm{GB}}} = \frac{\frac{1}{4}}{\frac{3}{4}} = \frac{1}{3}.
+                \Prob\para{\Conditional{\mathrm{BB}}{\mathrm{BB} \cup \mathrm{BG} \cup \mathrm{GB}}} = \frac{\Prob\para{\mathrm{BB}}}{\Prob\para{\mathrm{BB} \cup \mathrm{BG} \cup \mathrm{GB}}} = \frac{\frac{1}{4}}{\frac{3}{4}} = \frac{1}{3}.
             \]
 
         \item What is the probability that I have \(2\) boys, given the eldest one is a boy?
         
             We have
             \[
-                \Prob\Conditional{\mathrm{BB}}{\mathrm{BB} \cup \mathrm{BG}} = \frac{1}{2}.
+                \Prob\para{\Conditional{\mathrm{BB}}{\mathrm{BB}} \cup \mathrm{BG}} = \frac{1}{2}.
             \]
 
         \item What is the probability that I have \(2\) boys, given that one of them is a boy born on a Thursday?
@@ -499,7 +499,7 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
         \]
         and \(\mathrm{NT, TT}\) similarly. We want to find
         \begin{align*}
-            &\phantom{=} \Prob\Conditional{\mathrm{TT} \cup \mathrm{TN} \cup \mathrm{NT}}{\mathrm{TT} \cup \mathrm{TG} \cup \mathrm{GT} \cup \mathrm{TN} \cup \mathrm{NT}} \\
+            &\phantom{=} \Prob\para{\Conditional{\mathrm{TT} \cup \mathrm{TN} \cup \mathrm{NT}}{\mathrm{TT} \cup \mathrm{TG} \cup \mathrm{GT} \cup \mathrm{TN} \cup \mathrm{NT}}} \\
             &= \frac{\Prob\para{\mathrm{TT} \cup \mathrm{TN} \cup \mathrm{NT}}}{\Prob\para{\mathrm{TT} \cup \mathrm{TG} \cup \mathrm{GT} \cup \mathrm{TN} \cup \mathrm{NT}}} \\
             &= \frac{\frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \frac{1}{7} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \mathbf{\frac{6}{7}} + \frac{1}{2} \cdot \mathbf{\frac{6}{7}} \cdot \frac{1}{2} \cdot \frac{1}{7}}{\frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \frac{1}{7} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \mathbf{\frac{6}{7}} \cdot 2}
  \\
@@ -554,29 +554,29 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
 
     We notice that from the latter two tables, that
     \begin{align*}
-        \Prob\Conditional{A}{B \cap C} &> \Prob\Conditional{A}{B \cap C \compl}, \\
-        \Prob\Conditional{A}{B\compl \cap C} &> \Prob\Conditional{A}{B\compl \cap C \compl}.
+        \Prob\para{\Conditional{A}{B \cap C}} &> \Prob\para{\Conditional{A}{B \cap C \compl}}, \\
+        \Prob\para{\Conditional{A}{B\compl \cap C}} &> \Prob\para{\Conditional{A}{B\compl \cap C \compl}}.
     \end{align*}
 
     However, we have from the first table, that
     \[
-        \Prob\Conditional{A}{C} < \Prob\Conditional{A}{C\compl}.
+        \Prob\para{\Conditional{A}{C}} < \Prob\para{\Conditional{A}{C\compl}}.
     \]
 
     Observe that from countable additivity of conditional probability,
     \begin{align*}
-        \Prob\Conditional{A}{C} &= \Prob\Conditional{A \cap B}{C} + \Prob\Conditional{A \cap B\compl}{C} \\
+        \Prob\para{\Conditional{A}{C}} &= \Prob\para{\Conditional{A \cap B}{C}} + \Prob\para{\Conditional{A \cap B\compl}{C}} \\
         &= \frac{\Prob\para{A \cap B \cap C}}{\Prob\para{C}} + \frac{\Prob\para{A \cap B\compl \cap C}}{\Prob\para{C}} \\
-        &= \frac{\Prob\Conditional{A}{B \cap C} \cdot \Prob{B \cap C}}{\Prob\para{C}} + \frac{\Prob\Conditional{A}{B \compl \cap C} \cdot \Prob\para{B\compl \cap C}}{\Prob\para{C}} \\
-        &= \Prob\Conditional{A}{B \cap C} \cdot \Prob\Conditional{B}{C} + \Prob\Conditional{A}{B\compl \cap C} \cdot \Prob\Conditional{B \compl}{C} \\
-        &> \Prob\Conditional{A}{B \cap C\compl} \cdot \Prob\Conditional{B}{C} + \Prob\Conditional{A}{B\compl \cap C\compl} \cdot \Prob \Conditional{B\compl}{C}.
+        &= \frac{\Prob\para{\Conditional{A}{B \cap C}} \cdot \Prob{B \cap C}}{\Prob\para{C}} + \frac{\Prob\para{\Conditional{A}{B \compl \cap C}} \cdot \Prob\para{B\compl \cap C}}{\Prob\para{C}} \\
+        &= \Prob\para{\Conditional{A}{B \cap C}} \cdot \Prob\para{\Conditional{B}{C}} + \Prob\para{\Conditional{A}{B\compl \cap C}} \cdot \Prob\para{\Conditional{B \compl}{C}} \\
+        &> \Prob\para{\Conditional{A}{B \cap C\compl}} \cdot \Prob\para{\Conditional{B}{C}} + \Prob\para{\Conditional{A}{B\compl \cap C\compl}} \cdot \Prob \para{\Conditional{B\compl}{C}}.
     \end{align*}
 
-    Now, note that if \(\Prob\Conditional{B}{C} = \Prob\Conditional{B}{C\compl}\), which is not valid here, then we would get
+    Now, note that if \(\Prob\para{\Conditional{B}{C}} = \Prob\para{\Conditional{B}{C\compl}}\), which is not valid here, then we would get
     \begin{align*}
-        \Prob\Conditional{A}{C} &> \Prob\Conditional{A}{B \cap C\compl} \cdot \Prob\Conditional{B}{C} + \Prob\Conditional{A}{B\compl \cap C\compl} \cdot \Prob \Conditional{B\compl}{C} \\
-        &= \Prob\Conditional{A}{B \cap C\compl} \cdot \Prob\Conditional{B}{C\compl} + \Prob\Conditional{A}{B\compl \cap C\compl} \cdot \Prob \Conditional{B\compl}{C\compl} \\
-        &= \Prob\Conditional{A}{C\compl}
+        \Prob\para{\Conditional{A}{C}} &> \Prob\para{\Conditional{A}{B \cap C\compl}} \cdot \Prob\para{\Conditional{B}{C}} + \Prob\para{\Conditional{A}{B\compl \cap C\compl}} \cdot \Prob \para{\Conditional{B\compl}{C}} \\
+        &= \Prob\para{\Conditional{A}{B \cap C\compl}} \cdot \Prob\para{\Conditional{B}{C\compl}} + \Prob\para{\Conditional{A}{B\compl \cap C\compl}} \cdot \Prob \para{\Conditional{B\compl}{C\compl}} \\
+        &= \Prob\para{\Conditional{A}{C\compl}}
     \end{align*}
     hence this does not hold.
 
