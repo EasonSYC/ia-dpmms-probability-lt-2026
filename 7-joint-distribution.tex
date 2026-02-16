@@ -164,6 +164,11 @@ and if \(X \indp Y\), we have
     \Expt\brac{\Conditional{X}{Y}} = \Expt\brac{X}.
 \]
 
+As a function, we may define it for \(\omega \in \Omega\),
+\[
+    \Expt\brac{\Conditional{X}{Y}}\para{\omega} = \Expt\brac{\Conditional{X}{Y = Y\para{\omega}}}.
+\]
+
 \begin{example}[Conditional Expectation for Tossing \(p\)-Coin]
     \label{ex:conditional-expectatio-tossing-p-coin}%
     Toss a \(p\)-coin independently for \(n\) times. Let \(X_i\) be the indicator that the \(i\)th toss is a head, for \(i = 1, 2, \ldots, n\), and let \(Y_n = X_1 + X_2 + \cdots + X_n\).
@@ -197,3 +202,145 @@ and if \(X \indp Y\), we have
         \]
     \end{itemize}
 \end{proposition}
+
+\begin{proposition}[Expectation of Conditional Expectation Distribution]
+    \label{prop:expectation-conditional-expectation-distribution}%
+    We have
+    \[
+        \Expt\brac{\Expt\brac{\Conditional{X}{Y}}} = \Expt\brac{X}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Recall that
+    \[
+        \Expt\brac{\Conditional{X}{Y}} = \sum_{y \in \RR} \indicator\para{Y = y} \Expt\brac{\Conditional{X}{Y = y}}.
+    \]
+
+    Taking the expectations on both sides, we have
+    \[
+        \Expt\brac{\Expt\brac{\Conditional{X}{Y}}} = \sum_{y \in \RR} \Prob\para{Y = y} \cdot \Expt\brac{\Conditional{X}{Y = y}} = \Expt\brac{X}.
+    \]
+\end{proof}
+
+\begin{proposition}[Conditional Expectation Distribution of Independent Variables]
+    \label{prop:conditional-expectation-distribution-independent}%
+    Let \(X\) and \(Y\) be independent. Then
+    \[
+        \Expt\brac{\Conditional{X}{Y}} = \Expt\brac{X}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Recall that by definition,
+    \begin{align*}
+        \Expt\brac{\Conditional{X}{Y = y}} &= \sum_{x \in \RR} x \cdot \Prob\para{\Conditional{X = x}{Y = y}} \\
+        &= \sum_{x \in \RR} x \cdot \Prob\para{X = x} \\
+        &= \Expt\brac{X}.
+    \end{align*}
+
+    Hence,
+    \[
+        \Expt\brac{\Conditional{X}{Y}} = \Expt\brac{X} \sum_{y \in \RR} \indicator\para{Y = y} = \Expt\brac{X}
+    \]
+    as desired.
+\end{proof}
+
+\begin{proposition}[Conditional Expectation upon Independent Conditions]
+    \label{prop:conditional-expectation-independent-conditions}%
+    Let \(Y\) and \(Z\) be two independent random variables. Then
+    \[
+        \Expt\brac{\Conditional{\Expt\brac{\Conditional{X}{Y}}}{Z}} = \Expt\brac{X}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Set \(g\para{Y} = \Expt\brac{\Conditional{X}{Y}}\), while \(g\para{y} = \Expt\brac{\Conditional{X}{Y = y}}\).
+
+    First, we claim that \(g\para{Y}\) is independent of \(Z\). We want to show that for all \(w, z\), we have
+    \[
+        \Prob\para{g\para{Y} = w, Z = z} = \Prob\para{g\para{Y} = w} \cdot \Prob\para{Z = z}.
+    \]
+
+    We have
+    \begin{align*}
+        \Prob\para{g\para{Y} = w, Z = z} &= \sum_{y \in g\inverse\para{\brce{w}}} \Prob\para{Y = y, Z = z} \\
+        &= \sum_{y \in g\inverse\para{\brce{w}}} \Prob\para{Y = y} \cdot \Prob\para{Z = z} \\
+        &= \Prob\para{Z = z} \cdot \sum_{y \in g\inverse\para{\brce{w}}} \Prob\para{Y = y} \\
+        &= \Prob\para{Z = z} \cdot \Prob\para{g\para{Y} = w}.
+    \end{align*}
+
+    Therefore, \(g\para{Y} \indp Z\).
+
+    Therefore, by \autoref{prop:conditional-expectation-distribution-independent} we have
+    \[
+        \Expt\brac{\Conditional{\Expt\brac{\Conditional{X}{Y}}}{Z}} = \Expt\brac{\Conditional{g\para{Y}}{Z}} = \Expt\brac{g\para{Y}},
+    \]
+    and we have from \autoref{prop:expectation-conditional-expectation-distribution},
+    \[
+        \Expt\brac{g\para{Y}} = \Expt\brac{\Expt\brac{\Conditional{X}{Y}}} = \Expt\brac{X}.
+    \]
+\end{proof}
+
+\begin{proposition}[Extraction of Function of Condition]
+    \label{prop:extraction-function-condition}%
+    For any function \(\functiondomain{h}{\RR}{\RR}\), we have
+    \[
+        \Expt\brac{\Conditional{h\para{Y} \cdot X}{Y}} = h\para{Y} \cdot \Expt\brac{\Conditional{X}{Y}}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \Expt\brac{\Conditional{h\para{Y} \cdot X}{Y}} &= \sum_{y \in \RR} \indicator\para{Y = y} \cdot \Expt\brac{\Conditional{h\para{Y} \cdot X}{Y = y}} \\
+        &= \sum_{y \in \RR} \indicator\para{Y = y} \cdot h\para{Y} \cdot \Expt\brac{\Conditional{X}{Y = y}} \\
+        &= h\para{Y} \cdot \sum_{y \in \RR} \indicator\para{Y = y} \cdot \Expt\brac{\Conditional{X}{Y = y}} \\
+        &= h\para{Y} \cdot \Expt\brac{\Conditional{X}{Y}}.
+    \end{align*}
+\end{proof}
+
+We have two corollaries due to the properties above.
+
+\begin{corollary}[Conditional Expectation upon Same Condition]
+    \label{cor:conditional-expecation-upon-same-condition}%
+    We have
+    \[
+        \Expt\brac{\Conditional{\Expt\brac{\Conditional{X}{Y}}}{Y}} = \Expt\brac{\Conditional{X}{Y}}.
+    \]
+\end{corollary}
+
+\begin{corollary}[Conditional Expectation upon Itself]
+    \label{cor:conditional-expectation-upon-itself}%
+    We have
+    \[
+        \Expt\brac{\Conditional{X}{X}} = X.
+    \]    
+\end{corollary}
+
+\begin{example}[Conditional Expectation for Tossing \(p\)-Coin, Revisited]
+    \label{ex:conditional-expectatio-tossing-p-coin-revisited}%
+    We revisit \autoref{ex:conditional-expectatio-tossing-p-coin}. We toss a \(p\)-coin \(n\) times independently. Let \(X_i = \indicator\para{i\text{-th toss is H}}\) for \(i = 1, 2, \ldots, n\), and let
+    \[
+        Y_n = X_1 + \cdots + X_n.
+    \]
+
+    By symmetry, for all \(i = 1, 2, \ldots, n\), we have
+    \[
+        \Expt\brac{\Conditional{X_i}{Y_n}} = \Expt\brac{\Conditional{X_1}{Y_n}}
+    \]
+
+    Note that
+    \[
+        \Expt\brac{\Conditional{\sum_{i = 1}^{n} X_i}{Y_n}} = \Expt\brac{\Conditional{Y_n}{Y_n}} = Y_n,
+    \]
+    while using linearity gives
+    \[
+        \Expt\brac{\Conditional{\sum_{i = 1}^{n} X_i}{Y_n}} = \sum_{i = 1}^{n} \Expt\brac{\Conditional{X_i}{Y_n}} = n \cdot \Expt\brac{\Conditional{X_1}{Y_n}}.
+    \]
+
+    Hence,
+    \[
+        \Expt\brac{\Conditional{X_1}{Y_n}} = \frac{Y_n}{n}.
+    \]
+\end{example}

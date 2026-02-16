@@ -1,0 +1,45 @@
+\section{Random Walk}
+
+\begin{definition}[Random/Stochastic Process]
+    \label{def:random-stochastic-process}%
+    A \emph{random/stochastic process} is a sequence of random variables \(\para{X_n}_{n \in \NN}\).
+\end{definition}
+
+\begin{definition}[Random Walk]
+    \label{def:random-walk}%
+    A \emph{random walk} is a random process that can be expressed in the following way:
+    \[
+        X_n = x + \sum_{i = 1}^{n} Y_i,
+    \]
+    where \(x\) is a deterministic number, and \(\para{Y_i}_{n \in \NN}\)s are independent and identically distributed (i.i.d.). The random variables \(Y_i\)s the \emph{steps} of the random walk.
+\end{definition}
+
+\subsection{Simple Random Walk}
+
+\begin{definition}[Simple Random Walk]
+    \label{def:simple-random-walk}%
+    A random walk is \emph{simple} if the steps can only take values \(\pm 1\).
+\end{definition}
+
+In this case, we may set \(\Prob\para{Y_i = 1} = p\) and \(\Prob\para{Y_i = -1} = q\), with \(p + q = 1\) and \(p, q \geq 0\).
+
+\begin{notation}
+    We denote \(\Prob_x\para{A} = \Prob\para{\Conditional{A}{X_0 = x}}\).
+\end{notation}
+
+\begin{example}[Random Walk as Gambler]
+    \label{ex:random-walk-gambler}%
+    We may think of \(\para{X_n}\) as the fortune of a gambler, who starts with \(x\) in their pocket at time \(0\), and every time step they bet \(1\), which he loses with probability \(\para{1 - p}\), and gets it back doubled with probability \(p\). The game ends if they reach \(0\) (which means they go bankrupt) or they reach \(a\), whichever happens first.
+
+    We want to know the probability they reach \(a\) before going bankrupt. We let
+    \[
+        h\para{x} = \Prob_x \para{\para{X_n} \text{ reaches }a\text{ before reaching }0}.
+    \]
+
+    Note that \(h\para{0} = 0\) and \(h\para{a} = 1\). We have
+    \begin{align*}
+        h\para{x} &= \Prob_x \para{X \text{ reaches }a\text{ before }0} \\
+        &= \Prob_x \para{\Conditional{X \text{ reaches }a\text{ before }0}{Y_1 = 1}} \cdot p + \Prob_x \para{\Conditional{X \text{ reaches }a\text{ before }0}{Y_1 = -1}} \cdot \para{1 - p} \\
+        &= p \cdot h \para{x + 1} + \para{1 - p} \cdot h \para{x - 1}.
+    \end{align*}
+\end{example}
