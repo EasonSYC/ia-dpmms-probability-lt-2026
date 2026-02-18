@@ -1,0 +1,200 @@
+\section{Probability Generating Functions}
+
+Note that all natural numbers \(\NN\) in this section includes \(0\).
+
+Let \(X\) be a random variable with values in \(\NN\). We denote the probability mass function of \(X\) as
+\[
+    p_r = \Prob\para{X = r}, \quad r \in \NN.
+\]
+
+\subsection{Definitions and Properties}
+
+\begin{definition}[Probability Generating Function]
+    \label{def:probability-generating-function}%
+    The \emph{probability generating function} of \(X\) is defined to be
+    \[
+        p \para{z} = \Expt\brac{z^X} = \sum_{r = 0}^{\infty} p_r \cdot z^r = p_0 + p_1 \cdot z + p_2 \cdot z^2 + \cdots
+    \]
+    where \(\abs{z} < 1\).
+\end{definition}
+
+Note that this infinite series is indeed well-defined. Taking the absolute value, we have
+\begin{align*}
+    \abs{p\para{z}} &= \abs{\sum_{r = 0}^{\infty} p_r \cdot z^r} \\
+    &\leq \sum_{r = 0}^{\infty} p_r \cdot \abs{z^r} \\
+    &\leq \sum_{r = 0}^{\infty} p_r \\
+    &= 1,
+\end{align*}
+so the series converges absolutely for \(\abs{z} \leq 1\), and hence in particular, the radius of the convergence is at least \(1\).
+
+\begin{theorem}[Uniqueness of Probability Generating Function]
+    \label{thm:pgf-uniqueness}%
+    The probability generating function uniquely determines the distribution of the random variable \(X\).
+\end{theorem}
+
+\begin{proof}
+    Let \(\para{p_r}\) and \(\para{q_r}\) be two probability distributions with the same probability generating functions, i.e., for all \(\abs{z} \leq 1\), we have
+    \[
+        \sum_{r = 0}^{\infty} p_r z^r = \sum_{r = 0}^{\infty} q_r z^r.
+    \]
+
+    We want to show \(p_r = q_r\) for all \(r\). If we put in \(z = 0\), then we have \(p_0 = q_0\).
+
+    We continue by strong induction. Suppose that \(p_r = q_r\) for all \(r \leq n\). We want to show that \(p_{n + 1} = q_{n + 1}\). By the induction hypothesis, we have
+    \[
+        \sum_{r = n + 1}^{\infty} p_r z^r = \sum_{r = n + 1}^{\infty} q_r z^r.
+    \]
+
+    Dividing by \(z^{n + 1}\), and set \(z = 0\), we have
+    \[
+        p_{n + 1} = q_{n + 1}.
+    \]
+\end{proof}
+
+\begin{proposition}[Probability Generating Function of Sum]
+    \label{prop:pgf-sum}%
+    Let \(X_1, \ldots, X_n\) be independent random variables, with probability generating functions
+    \[
+        q_i\para{z} = \Expt\brac{z^{X_i}}.
+    \]
+
+    Then, we have
+    \[
+        p\para{z} = q_1\para{z} \cdots q_n\para{z}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        p\para{z} &= \Expt\brac{z^{X_1 + \cdots + X_n}} \\
+        &= \Expt\brac{z^{X_1}} \cdots \Expt\brac{z^{x_n}}
+    \end{align*}
+    by independence, as desired.
+\end{proof}
+
+\subsection{Probability Generating Functions of Standard Distributions}
+
+\begin{example}[Probability Generating Function of Binomial Distribution]
+    \label{ex:pgf-binomial}%
+    Suppose \(X \sim \Binomial\para{n, p}\). We have
+    \begin{align*}
+        p\para{z} = \Expt\brac{z^X} &= \sum_{k = 0}^{n} z^k \cdot \binom{n}{k} \cdot p^k \cdot \para{1 - p}^{n - k} \\
+        &= \para{pz + 1 - p}^n.
+    \end{align*}
+\end{example}
+
+\begin{example}[Sum of Independent Binomial Distributions]
+    \label{ex:sum-binomial}%
+    Suppose \(X \sim \Binomial\para{n, p}\) and \(Y \sim \Binomial\para{m, p}\), with \(X \indp Y\). We want to find the distribution of \(\para{X + Y}\). We have
+    \begin{align*}
+        \Expt\brac{z^{X + Y}} &= \Expt\brac{z^X} \cdot \Expt\brac{z^Y} \\
+        &= \para{pz + 1 - p}^{n} \cdot \para{pz + 1 - p}^{m} \\
+        &= \para{pz + 1 - p}^{n + m}.
+    \end{align*}
+
+    Therefore, \(X + Y \sim \Binomial\para{n + m, p}\).
+\end{example}
+
+\begin{example}[Probability Generating Function of Geometric Distribution]
+    \label{ex:pgf-geometric}%
+    Suppose \(X \sim \Geometric\para{p}\). Then
+    \[
+        \Expt\brac{z^X} = \sum_{r = 0}^{\infty} z^r \para{1 - p}^r p = \frac{p}{1 - z\para{1 - p}}.
+    \]
+\end{example}
+
+\begin{example}[Probability Generating Function of Poisson Distribution]
+    \label{ex:pgf-poisson}%
+    Suppose \(X \sim \Poisson\para{\lambda}\). Then
+    \[
+        \Expt\brac{z^X} = \sum_{r = 0}^{\infty} z^r \cdot e^{-\lambda} \cdot \frac{\lambda^r}{r!} = e^{-\lambda} \cdot e^{\lambda z} = e^{\lambda \para{z - 1}}.
+    \]
+\end{example}
+
+\begin{example}[Sum of Independent Poisson Distributions]
+    Suppose \(X \sim \Poisson\para{\lambda}\), \(Y \sim \Poisson\para{\mu}\), and \(X \indp Y\). Then we have
+    \[
+        \Expt\brac{z^{X + Y}} = e^{\lambda \para{z - 1}} \cdot e^{\mu\para{z - 1}} = e^{\para{\lambda + \mu} \para{z - 1}},
+    \]
+    so \(X + Y \sim \Poisson\para{\lambda + \mu}\).
+\end{example}
+
+\subsection{Expectation and Moments}
+
+We now investigate how to find the expectation (and moments) using the probability generating function.
+
+\begin{theorem}[Expectation from Probability Generating Function]
+    \label{thm:expt-pgf}%
+    We have
+    \[
+        \lim_{z \to 1^{-}} p'\para{z} = p'\para{1^{-}} = \Expt\brac{X}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Suppose \(\Expt\brac{X} < \infty\). Take \(0 < z < 1\), so
+    \[
+        p'\para{z} = \sum_{r = 1}^{\infty} r p_r z^{r - 1} \leq \sum_{r = 1}^{\infty} r p_r = \Expt\brac{X}.
+    \]
+
+    Therefore, \(p'\para{z}\) is an increasing function of \(z\), and hence,
+    \[
+        \lim_{z \to 1^{-}} p'\para{z} \leq \Expt\brac{X}.
+    \]
+
+    Let \(\epsilon > 0\). There exists \(N\) large, such that
+    \[
+        \sum_{r = 1}^{N} r p_r \geq \Expt\brac{X} - \epsilon.
+    \]
+
+    Therefore,
+    \[
+        \lim_{z \to 1^{-}} p'\para{z} \geq \lim_{z \to 1^{-}} \sum_{r = 1}^{N} r p_r z^{r - 1} = \sum_{r = 1}^{N} r p_r \geq \Expt\brac{X} - \epsilon.
+    \]
+
+    This finishes the proof.
+
+    Now, suppose \(\Expt\brac{X} = \infty\). Then for any \(M > 0\), there is some \(N \in \NN\), such that
+    \[
+        \sum_{r = 1}^{N} r p_r \geq M.
+    \]
+
+    Therefore, from before, we have
+    \[
+        \lim_{z \to 1^{-}} p'\para{z} \geq \lim_{z \to 1^{-}} \sum_{r = 1}^{N} r p_r z^{r - 1} = \sum_{r = 1}^{N} r p_r \geq M.
+    \]
+
+    Therefore, \(\lim_{z \to 1^{-}} p'\para{z} = \infty\).
+\end{proof}
+
+Similarly, we may find the factorial moments by taking the derivatives.
+
+\begin{theorem}[Factorial Moments from Probability Generating Function]
+    \label{thm:factorial-moments-pgf}%
+    For the second factorial moment, we have
+    \[
+        p''\para{1^-} = \lim_{z \to 1^-} p''\para{z} = \Expt\brac{X \para{X - 1}}.
+    \]
+
+    In general, for any \(k \geq 0\), we have
+    \[
+        p^{\para{k}} \para{1^-} = \lim_{z \to 1^-} p^{\para{k}}\para{z} = \Expt\brac{X \para{X - 1} \cdots \para{X - k + 1}}.
+    \]
+\end{theorem}
+
+\begin{corollary}[Variance from Probability Generating Function]
+    \label{cor:var-pgf}%
+    We have
+    \[
+        \Var\para{X} = p''\para{1^-} + p'\para{1^-} - \para{p'\para{1^-}}^2.
+    \]
+\end{corollary}
+
+\begin{proposition}[Probability from Probability Generating Function]
+    \label{prop:prob-pgf}%
+    We have
+    \[
+        \Prob\para{X = n} = p^{\para{n}} \para{0} \cdot \frac{1}{n!}.
+    \]
+\end{proposition}

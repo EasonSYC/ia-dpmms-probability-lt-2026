@@ -1,0 +1,121 @@
+\section{Random Walk}
+
+\begin{definition}[Random/Stochastic Process]
+    \label{def:random-stochastic-process}%
+    A \emph{random/stochastic process} is a sequence of random variables \(\para{X_n}_{n \in \NN}\).
+\end{definition}
+
+\begin{definition}[Random Walk]
+    \label{def:random-walk}%
+    A \emph{random walk} is a random process that can be expressed in the following way:
+    \[
+        X_n = x + \sum_{i = 1}^{n} Y_i,
+    \]
+    where \(x\) is a deterministic number, and \(\para{Y_i}_{n \in \NN}\)s are independent and identically distributed (i.i.d.). The random variables \(Y_i\)s the \emph{steps} of the random walk.
+\end{definition}
+
+\begin{definition}[Simple Random Walk]
+    \label{def:simple-random-walk}%
+    A random walk is \emph{simple} if the steps can only take values \(\pm 1\).
+\end{definition}
+
+In this case, we may set \(\Prob\para{Y_i = 1} = p\) and \(\Prob\para{Y_i = -1} = q\), with \(p + q = 1\) and \(p, q \geq 0\).
+
+\begin{notation}
+    We denote \(\Prob_x\para{A} = \Prob\para{\Conditional{A}{X_0 = x}}\) and \(\Expt_x\brac{A} = \Expt\brac{\Conditional{A}{X_0 = x}}\).
+\end{notation}
+
+\begin{example}[Gambler's Ruin Estimates]
+    \label{ex:gambler-ruin-estimates}%
+    We may think of \(\para{X_n}\) as the fortune of a gambler, who starts with \(x\) in their pocket at time \(0\), and every time step they bet \(1\), which he loses with probability \(\para{1 - p}\), and gets it back doubled with probability \(p\). The game ends if they reach \(0\) (which means they go bankrupt) or they reach \(a\), whichever happens first.
+
+    We want to know the probability they reach \(a\) before going bankrupt. We let
+    \[
+        h\para{x} = \Prob_x \para{\para{X_n} \text{ reaches }a\text{ before reaching }0}.
+    \]
+
+    Note that \(h\para{0} = 0\) and \(h\para{a} = 1\). We have
+    \begin{align*}
+        h\para{x} &= \Prob_x \para{X \text{ reaches }a\text{ before }0} \\
+        &= \Prob_x \para{\Conditional{X \text{ reaches }a\text{ before }0}{Y_1 = 1}} \cdot p + \Prob_x \para{\Conditional{X \text{ reaches }a\text{ before }0}{Y_1 = -1}} \cdot \para{1 - p} \\
+        &= p \cdot h \para{x + 1} + \para{1 - p} \cdot h \para{x - 1}.
+    \end{align*}
+
+    We now consider particular cases of \(p\) and \(q\).
+
+    \begin{itemize}
+        \item If \(p = q = \frac{1}{2}\), this is called \emph{simple symmetric random walk}, and the system reduces to \(h\para{x} = \frac{1}{2} h \para{x + 1} + \frac{1}{2} h \para{x - 1}\).
+        
+        Notice that simplifying this gives
+        \[
+            h\para{x + 1} - h\para{x} = h\para{x} - h\para{x - 1} = \cdots = c.
+        \]
+
+        Therefore, we have \(h\para{x} = \sum_{i = 1}^{x} \para{h\para{i} - h\para{i - 1}} = cx\). Since \(h\para{a} = 1\), we have \(c = \frac{1}{a}\), so \(h\para{x} = \frac{x}{a}\).
+
+        \item If \(p \neq q\), we first try a solution of the form \(\lambda^x\) for some \(\lambda\). We have
+        \[
+            \lambda^x = p \cdot \lambda^{x + 1} + q \cdot \lambda^{x - 1}
+        \]
+        and hence \(\lambda = 1\) or \(\lambda = \frac{q}{p}\). Therefore, the general solution gives
+        \[
+            h\para{x} = A + B \cdot \para{\frac{q}{p}}^x.
+        \]
+
+        Putting in the boundary conditions, we have
+        \[
+            h\para{x} = \frac{\para{\frac{q}{p}}^x - 1}{\para{\frac{q}{p}}^a - 1}.
+        \]
+    \end{itemize}
+\end{example}
+
+\begin{example}[Time to Absorption]
+    \label{ex:time-to-absorption}%
+    We use a similar setup as \autoref{ex:gambler-ruin-estimates}. Let the \emph{time to absorption} be
+    \[
+        T = \min \set{n \geq 0}{X_n \in \brce{0, a}}.
+    \]
+
+    \(T\) is the first \(n\) such that \(X_n\) is either \(0\) or \(a\). In other words, \(T\) is the duration of the game.
+
+    We aim to find \(\Expt\brac{\Conditional{T}{X_0 = x}} = \Expt_x\brac{T}\). Let this be \(k\para{x}\).
+
+    Using the law of total expectation, we have
+    \begin{align*}
+        k\para{x} &= \Expt_x\brac{\Conditional{T}{Y_1 = 1}} \cdot \Prob\para{Y_1 = 1} + \Expt_x\brac{\Conditional{T}{Y_1 = -1}} \cdot \Prob\para{Y_1 = -1} \\
+        &= p \cdot \para{1 + k\para{x + 1}} + \para{1 - p} \cdot \para{1 + k\para{x - 1}} \\
+        &= 1 + p \cdot k\para{x + 1} + q \cdot k\para{x - 1}.
+    \end{align*}
+
+    The initial conditions are \(k \para{0} = k \para{a} = 0\).
+    \begin{itemize}
+        \item If \(p = q = \frac{1}{2}\), we experiment with a solution of the form \(A x^2\). We have
+        \[
+            A x^2 + 1 p A\para{x + 1}^2 + q A\para{x - 1}^2.
+        \]
+
+        Hence, \(A = -1\), and the general solution is
+        \[
+            k\para{x}= -x^2 + Bx + C.
+        \]
+
+        With the initial conditions, we have
+        \[
+            k\para{x} = x \para{a - x}.
+        \]
+
+        \item If \(p \neq q\), we experiment with a solution of the form \(Cx\). We have
+        \[
+            C = \frac{1}{q - p}
+        \]
+        giving general solution
+        \[
+            k\para{x} = A + \frac{1}{q - p} \cdot x + B \cdot \para{\frac{q}{p}}^x,
+        \]
+
+        Hence, putting in the initial conditions, we have
+        \[
+            k\para{x} = \frac{1}{q - p} \cdot x - \frac{q}{q - p} \cdot \frac{\para{\frac{q}{p}}^x - 1}{\para{\frac{q}{p}}^a - 1}.
+        \]
+    \end{itemize}
+\end{example}
