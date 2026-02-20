@@ -1,0 +1,143 @@
+\section{Branching Processes}
+
+Branching Processes are also known as Galton--Watson processes (1874) or Bienaym\'{e} processes (1845).
+
+\begin{definition}[Branching Processes]
+    \label{def:branching-process}%
+    A \emph{branching process} is defined as follows. Let the population initially have \(X_0 = 1\), in generation \(0\). Let the number of offspring produced by each individual be \(X_1\), where
+    \[
+        \Prob\para{X_1 = k} = g_k, \quad k = 0, 1, 2, \ldots.
+    \]
+
+    Each individual produces an independent number of offspring, with the same distributions as \(X_1\). Let \(\para{Y_{k, n}, k \geq 1, n \geq 0}\) be independent and identically distributed random variables with the same distribution of \(X_1\), and we define \(Y_{k, n}\) be the number of offspring the \(k\)th individual of generating \(n\) produces. We define
+    \[
+        X_{n + 1} = Y_{1, n} + Y_{2, n} + \cdots + Y_{X_n, n}
+    \]
+    is the population at generation \(\para{n + 1}\).
+\end{definition}
+
+Our questions are: what is the probability that this population goes extinct, and what is the concrete distribution behind \(X_i\)?
+
+\subsection{Distribution behind the Generations}
+
+\begin{theorem}[Expected Number of Individuals in each Generation]
+    \label{thm:branching-process-expt-generation}%
+    The expectation of the number of individuals in each generation is given by
+    \[
+        \Expt\brac{X_n} = \para{\Expt\brac{X_1}}^{n}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    We proceed by induction. Note this is trivial for \(n = 0\).
+
+    Then, we have
+    \[
+        \Expt\brac{X_{n + 1}} = \Expt\brac{\Expt\brac{\Conditional{X_{n + 1}}{X_n}}}.
+    \]
+
+    Conditioning upon the event \(X_n = m\), we have
+    \begin{align*}
+        \Expt\brac{\Conditional{X_{n + 1}}{X_{n} = m}} &= \Expt\brac{Y_{1, n} + \cdots + Y_{m, n}} \\
+        &= m \cdot \Expt\brac{X_1}.
+    \end{align*}
+
+    Therefore,
+    \[
+        \Expt\brac{\Conditional{X_{n + 1}}{X_n}} = X_n \cdot \Expt\brac{X_1}.
+    \]
+
+    Hence,
+    \[
+        \Expt\brac{X_{n + 1}} = \Expt\brac{X_n \cdot \Expt\brac{X_1}} = \Expt\brac{X_1} \cdot \Expt\brac{X_n},
+    \]
+    finishing the inductive step, as desired.
+\end{proof}
+
+\begin{theorem}[Probability Generating Function of each Generation]
+    \label{thm:branching-processes-pgf}%
+    Let \(G\para{z} = \Expt\brac{z^{X_1}}\) and \(G_n\para{z} = \Expt\brac{z^{X_n}}\). Then
+    \[
+        G_{n + 1} \para{z} = G\para{G_{n} \para{z}} = G_n\para{G\para{z}} = G\para{G\para{\cdots G\para{z} \cdots}}.
+    \]  
+\end{theorem}
+
+\begin{proof}
+    We show from definition. We have
+    \begin{align*}
+        G_{n + 1} \para{z} &= \Expt\brac{z^{X_{n + 1}}} \\
+        &= \Expt\brac{\Expt\brac{\Conditional{z^{X_{n + 1}}}{X_n}}} \\
+        &= \Expt\brac{\Expt\brac{\Conditional{z^{Y_{1, n} + Y_{2, n} + \cdots + Y_{X_n, n}}}{X_n}}}.
+    \end{align*}
+
+    Conditioning on a particular value of \(X_n = m\), we have
+    \begin{align*}
+        \Expt\brac{\Conditional{z^{Y_{1, n} + Y_{2, n} + \cdots + Y_{X_n, n}}}{X_n = m}} &= \Expt\brac{z^{Y_{1, n} + Y_{2, n} + \cdots + Y_{m, n}}} \\
+        &= \para{G\para{z}}^{m}.
+    \end{align*}
+
+    Therefore,
+    \[
+        G\para{n + 1} \para{z} = \Expt\brac{\para{G\para{z}}^{X_n}} = G_n \para{G\para{z}}.
+    \]
+\end{proof}
+
+\subsection{Extinction Probability}
+
+We set
+\[
+    q = \Prob\para{X_n \text{ for some } n \geq 0},
+\]
+and
+\[
+    q_n = \Prob\para{X_n = 0}.
+\]
+
+\begin{definition}[Extinction Probability]
+    \label{def:exctinction-probability}%
+    The value \(q\) above is defined as the \emph{extinction probability}.
+\end{definition}
+
+Since we have \(\brce{X_n = 0} \subseteq \brce{X_{n + 1} = 0}\), we have \(q_n\) is increasing and converging to \(q\), by the continuity of probability measure (see \autoref{prop:continuity-of-probability-measure}).
+
+\begin{proposition}[Extinction Probability is a Fixed Point]
+    We have
+    \[
+        q_{n + 1} = G\para{q_n}, \quad \text{and} \quad q = G\para{q},
+    \]
+    where \(G\) is the probability generating function for \(X_1\).
+\end{proposition}
+
+\begin{proof}[of \(q = G\para{q}\) using \(q_{n + 1} = G\para{q_n}\)]
+    Since \(G\) is continuous and \(q_n\) converges to \(q\), we have \(q = G\para{q}\).
+\end{proof}
+
+\begin{proof}[of \(q_{n + 1} = G\para{q_n}\), using Probability Generating Function]
+    We have
+    \begin{align*}
+        q_{n + 1} &= \Prob\para{X_{n + 1} = 0} \\
+        &= G_{n + 1}\para{0} \\
+        &= G\para{G_{n} \para{0}} \\
+        &= G\para{\Prob\para{X_n} = 0} \\
+        &= G\para{q_n}.
+    \end{align*}
+\end{proof}
+
+\begin{proof}[of \(q_{n + 1} = G\para{q_n}\), conditioning upon \(X_1\)]
+    Conditioning upon \(X_1 = m\), let \(X_n^{\para{1}}, \ldots, X_n^{\para{m}}\) be independent and identically distributed branching processes with the same offspring as the original one, i.e., \(X_1\).
+
+    Then we have
+    \[
+        X_{n + 1} = X_{n}^{\para{1}} + \cdots + X_n^{\para{m}}.
+    \]
+
+    Therefore,
+    \begin{align*}
+        q_{n + 1} &= \Prob\para{X_{n + 1} = 0} \\
+        &= \sum_{m} \Prob\para{\Conditional{X_{n + 1} = 0}{X_1 = m}} \cdot \Prob\para{X_1 = m} \\
+        &= \sum_{m} \Prob\para{\Conditional{X_n^{\para{1}} + \cdots + X_n^{\para{m}} = 0}{X_1 = m}} \cdot \Prob\para{X_1 = m} \\
+        &= \sum_{m} \frac{\para{\Prob\para{X_n^{\para{1}} = 0}^{m}}}{q_n} \cdot \Prob\para{X_1 = m} \\
+        &= G\para{q_n},
+    \end{align*}
+    as desired.
+\end{proof}

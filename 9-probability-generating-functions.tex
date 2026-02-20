@@ -198,3 +198,91 @@ Similarly, we may find the factorial moments by taking the derivatives.
         \Prob\para{X = n} = p^{\para{n}} \para{0} \cdot \frac{1}{n!}.
     \]
 \end{proposition}
+
+\subsection{Sum of a Random Number of Random Variables}
+
+Let \(X_1, X_2, \ldots\) be independent and identically distributed, and let \(N\) be a random variable (independent) and take values in \(\NN\).
+
+We set the sum
+\[
+    S_n = X_1 + \cdots + X_n = \sum_{i = 1}^{n} X_i,
+\]
+and as a function,
+\[
+    S_n\para{\omega} = \sum_{i = 1}^{n} X_i\para{\omega}.
+\]
+
+\begin{definition}[Sum of a Random Number of Random Variables]
+    \label{def:sum-random-number-rvs}%
+    We define
+    \[
+        S_N \para{\omega} = S_{N\para{\omega}} \para{\omega} = \sum_{i = 1}^{N\para\omega} X_i\para{\omega}.
+    \]
+\end{definition}
+
+\begin{lemma}[Probability Generating Function of a Sum]
+    \label{lem:pgf-sum}%
+    Let \(q\para{z} = \Expt\brac{z^N}\) be the probability generating function of \(N\), and \(p\para{z} = \Expt\brac{z^{X_i}}\) be the probability generating function of \(X_i\)s. Then we have
+    \[
+        r\para{z} = \Expt\brac{z^{S_N}} = q\para{p\para{z}}.
+    \]
+\end{lemma}
+
+\begin{proof}[by Indicator Function]
+    We let \(r\para{z} = \Expt\brac{z^{S_N}}\). We have
+    \begin{align*}
+        r\para{z} &= \Expt\brac{z^{S_N}} \\
+        &= \sum_{n = 0}^{\infty} \brac{z^{S_N} \cdot \indicator\para{N = n}} \\
+        &= \sum_{n = 0}^{\infty} \Expt\brac{z^{S_n} \cdot \indicator \para{N = n}} \\
+        &= \sum_{n = 0}^{\infty} \Expt\brac{z^{X_1 + \cdots + X_n} \cdot \indicator\para{N = n}} \\
+        &= \sum_{n = 0}^{\infty} \Expt\brac{z^{X_1 + \cdots + X_n}} \cdot \Prob\para{N = n} \\
+        &= \sum_{n = 0}^{\infty} \para{p\para{z}}^{n} \cdot \Prob\para{N = n} \\
+        &= q\para{p\para{z}}.
+    \end{align*}
+\end{proof}
+
+\begin{proof}[by Conditional Expectation]
+    We have
+    \[
+        r\para{z} = \Expt\brac{z^{S_N}} = \Expt\brac{\Expt\brac{\Conditional{z^{S_N}}{N}}} = g\para{N},
+    \]
+    where
+    \begin{align*}
+        g\para{n} &= \Expt\brac{\Conditional{z^{S_N}}{N=n}} \\
+        &= \Expt\brac{\Conditional{z^{S_n}}{N = n}} \\
+        &= \Expt\brac{z^{S_n}} \\
+        &= \para{p\para{z}}^{n}.
+    \end{align*}
+
+    Hence, we have
+    \[
+        r\para{z} = \Expt\brac{p\para{z}^{N}} = q\para{p\para{z}}.
+    \]
+\end{proof}
+
+\begin{corollary}[Expectation of a Random Sum]
+    \label{cor:expt-random-sum}%
+    We have
+    \[
+        \Expt\brac{S_N} = \Expt\brac{N} \cdot \Expt\brac{X_i}.
+    \]
+\end{corollary}
+
+\begin{proof}
+    We have
+    \[
+        \Expt\brac{S_N} = r' \para{1^-} = q' \para{p\para{1^-}} \cdot p'\para{1^-} = \Expt\brac{N} \cdot \Expt\brac{X_i}.
+    \]
+\end{proof}
+
+\begin{corollary}[Variance of a Random Sum]
+    \label{cor:var-random-sum}%
+    We have
+    \[
+        \Var\para{S_N} = \Expt\brac{N} \cdot \Var\para{X_i} + \Var\para{N} \cdot \para{\Expt\brac{X_i}}^2.
+    \]
+\end{corollary}
+
+\begin{proof}
+    By differentiating the probability generating function twice.
+\end{proof}
