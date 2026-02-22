@@ -2,11 +2,11 @@
 
 \subsection{Properties of the Probability Measure}
 
-Let \(\para{\Omega, \mathcal{F}, \Prob}\) be a probability space. We give some useful properties of the probability measure \(\Prob\), other than those on the example sheets.
+Let \(\para{\Omega, \eventSpace, \Prob}\) be a probability space. We give some useful properties of the probability measure \(\Prob\), other than those on the example sheets.
 
 \begin{proposition}[Countable Subadditivity]
     \label{prop:countable-subadditivity}%
-    If \(\para{A_n}\) is a collection in \(\mathcal{F}\), then
+    If \(\para{A_n}\) is a collection in \(\eventSpace\), then
     \[
         \Prob\para{\bigcup_{n \in \NN} A_n} \leq \sum_{n \in \NN} \Prob\para{A_n}.
     \]
@@ -18,7 +18,7 @@ Let \(\para{\Omega, \mathcal{F}, \Prob}\) be a probability space. We give some u
         B_n = A_n \setminus \para{A_1 \cup A_2 \cup \cdots \cup A_{n - 1}}.
     \]
 
-    Then \(\para{B_n}\) is a disjoint collection of sets in \(\mathcal{F}\), and we have
+    Then \(\para{B_n}\) is a disjoint collection of sets in \(\eventSpace\), and we have
     \[
         \bigcup_{n \in \NN} B_n = \bigcup_{n \in \NN} A_n,
     \]
@@ -31,7 +31,7 @@ Let \(\para{\Omega, \mathcal{F}, \Prob}\) be a probability space. We give some u
 
 \begin{proposition}[Continuity of Probability Measure]
     \label{prop:continuity-of-probability-measure}%
-    For some \emph{increasing} sequence of events \(\para{A_n}_{n \in \NN}\) in \(\mathcal{F}\) (i.e., we have \(A_n \subseteq A_{n + 1}\) for all \(n \in \NN\)), then we have \(\para{\Prob\para{A_n}}\) is increasing in \(n\), and converges to the limit
+    For some \emph{increasing} sequence of events \(\para{A_n}_{n \in \NN}\) in \(\eventSpace\) (i.e., we have \(A_n \subseteq A_{n + 1}\) for all \(n \in \NN\)), then we have \(\para{\Prob\para{A_n}}\) is increasing in \(n\), and converges to the limit
     \[
         \Prob\para{A_n} \to \Prob\para{\bigcup_{n = 1}^{\infty} A_n}.
     \]
@@ -69,7 +69,7 @@ Let \(\para{\Omega, \mathcal{F}, \Prob}\) be a probability space. We give some u
 
 \begin{corollary}[Countinuity of Probability Measure for Decreasing Events]
     \label{cor:continuity-probability-measure-decreasing-sequence}%
-     For some \emph{decreasing} sequence of events \(\para{A_n}_{n \in \NN}\) in \(\mathcal{F}\) (i.e., we have \(A_n \supseteq A_{n + 1}\) for all \(n \in \NN\)), then we have \(\para{\Prob\para{A_n}}\) is decreasing in \(n\), and converges to the limit
+     For some \emph{decreasing} sequence of events \(\para{A_n}_{n \in \NN}\) in \(\eventSpace\) (i.e., we have \(A_n \supseteq A_{n + 1}\) for all \(n \in \NN\)), then we have \(\para{\Prob\para{A_n}}\) is decreasing in \(n\), and converges to the limit
     \[
         \Prob\para{A_n} \to \Prob\para{\bigcap_{n = 1}^{\infty} A_n}.
     \]
@@ -83,12 +83,12 @@ Let \(\para{\Omega, \mathcal{F}, \Prob}\) be a probability space. We give some u
     There is \emph{no} topology involved in play here -- this continuity is different, and the definition we gave above is what is meant for this probability measure.
 \end{remark}
 
-We recall that in terms of the cardinality (the cardinality measure on finite sets) that we have the Inclusion--Exclusion Principle. A similar formula holds for two events, \(A, B \in \mathcal{F}\), which says
+We recall that in terms of the cardinality (the cardinality measure on finite sets) that we have the Inclusion--Exclusion Principle. A similar formula holds for two events, \(A, B \in \eventSpace\), which says
 \[
     \Prob\para{A \cup B} = \Prob\para{A} + \Prob\para{B} - \Prob\para{A \cap B}.
 \]
 
-Applying this again to three events \(A, B, C \in \mathcal{F}\), we have
+Applying this again to three events \(A, B, C \in \eventSpace\), we have
 \begin{align*}
     \Prob\para{A \cup B \cup C} &=  \Prob\para{\para{A \cup B} \cup C}\\
     &= \Prob\para{A \cup B} + \Prob\para{C} - \Prob\para{\para{A \cap C} \cup \para{B \cap C}} \\
@@ -99,7 +99,7 @@ This leads to \autoref{thm:inclusion-exclusion}, the Inclusion--Exclusion Formul
 
 \begin{theorem}[Inclusion--Exclusion Formula]
     \label{thm:inclusion-exclusion}%%
-    If we have events \(A_1, A_2, \ldots, \mathcal{F}\), then we have
+    If we have events \(A_1, A_2, \ldots, \eventSpace\), then we have
     \[
         \Prob\para{\bigcup_{i = 1}^{n} A_i} = \sum_{k = 1}^{n} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}.
     \]
@@ -132,12 +132,12 @@ This leads to \autoref{thm:inclusion-exclusion}, the Inclusion--Exclusion Formul
 \end{proof}
 
 \begin{remark}
-    Let \(\Omega\) be a finite set, and \(\para{\Omega, \mathcal{F}, \Prob}\) be a probability space, where \(\Prob\) is the uniform measure
+    Let \(\Omega\) be a finite set, and \(\para{\Omega, \eventSpace, \Prob}\) be a probability space, where \(\Prob\) is the uniform measure
     \[
         \Prob\para{A} = \frac{\abs{A}}{\abs{\Omega}}.
     \]
 
-    Taking \(A_1, A_2, \ldots, A_n \in \mathcal{F}\), applying \autoref{thm:inclusion-exclusion} (Inclusion--Exclusion Formula) to \(\Prob\para{\bigcup_{i = 1}^{n} A_i}\), we have
+    Taking \(A_1, A_2, \ldots, A_n \in \eventSpace\), applying \autoref{thm:inclusion-exclusion} (Inclusion--Exclusion Formula) to \(\Prob\para{\bigcup_{i = 1}^{n} A_i}\), we have
     \[
         \abs{A_1 \cup A_2 \cup \cdots \cup A_n} = \sum_{k = 1}^{n} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_n \leq n} \abs{A_{i_1} \cap \cdots \cap A_{i_n}},
     \]
@@ -284,11 +284,11 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
 
 \subsection{Independence and Conditional Probability}
 
-Let \(\para{\Omega, \mathcal{F}, \Prob}\) be a probability space.
+Let \(\para{\Omega, \eventSpace, \Prob}\) be a probability space.
 
 \begin{definition}[Independence]
     \label{def:independence}%
-    We say two events \(A, B \in \mathcal{F}\) are \emph{independent}, denoted as \(A \indp B\), if
+    We say two events \(A, B \in \eventSpace\) are \emph{independent}, denoted as \(A \indp B\), if
     \[
         \Prob\para{A \cap B} = \Prob\para{A} \cdot \Prob\para{B}.
     \]
@@ -351,9 +351,9 @@ An idea closely related is conditional probability.
 
 \begin{definition}[Conditional Probability]
     \label{def:conditional-prob}%
-    Let \(B \in \mathcal{F}\) with non-zero measure, \(\Prob\para{B} > 0\).
+    Let \(B \in \eventSpace\) with non-zero measure, \(\Prob\para{B} > 0\).
 
-    For any \(A \in \mathcal{F}\), we define the conditional probability of \(A\) given \(B\), is given by
+    For any \(A \in \eventSpace\), we define the conditional probability of \(A\) given \(B\), is given by
     \[
         \Prob\para{\Conditional{A}{B}} = \frac{\Prob\para{A \cap B}}{\Prob\para{B}}.
     \]
@@ -366,7 +366,7 @@ If \(A \indp B\), then we have
 
 \begin{proposition}[Countable Additivity Property for Conditional Probability]
     \label{prop:countable-additivity-conditional}%
-    Let \(\para{A_n}_{n \in \NN}\) be a disjoint sequence of events in \(\mathcal{F}\). Then we have
+    Let \(\para{A_n}_{n \in \NN}\) be a disjoint sequence of events in \(\eventSpace\). Then we have
     \[
         \Prob\para{\Conditional{\bigcup_n A_n}{B}} = \sum_{n} \Prob\para{\Conditional{A_n}{B}}.
     \]
@@ -386,7 +386,7 @@ If \(A \indp B\), then we have
     \label{thm:law-total-probability}%
     Suppose that the events \(\para{B_n}_{n \in \NN}\) is a \emph{partition} of \(\Omega\), i.e. pairwise disjoint with union \(\Omega\), with positive measure. i.e. \(\Prob\para{B_n} > 0\).
 
-    Let \(A \in \mathcal{F}\). We have
+    Let \(A \in \eventSpace\). We have
     \[
         \Prob\para{A} = \sum_{n} \Prob\para{\Conditional{A}{B_n}} \Prob\para{B_n}.
     \]

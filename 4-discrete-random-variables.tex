@@ -1,8 +1,8 @@
 \section{Discrete Random Variables}
 
-We in this section study the probability spaces of the form \(\para{\Omega, \mathcal{F}, \Prob}\) where
+We in this section study the probability spaces of the form \(\para{\Omega, \eventSpace, \Prob}\) where
 \[
-    \Omega = \brce{\omega_1, \omega_2, \ldots} \quad \text{and} \quad \mathcal{F} = \powerset\para{\Omega}.
+    \Omega = \brce{\omega_1, \omega_2, \ldots} \quad \text{and} \quad \eventSpace = \powerset\para{\Omega}.
 \]
 
 The reason we study this countable case is as follows. If we know the probability of all the singletons \(\Prob\para{\brce{\omega_i}}\), then for all \(A \subseteq \Omega\), we have
@@ -186,9 +186,9 @@ The Poisson distribution can be used to model the number of occurrences of an ev
 
 \begin{definition}[Random Variable]
     \label{def:random-variable}%
-    For a probability space \(\para{\Omega, \mathcal{F}, \Prob}\), a \emph{random variable} is a function \(\functiondomain{X}{\Omega}{\RR}\) with the property that for all \(x \in \RR\), we have
+    For a probability space \(\para{\Omega, \eventSpace, \Prob}\), a \emph{random variable} is a function \(\functiondomain{X}{\Omega}{\RR}\) with the property that for all \(x \in \RR\), we have
     \[
-        \set{\omega \in \Omega}{X\para{\omega} \leq x} = X\inverse \para{\ocintv{-\infty}{\omega}} \in \mathcal{F}.
+        \set{\omega \in \Omega}{X\para{\omega} \leq x} = X\inverse \para{\ocintv{-\infty}{\omega}} \in \eventSpace.
     \]
 \end{definition}
 
@@ -205,14 +205,14 @@ The Poisson distribution can be used to model the number of occurrences of an ev
 
 \begin{definition}[Indicator Random Variable]
     \label{def:indicator-random-variable}%
-    The \emph{indicator} of a set \(A \in \mathcal{F}\) is denoted as
+    The \emph{indicator} of a set \(A \in \eventSpace\) is denoted as
     \[
         \indicator_{A} \para{\omega} = \indicator\para{\omega \in A} = \begin{cases}
             1, & \omega \in A, \\ 0, & \omega \in A\compl.
         \end{cases}
     \]
 
-    Since \(A \in \mathcal{F}\), \(\indicator_{A}\) is indeed a random variable, and we may restrict the co-domain to
+    Since \(A \in \eventSpace\), \(\indicator_{A}\) is indeed a random variable, and we may restrict the co-domain to
     \[
         \functiondomain{\indicator_{A}}{\Omega}{\brce{0, 1}}.
     \]
@@ -241,7 +241,7 @@ The Poisson distribution can be used to model the number of occurrences of an ev
     \begin{align*}
         &\phantom{=} X\inverse\para{\ocintv{-\infty}{x_1} \times \ocintv{-\infty}{x_2} \times \cdots \times \ocintv{-\infty}{x_n}} \\
         &= \set{\omega \in \Omega}{X_1 \para{\omega} \leq x_1 \land X_2 \para{\omega} \leq x_2 \land \cdots \land X_n \para{\omega} \leq x_n} \\
-        &\in \mathcal{F}.
+        &\in \eventSpace.
     \end{align*}
 
     Equivalently, this restriction can be stated as that all \(X_i\)s are real random variables, since

@@ -5,7 +5,7 @@ Now we consider some examples of probability spaces, where the outcomes are fini
 
 \begin{example}[Rolling a Fair Die]
     \label{ex:rolling-a-fair-die}%
-    We consider the outcomes \(\Omega = \brce{1, 2, \ldots, 6}\), and \(\mathcal{F} = \powerset\para{\Omega}\) for all subsets of \(\Omega\) (since \(\Omega\) is countable).
+    We consider the outcomes \(\Omega = \brce{1, 2, \ldots, 6}\), and \(\eventSpace = \powerset\para{\Omega}\) for all subsets of \(\Omega\) (since \(\Omega\) is countable).
         
     We naturally take for all \(\omega \in \Omega\),
     \[
@@ -23,9 +23,9 @@ Lots of situations are like this in real life, and we refer to such setup as \em
 
 \begin{definition}[Equally Likely Outcomes]
     \label{def:equally-likely-outcomes}%
-    For any finite set \(\Omega = \brce{\omega_1, \omega_2, \ldots, \omega_n}\), take \(\mathcal{F} = \powerset\para{\Omega}\). We define the probability measure to be
+    For any finite set \(\Omega = \brce{\omega_1, \omega_2, \ldots, \omega_n}\), take \(\eventSpace = \powerset\para{\Omega}\). We define the probability measure to be
     \[
-        \function{\Prob}{\mathcal{F}}{\ccintv{0}{1}}{A}{\frac{\abs{A}}{\abs{\Omega}}.}
+        \function{\Prob}{\eventSpace}{\ccintv{0}{1}}{A}{\frac{\abs{A}}{\abs{\Omega}}.}
     \]
 
     This is called the \emph{uniform probability distribution}.
@@ -70,7 +70,7 @@ The following examples also require counting on the numerator, which is the card
         \abs{\Omega} = 52! = 80,658,175,170,943,878,571,660,636,856,403,766,975,289,505,440,883,277,824,000,000,000,000.
     \]
     
-    Take \(\mathcal{F} = \powerset\para{\Omega}\). Then
+    Take \(\eventSpace = \powerset\para{\Omega}\). Then
     \[
         \Prob\para{\text{top 2 cards are aces}} = \frac{4 \times 3 \times 50!}{52!}.
     \]
@@ -105,7 +105,7 @@ The next example uses results on set cardinalities.
     \[
         \Omega = \brce{1, 2, \ldots, 365}^n,
     \]
-    and take \(\mathcal{F} = \powerset\para{\Omega}\). Hence, for all \(\omega \in \Omega\), we have
+    and take \(\eventSpace = \powerset\para{\Omega}\). Hence, for all \(\omega \in \Omega\), we have
     \[
         \Prob\para{\brce{\omega}} = \frac{1}{365^n}.
     \]
@@ -158,18 +158,18 @@ We start off by investigating some easy problems in combinatorics.
         
         Let the function space
         \[
-            \mathcal{F}\para{k, n} = \set{f}{\functiondomain{f}{\brce{1, 2, \ldots, k}}{\brce{1, 2, \ldots, n}}}.
+            \eventSpace\para{k, n} = \set{f}{\functiondomain{f}{\brce{1, 2, \ldots, k}}{\brce{1, 2, \ldots, n}}}.
         \]
         
         We define a bijection
         \[
-            \set{f \in \mathcal{F}\para{k, n}}{f \text{ is increasing}} \to \set{g \in \mathcal{F}\para{k, n + k - 1}}{g \text{ is strictly increasing}},
+            \set{f \in \eventSpace\para{k, n}}{f \text{ is increasing}} \to \set{g \in \eventSpace\para{k, n + k - 1}}{g \text{ is strictly increasing}},
         \]
         where \(g\para{i} = f\para{i} + i - 1\) that is strictly increasing. Hence, there are
         \[
             \binom{n + k - 1}{k}
         \]
-        such increasing functions in \(\mathcal{F}\para{k, n}\).
+        such increasing functions in \(\eventSpace\para{k, n}\).
     \end{enumerate}
 \end{examples}
 

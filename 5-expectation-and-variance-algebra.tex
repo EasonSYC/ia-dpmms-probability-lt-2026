@@ -125,7 +125,7 @@ When \(\Expt\brac{X}\) is well-defined, then we have
 
 \begin{example}[Expectation of Indicator]
     \label{ex:expectation-indicator}%
-    Recall the definition of the \emph{indicator} of an event \(A \in \mathcal{F}\) is \(\indicator\para{A}\). Let \(X = \indicator\para{A}\), then \(X\para{\omega} = \indicator\para{\omega \in A}\). Therefore, \(\Expt\brac{X} = \Prob\para{A}\).
+    Recall the definition of the \emph{indicator} of an event \(A \in \eventSpace\) is \(\indicator\para{A}\). Let \(X = \indicator\para{A}\), then \(X\para{\omega} = \indicator\para{\omega \in A}\). Therefore, \(\Expt\brac{X} = \Prob\para{A}\).
 \end{example}
 
 \begin{proposition}[Expectation of Function of Random Variable]
@@ -201,14 +201,14 @@ When \(\Expt\brac{X}\) is well-defined, then we have
 The indicator random variable gives an alternative proof of \autoref{thm:inclusion-exclusion} (Inclusion--Exclusion Formula).
 
 \begin{proof}[of \autoref{thm:inclusion-exclusion} (Inclusion--Exclusion Formula), using Indicator Functions]
-    First, note that for events \(A, B \in \mathcal{F}\),
+    First, note that for events \(A, B \in \eventSpace\),
     \begin{itemize}
         \item \(\indicator\para{A\compl} = 1 - \indicator\para{A}\);
         \item \(\indicator\para{A \cap B} = \indicator\para{A} \cdot \indicator\para{B}\); and for the union,
         \item \(\indicator\para{A \cup B} = 1 - \para{1 - \indicator\para{A}} \para{1 - \indicator\para{B}}\).
     \end{itemize}
 
-    More generally, for any \(A_1, A_2, \ldots, A_n \in \mathcal{F}\), we have
+    More generally, for any \(A_1, A_2, \ldots, A_n \in \eventSpace\), we have
     \begin{align*}
         \indicator\para{A_1 \cup A_2 \cup \cdots \cup A_n} &= 1 - \prod_{i = 1}^{n} \para{1 - \indicator\para{A_i}} \\
         &= \sum_{i = 1}^{n} \indicator \para{A_i} - \sum_{i_1 < i_2} \indicator\para{A_{i_1} \cap A_{i_2}} + \cdots + \para{-1}^{n + 1} \indicator\para{A_1 \cap \cdots \cap A_n}.
