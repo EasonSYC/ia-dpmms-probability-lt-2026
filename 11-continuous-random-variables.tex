@@ -1,0 +1,63 @@
+\section{Continuous Random Variables}
+
+We return to the axiomatic approach. Recall that in \autoref{def:random-variable}, we required that
+\[
+    \brce{X \leq x} = \set{\omega}{X\para{\omega} \leq x} \in \eventSpace.
+\]
+
+Recall we defined in \autoref{def:probability-distribution-function} the Probability/Cumulative Distribution Function. These look like \autoref{fig:cdf-discrete} for discrete random variables.
+
+\begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = {\(x\)},
+            ylabel = {\(F\para{x}\)},
+            xmin = -0.25, xmax = 4.25,
+            ymin = -0.25, ymax = 1.25,
+            xtick = \empty,
+            ytick = \empty,
+            domain = 0:1.05,
+            samples = 100,
+            clip = false
+        ]
+            \addplot[no marks, thick] coordinates {(-0.2, 0) (1.2, 0)};
+            \addplot[no marks, thick] coordinates {(1.2, 0.2) (1.7, 0.2)};
+            \addplot[no marks, thick] coordinates {(1.7, 0.4) (2.3, 0.4)};
+            \addplot[no marks, thick] coordinates {(2.3, 0.5) (2.8, 0.5)};
+            \addplot[no marks, thick] coordinates {(2.8, 0.8) (3.9, 0.8)};
+            \addplot[no marks, thick] coordinates {(3.9, 1) (4.2, 1)};
+
+            \addplot[dotted] coordinates {(1.2, 0) (1.2, 0.2)};
+            \addplot[dotted] coordinates {(1.7, 0.2) (1.7, 0.4)};
+            \addplot[dotted] coordinates {(2.3, 0.4) (2.3, 0.5)};
+            \addplot[dotted] coordinates {(2.8, 0.5) (2.8, 0.8)};
+            \addplot[dotted] coordinates {(3.9, 0.8) (3.9, 1)};
+
+            \addplot[only marks, mark=*, mark size=1.5pt] coordinates {(1.2, 0.2) (1.7, 0.4) (2.3, 0.5) (2.8, 0.8) (3.9, 1)};
+
+            \addplot[only marks, mark=o, mark size=1.5pt] coordinates {(1.2, 0) (1.7, 0.2) (2.3, 0.4) (2.8, 0.5) (3.9, 0.8)};
+        \end{axis}
+    \end{tikzpicture}
+
+    \caption{Probability Distribution Function for discrete Random Variables}
+    \label{fig:cdf-discrete}
+\end{figure}
+
+Although this function is discontinuous, we note that the left limit always exists (since the function is increasing), and the function is always right-continuous.
+
+Such functions are \emph{RCLL} (Right-Continuous with Left Limit), also called \emph{c\`{a}d\`{a}lag}. All probability distribution functions satisfy this property -- this is guaranteed from the definition.
+
+The probability distribution function satisfies the following properties.
+
+\begin{proposition}[Properties of Probability Distribution Function]
+    \label{prop:property-probability-distribution-fn}%
+    \begin{enumerate}
+        \item If \(x \leq y\), then \(F\para{x} \leq F\para{y}\).
+        \item For all \(a, b \in \RR\) with \(a < b\), we have
+        \[
+            \Prob\para{a < X \leq b} = F\para{b} - F\para{a}.
+        \]
+    \end{enumerate}
+\end{proposition}
