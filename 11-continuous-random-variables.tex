@@ -1,5 +1,7 @@
 \section{Continuous Random Variables}
 
+\subsection{Probability Distribution and Density Function}
+
 We return to the axiomatic approach. Recall that in \autoref{def:random-variable}, we required that
 \[
     \brce{X \leq x} = \set{\omega}{X\para{\omega} \leq x} \in \eventSpace.
@@ -47,7 +49,7 @@ Recall we defined in \autoref{def:probability-distribution-function} the Probabi
 
 Although this function is discontinuous, we note that the left limit always exists (since the function is increasing), and the function is always right-continuous.
 
-Such functions are \emph{RCLL} (Right-Continuous with Left Limit), also called \emph{c\`{a}d\`{a}lag}. All probability distribution functions satisfy this property -- this is guaranteed from the definition.
+Such functions are \emph{RCLL} (Right-Continuous with Left Limit), also called \emph{c\`{a}d\`{a}lag} -- and as we will soon see, all distribution functions satisfy this property.
 
 The probability distribution function satisfies the following properties.
 
@@ -59,5 +61,250 @@ The probability distribution function satisfies the following properties.
         \[
             \Prob\para{a < X \leq b} = F\para{b} - F\para{a}.
         \]
+        \item \(F\) is right continuous and \(F\) always has left limits, with
+        \[
+            F\para{x^-} = \lim_{y \to x^-} F\para{y} \leq F\para{x}.
+        \]
+        \item \(F\para{x^-} = \Prob\para{X < x}\).
+        \item \(\lim_{x \to \plusinfty} F\para{x} = 1\) and \(\lim_{x \to \minusinfty} F\para{x} = 0\).
     \end{enumerate}
 \end{proposition}
+
+\begin{proof}[of Second Property]
+    We have
+    \begin{align*}
+        \Prob\para{a < X \leq b} &= \Prob\para{X \leq b, X > a} \\
+        &= \Prob\para{X \leq b} - \Prob\para{X \leq b, X \leq a} \\
+        &= \Prob\para{X \leq b} - \Prob\para{X \leq a} \\
+        &= F\para{b} - F\para{a}.
+    \end{align*}
+\end{proof}
+
+\begin{proof}[of RCLL Peoperty]
+    We first prove the right-continuity. Let \(\para{x_n}\) be a decreasing sequence such that \(x_n \to x^+\) as \(n \to \infty\). We need to show \(F\para{x_n} \to F\para{X_n}\) as \(n \to \infty\).
+
+    We define the events
+    \[
+        A_n = \brce{x < X \leq x_n},
+    \]
+    and hence we have \(\Prob\para{A_n} = F\para{x_n} - F\para{x}\).
+
+    By \autoref{prop:continuity-of-probability-measure} (Continuity of Probability Measure), since \(A_{n + 1} \subseteq A_n\), we have \(\Prob\para{A_n} \to \Prob\para{\bigcap_n A_n}\), since \(\bigcap_{n \in \NN} A_n\), and hence
+    \[
+        \Prob\para{A_n} = F\para{x_n} - F\para{x} \to 0
+    \]
+    as \(n \to \infty\).
+
+    Since \(f\) is increasing, left limits always exist, with
+    \[
+        F\para{x^-} = \lim_{y \to x^-} F\para{y} \leq F\para{x}
+    \]
+    due to monotonic property.
+\end{proof}
+
+\begin{proof}[of Left Limit]
+    We note
+    \[
+        F\para{x^-} = \lim_{n \to \infty} F\para{x - \frac{1}{n}}.
+    \]
+
+    Define the events
+    \[
+        B_n = \brce{X \leq x - \frac{1}{n}}.
+    \]
+
+    We have \(B_n \subseteq B_{n + 1}\), and hence by \autoref{prop:continuity-of-probability-measure} (Continuity of Probability Measure),
+    \[
+        \Prob\para{B_n} \to \Prob\para{\bigcup_{n \in \NN} B_n} = \Prob\para{X < x}
+    \]
+    since \(\bigcup_{n \in \NN} B_n = \brce{X < x}\).
+\end{proof}
+
+We may now define a continuous random variable as follows.
+
+\begin{definition}[Continuous Random Variable]
+    \label{def:continuous-random-variable}%
+    A random variable \(X\) is \emph{continuous} if its probability distribution function is continuous. This means that
+    \[
+        F\para{x^-} = F\para{x},
+    \]
+    or equivalently,
+    \[
+        \Prob\para{X < x} = \Prob\para{X \leq x},
+    \]
+    or equivalently,
+    \[
+        \Prob\para{X = x} = 0
+    \]
+    for all \(x \in \RR\)
+\end{definition}
+
+We only work on continuous random variables whose probability distribution function is not only continuous, but also differentiable -- in which case we call the random variable to be \emph{absolutely continuous}.
+
+\begin{definition}[Probability Density Function]
+    \label{def:probability-density-function}%
+    We denote
+    \[
+        f\para{x} = F'\para{x}
+    \]
+    which is the \emph{probability density function} of \(X\).
+\end{definition}
+
+The intuition meaning of the probability density function is as follows. Take a very small interval \(\delta x\) around some \(x\), then we have
+\[
+    \Prob\para{x \leq X \leq x + \delta x} = \int_{x}^{x + \delta x} f\para{y} \Diff y \approx f\para{x} \cdot \delta x.
+\]
+
+In other words, we can think of \(f\para{x}\) as being proportional to the probability that \(X\) is close to \(x\).
+
+\begin{remark}
+    In probability theory, we generally work with Lebesgue integrals (so some weird counterexamples with Riemann integrals disappear). However,  in this course there will be no problem working with Riemann integrals. For examples, we shall not worry about cases where a function being not Riemann integrable but Lebesgue integrable.
+\end{remark}
+
+\begin{proposition}[Properties of Probability Density Function]
+    \label{prop:properties-probability-density-function}%
+    We have
+    \begin{enumerate}
+        \item \(f \geq 0\),
+        \item \(\int_{\minusinfty}^{\plusinfty} f\para{x} \Diff x = 1\),
+        \item \(F\para{x} = \int_{\minusinfty}^{x} f\para{y} \Diff y\), and more generally, for any \(A \subseteq \RR\), we have
+        \[
+            \Prob\para{X \in A} = \int_{A} f\para{x} \Diff x.
+        \]
+    \end{enumerate}
+\end{proposition}
+
+\subsection{Common Continuous Random Variables}
+
+\begin{definition}[Uniform Distribution]
+    \label{def:uniform-distribution}%
+    The \emph{uniform distribution} on \(\ccintv{a}{b}\) for \(a < b\), denoted as \(\Uniform\ccintv{a}{b}\), is given by the probability density function
+    \[
+        f\para{x} = \begin{cases}
+            \frac{1}{b - a}, & x \in \ccintv{a}{b}, \\
+            0, & \text{otherwise}.
+        \end{cases}
+    \]
+\end{definition}
+
+\begin{proposition}[Distribution Function of Uniform Distribution]
+    \label{prop:cdf-uniform}%
+    The uniform distribution has probability distribution function
+    \[
+        F\para{x} = \begin{cases}
+            0, & x \leq a, \\
+            \frac{x - a}{b - a}, & a < x \leq b, \\
+            1, & b < x.
+        \end{cases}
+    \]
+\end{proposition}
+
+\begin{definition}[Exponential Distribution]
+    \label{def:exponential-distribution}%
+    The \emph{exponential distribution} with parameter \(\lambda > 0\), denoted as \(\Exponential\para{\lambda}\), is given by the probability density function
+    \[
+        f\para{x} = \begin{cases}
+            \lambda e^{-\lambda x}, & x > 0, \\
+            0, & \text{otherwise}.
+        \end{cases}
+    \]
+\end{definition}
+
+\begin{proposition}[Distribution Function of Exponential Distribution]
+    \label{prop:cdf-exponential}%
+    The exponential distribution has probability distribution function
+    \[
+        F\para{x} = \begin{cases}
+            0, & x \leq 0, \\
+            1-  e^{-\lambda x}, & x > 0.
+        \end{cases}
+    \]
+
+    In other words, for \(x \geq 0\), we have \(\Prob\para{X \geq x} = e^{-\lambda x}\).
+\end{proposition}
+
+This could remind us of the geometric distribution. Indeed, let \(T \sim \Exponential \para{\lambda}\), with \(n \in \NN\), and denote the random variables \(T_n = \floor{nT}\).
+
+For \(k \in \NN\), we have
+\begin{align*}
+    \Prob\para{T_n \geq k} &= \Prob\para{nT \geq k} \\
+    &= \Prob\para{T \geq \frac{k}{n}} \\
+    &= e^{- \lambda \cdot \frac{k}{n}} \\
+    &= \para{e^{-{\frac{\lambda}{n}}}}^{k},
+\end{align*}
+and so we see \(T_n \sim \Geometric\para{1 - e^{-\lambda / n}}\), and if \(n\) is large,
+\[
+    e^{- \frac{\lambda}{n}} \approx \frac{\lambda}{n}
+\]
+as \(n\) becomes large. We have
+\[
+    \frac{T_n}{n} \to T
+\]
+as \(n \to \infty\), so we can obtain the exponential distribution as a (scaled) limit of geometric distributions.
+
+\begin{proposition}[Memoryless Property of Exponential Distribution]
+    \label{prop:memoryless-property-exponential}%
+    Suppose \(T \sim \Exponential\para{\lambda}\) for \(\lambda > 0\), and let \(t, s > 0\). We have
+    \[
+        \Prob\para{\Conditional{T \geq s + t}{T \geq s}} = \Prob\para{T \geq t}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    By definition,
+    \begin{align*}
+        \Prob\para{\Conditional{T \geq s + t}{T \geq s}} &= \frac{\Prob\para{T \geq s + t, T \geq s}}{\Prob\para{T \geq s}} \\
+        &= \frac{e^{-\lambda \para{s + t}}}{e^{-\lambda s}} \\
+        &= e^{-\lambda t} \\
+        &= \Prob\para{T \geq t}.
+    \end{align*}
+\end{proof}
+
+Notice that the geometric distribution has the same property as well. In a sense, the exponential distribution is the continuous version of the discrete geometric distribution.
+
+In fact, the exponential random variable is the only positive random variable with this property!
+
+\begin{theorem}[Memoryless Positive Random Variable is Exponential]
+    \label{thm:memoryless-rv-is-exponential}%
+    Let \(T\) be a positive random variable, which is not identically \(0\) or \(\plusinfty\). Then \(T\) the exponential distribution, if and only if \(T\) satisfies the memoryless property.
+\end{theorem}
+
+\begin{proof}
+    Suppose \(T\) has the memoryless property, we want to show that \(T\) is exponential. Set
+    \[
+        g\para{t} = \Prob\para{T \geq t}.
+    \]
+
+    Therefore, by definition,
+    \[
+        g\para{t + s} = g\para{t} \cdot g\para{s}.
+    \]
+
+    Therefore, for any \(t > 0\) and \(m \in \NN\), we have
+    \[
+        g\para{mt} = \para{g\para{t}}^m.
+    \]
+
+    In particular, taking \(t = 1\), set \(g\para{1} = \Prob\para{T \geq 1} = e^{-\lambda}\), then \(\lambda > 0\), and we have for any \(m \in \NN\),
+    \[
+        g\para{m} = e^{-\lambda m}.
+    \]
+
+    We also have that for \(m, n \in \NN\), that
+    \[
+        \para{g\para{\frac{m}{n}}}^{n} = g\para{m},
+    \]
+    and hence
+    \[
+        g\para{\frac{m}{n}} = e^{- \frac{\lambda m}{n}}.
+    \]
+
+    Therefore, \(g\para{r} = e^{-\lambda r}\) for any \(r \in \QQ, r > 0\).
+
+    It remains to show this for the whole positive real line. Let \(t > 0\) be an arbitrary real number, and let \(r, s \in \QQ\), \(r > 0\) such that \(s < t < r\) with \(\abs{s - r} \leq \epsilon\). Then by the decreasing property of \(g\), we have
+    \[
+        e^{-\lambda r} = g\para{r} \leq g\para{t} \leq g\para{s} = e^{-\lambda s}.
+    \]
+
+    Taking \(\epsilon \to 0\), we get \(g\para{t} = e^{-\lambda t}\) for any real \(t > 0\).
+\end{proof}
