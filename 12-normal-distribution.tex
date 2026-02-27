@@ -1,0 +1,142 @@
+\section{Normal Distribution}
+
+\subsection{Definition of Normal Distribution}
+
+We first prove that the density function is indeed a distribution.
+
+\begin{proposition}[Gaussian Integral]
+    \label{prop:gaussian-integral}%
+    For any \(\mu \in \RR\) and \(\sigma > 0\), we let
+    \[
+        f\para{x} = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{-\frac{\para{x - \mu}^2}{2 \sigma^2}}.
+    \]
+
+    Then
+    \[
+        \int_{\minusinfty}^{\plusinfty} f\para{x} \Diff x = 1.
+    \]
+\end{proposition}
+
+\begin{proof}
+    We have, using the substitution \(u = \frac{x - \mu}{\sigma}\), that
+    \begin{align*}
+        \int_{\minusinfty}^{\plusinfty} f\para{x} \Diff x &= \int_{\minusinfty}^{\plusinfty} \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{-\frac{\para{x - \mu}^2}{2 \sigma^2}} \Diff x \\
+        &= \int_{\minusinfty}^{\plusinfty} \frac{1}{\sqrt{2 \pi}} \exp\para{- \frac{u^2}{2}} \Diff u \\
+        &= 2 \int_{0}^{\plusinfty} \frac{1}{\sqrt{2 \pi}} \exp\para{- \frac{u^2}{2}} \Diff u.
+    \end{align*}
+
+    It remains to show that
+    \[
+        I = \int_{0}^{\plusinfty} \frac{1}{\sqrt{2 \pi}} \exp\para{- \frac{u^2}{2}} \Diff u = 1.
+    \]
+
+    We have
+    \begin{align*}
+        I^2 &= \frac{2}{\pi} \int_{0}^{\plusinfty} \Diff u \int_{0}^{\plusinfty} \Diff v \cdot \exp\para{- \frac{u^2}{2}} \cdot \exp\para{- \frac{v^2}{2}} \\
+        &= \frac{2}{\pi} \int_{0}^{\plusinfty} r \Diff r \int_{0}^{\frac{\pi}{2}} \Diff \theta \cdot \exp\para{- \frac{u^2 + v^2}{2}} \\
+        &= \int_{0}^{\plusinfty} r \cdot e^{-\frac{r^2}{2}} \Diff r \\
+        &= 1,
+    \end{align*}
+    and so \(I = 1\).
+\end{proof}
+
+\begin{definition}[Normal Distribution]
+    \label{def:normal}%
+    The distribution with the probability density function \(f\) given as above is the \emph{normal distribution} with mean \(\mu\) and variance \(\sigma^2\), denoted as \(\Normal\para{\mu, \sigma^2}\).
+\end{definition}
+
+\begin{proposition}[Mean and Variance of Normal Distribution]
+    \label{prop:mean-variance-normal}%
+    If \(X \sim \Normal\para{\mu, \sigma^2}\), then \(\Expt\brac{X} = \mu, \Var\para{X} = \sigma^2\).
+\end{proposition}
+
+\begin{proof}
+    For the mean, we have
+    \begin{align*}
+        \Expt\brac{X} &= \int_{\minusinfty}^{\plusinfty} x f\para{x} \Diff x \\
+        &= \int_{\minusinfty}^{\plusinfty} \para{x - \mu} f\para{x} \Diff x + \mu \int_{\minusinfty}^{\plusinfty} f\para{x} \Diff x \\
+        &= \mu + \int_{\minusinfty}^{\plusinfty} \para{x - \mu} \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{-\frac{\para{x - \mu}^2}{2 \sigma^2}} \Diff x.
+    \end{align*}
+
+    Noticing the second function is odd about \(\mu\), it must integrate to zero, so we have \(\Expt\brac{X} = \mu\).
+
+    For the variance, we have, using the substitution \(u = \frac{x - \mu}{\sigma^2}\)
+    \begin{align*}
+        \Var\para{X} &= \Expt\brac{\para{X - \mu}^2} \\
+        &=  \int_{\minusinfty}^{\plusinfty} \para{x - \mu}^2 \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{-\frac{\para{x - \mu}^2}{2 \sigma^2}} \Diff x \\
+        &= \sigma^2 \int_{\minusinfty}^{\plusinfty} \frac{u^2}{\sqrt{2\pi}} \cdot \exp\para{-\frac{u^2}{2}} \Diff u \\
+        &= \sigma^2.
+    \end{align*}
+\end{proof}
+
+\begin{definition}[Standard Normal Distribution]
+    \label{def:standard-normal}%
+    The distribution \(\Normal\para{0, 1}\) is the standard normal distribution. Its density function is denoted by
+    \[
+        \sNormPdf\para{x} = \frac{1}{\sqrt{2\pi}} \exp\para{- \frac{x^2}{2}}
+    \]
+    and its distribution function is denoted by
+    \[
+        \sNormCdf\para{x} = \int_{\minusinfty}^{x} \sNormPdf\para{x} \Diff x.
+    \]  
+\end{definition}
+
+\subsection{Transformation of Normal Random Variable}
+
+\begin{theorem}[Transformation of Random Variable]
+    \label{thm:transformation-of-random-variable}
+    Let \(X\) have density \(f\). Let \(g\) be a function which is either strictly increasing or strictly decreasing, and \(g\inverse\) is differentiable. Then \(g\para{X}\) has density given by
+    \[
+        f\para{g\inverse\para{x}} \cdot \abs{\DiffOp{x} g\inverse\para{x}}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Suppose \(g\) is strictly increasing. Then we have
+    \[
+        \Prob\para{g\para{X} \leq x} = \Prob\para{X \leq g\inverse\para{x}} = F\para{g\inverse\para{x}},
+    \]
+    and hence differentiating gives
+    \[
+        \DiffOp{x} \Prob\para{g \para{X} \leq x} = \DiffOp{x} F\para{g\inverse\para{x}} = f\para{g\inverse\para{x}} \DiffOp{x} g\inverse\para{x}.
+    \]
+
+    Suppose \(g\) now is strictly decreasing. Then
+    \[
+        \Prob\para{g\para{X} \leq x} = \Prob\para{X \geq g\inverse\para{x}} = 1 - F\para{g\inverse\para{x}},
+    \]
+    and hence differentiating gives
+    \[
+        \DiffOp{x} \Prob\para{g\para{X} \leq x} = - f\para{g\inverse\para{x}} \cdot \DiffOp{x} g\inverse\para{x} = f\para{g\inverse\para{x}} \cdot \abs{\DiffOp{x} g\inverse\para{x}}.
+    \]
+\end{proof}
+
+Now we restrict ourselves to the case where the transformation is linear.
+
+\begin{proposition}[Linear Transformation of Normal Random Variable is Normal]
+    \label{prop:lin-transformatino-normal}%
+    Let \(g\para{x} = ax + b\) for \(a \neq 0\) and \(b \in \RR\). Then for \(X \sim \Normal\para{\mu, \sigma^2}\), we have \(Y = g\para{X} \sim \Normal\para{a \mu + b, \para{a \sigma}^2}\).
+\end{proposition}
+
+\begin{proof}
+    Note \(g\inverse\para{x} = \frac{x - b}{a}\), and \(\DiffOp{x} g\inverse\para{x} = \frac{1}{a}\). Hence,
+    \begin{align*}
+        f_Y\para{y} &= f_X\para{g\inverse\para{y}} \cdot \abs{\DiffOp{y} g\inverse\para{y}} \\
+        &= \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{- \frac{\para{\frac{y - b}{a} - \mu}^2}{2 \sigma^2}} \cdot \frac{1}{\abs{a}} \\
+        &= \frac{1}{\sqrt{2 \pi \para{a \sigma}^2}} \exp\para{- \frac{\para{y - \para{a\mu + b}^2}}{2 a^2 \sigma^2}},
+    \end{align*}
+    and so \(Y \sim \Normal\para{a \mu + b, \para{a \sigma}^2}\).
+\end{proof}
+
+In particular, if \(X \sim \Normal\para{\mu, \sigma^2}\), we have
+\[
+    \frac{X - \mu}{\sigma} \sim \Normal\para{0, 1}
+\]
+is the standard normal. This is very useful. For example, if we want to find the probability that a normal distribution lies with in two standard deviations of the mean, we have
+\begin{align*}
+    \Prob\para{\mu - 2 \sigma < X < \mu + 2 \sigma} &= \Prob\para{-2\sigma < X - \mu < 2\sigma} \\
+    &= \Prob\para{-2 < \frac{X - \mu}{\sigma} < 2} \\
+    &= \sNormCdf\para{2} - \sNormCdf\para{-2}.
+\end{align*}
+
+By symmetry, we have \(\sNormCdf\para{x} + \sNormCdf\para{-x} = 2 \sNormCdf\para{0} = 1\), so this is equal to \(2 \sNormCdf\para{x} - 1\). Hence, by looking up tables, we can find this probability is approximately \(0.95\).

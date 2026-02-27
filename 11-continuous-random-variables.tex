@@ -308,3 +308,108 @@ In fact, the exponential random variable is the only positive random variable wi
 
     Taking \(\epsilon \to 0\), we get \(g\para{t} = e^{-\lambda t}\) for any real \(t > 0\).
 \end{proof}
+
+\subsection{Expectation and Variance for Continuous Random Variable}
+
+\begin{definition}[Expectation of Continuous Random Variable]
+    \label{def:expectation-continuous}%
+    For a non-negative continuous random variable \(X \geq 0\) with density \(f\), we define the expectation to be
+    \[
+        \Expt\brac{X} = \int_{0}^{\plusinfty} x f\para{x} \Diff x.
+    \]
+
+    For \(g \geq 0\), and a random variable \(X\), we define
+    \[
+        \Expt\brac{X} = \int_{\minusinfty}^{\plusinfty} g\para{x} f\para{x} \Diff x.
+    \]
+
+    For a general continuous random variable \(X\), let \(X_+ = \max\brce{X, 0}\) and \(X_- = \max\brce{-X, 0}\). If one of \(\Expt\brac{X_+}\) and \(\Expt\brac{X_-}\) is not infinity, then we may define
+    \[
+        \Expt\brac{X} = \Expt\brac{X_+} - \Expt\brac{X_-} = \int_{\minusinfty}^{\plusinfty} x f\para{x} \Diff x.
+    \]  
+\end{definition}
+
+Similar to the discrete case, we have the \emph{linearity} of expectation
+\[
+    \Expt\brac{\sum_{i = 1}^{n} a_i X_i} = \sum_{i = 1}^{n} a_i \Expt\brac{X_i}.
+\]
+
+\begin{lemma}[Expectation Formula for Non-Negative Continuous Random Variable]
+    \label{lem:formula-expectation-non-negative-continuous-random-variable}
+    Let \(X\) be a continuous random variable with \(X \geq 0\). Then
+    \[
+        \Expt\brac{X} = \int_{0}^{\plusinfty} \Prob\para{X \geq x} \Diff x.
+    \]
+\end{lemma}
+
+\begin{proof}
+    We have
+    \begin{align*}
+        \Expt\brac{X} &= \int_{0}^{\plusinfty} x \cdot f\para{x} \Diff x \\
+        &= \int_{0}^{\plusinfty} \para{\int_{0}^{x} 1 \Diff y} f\para{x} \Diff x \\
+        &= \int_{0}^{\plusinfty} \para{\int_{y}^{\infty} f\para{x} \Diff x} \Diff y \\
+        &= \int_{0}^{\plusinfty} \Prob\para{X \geq y} \Diff y. 
+    \end{align*}
+\end{proof}
+
+Recall in the discrete case, we have
+\[
+    X = \sum_{n = 1}^{\infty} \indicator\para{X \geq n}.
+\]
+
+Inspired by this, we may provide another proof.
+
+\begin{proof}[(Alternative, Slightly Unjustified)]
+    For the continuous case, we have
+    \[
+        X = \int_{0}^{\plusinfty} \indicator\para{X \geq x} \Diff x,
+    \]
+    and hence
+    \[
+        \Expt\brac{X} = \Expt\brac{\int_{0}^{\plusinfty} \indicator\para{X \geq x} \Diff x} = \int_{0}^{\plusinfty} \Expt\brac{\indicator\para{X \geq x}} \Diff x = \int_{0}^{\plusinfty} \Prob\para{X \geq x} \Diff x.
+    \]
+
+    Note that we have not justified swapping the integral and the expectation.
+\end{proof}
+
+The variance is defined identically to the discrete case
+\[
+    \Var\brac{X} = \Expt\brac{\para{X - \Expt\brac{X}}^2} = \Expt\brac{X^2} - \para{\Expt\brac{X}}^2.
+\]
+
+\begin{proposition}[Expectation of Uniform Random Variable]
+    \label{prop:expt-uniform}%
+    If \(X \sim \Uniform\ccintv{a}{b}\) for \(a < b\), we have
+    \[
+        \Expt\brac{X} = \frac{a + b}{2}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    We have
+    \[
+        \Expt\brac{X} = \int_{a}^{b} x \cdot \frac{1}{b - a} \Diff x = \frac{a + b}{2}.
+    \]
+\end{proof}
+
+\begin{proposition}[Expectation of Exponential Random Variable]
+    \label{prop:expt-exponential}%
+    If \(X \sim \Exponential\para{\lambda}\) for \(\lambda > 0\), we have
+    \[
+        \Expt\brac{X} = \frac{1}{\lambda.}
+    \]
+\end{proposition}
+
+\begin{proof}[from Definition]
+    We have
+    \[
+        \Expt\brac{X} = \int_{0}^{\plusinfty} x \cdot \lambda \cdot e^{-\lambda x} \Diff x = \frac{1}{\lambda}.
+    \]
+\end{proof}
+
+\begin{proof}[from \autoref{lem:formula-expectation-non-negative-continuous-random-variable}]
+    We have
+    \[
+        \Expt\brac{X} = \int_{0}^{\plusinfty} \Prob\para{X \geq x} \Diff x = \int_{0}^{\plusinfty} e^{-\lambda x} \Diff x = \frac{1}{\lambda}.
+    \]
+\end{proof}
