@@ -143,6 +143,15 @@ The continuous case is similar.
     Differentiating this gives the result, as desired.
 \end{proof}
 
+\begin{definition}[Convolution of Continuous Random Variables]
+    \label{def:convolution-crv}%
+    Let \(X, Y\) be two continuous random variables. Then the distribution of \(X + Y\), given by
+    \[
+        \int_{\minusinfty}^{\infty} f_X\para{x} f_Y\para{z - x} \Diff x
+    \]
+    is known as the \emph{convolution} of the two random variables.
+\end{definition}
+
 \subsection{Conditional Density}
 
 \begin{definition}[Conditional Density]
