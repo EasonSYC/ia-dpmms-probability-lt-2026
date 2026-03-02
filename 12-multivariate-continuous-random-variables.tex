@@ -1,0 +1,207 @@
+\section{Multivariate Continuous Random Variables}
+
+\subsection{Distribution, Density and Independence}
+
+\begin{definition}[Distribution and Density of Joint Continuous Random Variable]
+    \label{def:distribution-density-joint-crv}%
+    The joint continuous random variable \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) has \emph{probability density function} \(f\), if for all \(x_1, \ldots, x_n\), that
+    \[
+        \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n} = \int_{\minusinfty}^{x_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} \Diff y_n f\para{y_1, \ldots, y_n}.
+    \]
+
+    The left-hand side
+    \[
+        F \para{x_1, \ldots, x_n} = \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n}
+    \]
+    is the \emph{probability distribution function} of \(\vm{X}\).
+\end{definition}
+
+We have
+\[
+    f\para{x_1, \ldots, x_n} = \frac{\partial^n F}{\partial x_1 \cdots \partial x_n} \para{x_1, \ldots, x_n}.
+\]
+
+For all \(\mathcal{B} \subseteq \RR^n\), we have
+\[
+    \Prob\para{\para{X_1, \ldots, X_n} \in \mathcal{B}} = \int_{\mathcal{B}} f \para{y_1, \ldots, y_n} \Diff^n \vm{y}.
+\]
+
+\begin{definition}[Independence of Continuous Random Vaiables]
+    \label{def:independence-continuous-random-variables}%
+    We say the continuous random variables \(X_1, \ldots, X_n\) are \emph{independent}, if for all \(x_1, \ldots, x_n\), we have
+    \[
+        \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n} = \Prob\para{X_1 \leq x_1} \cdots \Prob\para{X_n \leq x_n}.
+    \]
+\end{definition}
+
+\begin{theorem}[Independence if and only if Density is Seperable]
+    \label{thm:rv-independent-density-separable}%
+    Let \(\vm{X} = \para{X_1, \ldots, X_n}\) have density \(f\).
+    \begin{enumerate}
+        \item Suppose \(X_1, \ldots, X_n\) are independent, with densities \(f_1, \ldots, f_n\) respectively. Then
+        \[
+            f\para{x_1, \ldots, x_n} = f_1\para{x_1} \cdots f_n\para{x_n}
+        \]
+        for all \(x_1, \ldots, x_n\).
+        \item Suppose \(f\) factorises into above, for some non-negative functions \(f_1, \ldots, f_n\). Then \(X_1, \ldots, X_n\) are independent, with densities proportional to \(f_1, \ldots, f_n\) respectively (i.e. up to normalisation).
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}[of First Part]
+    We investigate the distribution function. We have
+    \begin{align*}
+        \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n} &= \Prob\para{X_1 \leq x_1} \cdots \Prob\para{X_n \leq x_n} \\
+        &= \int_{\minusinfty}^{x_1} f_1 \para{y_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} f_n \para{y_n} \Diff y_n \\
+        &= \int_{\minusinfty}^{x_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} \Diff y_n f_1\para{y_1} f_2\para{y_2} \cdots f_n\para{y_n},
+    \end{align*}
+    so
+    \[
+        f\para{x_1, \ldots, x_n} = f_1\para{x_1} \cdots f_n\para{x_n}.
+    \]
+\end{proof}
+
+\begin{proof}[of Second Part]
+    We have that
+    \begin{align*}
+        \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n} &= \int_{\minusinfty}^{x_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} \Diff y_n f\para{y_1, \ldots, y_n} \\
+        &= \int_{\minusinfty}^{x_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} \Diff y_n f_1\para{y_1} \cdots f_n\para{y_n} \\
+        &= \int_{\minusinfty}^{x_1} f_1\para{y_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} f_n\para{y_n} \Diff y_n.
+    \end{align*}
+
+    But we have that
+    \[
+        \int_{\minusinfty}^{\plusinfty} \Diff x_1 \cdots \int_{\minusinfty}^{\plusinfty} \Diff x_n f_1\para{x_1} \cdots f_n\para{x_2} = 1,
+    \]
+    and hence
+    \[
+        \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n} = \frac{\int_{\minusinfty}^{x_1} f_1\para{y_1} \Diff y_1}{\int_{\minusinfty}^{\plusinfty} f_1\para{y_1} \Diff y_1} \cdots \frac{\int_{\minusinfty}^{x_1} f_n\para{y_n} \Diff y_n}{\int_{\minusinfty}^{\plusinfty} f_n\para{y_n} \Diff y_n}.
+    \]
+
+    So \(X_1, \ldots, X_n\) are independent, with densities
+    \[
+        \frac{f_i}{\int_{\minusinfty}^{\plusinfty} f_i\para{x} \Diff x}
+    \]
+    respectively.
+\end{proof}
+
+\subsection{Marginal Distribution and Density}
+
+\begin{definition}[Marginal Distribution and Density]
+    \label{def:marginal-distribution-density}%
+    For a joint continuous random variable \(\vm{X} = \para{X_1, X_2, \ldots, X_n}\), the \emph{marginal distribution} \(F_{X_i}\) and the \emph{marginal density} \(f_{X_i}\) of \(X_i\) are given by, respectively,
+    \[
+        F_{X_i} \para{x} = \Prob\para{X_i \leq x} = \Prob\para{X_1 \in \RR, \ldots, X_{i - 1} \in \RR, X_i \leq x, X_{i + 1} \in \RR, \ldots, X_n \in \RR}
+    \]
+    and
+    \[
+        f_{X_i} \para{x} = F_{X_i}'\para{x}.
+    \]
+\end{definition}
+
+\begin{proposition}[Integration Formula for Marginal Density and Distribution]
+    \label{prop:marginal-distribution-density-formula}%
+    Suppose \(\vm{X} = \para{X_1, \ldots, X_n}\) has density \(f\). Then we have
+    \[
+        F_{X_1} \para{x} = \int_{\minusinfty}^{x} \Diff x_1 \cdot \int_{\minusinfty}^{\plusinfty} \Diff x_2 \cdots \int_{\minusinfty}^{\plusinfty} \Diff x_n f\para{x_1, \ldots, x_n},
+    \]
+    and
+    \[
+        f_{X_1} \para{x} = \int_{\minusinfty}^{\plusinfty} \Diff x_2 \cdots \int_{\minusinfty}^{\plusinfty} \Diff x_n f\para{x, \ldots, x_n}.
+    \]
+\end{proposition}
+
+\subsection{Sum of Independent Random Variables}
+
+Suppose \(X\) and \(Y\) are independent random variables with densities \(f_X\) and \(f_Y\) respectively. What is the density of \(X + Y\)?
+
+In the discrete case, we recall this is given by the convolution
+\[
+    \Prob\para{X + Y = z} = \sum_{x = \minusinfty}^{\plusinfty} \Prob\para{X = x} \cdot \Prob\para{Y = z - x}.
+\]
+
+The continuous case is similar.
+
+\begin{proposition}[Distribution of Sum of Independent Continuous Random Variables]
+    \label{prop:dist-sum-indp-crv}%
+    Let \(X, Y\) be independent, continuous random variables. For the sum, we have
+    \[
+        f_{X + Y}\para{z} = \int_{\minusinfty}^{\infty} f_X\para{x} f_Y\para{z - x} \Diff x.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Investigating the distribution function, we have
+    \begin{align*}
+        \Prob\para{X + Y \leq z} &= \Prob\para{\para{X, Y} \in \set{\para{x, y} \in \RR^2}{x + y \leq z}} \\
+        &= \iint_{x + y \leq z} \Diff^2 \para{x, y} f_{X, Y} \para{x, y} \\
+        &= \iint_{x + y \leq z} \Diff^2 \para{x, y} f_{X} \para{x} f_{Y} \para{y} \\
+        &= \int_{\minusinfty}^{\plusinfty} \Diff x \int_{\minusinfty}^{z - x} \Diff y f_X\para{x} f_Y\para{y} \\
+        &= \int_{\minusinfty}^{\plusinfty} \Diff x \int_{\minusinfty}^{z} \Diff y f_X\para{x} f_Y\para{y - z} \\
+        &= \int_{\minusinfty}^{z} \Diff y \para{\int_{\minusinfty}^{\plusinfty} f_X\para{x} f_Y\para{y - x} \Diff x}.
+    \end{align*}
+
+    Differentiating this gives the result, as desired.
+\end{proof}
+
+\subsection{Conditional Density}
+
+\begin{definition}[Conditional Density]
+    \label{def:conditional-density}%
+    Let \(X, Y\) be two continuous random variables, with joint density \(f_{X, Y}\) and marginal densities \(f_{X}\) and \(f_{Y}\). The \emph{conditional density} of \(X\) given \(Y = y\) is
+    \[
+        f_{\bound{\Conditional{X}{Y}}} \para{\Conditional{x}{y}} = \frac{f_{X, Y}\para{x, y}}{f_Y\para{y}}
+    \]
+    for \(f_Y\para{y} > 0\).
+\end{definition}
+
+\begin{theorem}[Continuous Version of Law of Total Probability]
+    \label{thm:cont-law-total-prob}%
+    For continuous random variables \(X\) and \(Y\), we have
+    \[
+        f_X\para{x} = \int_{\minusinfty}^{\plusinfty} f_{X, Y} \para{x, y} \Diff y = \int_{\minusinfty}^{\plusinfty} f_{\bound{\Conditional{X}{Y}}} \para{\Conditional{X}{Y}} f_Y\para{y} \Diff y.
+    \]
+\end{theorem}
+
+\begin{definition}[Conditional Expectation for Continuous Random Variable]
+    \label{def:conditional-expectation-crv}%
+    For continuous random variables \(X\) and \(Y\), the \emph{conditional expectation} of \(X\) given \(Y\) is defined as
+    \[
+        \Expt\brac{\Conditional{X}{Y}} = g\para{Y},
+    \]
+    where we have
+    \[
+        g\para{y} = \Expt\brac{\Conditional{X}{Y = y}} = \int_{\minusinfty}^{\plusinfty} x f_{\bound{\Conditional{X}{Y}}} \para{\Conditional{x}{y}} \Diff x.
+    \]
+\end{definition}
+
+\subsection{Transformation of Continuous Random Variables}
+
+\begin{theorem}[Transformation of Joint Continuous Random Variables]
+    \label{thm:transformation-joint-continuous-random-variable}%
+    Let \(\vm{X}\) be a random variable with values in \(\mathcal{D} \subseteq \RR^n\) and density \(f\). Let
+    \[
+        \functiondomain{g}{\mathcal{D}}{g\para{\mathcal{D}} \subseteq \RR^n}
+    \]
+    be a bijection, with a continuous derivative on \(\mathcal{D}\), with
+    \[
+        \det g'\para{\vm{x}} \neq 0
+    \]
+    for any \(\vm{x} \in \mathcal{D}\). Then for any \(\vm{y} \in g\para{\mathcal{D}}\), the random variable \(\vm{Y} = g\para{\vm{X}}\) has density
+    \[
+        f_{\vm{Y}}\para{\vm{y}} = f_{\vm{X}} \para{g\inverse\para{\vm{y}}} \cdot \abs{\det \vm{J}},
+    \]
+    where \(\vm{J}\) is the \emph{Jacobian}, given by
+    \[
+        J_{i, j} = \PartialFrac{x_i}{y_j}
+    \]
+    where \(\vm{y} = g\para{\vm{x}}\).
+\end{theorem}
+
+\begin{example}[Transformation of Cartesian and Polar Form]
+    \label{ex:transformation-cartesian-polar}%
+    Let \(X, Y \sim \Normal\para{0, 1}\) be independent, and represent Cartesian coordinates in the plane. Let \(R, \Theta\) be the random variables for the usual polar coordinates, i.e.,
+    \[
+        X = R \cos \Theta, \quad Y = R \sin \Theta,
+    \]
+    restricting us to \(\Theta \in \cointv{0}{2\pi}\).
+\end{example}
