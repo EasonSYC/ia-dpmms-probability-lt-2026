@@ -213,4 +213,145 @@ The continuous case is similar.
         X = R \cos \Theta, \quad Y = R \sin \Theta,
     \]
     restricting us to \(\Theta \in \cointv{0}{2\pi}\).
+
+    Applying \autoref{thm:transformation-joint-continuous-random-variable}, we have7
+    \[
+        f_{\para{R, \Theta}} \para{r, \theta} = f_{\para{X, Y}} \para{r \cos \theta, r \sin \theta} \cdot \abs{\det \vm{J}},
+    \]
+    where the Jacobian is given by
+    \[
+        \vm{J} = \begin{pmatrix}
+            \cos \theta & - r \sin \theta \\
+            \sin \theta & r \cos \theta
+        \end{pmatrix},
+    \]
+    and so \(\abs{\det \vm{J}} = r\). Hence, using independence,
+    \begin{align*}
+        f_{\para{R, \Theta}} \para{r, \theta} &= f_X \para{r \cos \theta} \cdot f_Y \para{r \sin \theta} \cdot r \\
+        &= \frac{1}{\sqrt{2\pi}} \cdot e^{- \frac{r^2 \cos^2 \theta}{2}} \cdot \frac{1}{\sqrt{2 \pi}} \cdot e^{- \frac{r^2 \sin^2 \theta}{2}} \\
+        &= \frac{1}{2\pi} \cdot r \cdot e^{- \frac{r^2}{2}}.
+    \end{align*}
+
+    Therefore, \(\Theta \sim \Uniform\ccintv{0}{2\pi}\), and \(R \sim r e^{-\frac{r^2}{2}}\) for \(r > 0\). They are independent.
+\end{example}
+
+\subsection{Order Statistics of a Random Variable}
+
+Let \(X_1, \ldots, X_n\) be independent and identically distributed random variables, with probability distribution function \(F\) and density function \(f\).
+
+We order them from smallest to largest, which then gives
+\[
+    X_{\para{1}} \leq X_{\para{2}} \leq \cdots \leq X_{\para{n}},
+\]
+and we let \(Y_i = X_{\para{i}}\).
+
+\begin{definition}[Order Statistics]
+    \label{def:order-statistics}%
+    The \(Y_i\)s found above are the \emph{order statistics} of the sample.
+\end{definition}
+
+\begin{example}[Density of \(Y_1\) and \(Y_n\)]
+    \label{ex:density-y1-yn}%
+    For \(Y_1\), we have
+    \[
+        \Prob\para{Y_1 \leq x} = 1 - \Prob\para{Y_1 > x} = 1 - \para{\Prob\para{X_1 > x}}^n = 1 - \para{1 - F\para{x}}^n,
+    \]
+    and hence
+    \[
+        f_{Y_1} \para{x} = \DiffOp{x} \Prob\para{Y_1 \leq x} = n \para{1 - F\para{x}}^{n - 1} f\para{x}.
+    \]
+
+    From a similar argument, we have
+    \[
+        \Prob\para{Y_n \leq x} = \Prob\para{X_1 \leq x}^n = \para{F\para{x}}^n.
+    \]
+
+    Hence, differentiating gives
+    \[
+        f_{Y_n} \para{x} = n \para{F\para{x}}^{n - 1} f\para{x}.
+\]
+\end{example}
+
+\begin{proposition}[Density of Order Statistics]
+    \label{prop:density-order-stats}%
+    We have
+    \[
+        f_{\para{Y_1, \ldots, Y_n}} \para{x_1, \ldots, x_n} = \begin{cases}
+            n! f\para{x_1} \cdots f\para{x_n}, & x_1 < \cdots < x_n, \\
+            0, & \text{otherwise}.
+        \end{cases}
+    \]
+\end{proposition}
+
+\begin{proof}
+    For \(x_1 < x_2 < \cdots < x_n\), we have
+    \begin{align*}
+        F_{\para{Y_1, \ldots, Y_n}} \para{x_1, \ldots, x_n} &= \Prob\para{Y_1 \leq x_1, \ldots, Y_n \leq x_n} \\
+        &= n! \cdot \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n, X_1 \leq \cdots \leq X_n} \\
+        &= n! \cdot \int_{\RR} \Diff u_1 \cdots \int_{\RR} \Diff u_n \cdot f_{\para{X_1, \ldots, X_n}} \para{u_1, \ldots, u_n} \cdot \\
+        &\phantom{=} \quad \indicator \para{u_1 \leq x_1, \ldots, u_n \leq x_n, u_1 \leq \cdots \leq u_n} \\
+        &= n! \cdot \int_{\minusinfty}^{x_1} \Diff u_1 \int_{u_1}^{x_2} \Diff u_2 \cdots \int_{u_{n - 1}}^{x_n} \Diff u_n \cdot f\para{u_1} \cdots f\para{u_n}.
+    \end{align*}
+
+    Differentiating gives us
+    \[
+        f_{\para{Y_1, \ldots, Y_n}} \para{x_1, \ldots, x_n} = \begin{cases}
+            n! \cdot f\para{x_1} \cdots f\para{x_n}, & x_1 < \cdots < x_n, \\
+            0, & \text{otherwise}.
+        \end{cases}
+    \]
+\end{proof}
+
+In particular, note from the above that the \(Y_i\)s are not independent -- although this density function seems to be separable, it is piecewise where the pieces depend on the relation between the variables.
+
+\begin{example}[Order Statistics for Exponentials]
+    \label{ex:order-statistics-exp}%
+    Let \(X \sim \Exponential \para{\lambda}\) and \(Y \sim \Exponential \para{\mu}\), with \(X \indp Y\) and \(\lambda, \mu > 0\). Set \(Z = \min\brce{X, Y}\).
+
+    We have for \(z > 0\), that
+    \[
+        \Prob\para{Z \leq z} = 1 - \Prob\para{Z \geq z} = 1 - \Prob\para{X \geq z} \cdot \Prob\para{Y \geq z} = 1 - e^{- \para{\lambda + \mu} z}.
+    \]
+
+    This gives \(Z \sim \Exponential\para{\lambda + \mu}\).
+
+    Similarly, if \(X_i \sim \Exponential \para{\lambda_i}\) are independent, we have
+    \[
+        \min\brce{X_1, \ldots, X_n} \sim \Exponential\para{\sum_{i = 1}^{n} \lambda_i}.
+    \]
+
+    Now, suppose \(\lambda_1 = \cdots = \lambda_n = \lambda\), and let \(Y_1, Y_2, \ldots, Y_n\) be the order statistics.
+
+    We \(Z_1 = Y_1, Z_2 = Y_2 - Y_1, \ldots, Z_i = Y_i - Y_{i - 1}\). We find the density of \(\para{Z_1, \ldots, Z_n}\).
+
+    Let
+    \[
+        \vm{Z} = \begin{pmatrix}
+            Z_1 \\ \vdots \\ Z_n
+        \end{pmatrix},
+        \vm{Y} = \begin{pmatrix}
+            Y_1 \\ \vdots \\ Y_n
+        \end{pmatrix},
+        \vm{A} = \begin{pmatrix}
+             1 &  0 & 0 & \cdots &  0 &  0 &  0 \\
+            -1 &  1 & 0 & \cdots &  0 &  0 &  0 \\
+             0 & -1 & 1 & \cdots &  0 &  0 &  0 \\
+             \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
+
+             0 &  0 & 0 & \cdots & -1 &  1 & 0 \\
+             0 &  0 & 0 & \cdots &  0 & -1 & 1
+        \end{pmatrix}.
+    \]
+    so we have \(\vm{Z} = \vm{A} \vm{y}\), and \(\det \vm{A} = 1\). Hence, let \(\vm{z} = \vm{A} \vm{y}\), we have
+    \begin{align*}
+        f_{\para{Z_1, \ldots, Z_n}} \para{z_1, \ldots, z_n} &= f_{\para{Y_1, \ldots, Y_n}} \para{y_1, \ldots, y_n} \abs{\det \vm{A}} \\
+        &= n! \cdot f\para{y_1} \cdots f\para{y_n} \\
+        &= n! \lambda e^{-\lambda y_1} \cdots \lambda e^{-\lambda y_n} \\
+        &= \prod_{i = 1}^{n} \para{\para{n - i + 1} \lambda e^{-\lambda \para{n - i + 1} z_i}}.
+    \end{align*}
+
+    So the \(Z_i\)s are independent, and
+    \[
+        Z_i \sim \Exponential\para{\lambda \para{n - i + 1}}.
+    \]
 \end{example}

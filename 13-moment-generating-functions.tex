@@ -1,0 +1,71 @@
+\section{Moment Generating Functions}
+
+\begin{definition}[Moment Generating Function]
+    \label{def:moment-generating-fn}%
+    Let \(X\) be a random variable with density \(f\). The \emph{moment generating function} of \(X\) is defined to be
+    \[
+        m\para{\theta} = \Expt\brac{e^{\theta X}} = \int_{\RR} e^{\theta x} f\para{x} \Diff x
+    \]
+    whenever this is well-defined, and by convention we let \(m\para{0} = 1\).
+\end{definition}
+
+\begin{theorem}[Uniqueness of Moment Generating Function]
+    \label{thm:uniqueness-mgf}%
+    The moment generating function uniquely determines the distribution of a random variable, provided it is defined for an open interval of values of \(\theta\).
+\end{theorem}
+
+\begin{theorem}[Derivative of Moment Generating Function gives the Moment]
+    \label{thm:derivative-mgf-moment}%
+    Suppose the moment generating function is defined for an open interval of values of \(\theta\). Then
+    \[
+        m^{\para{r}} \para{0} = \rightbar{\DiffNFrac{m\para{\theta}}{\theta}{r}}_{\theta = 0} = \Expt\brac{X^r}.
+    \]
+\end{theorem}
+
+\begin{definition}[Gamma Distribution]
+    \label{def:gamma-distribution}%
+    The \emph{Gamma Distribution} with parameters \(n \in \NN\) and \(\lambda > 0\), denoted by \(\Gamma\para{n, \lambda}\), is given by the density function
+    \[
+        f\para{x} = \frac{e^{-\lambda x} \cdot \lambda^n \cdot x^{n - 1}}{\para{n - 1}!}
+    \]
+    for \(x > 0\).
+\end{definition}
+
+\begin{proposition}[Gamma Distribution is a Distribution]
+    \label{prop:gamma-distribution-integral}%
+    The Gamma Distribution is a distribution. In particular, its density function integrates to \(1\).
+\end{proposition}
+
+\begin{proof}
+    Let \(X \sim \Gamma\para{n, \lambda}\) have density \(f\). Then
+    \[
+        I_n = \int_{0}^{\plusinfty} f\para{x} \Diff x = \int_{0}^{\plusinfty}  \lambda e^{-\lambda x} \cdot \frac{\lambda^{n - 1} x^{n - 1}}{\para{n - 1}!} \Diff x.
+    \]
+
+    Hence,
+    \begin{align*}
+        I_n &= \int_{0}^{\plusinfty} e^{-\lambda x} \cdot \frac{\para{n - 1} \cdot \lambda^{n - 1} x^{n - 2}}{\para{n - 1}!} \Diff x \\
+        &= \int_{0}^{\plusinfty} \frac{e^{-\lambda x} \cdot \lambda^{n - 1} \cdot x^{n - 2}}{\para{n - 2}!} \Diff x \\
+        &= I_{n - 1},
+    \end{align*}
+    so all \(I_n\)s are equal to \(I_1\). We have
+    \[
+        I_1 = \int_{0}^{\plusinfty} \lambda e^{-\lambda x} \Diff x = 1,
+    \]
+    so \(f\) is a density.
+\end{proof}
+
+\begin{example}[Moment Generating Function of Gamma Distribution]
+    \label{ex:gamma-distribution-mgf}%
+    We have
+    \begin{align*}
+        m\para{\theta} = \Expt\brac{e^{\theta X}} &= \int_{0}^{\plusinfty} e^{\theta x} \cdot e^{- \lambda x} \cdot \frac{\lambda^n \cdot x^{n - 1}}{\para{n - 1}!} \Diff x \\
+        &= \int_{0}^{\plusinfty} e^{- \para{\lambda - \theta} x} \cdot \frac{\para{\lambda - \theta}^n \cdot x^{n - 1}}{\para{n - 1}!} \Diff x \cdot \frac{\lambda^n}{\para{\lambda - \theta}^n}.
+    \end{align*}
+
+    Therefore, if \(\theta < \lambda\), then
+    \[
+        m \para{\theta} = \para{\frac{\lambda}{\lambda - \theta}}^n
+    \]
+    for \(\theta < \lambda\).
+\end{example}
