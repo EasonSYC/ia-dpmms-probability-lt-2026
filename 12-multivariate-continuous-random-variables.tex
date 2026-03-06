@@ -355,3 +355,24 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
         Z_i \sim \Exponential\para{\lambda \para{n - i + 1}}.
     \]
 \end{example}
+
+\subsection{Expectation and Variance Algebra}
+
+\begin{definition}[Expectation and Variance of Multivariate Random Variable]
+    \label{def:expt-var-multivariate}%
+    For a random variable \(\vm{X}\), we define the \emph{mean}
+    \[
+        \boldsymbol{\mu} = \Expt\brac{\vm{X}} = \begin{pmatrix}
+            \Expt\brac{X_1} \\ \vdots \\ \Expt\brac{X_n}
+        \end{pmatrix},
+    \]
+    and the \emph{variance}
+    \[
+        \Var\para{\vm{X}} = \Expt\brac{\para{\vm{X} - \boldsymbol{\mu}} \para{\vm{X} - \boldsymbol{\mu}}\transpose}.
+    \]
+
+    Equivalently, the variance is defined as
+    \[
+        \Var\para{\vm{X}} = \para{\Cov\para{X_i, X_j}}_{i, j}.
+    \]
+\end{definition}

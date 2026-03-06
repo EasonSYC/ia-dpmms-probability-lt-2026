@@ -22,6 +22,18 @@
     \]
 \end{theorem}
 
+We may very easily find the moment generating function of the sum of independent random variables.
+
+\begin{claim}[Moment Generating Function of Sum of Independent Random Variables]
+    \label{claim:mgf-sum-independent}%
+    If the random variables \(X_1, \ldots, X_n\) are independent, then
+    \[
+        m\para{\theta} = \Expt\brac{e^{\theta \para{X_1 + \cdots + X_n}}} = \prod_{i = 1}^{n} \Expt\brac{e^{\theta X_i}}.
+    \]
+\end{claim}
+
+\subsection{Moment Generating Function of Standard Distributions}
+
 \begin{definition}[Gamma Distribution]
     \label{def:gamma-distribution}%
     The \emph{Gamma Distribution} with parameters \(n \in \NN\) and \(\lambda > 0\), denoted by \(\Gamma\para{n, \lambda}\), is given by the density function
@@ -69,3 +81,174 @@
     \]
     for \(\theta < \lambda\).
 \end{example}
+
+\begin{example}[Sum of Gamma Random Variables]
+    \label{ex:sum-gamma}%
+    Let \(X \sim \Gamma\para{n, \lambda}\) and \(Y \sim \Gamma\para{m, \lambda}\), with \(n, m \in \NN\) and \(\lambda > 0\), and \(X \indp Y\).
+
+    We have
+    \begin{align*}
+        \Expt\brac{e^{\theta \para{X + Y}}} &= \Expt\brac{e^{\theta X}} \cdot \Expt\brac{e^{\theta Y}} \\
+        &= \para{\frac{\lambda}{\lambda - \theta}}^n \cdot \para{\frac{\lambda}{\lambda - \theta}}^m \\
+        &= \para{\frac{\lambda}{\lambda - \theta}}^{n + m},
+    \end{align*}
+    and hence \(X + Y \sim \Gamma\para{n + m, \lambda}\).
+\end{example}
+
+\begin{example}[Sum of Exponential Random Variables]
+    \label{ex:sum-exponential}%
+    Let \(X_1, \ldots, X_n\) be independent and identically distributed \(\Exponential\para{\lambda} \sim \Gamma\para{1, \lambda}\) random variables, with \(\lambda > 0\). Then we have
+    \[
+        X_1 + \cdots + X_n \sim \Gamma\para{n, \lambda}.
+    \]
+\end{example}
+
+\begin{remark}
+    We specified for \(\Gamma\para{n, \lambda}\), that \(n \in \NN\). In fact, we may define \(\Gamma\para{\alpha, \lambda}\) for \(\alpha > 0\), where \(n\) is replaced by \(\alpha\), with the density function
+    \[
+        f\para{x} = \frac{e^{-\lambda x} \cdot \lambda^{\alpha} \cdot x^{\alpha - 1}}{\Gamma\para{\alpha}}
+    \]
+    where \(\Gamma\) is the \emph{Gamma Function}
+    \[
+        \Gamma\para{\alpha} = \int_{0}^{\plusinfty} e^{-x} \cdot x^{\alpha - 1} \Diff x.
+    \]
+\end{remark}
+
+\begin{definition}[Cauchy Distribution]
+    The \emph{Cauchy Distribution} is the continuous random variable defined by the density function
+    \[
+        f\para{x} = \frac{1}{\pi \para{1 + x^2}}
+    \]
+    for \(x \in \RR\).
+\end{definition}
+
+\begin{remark}
+    For any non-zero \(\theta\), we have
+    \[
+        m\para{\theta} = \int_{\minusinfty}^{\plusinfty} \frac{e^{\theta x}}{\pi \para{1 + x^2}} \Diff x = \plusinfty,
+    \]
+    while \(m\para{0} = 1\).
+\end{remark}
+
+Note that multiples of the Cauchy distribution therefore would have the same moment generating function -- so the condition on the moment generating functions to agree on an \emph{open set} of values is essential.
+
+\begin{example}[Moment Generating Function of Normal Distribution]
+    \label{ex:mgf-normal}%
+    For a normal distribution \(X \sim \Normal\para{\mu, \sigma^2}\), we have
+    \[
+        f\para{x} = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{- \frac{\para{x - \mu}^2}{2 \sigma^2}}
+    \]
+    for \(x \in \RR\). Therefore, we have
+    \begin{align*}
+        m\para{\theta} &= \Expt\brac{e^{\theta X}} \\
+        &= \int_{\minusinfty}^{\infty} e^{\theta x} \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{- \frac{\para{x - \mu}^2}{2 \sigma^2}} \Diff x.
+    \end{align*}
+
+    We may simplify the exponent as
+    \begin{align*}
+        \theta x - \frac{\para{x - \mu}^2}{2 \sigma^2} &= \theta x - \frac{x^2}{2 \sigma^2} + \frac{2 x \mu}{2 \sigma^2} - \frac{\mu^2}{2 \sigma^2} \\
+        &= - \frac{x^2}{2 \sigma^2} + 2 \cdot \frac{x}{2 \sigma^2} \para{\mu + \theta \sigma^2} - \frac{\mu^2}{2 \sigma^2} \\
+        &= - \frac{x^2}{2 \sigma^2} + 2 \cdot \frac{x}{2 \sigma^2} \para{\mu + \theta \sigma^2} - \frac{\para{mu + \theta \sigma^2}^2}{2 \sigma^2} + \frac{\para{\mu + \theta \sigma^2}^2}{2 \sigma^2} - \frac{\mu^2}{2 \sigma^2} \\
+        &= - \frac{1}{2 \sigma^2} \para{x - \para{\mu + \theta \sigma^2}}^2 + \frac{\mu^2}{2 \sigma^2} + \frac{2 \mu \theta \sigma^2}{2 \sigma^2} + \frac{\theta^2 \sigma^2}{2} - \frac{\mu^2}{2 \sigma^2} \\
+        &= - \frac{1}{2 \sigma^2} \para{x - \para{\mu + \theta \sigma^2}}^2 + \mu \theta + \frac{\theta^2 \sigma^2}{2}.
+    \end{align*}
+
+    Therefore, we have
+    \begin{align*}
+        m\para{\theta} &= \int_{\minusinfty}^{\plusinfty} \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{- \frac{\para{x - \para{\mu + \theta \sigma^2}}^2}{2 \sigma^2}} \Diff x  \cdot \exp \para{\mu \theta + \frac{\theta^2 \sigma^2}{2}} \\
+        &= \exp\para{\mu \theta + \frac{\theta^2 \sigma^2}{2}}.
+    \end{align*}
+
+    Now, suppose \(X \sim \Normal\para{\mu, \sigma^2}\) and \(Y \sim \Normal\para{\nu, \tau^2}\), and \(X \indp Y\).
+
+    Then, we have
+    \begin{align*}
+        m\para{\theta} &= \Expt\brac{e^{\theta \para{X + Y}}} \\
+        &= \exp\para{\mu \theta + \frac{\theta^2 \sigma^2}{2}} \cdot \exp\para{\nu \theta + \frac{\theta^2 \tau^2}{2}} \\
+        &= \exp\para{\para{\mu + \nu} \theta + \frac{\theta^2}{2} \para{\sigma^2 + \tau^2}}.
+    \end{align*}
+
+    Therefore, \(X + Y \sim \Normal\para{\mu + \nu, \sigma^2 + \tau^2}\).
+\end{example}
+
+\subsection{Multivariate Moment Generating Functions}
+
+\begin{definition}[Multivariate Moment Generating Function]
+    \label{def:multivariate-mgf}%
+    Let \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) be an \(n\)-dimensional random variable. Its \emph{moment generating function} is defined to be
+    \[
+        m\para{\boldsymbol{\theta}} = \Expt\brac{e^{\boldsymbol{\theta}\transpose \vm{X}}} = \Expt\brac{e^{\sum_{i = 1}^{n} \theta_i X_i}}
+    \]
+    where \(\boldsymbol{\theta} = \para{\theta_1, \ldots, \theta_n} \transpose\).
+\end{definition}
+
+\begin{theorem}[Uniqueness of Multivariate Moment Generating Function]
+    \label{thm:uniqueness-multivarite-mgf-moments}%
+    If the moment generating function is finite for an open set of values of \(\boldsymbol{\theta}\), then it uniquely determines the distribution, and we have
+    \[
+        \rightbar{\PartialNFrac{m}{\theta_i}{r}}_{\boldsymbol{\theta} = \vm{0}} = \Expt\brac{X_i^r}
+    \]
+    and
+    \[
+        \rightbar{\frac{\partial^{r + s} m}{\partial \theta_i^r \partial \theta_j^s}}_{\boldsymbol{\theta} = \vm{0}} = \Expt\brac{X_i^r \cdot X_j^s}.
+    \]
+\end{theorem}
+
+\begin{claim}[Independent Random Variables give Separable Moment Generating Function]
+    \label{claim:independent-rv-separable-mgf}%
+    Let \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) be a random variable. Then
+    \[
+        m\para{\boldsymbol{\theta}} = \prod_{i = 1}^{n} \Expt\brac{e^{\theta_i X_i}}
+    \]
+    if and only if \(X_1, \ldots, X_n\) are independent.
+\end{claim}
+
+\begin{proof}
+    If they are independent, this statement is straightforward.
+
+    If \(m\para{\boldsymbol{\theta}}\) factorises, then by \autoref{thm:uniqueness-multivarite-mgf-moments} (Uniqueness of Moment Generating Functions), we get that this \(\vm{X}\) agrees with the distribution when the \(X_i\)s are independent, so they must be independent.
+\end{proof}
+
+\subsection{Multivariate Gaussian Random Variable}
+
+\begin{definition}[Multivariate Gaussian Random Variable]
+    \label{def:multivariate-gaussian-rv}%
+    A random variable \(X\) with values in \(\RR\) is \emph{Gaussian}, if it could be written as
+    \[
+        X = \mu + \sigma Z
+    \]
+    where \(Z \sim \Normal\para{0, 1}\) and \(\mu \in \RR, \sigma \geq 0\). (This includes all normal distributions defined before and the trivial distribution.)
+
+    Let \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) be a random variable. Then \(\vm{X}\) is \emph{Gaussian}, if for any \(\vm{u} = \para{u_1, \ldots, u_n}\transpose \in \RR^n\), the dot product
+    \[
+        \vm{u}\transpose \vm{X} = \sum_{i = 1}^{n} u_i X_i
+    \]
+    is a Gaussian random variable in \(\RR\).
+\end{definition}
+
+\begin{claim}[Affine Transformation of Gaussian is Gaussian]
+    \label{claim:affine-transformation-preserves-gaussian}%
+    Let \(\vm{X} = \para{X_1, \ldots, X_n}\transpose \in \RR^n\) be Gaussian. Let \(\vm{A}\) be an \(m \times n\) matrix, and \(\vm{b} \in \RR^m\). Then the result
+    \[
+        \vm{A} \vm{X} + \vm{b}
+    \]
+    is also Gaussian.
+\end{claim}
+
+\begin{proof}
+    Let \(\vm{u} = \para{u_1, \ldots, u_m} \transpose \in \RR^m\) be arbitrary. We want to show \(\vm{u}\transpose \para{\vm{A} \vm{X} + \vm{b}}\) is Gaussian in \(\RR\). We have
+    \[
+        \vm{u}\transpose \para{\vm{A} \vm{X} + \vm{b}} = \vm{u}\transpose \vm{A} \vm{X} + \vm{u}\transpose \vm{b}.
+    \]
+
+    Let \(\vm{v} = \vm{A}\transpose \vm{u}\). Then we have
+    \[
+        \vm{u}\transpose \para{\vm{A} \vm{X} + \vm{b}} = \vm{v}\transpose \vm{X} + \vm{u}\transpose \vm{b}.
+    \]
+
+    \(\vm{v}\transpose \vm{X}\) is Gaussian in \(\RR\), since \(\vm{X}\) is Gaussian. Adding a constant to a Gaussian will still produce a Gaussian in \(\RR\). So
+    \[
+        \vm{u}\transpose \para{\vm{A} \vm{X} + \vm{b}}
+    \]
+    is Gaussian in \(\RR\), as desired.
+\end{proof}
