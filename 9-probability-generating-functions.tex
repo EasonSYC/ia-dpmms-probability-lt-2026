@@ -98,7 +98,7 @@ so the series converges absolutely for \(\abs{z} \leq 1\), and hence in particul
 
 \begin{example}[Probability Generating Function of Geometric Distribution]
     \label{ex:pgf-geometric}%
-    Suppose \(X \sim \Geometric\para{p}\). Then
+    Suppose \(X \sim \Geometric\para{p}\), where we use the convention of failures, starting from zero. Then
     \[
         \Expt\brac{z^X} = \sum_{r = 0}^{\infty} z^r \para{1 - p}^r p = \frac{p}{1 - z\para{1 - p}}.
     \]
