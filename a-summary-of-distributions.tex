@@ -53,7 +53,7 @@
         \hline \hline
         \textbf{Name} & \(\vm{X} \sim\) & \textbf{Parameters} & \(f_{\vm{X}} \para{\vm{x}}\) & \(F_{\vm{X}} \para{\vm{x}}\) & \(\vm{x} \in\) & \(\Expt\brac{\vm{X}}\) & \(\Var\para{\vm{X}}\) & \(\Expt\brac{e^{\vmb{\theta}\transpose \vm{X}}}\)\\
         \hline \hline
-        \makecell{Multivariate \\ Gaussian \\ (Non-Degenerate)} & \(\Normal\para{\vmb{\mu}, \vm{V}}\) & \makecell{\(\vmb{\mu} \in \RR^n\) \\ \(\vm{V} \posDef 0\)} & \(\displaystyle \frac{\exp\para{- \frac{1}{2} \para{\vm{x} - \vmb{\mu}}\transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}}{\sqrt{\para{2\pi}^n \det \vm{V}}}\) & / & \(\vm{x} \in \RR^n\) & \(\vmb{\mu}\) & \(\vm{V}\) & \(\dsty \exp\para{\vmb{\theta}\transpose \vmb{\mu} + \frac{1}{2} \vmb{\theta}\transpose \vm{V} \vmb{\theta}}\) 
+        \makecell{Multivariate \\ Gaussian \\ (Non-Degenerate)} & \(\Normal\para{\vmb{\mu}, \vm{V}}\) & \makecell{\(\vmb{\mu} \in \RR^n\) \\ \(\vm{V} \posDef 0\)} & \(\displaystyle \frac{\exp\para{- \frac{1}{2} \para{\vm{x} - \vmb{\mu}}\transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}}{\sqrt{\para{2\pi}^n \det \vm{V}}}\) & / & \(\RR^n\) & \(\vmb{\mu}\) & \(\vm{V}\) & \(\dsty \exp\para{\vmb{\theta}\transpose \vmb{\mu} + \frac{1}{2} \vmb{\theta}\transpose \vm{V} \vmb{\theta}}\) 
     \end{tabular}
     \caption{Summary of Continuous Distributions}
     \label{tab:summary-continuous-distribution}%
