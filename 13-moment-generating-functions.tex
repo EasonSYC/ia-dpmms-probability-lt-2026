@@ -177,20 +177,20 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
     \label{def:multivariate-mgf}%
     Let \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) be an \(n\)-dimensional random variable. Its \emph{moment generating function} is defined to be
     \[
-        m\para{\boldsymbol{\theta}} = \Expt\brac{e^{\boldsymbol{\theta}\transpose \vm{X}}} = \Expt\brac{e^{\sum_{i = 1}^{n} \theta_i X_i}}
+        m\para{\vmb{\theta}} = \Expt\brac{e^{\vmb{\theta}\transpose \vm{X}}} = \Expt\brac{e^{\sum_{i = 1}^{n} \theta_i X_i}}
     \]
-    where \(\boldsymbol{\theta} = \para{\theta_1, \ldots, \theta_n} \transpose\).
+    where \(\vmb{\theta} = \para{\theta_1, \ldots, \theta_n} \transpose\).
 \end{definition}
 
 \begin{theorem}[Uniqueness of Multivariate Moment Generating Function]
     \label{thm:uniqueness-multivarite-mgf-moments}%
-    If the moment generating function is finite for an open set of values of \(\boldsymbol{\theta}\), then it uniquely determines the distribution, and we have
+    If the moment generating function is finite for an open set of values of \(\vmb{\theta}\), then it uniquely determines the distribution, and we have
     \[
-        \rightbar{\PartialNFrac{m}{\theta_i}{r}}_{\boldsymbol{\theta} = \vm{0}} = \Expt\brac{X_i^r}
+        \rightbar{\PartialNFrac{m}{\theta_i}{r}}_{\vmb{\theta} = \vm{0}} = \Expt\brac{X_i^r}
     \]
     and
     \[
-        \rightbar{\frac{\partial^{r + s} m}{\partial \theta_i^r \partial \theta_j^s}}_{\boldsymbol{\theta} = \vm{0}} = \Expt\brac{X_i^r \cdot X_j^s}.
+        \rightbar{\frac{\partial^{r + s} m}{\partial \theta_i^r \partial \theta_j^s}}_{\vmb{\theta} = \vm{0}} = \Expt\brac{X_i^r \cdot X_j^s}.
     \]
 \end{theorem}
 
@@ -198,7 +198,7 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
     \label{claim:independent-rv-separable-mgf}%
     Let \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) be a random variable. Then
     \[
-        m\para{\boldsymbol{\theta}} = \prod_{i = 1}^{n} \Expt\brac{e^{\theta_i X_i}}
+        m\para{\vmb{\theta}} = \prod_{i = 1}^{n} \Expt\brac{e^{\theta_i X_i}}
     \]
     if and only if \(X_1, \ldots, X_n\) are independent.
 \end{claim}
@@ -206,7 +206,7 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
 \begin{proof}
     If they are independent, this statement is straightforward.
 
-    If \(m\para{\boldsymbol{\theta}}\) factorises, then by \autoref{thm:uniqueness-multivarite-mgf-moments} (Uniqueness of Moment Generating Functions), we get that this \(\vm{X}\) agrees with the distribution when the \(X_i\)s are independent, so they must be independent.
+    If \(m\para{\vmb{\theta}}\) factorises, then by \autoref{thm:uniqueness-multivarite-mgf-moments} (Uniqueness of Moment Generating Functions), we get that this \(\vm{X}\) agrees with the distribution when the \(X_i\)s are independent, so they must be independent.
 \end{proof}
 
 \subsection{Multivariate Gaussian Random Variable}
@@ -228,7 +228,7 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
 
 \begin{claim}[Affine Transformation of Gaussian is Gaussian]
     \label{claim:affine-transformation-preserves-gaussian}%
-    Let \(\vm{X} = \para{X_1, \ldots, X_n}\transpose \in \RR^n\) be Gaussian. Let \(\vm{A}\) be an \(m \times n\) matrix, and \(\vm{b} \in \RR^m\). Then the result
+    Let \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) be Gaussian. Let \(\vm{A}\) be an \(m \times n\) matrix, and \(\vm{b} \in \RR^m\). Then the result
     \[
         \vm{A} \vm{X} + \vm{b}
     \]
