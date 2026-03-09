@@ -252,3 +252,126 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
     \]
     is Gaussian in \(\RR\), as desired.
 \end{proof}
+
+\begin{proposition}[Moment Generating Function for Multivariate Gaussian]
+    \label{prop:mgf-multivariate-gaussian}%
+    Let \(\vm{X} = \para{X_1, \ldots, X_n}\) be a multivariate Gaussian random variable. Then its moment generating function, \(m\para{\vmb{\lambda}}\), is given by
+    \[
+        m\para{\vmb{\lambda}} = \Expt\brac{e^{\vmb{\lambda} \transpose \vm{X}}} = \exp\para{\vmb{\lambda} \transpose \vmb{\mu} + \frac{\vmb{\lambda} \transpose \vm{V} \vmb{\lambda}}{2}},
+    \]
+    where
+    \[
+        \vmb{\mu} = \Expt\brac{\vm{X}}, \quad \vm{V} = \Var\para{\vm{X}}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Note that \(\vmb{\lambda \transpose \vm{X}}\) is a normal distribution with parameters
+    \[
+        \Normal\para{\vmb{\lambda}\transpose\vmb{\mu}, \vmb{\lambda}\transpose \vm{V} \vmb{\lambda}}
+    \]
+    by \autoref{prop:expt-var-transform-multivariate-rv}. The result follows.
+\end{proof}
+
+Since the moment generating function (on an open set) uniquely characterises the distribution, it is sufficient to know the mean and the variance to characterise the multivariate Gaussian distribution.
+
+\begin{notation}
+    We write the Multivariate Gaussian distribution \(\vm{X}\) with mean \(\vmb{\mu} \in \RR^n\), and non-negative definite matrix \(\vm{V}\), as
+    \[
+        \vm{X} \sim \Normal\para{\vmb{\mu}, \vm{V}}.
+    \]
+\end{notation}
+
+The next question is, does the multivariate Gaussian always exist, for any specified mean and variance? We start with the simple case. 
+
+\begin{lemma}[Standard Normals produce a Multivariate Gaussian]
+    \label{lem:standard-normal-multivariate-gaussian}%
+    Let \(Z_1, \ldots, Z_n\) be independent and identically distributed \(\Normal\para{0, 1}\) random variables. Then the multivariate random variable
+    \[
+        \vm{Z} = \para{Z_1, \ldots, Z_n}
+    \]
+    is Gaussian. In particular,
+    \[
+        \vm{Z} \sim \Normal\para{\vm{0}, \identityM_n}.
+    \]
+\end{lemma}
+
+\begin{proof}
+    We find the moment generating function of \(\vm{u} \transpose \vm{Z}\). We have
+    \begin{align*}
+        m\para{\lambda} &= \Expt\brac{e^{\lambda \vm{u}\transpose \vm{Z}}} \\
+        &= \Expt\brac{e^{\lambda \sum_{i = 1}^{n} u_i Z_i}} \\
+        &= \prod_{i = 1}^{n} \Expt\brac{e^{\lambda u_i Z_i}} \\
+        &= \prod_{i = 1}^{n} \exp\para{\frac{\lambda^2 u_i^2}{2}} \\
+        &= \exp\para{\frac{\lambda^2 \abs{\vm{u}}^2}{2}}.
+    \end{align*}
+
+    Hence,
+    \[
+        \vm{u}\transpose \vm{Z} \sim \Normal \para{0, \abs{\vm{u}}^2}
+    \]
+    is normal, with the desired parameters, as desired.
+\end{proof}
+
+\begin{lemma}[Construction of Multivariate Gaussian]
+    \label{lem:construction-multivariate-gaussian}%
+    Let \(\vmb{\mu} \in \RR^n\), and \(\vm{V}\) be a non-negative definite matrix. Let \(Z_1, \ldots, Z_n\) be identically and independently distributed with \(\Normal\para{0, 1}\). Let \(\vm{Z} = \para{Z_1, \ldots, Z_n}\).
+
+    Then the random variable
+    \[
+        \vm{X} = \vmb{\mu} + \vmb{\sigma} \vm{Z}
+    \]
+    is Gaussian, with \(X \sim \Normal\para{\vmb{\mu}, \vm{V}}\), where \(\vmb{\sigma}\) is the square-root of \(\vm{V}\).
+\end{lemma}
+
+\begin{proof}
+    First, \(\vm{X}\) is Gaussian since it is a linear transformation of a Gaussian vector. We have \(\Expt\brac{\vm{X}} = \vmb{\mu}\). For the variance, we have
+    \begin{align*}
+        \Var\para{\vm{X}} &= \Expt\brac{\para{\vm{X} - \vmb{\mu}} \cdot \para{\vm{X} - \vmb{\mu}}\transpose} \\
+        &= \Expt\brac{\para{\vmb{\sigma} \cdot \vm{Z}} \cdot \para{\vm{Z}\transpose \cdot \vmb{\sigma}\transpose}} \\
+        &= \vmb{\sigma} \cdot \Expt\brac{\vm{Z} \cdot \vm{Z}\transpose} \vmb{\sigma}\transpose \\
+        &= \vmb{\sigma} \cdot \identityM_n \cdot \vmb{\sigma}\transpose \\
+        &= \vmb{\sigma} \cdot \vmb{\sigma} \\
+        &= \vm{V}.
+    \end{align*}
+\end{proof}
+
+We aim to find the density of a multivariate Gaussian next.
+
+\begin{proposition}[Density of Multivariate Gaussian, where ]
+    If \(\vm{V}\) is positive definite, then the density of \(\Normal\para{\vmb{\mu}, \vm{V}}\) is given by
+    \[
+        f_{\vm{X}}\para{\vm{x}} = \frac{1}{\sqrt{\para{2\pi}^n \det \vm{V}}} \exp\para{- \frac{\para{\vm{x} - \vmb{\mu}}\transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}{2}}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    We have \(\vm{X} = \vmb{\mu} + \vmb{\sigma} \vm{Z}\), where \(\vm{Z} \sim \Normal\para{\vm{0}, \identityM_n}\).
+
+    Therefore, \(\vm{Z} = \vmb{\sigma}\inverse \para{\vm{X} - \vmb{\mu}}\).
+
+    Hence,
+    \[
+        f_{\vm{X}} \para{\vm{x}} = f_{\vm{Z}} \para{\vmb{\sigma}\inverse \para{\vm{x} - \vmb{\mu}}} \cdot \abs{\det \vm{J}},
+    \]
+    where \(\vm{J} = \vmb{\sigma}\inverse\).
+
+    Hence,
+    \begin{align*}
+        f_{\vm{X}} \para{\vm{x}} &= f_{\vm{Z}} \para{\vmb{\sigma}\inverse \para{\vm{x} - \vmb{\mu}}} \cdot \abs{\det \vm{J}} \\
+        &= f_{\vm{Z}} \para{z_1, \cdots, z_n} \cdot \det\para{\vmb{\sigma} \inverse} \\
+        &= \frac{1}{\para{2 \pi}^{n / 2}} \exp\para{- \frac{\abs{\vm{z}}^2}{2}} \cdot \det\para{\vmb{\sigma}\inverse} \\
+        &= \frac{1}{\para{2 \pi}^{n / 2}} \exp\para{- \frac{\vm{z}\transpose \vm{z}}{2}} \frac{1}{\det \vmb{\sigma}}.
+    \end{align*}
+
+    Hence,
+    \[
+        f_{\vm{X}}\para{\vm{x}} = \frac{1}{\para{2 \pi}^{n / 2} \det \vmb{\sigma}} \exp\para{- \frac{\para{\vm{x} - \vmb{\mu}}\transpose \cdot \para{\vmb{\sigma}\inverse}\transpose \cdot \vmb{\sigma}\inverse \cdot \para{\vm{x} - \vmb{\mu}}}{2}}.
+    \]
+
+    We have \(\para{\vmb{\sigma}\inverse}\transpose = \vmb{\sigma}\inverse\), and \(\det\vmb{\sigma} = \sqrt{\det \vm{V}}\), and hence
+    \[
+        f_{\vm{X}}\para{\vm{x}} = \frac{1}{\sqrt{\para{2\pi}^n \det \vm{V}}} \exp\para{- \frac{\para{\vm{x} - \vmb{\mu}}\transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}{2}}
+    \]
+    as desired.
+\end{proof}

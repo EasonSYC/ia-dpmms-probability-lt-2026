@@ -376,3 +376,86 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
         \Var\para{\vm{X}} = \para{\Cov\para{X_i, X_j}}_{i, j}.
     \]
 \end{definition}
+
+\begin{proposition}[Expectation and Variance of Multivariate Random Variable]
+    \label{prop:expt-var-transform-multivariate-rv}%
+    We have
+    \[
+        \Expt\brac{\vm{u} \transpose \vm{X}} = \vm{u}\transpose \Expt\brac{\vm{X}}
+    \]
+    and
+    \[
+        \Var\para{\vm{u} \transpose \vm{X}} = \vm{u}\transpose \Var\para{\vm{X}} \vm{u}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    \[
+        \Expt\brac{\vm{u} \transpose \vm{X}} = \Expt\brac{\sum_{i = 1}^{n} u_i X_i} = \sum_{i = 1}^{n} u_i \Expt\brac{X_i} = \vm{u}\transpose \Expt\brac{X},
+    \]
+    and
+    \[
+        \Var\para{\vm{u} \transpose \vm{X}} = \Var\para{\sum_{i = 1}^{n} u_i X_i} = \sum_{i, j = 1}^{n} u_i \Cov\para{X_i, X_j} u_j = \vm{u}\transpose \vm{\Var\para{\vm{X}}} \vm{u}. 
+    \]
+\end{proof}
+
+\begin{definition}[Positive/Negative Definiteness]
+    \label{def:positive-negative-definiteness}%
+    Let \(\vm{M}\) be an \(n \times n\) real symmetric matrix. Then we say it is
+    \begin{itemize}
+        \item \emph{positive definite}, denoted as \(\vm{M} \posDef 0\), if for all \(\vm{u} \in \RR^n \setminus \brce{\vm{0}}\), we have \(\vm{u}\transpose \vm{M} \vm{u} > 0\);
+        \item \emph{positive semi-definite}, or \emph{non-negative definite}, denoted as \(\vm{M} \posDefEq 0\), if for all \(\vm{u} \in \RR^n\), we have \(\vm{u} \transpose \vm{M} \vm{u} \geq 0\);
+        \item \emph{negative definite}, denoted as \(\vm{M} \negDef 0\), if for all \(\vm{u} \in \RR^n \setminus \brce{\vm{0}}\), we have \(\vm{u}\transpose \vm{M} \vm{u} < 0\);
+        \item \emph{negative semi-definite}, or \emph{non-positive definite}, denoted as \(\vm{M} \negDefEq 0\), if for all \(\vm{u} \in \RR^n\), we have \(\vm{u} \transpose \vm{M} \vm{u} \leq 0\).
+    \end{itemize}
+
+    Equivalently, in terms of eigenvalues, it is
+    \begin{itemize}
+        \item \emph{positive definite}, if all its eigenvalues are positive;
+        \item \emph{positive semi-definite}, or \emph{non-negative definite}, if all its eigenvalues are non-negative;
+        \item \emph{negative definite}, if all its eigenvalues are negative;
+        \item \emph{negative semi-definite}, or \emph{non-positive definite}, if all its eigenvalues are non-positive.
+    \end{itemize}
+\end{definition}
+
+\begin{claim}[Variance is Non-Negative Definite]
+    \label{claim:variance-non-negative-definite}%
+    The variance of a multivariate distribution is non-negative definite.
+\end{claim}
+
+\begin{proof}
+    We have
+    \[
+        \Var\para{\vm{u}\transpose \vm{X}} = \vm{u}\transpose \Var\para{\vm{X}} \vm{u} \geq 0.
+    \]
+\end{proof}
+
+\begin{definition}[Square Root of Non-Negative Definite Matrix]
+    \label{def:sqrt-non-negative-definite-matrix}%
+    Let \(\vm{V}\) be a non-negative definite matrix, and let its orthogonal decomposition be
+    \[
+        \vm{V} = \vm{U}\transpose \vm{D} \vm{U}
+    \]
+    for an orthogonal matrix \(\vm{U}\transpose = \vm{U}\inverse\), and \(\vm{D}\) diagonal with
+    \[
+        \vm{D} = \diag\para{\lambda_1, \ldots, \lambda_n} = \begin{pmatrix}
+            \lambda_1 & & 0 \\
+             & \ddots & \\
+            0 & & \lambda_n
+        \end{pmatrix}
+    \]
+    with \(\lambda_i \geq 0\) for \(i = 1, \ldots, n\).
+
+    The \emph{square root} of \(\vm{V}\) is defined as
+    \[
+        \vmb{\sigma} = \vm{U}\transpose \sqrt{\vm{D}} \vm{U}
+    \]
+    where
+    \[
+        \sqrt{\vm{D}} = \diag\para{\sqrt{\lambda_1}, \ldots, \sqrt{\lambda_n}} = \begin{pmatrix}
+            \sqrt{\lambda_1} & & 0 \\
+             & \ddots & \\
+            0 & & \sqrt{\lambda_n}
+        \end{pmatrix}
+    \]
+\end{definition}
