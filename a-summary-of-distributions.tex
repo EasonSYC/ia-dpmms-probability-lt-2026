@@ -1,21 +1,31 @@
 \begin{landscape}
 \section{Summary of distributions}
 
+\newcommand{\dsty}{\displaystyle}
+
 \subsection{Discrete distributions}
 \begin{table}[ht!]
     \centering
     \begin{tabular}{c|cc|cc|cc|c}
-        \textbf{Name} & \(X \sim\) & \textbf{Parameters} & \(\Prob\para{X = x}\) & \textbf{Range of} \(x\) & \(\Expt\brac{X}\) & \(\Var\para{X}\) & \(\Expt\brac{z^X}\) \\
+        \hline \hline
+        \textbf{Name} & \(X \sim\) & \textbf{Parameters} & \(\Prob\para{X = x}\) & \(x \in\) & \(\Expt\brac{X}\) & \(\Var\para{X}\) & \(\Expt\brac{z^X}\) \\
         \hline\hline
         Bernoulli & \(\Bernoulli\para{p}\) & \(p \in \ccintv{0}{1}\) & \(p^x(1 - p)^{1 - x}\) & \(\brce{0, 1}\) & \(p\) & \(p \para{1 - p}\) & \(1 - p + pz\) \\
-        Binomial & \(\Binomial\para{n, p}\) & \(n \in \NN, p \in \ccintv{0}{1}\) & \(\displaystyle \binom{n}{k} p^x (1 - p)^{n - x}\) & \(\brce{0, \ldots, n}\) & \(np\) &\(np\para{1 - p}\) & \(\para{1 - p + pz}^n\)\\
-        Geometric (Trials) & \(\Geometric\para{p}\) & \(p \in \ocintv{0}{1}\) & \(p \para{1 - p}^{x - 1}\) & \(\NN\) & \(\displaystyle \frac{1}{p}\) & \(\displaystyle \frac{1 - p}{p^2}\) & \(\displaystyle \frac{pz}{1 - z\para{1 - p}}\) \\
-        Geometric (Failures) & \(\Geometric\para{p}\) & \(p \in \ocintv{0}{1}\) & \(p \para{1 - p}^{x}\) & \(\NN \cup \brce{0}\) & \(\displaystyle \frac{1 - p}{p}\) & \(\displaystyle \frac{1 - p}{p^2}\) & \(\displaystyle \frac{p}{1 - z\para{1 - p}}\) \\
-        Poisson & \(\Poisson\para{\lambda}\) & \(\lambda > 0\) & \(\displaystyle \frac{\lambda^x}{x!} \cdot e^{-\lambda}\) & \(\NN \cup \brce{0}\) & \(\lambda\) & \(\lambda\) & \(e^{\lambda(z - 1)}\) \\
+        \hline
+        Binomial & \(\Binomial\para{n, p}\) & \makecell{\(n \in \NN\) \\ \(p \in \ccintv{0}{1}\)} & \(\dsty \binom{n}{k} p^x (1 - p)^{n - x}\) & \(\brce{0, \ldots, n}\) & \(np\) &\(np\para{1 - p}\) & \(\para{1 - p + pz}^n\)\\
+        \hline
+        \makecell{Geometric \\ (Trials)} & \(\Geometric\para{p}\) & \(p \in \ocintv{0}{1}\) & \(p \para{1 - p}^{x - 1}\) & \(\NN\) & \(\dsty \frac{1}{p}\) & \(\dsty \frac{1 - p}{p^2}\) & \(\dsty \frac{pz}{1 - z\para{1 - p}}\) \\
+        \hline
+        \makecell{Geometric \\ (Failures)} & \(\Geometric\para{p}\) & \(p \in \ocintv{0}{1}\) & \(p \para{1 - p}^{x}\) & \(\NN \cup \brce{0}\) & \(\dsty \frac{1 - p}{p}\) & \(\dsty \frac{1 - p}{p^2}\) & \(\dsty \frac{p}{1 - z\para{1 - p}}\) \\
+        \hline
+        Poisson & \(\Poisson\para{\lambda}\) & \(\lambda > 0\) & \(\dsty \frac{\lambda^x}{x!} \cdot e^{-\lambda}\) & \(\NN \cup \brce{0}\) & \(\lambda\) & \(\lambda\) & \(e^{\lambda(z - 1)}\) \\
+        \hline
+        \makecell{Negative \\ Binomial} & \(\NegativeBinomial\para{r, p}\) & \makecell{\(r \in \NN\) \\ 
+        \(p \in \ccintv{0}{1}\)} & \(\dsty \binom{x + r - 1}{x} \para{1 - p}^x p^r\) & \(\NN \cup \brce{0}\) & \(\dsty \frac{r \para{1 - p}}{p}\) & \(\dsty \frac{r \para{1 - p}}{p^2}\) & \(\dsty \para{\frac{p}{1 - z \para{1 - p}}}^r\) \\
         \hline \hline
-        \textbf{Name} & \(\vm{X} \sim\) & \textbf{Parameters} & \(\Prob\para{\vm{X} = \vm{x}}\) & \textbf{Range of} \(\vm{x}\) & \(\Expt\brac{\vm{X}}\) & \textbf{N/A} & \textbf{N/A} \\
+        \textbf{Name} & \(\vm{X} \sim\) & \textbf{Parameters} & \(\Prob\para{\vm{X} = \vm{x}}\) & \(\vm{x} \in\) & \(\Expt\brac{\vm{X}}\) & \(\Var\para{\vm{X}}\) & \(\Expt\brac{z_1^{X_1} \cdots z_n^{X_n}}\)\\
         \hline \hline
-        Multinomial & \(\Multinomial\para{n, p_1, \ldots, p_k}\) & \(\substack{\textstyle n \in \NN, p_i \in \ccintv{0}{1} \\ \displaystyle \sum_{i = 1}^{k} p_i = 1}\) & \(\displaystyle \binom{n}{x_1, \ldots, x_k} p_1^{x_1} \cdots p_k^{x_k}\) & \(x_i \in \NN \cup \brce{0}, \displaystyle \sum_{i = 1}^{k} x_i = n\) & \(\para{n p_1, \ldots, n p_k}\) & N/A & N/A
+        Multinomial & \(\Multinomial\para{n, \vm{p}}\) & \makecell{\(n \in \NN\) \\ \(p_i \in \ccintv{0}{1}\) \\ \(\dsty \sum_{i = 1}^{k} p_i = 1\)} & \(\dsty \binom{n}{x_1, \ldots, x_k} p_1^{x_1} \cdots p_k^{x_k}\) & \makecell{\(x_i \in \NN \cup \brce{0}\) \\ \(\dsty \sum_{i = 1}^{k} x_i = n\)} & \(n \vm{p}\) & \makecell{\(\Var\para{X_i} = n p_i \para{1 - p_i}\) \\ \(\Cov\para{X_i, X_j} = -n p_i p_j, i \neq j\)} & \(\para{\vm{p}\transpose \vm{z}}^n\)
     \end{tabular}
     \caption{Summary of Discrete Distributions}
     \label{tab:summary-discrete-distribution}%
@@ -26,14 +36,24 @@
 \begin{table}[ht!]
     \centering
     \begin{tabular}{c|cc|ccc|cc|c}
-        \textbf{Name} & \(X \sim\) & \textbf{Parameters} & \(f_X\para{x}\) & \(F_X\para{x}\) & \textbf{Range of} \(x\) & \(\Expt\brac{X}\) & \(\Var\para{X}\) & \(\Expt\brac{e^{\theta X}}\) \\
         \hline\hline
-        Uniform & \(\Uniform\para{a, b}\) & \(a < b\) & \(\displaystyle \frac{1}{b - a}\) & \(\displaystyle \frac{x - a}{b - a}\) & \(\ccintv{a}{b}\) &\(\displaystyle\frac{a + b}{2}\) & \(\displaystyle \frac{1}{12}\para{b - a}^2\) & \(\displaystyle\frac{e^{\theta b} - e^{\theta a}}{\theta (b - a)}\) \\
-        Normal & \(\Normal\para{\lambda, \sigma^2}\) & \(\sigma > 0\) & \(\displaystyle \frac{1}{\sqrt{2\pi}\sigma}\exp\para{-\frac{(x - \mu)^2}{2\sigma^2}}\) & Non-Elementary & \(\RR\) & \(\mu\) & \(\sigma^2\) & \(e^{\theta\mu + \frac{1}{2}\theta^2\sigma^2}\)\\
-        Exponential & \(\Exponential\para{\lambda}\) & \(\lambda > 0\) & \(\lambda e^{-\lambda x}\) & \(1 - e^{-\lambda x}\) & \(\cointv{0}{\plusinfty}\) & \(\displaystyle \frac{1}{\lambda}\) & \(\displaystyle \frac{1}{\lambda^2}\) & \(\displaystyle \frac{\lambda}{\lambda - \theta}\) \\
-        Gamma (Integer) & \(\Gamma\para{n, \lambda}\) & \(n \in \NN, \lambda > 0\) & \(\displaystyle \frac{e^{-\lambda x} \cdot \lambda^n \cdot x^{n - 1}}{\para{n - 1}!}\) & Non-Elementary & \(\cointv{0}{\plusinfty}\) & \(\displaystyle\frac{n}{\lambda}\) & \(\displaystyle \frac{n}{\lambda^2}\) & \(\displaystyle\para{\frac{\lambda}{\lambda - \theta}}^n\) \\
-        Gamma (General) & \(\Gamma\para{\alpha, \lambda}\) & \(\alpha > 0, \lambda > 0\) & \(\displaystyle \frac{e^{-\lambda x} \cdot \lambda^{\alpha} \cdot x^{\alpha - 1}}{\Gamma\para{\alpha}}\) & Non-Elementary & \(\cointv{0}{\plusinfty}\) & \(\displaystyle\frac{\alpha}{\lambda}\) & \(\displaystyle \frac{\alpha}{\lambda^2}\) & \(\displaystyle\para{\frac{\lambda}{\lambda - \theta}}^{\alpha}\) \\
-        Cauchy & Cauchy & N/A & \(\displaystyle \frac{1}{\pi\para{1 + x^2}}\) & \(\displaystyle \frac{1}{\pi} \arctan x + \frac{1}{2}\) & \(\RR\) & Undefined & Undefined & Does Not Exist
+        \textbf{Name} & \(X \sim\) & \textbf{Parameters} & \(f_X\para{x}\) & \(F_X\para{x}\) & \(x \in\) & \(\Expt\brac{X}\) & \(\Var\para{X}\) & \(\Expt\brac{e^{\theta X}}\) \\
+        \hline\hline
+        Uniform & \(\Uniform\ccintv{a}{b}\) & \(a < b\) & \(\dsty \frac{1}{b - a}\) & \(\dsty \frac{x - a}{b - a}\) & \(\ccintv{a}{b}\) &\(\dsty\frac{a + b}{2}\) & \(\dsty \frac{1}{12}\para{b - a}^2\) & \(\dsty\frac{e^{\theta b} - e^{\theta a}}{\theta (b - a)}\) \\
+        \hline
+        Normal & \(\Normal\para{\lambda, \sigma^2}\) & \(\sigma > 0\) & \(\dsty \frac{1}{\sqrt{2\pi}\sigma}\exp\para{-\frac{(x - \mu)^2}{2\sigma^2}}\) & / & \(\RR\) & \(\mu\) & \(\sigma^2\) & \(e^{\theta\mu + \frac{1}{2}\theta^2\sigma^2}\)\\
+        \hline
+        Exponential & \(\Exponential\para{\lambda}\) & \(\lambda > 0\) & \(\lambda e^{-\lambda x}\) & \(1 - e^{-\lambda x}\) & \(\cointv{0}{\plusinfty}\) & \(\dsty \frac{1}{\lambda}\) & \(\dsty \frac{1}{\lambda^2}\) & \(\dsty \frac{\lambda}{\lambda - \theta}\) \\
+        \hline
+        \makecell{Gamma \\ (Integer)} & \(\Gamma\para{n, \lambda}\) & \makecell{\(n \in \NN\) \\ \(\lambda > 0\)} & \(\dsty \frac{e^{-\lambda x} \cdot \lambda^n \cdot x^{n - 1}}{\para{n - 1}!}\) & / & \(\cointv{0}{\plusinfty}\) & \(\dsty\frac{n}{\lambda}\) & \(\dsty \frac{n}{\lambda^2}\) & \(\dsty\para{\frac{\lambda}{\lambda - \theta}}^n\) \\
+        \hline
+        \makecell{Gamma \\ (General)} & \(\Gamma\para{\alpha, \lambda}\) & \makecell{\(\alpha > 0\) \\ \(\lambda > 0\)} & \(\dsty \frac{e^{-\lambda x} \cdot \lambda^{\alpha} \cdot x^{\alpha - 1}}{\Gamma\para{\alpha}}\) & / & \(\cointv{0}{\plusinfty}\) & \(\dsty\frac{\alpha}{\lambda}\) & \(\dsty \frac{\alpha}{\lambda^2}\) & \(\dsty\para{\frac{\lambda}{\lambda - \theta}}^{\alpha}\) \\
+        \hline
+        Cauchy & Cauchy & N/A & \(\dsty \frac{1}{\pi\para{1 + x^2}}\) & \(\dsty \frac{\arctan x}{\pi} + \frac{1}{2}\) & \(\RR\) & -- & -- & Undefined for \(\theta \neq 0\) \\
+        \hline \hline
+        \textbf{Name} & \(\vm{X} \sim\) & \textbf{Parameters} & \(f_{\vm{X}} \para{\vm{x}}\) & \(F_{\vm{X}} \para{\vm{x}}\) & \(\vm{x} \in\) & \(\Expt\brac{\vm{X}}\) & \(\Var\para{\vm{X}}\) & \(\Expt\brac{e^{\vmb{\theta}\transpose \vm{X}}}\)\\
+        \hline \hline
+        \makecell{Multivariate \\ Gaussian \\ (Non-Degenerate)} & \(\Normal\para{\vmb{\mu}, \vm{V}}\) & \makecell{\(\vmb{\mu} \in \RR^n\) \\ \(\vm{V} \posDef 0\)} & \(\displaystyle \frac{\exp\para{- \frac{1}{2} \para{\vm{x} - \vmb{\mu}}\transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}}{\sqrt{\para{2\pi}^n \det \vm{V}}}\) & / & \(\vm{x} \in \RR^n\) & \(\vmb{\mu}\) & \(\vm{V}\) & \(\dsty \exp\para{\vmb{\theta}\transpose \vmb{\mu} + \frac{1}{2} \vmb{\theta}\transpose \vm{V} \vmb{\theta}}\) 
     \end{tabular}
     \caption{Summary of Continuous Distributions}
     \label{tab:summary-continuous-distribution}%
