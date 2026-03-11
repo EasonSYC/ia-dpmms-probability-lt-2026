@@ -459,3 +459,58 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
         \end{pmatrix}
     \]
 \end{definition}
+
+\begin{claim}[Independence implies Variance is Diagonal]
+    \label{claim:indep-diagonal-variance}%
+    If \(X_1, \ldots, X_n\) are independent, then \(\vm{V}\) is a diagonal matrix.
+\end{claim}
+
+\begin{proof}
+    The non-diagonal arguments are pairwise covariances between \(X_i\) and \(X_j\) where \(i \neq j\).
+\end{proof}
+
+\subsubsection{Correlation}
+
+We restrict us to the two-dimensional case. Set \(\mu_1 = \Expt\brac{X_1}, \mu_2 = \Expt\brac{X_2}, \sigma_1^2 = \Var\para{X_1}, \sigma_2^2 = \Var\para{X_2}\).
+
+\begin{definition}[Correlation]
+   \label{def:corr}%
+    For two random variables \(X_1\) and \(X_2\), their \emph{correlation} is defined as
+    \[
+        \rho = \Corr\para{X_1, X_2} = \frac{\Cov\para{X_1, X_2}}{\sqrt{\Var\para{X_1} \Var\para{X_2}}}.
+    \]
+\end{definition}
+
+\begin{claim}[Correlation has Absolute Value no more than \(1\)]
+    \label{claim:corr-abs-val-no-more-one}%
+    The correlation satisfies \(\rho \in \ccintv{-1}{1}\).
+\end{claim}
+
+\begin{proof}
+    This simply comes from Cauchy--Schwartz inequality.
+\end{proof}
+
+\begin{claim}[Variance Matrix in terms of Correlation]
+    \label{claim:var-mat-corr}%
+    Let \(\sigma_1, \sigma_2 > 0\) and \(\rho \in \ccintv{-1}{1}\). Then the matrix
+    \[
+        \vm{V} = \begin{pmatrix}
+            \sigma_1^2 & \rho \sigma_1 \sigma_2 \\ \rho \sigma_1 \sigma_2 & \sigma_2^2
+        \end{pmatrix}
+    \]
+    is non-negative definite.
+\end{claim}
+
+\begin{proof}
+    Let \(\vm{u} \in \RR^2\) be arbitrary, and let \(\vm{u} = \begin{pmatrix}
+        u_1 \\ u_2
+    \end{pmatrix}\).
+
+    We have
+    \begin{align*}
+        \vm{u}\transpose \vm{V} \vm{u} &= \para{1 - \rho} \para{\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2} + \rho \para{\sigma_1 u_1 + \sigma_2 u_2}^2 \\
+        &= \para{1 + \rho} \para{\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2} - \rho \para{\sigma_1 u_1 - \sigma_2 u_2}^2.
+    \end{align*}
+
+    If \(\rho \in \ccintv{-1}{0}\) we use the second equality, and if \(\rho \in \ccintv{0}{1}\) we use the first equality.
+\end{proof}

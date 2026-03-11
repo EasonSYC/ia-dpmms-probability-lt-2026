@@ -338,7 +338,7 @@ The next question is, does the multivariate Gaussian always exist, for any speci
 
 We aim to find the density of a multivariate Gaussian next.
 
-\begin{proposition}[Density of Multivariate Gaussian, where ]
+\begin{proposition}[Density of Multivariate Gaussian with Positive Definite Variance]
     If \(\vm{V}\) is positive definite, then the density of \(\Normal\para{\vmb{\mu}, \vm{V}}\) is given by
     \[
         f_{\vm{X}}\para{\vm{x}} = \frac{1}{\sqrt{\para{2\pi}^n \det \vm{V}}} \exp\para{- \frac{\para{\vm{x} - \vmb{\mu}}\transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}{2}}.
@@ -374,4 +374,123 @@ We aim to find the density of a multivariate Gaussian next.
         f_{\vm{X}}\para{\vm{x}} = \frac{1}{\sqrt{\para{2\pi}^n \det \vm{V}}} \exp\para{- \frac{\para{\vm{x} - \vmb{\mu}}\transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}{2}}
     \]
     as desired.
+\end{proof}
+
+Now we look at the degenerate case, where one or more of the entries \(\lambda_i = 0\). By an orthogonal change of basis, we can assume that \(\vm{V}\) takes the form of
+\[
+    \vm{V} = \begin{pmatrix}
+        \vm{U} & 0 \\ 0 & 0
+    \end{pmatrix}
+\]
+where \(\vm{U}\) is a positive definite \(m \times m\) matrix, where \(m < n\).
+
+Under this change of basis, we have
+\[
+    \vmb{\mu} = \begin{pmatrix}
+        \vmb{\lambda} \\ \vmb{\nu}
+    \end{pmatrix}
+\]
+for \(\vmb{\lambda} \in \RR^m, \vmb{\nu} \in \RR^{n - m}\). Hence, we can write the random variable in the form
+\[
+    \vm{X} = \begin{pmatrix}
+        \vm{Y} \\ \vmb{\nu}
+    \end{pmatrix}
+\]
+where \(\vm{Y} \sim \Normal\para{\vmb{\lambda}, \vm{U}}\) and \(\vm{Y} \in \RR^m\). Hence, it has density
+\[
+    f_{\vm{Y}} \para{\vm{y}} = \frac{1}{\sqrt{\para{2 \pi}^m \det \vm{U}}} \exp \para{- \frac{\para{\vm{y} - \vmb{\lambda}}\transpose \vm{U}\inverse \para{\vm{y} - \vmb{\lambda}}}{2}}
+\]
+for the first \(m\) components.
+
+For a Gaussian random variable, we have the converse of \autoref{claim:indep-diagonal-variance} is in fact true!
+
+\begin{lemma}[Diagonal Variance implies Independence for Gaussian]
+    \label{lem:diagonal-variance-independence-gaussian}%
+    Let \(\vm{X} \sim \Normal\para{\vmb{\mu}, \vm{V}}\) where \(\vm{V}\) is positive definite. If \(\vm{V}\) is diagonal, then the \(X_i\)s are independent.
+\end{lemma}
+
+\begin{proof}[using Probability Density Function]
+    Let
+    \[
+        \vm{V} = \diag\para{\lambda_1, \ldots, \lambda_n},
+    \]
+    and
+    \[
+        \mu = \para{\mu_1, \ldots, \mu_n}\transpose.
+    \]
+
+    The probability density function of \(\vm{X}\) is given by
+    \begin{align*}
+        f_{\vm{X}} \para{\vm{x}} &= \frac{1}{\sqrt{\para{2 \pi}^n \det \vm{V}}} \exp \para{- \frac{\para{\vm{x} - \vmb{\mu}} \transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}{2}} \\
+        &= \frac{1}{\sqrt{\para{2\pi}^n \det \vm{V}}} \cdot \exp\para{- \sum_{i = 1}^{n} \frac{\para{x_i - \mu_i}^2}{2 \lambda_i}},
+    \end{align*}
+    and the density function factorises. Therefore, \(X_i \sim \Normal\para{\mu_i, \lambda_i}\) is independent.
+\end{proof}
+
+\begin{proof}[using Moment Generating Function]
+    We inspect the moment generation function. Recall that
+    \[
+        \vmb{\theta}\transpose \vm{X} \sim \Normal\para{\vmb{\theta}\transpose \vmb{\mu}, \vmb{\theta}\transpose \vm{V} \vmb{\theta}}.
+    \]
+    
+    We have
+    \begin{align*}
+        m\para{\vmb{\theta}} &= \exp\para{\vmb{\theta}\transpose \vmb{\mu} + \frac{\vmb{\theta}\transpose \vm{V} \vmb{\theta}}{2}} \\
+        &= \exp\para{\sum_{i = 1}^{n} \theta_i \mu_i + \sum_{i = 1}^{n} \frac{\theta_i^2 \lambda_i}{2}} \\
+        &= \prod_{i = 1}^{n} \exp\para{\theta_i \mu_i + \frac{\theta_i^2 \lambda_i}{2}}
+    \end{align*}
+    factorised into moment generating functions for \(\Normal\para{\mu_i, \lambda_i}\). Therefore, \(X_1, \ldots, X_n\) are independent.
+\end{proof}
+
+Therefore, combining \autoref{claim:indep-diagonal-variance} and \autoref{lem:diagonal-variance-independence-gaussian}, we have that the components of a Gaussian vector is independent, if and only if their pairwise covariances are zero.
+
+\subsection{Bivariate Gaussian Vector}
+
+\begin{definition}[Bivariate Gaussian Vector]
+    \label{def:bivariate-gaussian-vector}%
+    The 2-Dimensional case of a multivariate Gaussian random variable, defined in \autoref{def:multivariate-gaussian-rv}, is known as a \emph{Bivariate Gaussian Vector}.
+\end{definition}
+
+\begin{proposition}[Conditional Expectation for Bivariate Gaussian]
+    Let \(\para{X_1, X_2}\) be a bivariate Gaussian. Then we have
+    \[
+        \Expt\brac{\Conditional{X_2}{X_1}} = \mu_2 - a \mu_1 + a X_1,
+    \]
+    where
+    \[
+        a = \frac{\Cov\para{X_1, X_2}}{\Var\para{X_1}}.
+    \]
+\end{proposition}
+
+
+\begin{proof}
+    Let \(Y = X_2 - a X_1\) for some \(a \in \RR\). Then the vector
+    \[
+        \begin{pmatrix}
+            X_1 \\ Y
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            1 & 0 \\
+            -a & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+            X_1 \\ X_2
+        \end{pmatrix}
+    \]
+    is Gaussian. The covariance satisfies
+    \[
+        \Cov\para{X_1, Y} = \Cov\para{X_1, X_2 - a X_1} = \Cov\para{X_1, x_2} - a \Var\para{X_1}.
+    \]
+    
+    Taking
+    \[
+        a = \frac{\Cov\para{X_1, X_2}}{\Var\para{X_1}}
+    \]
+    gives \(\Cov\para{X_1, Y} = 0\), which in turn makes them independent. Hence,
+    \begin{align*}
+        \Expt\brac{\Conditional{X_2}{X_1}} &= \Expt\brac{\Conditional{X_2 - a X_1}{X_1}} + \Expt\brac{\Conditional{a X_1}{X_1}} \\
+        &= \Expt\brac{X_2 - a X_1} + a X_1 \\
+        &= \mu_2 - a \mu_1 + a X_1.
+    \end{align*}
 \end{proof}

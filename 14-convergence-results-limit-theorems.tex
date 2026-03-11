@@ -1,0 +1,33 @@
+\section{Convergence Results and Limit Theorems}
+
+\subsection{Convergence of Random Variable}
+
+\begin{definition}[Convergence in Probability]
+    \label{def:convergence-in-probability}%
+    A sequence of random variables \(\para{X_n}_{n \in \NN}\) \emph{converges} to a random variable \(X\) \emph{in probability}, denoted as
+    \[
+        X_n \toProb X,
+    \]
+    if
+    \[
+        \forall \epsilon > 0: \Prob\para{\abs{X_n - X} > \epsilon} \to 0
+    \]
+    as \(n \to \infty\).
+\end{definition}
+
+\begin{theorem}[Weak Law of Large Numbers]
+    \label{thm:weak-law-of-large-numbers}%
+    Let \(\para{X_n}\) be independent and identically distributed distributions with finite mean \(\mu\). Let
+    \[
+        S_n = X_1 + \cdots + X_n
+    \]
+    for all \(n \geq 1\). Then we have
+    \[
+        \frac{S_n}{n} \toProb \mu
+    \]
+    as \(n \to \infty\). In other words,
+    \[
+        \Prob\para{\abs{\frac{S_n}{n} - \mu} > \epsilon} \to 0
+    \]
+    as \(n \to \infty\).
+\end{theorem}
