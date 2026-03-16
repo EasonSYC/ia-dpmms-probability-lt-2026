@@ -173,7 +173,54 @@ This notion of convergence is strictly stronger than our previous notion.
     In other words, the cumulative distribution functions of \(X_n\) converges to the cumulative distribution function of \(X\), pointwise, wherever the cumulative distribution function of \(X\) is continuous.
 \end{definition}
 
-Convergence in probability implies convergence in distribution.
+\begin{claim}[Convergence in Probability implies Convergence in Distribution]
+    \label{claim:convergence-in-probability-implies-converges-in-distribution}%
+    If \(X_n \toProb X\) as \(n \to \infty\), then \(X_n \toDist X\) as \(n \to \infty\).
+\end{claim}
+
+\begin{proof}
+    Let \(x\) be a continuity point of \(F_X\). Let \(\epsilon > 0\) be arbitrary. We have
+    \[
+        \brce{X \leq x - \epsilon} \subseteq \brce{X_n \leq x} \cup \brce{\abs{X_n - X} > \epsilon},
+    \]
+    and
+    \[
+        \brce{X_n \leq x} \subseteq \brce{X \leq x + \epsilon} \cup \brce{\abs{X_n - X} > \epsilon}.
+    \]
+
+    Hence,
+    \[
+        \Prob\para{X \leq x - \epsilon} \leq \Prob\para{X_n \leq x} + \Prob\para{\abs{X_n - X} > \epsilon},
+    \]
+    and taking the limit inferior as \(n \to \infty\) gives
+    \[
+        F_X \para{x - \epsilon} \leq \liminf_{n \to \infty} F_{X_n} \para{x}.
+    \]
+
+    Similarly,
+    \[
+        \Prob\para{X_n \leq x} \leq \Prob\para{X \leq x + \epsilon} = \Prob\para{\abs{X_n - X} > \epsilon}
+    \]
+    and taking the limit superior gives
+    \[
+        \limsup_{n \to \infty} F_{X_n} \para{x} \leq F_X \para{x + \epsilon}.
+    \]
+
+    Hence,
+    \[
+        F_{X} \para{x - \epsilon} \leq \liminf_{n \to \infty} F_{X_n} \para{x} \leq \limsup_{n \to \infty} F_{X_n} \para{x} \leq F_X \para{x + \epsilon}.
+    \]
+
+    Letting \(\epsilon \to 0\), since \(x\) is a continuity point, we have
+    \[
+        \lim_{\epsilon \to 0} F_X\para{x - \epsilon} = \lim_{\epsilon \to 0} F_X\para{x + \epsilon} = F_X\para{x}
+    \]
+    and hence
+    \[
+        \liminf_{n \to \infty} F_{X_n} \para{x} = \limsup_{n \to \infty} F_{X_n} \para{x} = F_X \para{x}
+    \]
+    as desired.
+\end{proof}
 
 \subsection{Central Limit Theorem}
 
@@ -200,3 +247,149 @@ and we have
 is the standard normal.
 
 In fact, the normal distribution is \emph{universal} as it appears as the limit of the distribution of \(\frac{S_n - n \mu}{\sigma \sqrt{n}}\), no matter what the distribution of the random variables \(X_i\) is.
+
+\begin{theorem}[Central Limit Theorem]
+    \label{thm:clt}%
+    Let \(X_1, \ldots\) be independent and identically distributed with finite mean \(\mu\) and finite variance \(\sigma^2\). Let \(S_n = X_1 + \cdots + X_n\), then
+    \[
+        \frac{S_n - n \mu}{\sigma \sqrt{n}} \toProb Z
+    \]
+    where \(Z\) is the standard normal \(Z \sim \Normal\para{0, 1}\).
+
+    In other words, for all \(x \in \RR\), we have
+    \[
+        \Prob\para{\frac{S_n - n \mu}{\sigma \sqrt{n}} \leq x} \to \int_{\minusinfty}^{x}  \frac{e^{- y^2 / 2}}{\sqrt{2 \pi}} \Diff y = \sNormCdf\para{x}.
+    \]
+\end{theorem}
+
+We introduce this theorem on moment generating functions for the proof.
+
+\begin{theorem}[Continuity Property for Moment Generating Functions]
+    \label{thm:continuity-property-mgf}%
+    Suppose \(\para{X_n}\) are random variables with
+    \[
+        m_n \para{\theta} = \Expt\brac{e^{\theta X_n}},
+    \]
+    for \(\theta \in \RR\), and \(X\) be a random variable with
+    \[
+        m \para{\theta} = \Expt\brac{e^{\theta X}}.
+    \]
+
+    Assume \(m\para{\theta}\) is finite for some \(\theta \neq 0\). If \(m_n \para{\theta} \to m\para{\theta}\) for all \(\theta \in \RR\), then \(X_n \toDist X\) as \(n \to \infty\).
+\end{theorem}
+
+\begin{proof}[of \autoref{thm:clt} (Central Limit Theorem)]
+    Consider
+    \[
+        Y_i = \frac{X_i - \mu}{\sigma},
+    \]
+    then \(\Expt\brac{Y_i} = 0\) and \(\Var\para{Y_i} = 1\). Hence, it suffices to prove the theorem for \(X_1, X_2, \ldots\) with mean \(0\) and variance \(1\). We need to show
+    \[
+        \frac{S_n}{\sqrt{n}} \toDist \Normal\para{0, 1}
+    \]
+    as \(n \to \infty\).
+
+    Furthermore, we assume there is some \(\delta > 0\), such that
+    \[
+        \Expt\brac{e^{\delta X_1}} + \Expt\brac{e^{- \delta X_1}} < \infty.
+    \]
+
+    Let \(m\para{\theta} = \Expt\brac{e^{\theta X_1}}\)/ By \autoref{thm:continuity-property-mgf} (Continuity Property of Moment Generating Function), it suffices to show
+    \[
+        \Expt\brac{e^{\theta \frac{S_n}{\sqrt{n}}}} \to \Expt\brac{e^{\theta Z}} = e^{\frac{\theta^2}{2}}.
+    \]
+
+    Since the \(X_i\)s are independent and identically distributed with moment generating functions \(m\), we have
+    \[
+        \Expt\brac{e^{\theta \frac{S_n}{\sqrt{n}}}} = \para{m\para{\frac{\theta}{\sqrt{n}}}}^{n}.
+    \]
+
+    Hence,
+    \[
+        m\para{\frac{\theta}{\sqrt{n}}} = \Expt\brac{e^{\theta \frac{S_n}{\sqrt{n}}}} = 1 + \frac{\theta^2}{2n} + \Expt\brac{\sum_{k \geq 3} \frac{\theta^k}{\para{\sqrt{n}}^k} \cdot \frac{1}{k!} X_1^k}.
+    \]
+
+    We claim that the expectation of the remaining part has
+    \[
+        \abs{\Expt\brac{\sum_{k \geq 3} \theta^k \cdot \frac{1}{k!} X_1^k}} = \littleO\para{\abs{\theta}^2}
+    \]
+    as \(\theta \to 0\). If this is indeed true, we have
+    \[
+        m\para{\frac{\theta}{\sqrt{n}}} = 1 + \frac{\theta^2}{2n} + \littleO\para{\frac{\theta^2}{n}},
+    \]
+    and hence
+    \[
+        \para{m \para{\frac{\theta}{\sqrt{n}}}}^n \to e^{\theta^2 / 2}
+    \]
+    as \(n \to \infty\).
+
+    Indeed, let \(\abs{\theta} \leq \frac{\delta}{2}\), then we have
+    \begin{align*}
+        \abs{\Expt\brac{\sum_{k \geq 3} \frac{\theta^k X_1^k}{k!}}} &\leq \Expt\brac{\sum_{k \geq 3} \frac{\abs{\theta X_1}^k}{k!}} \\
+        &= \Expt\brac{\abs{\theta X_1}^3 \sum_{k \geq 0} \frac{\abs{\theta X_1}^k}{\para{k + 3}!}} \\
+        &\leq \Expt\brac{\abs{\theta X_1}^3 \exp\para{\abs{\theta X_1}}} \\
+        &\leq \Expt\brac{\abs{\theta X_1}^3 \cdot \exp\para{\frac{\delta}{2} \cdot \abs{X_1}}}.
+    \end{align*}
+
+    Observe that
+    \[
+        \abs{\theta X_1}^3 = \abs{\theta}^3 \cdot \frac{\abs{\frac{\delta}{2} X_1}^3}{3!} \cdot \frac{3!}{\para{\frac{\delta}{2}}^3} \leq C \cdot \abs{\theta}^3 \cdot e^{\frac{\delta}{2} \abs{X_1}}
+    \]
+    where
+    \[
+        C = 3! \cdot \frac{2^3}{\delta^3}
+    \]
+    is a constant. Hence,
+    \begin{align*}
+        \Expt\brac{\abs{\theta X_1}^3 \cdot \exp \para{\frac{\delta}{2} \cdot \abs{X_1}}} &\leq C \cdot \abs{\theta}^3 \cdot \Expt\brac{e^{\delta \abs{X_1}}} \\
+        &\leq C \cdot \abs{\theta}^3 \cdot \para{\Expt\brac{e^{\delta X_1} + e^{- \delta X_1}}}
+    \end{align*}
+    and hence
+    \[
+        \abs{\Expt\brac{\sum_{k \geq 3} \frac{\theta^k X_1^k}{k!}}} \leq C' \cdot \abs{\theta}^3
+    \]
+    for some constant \(C'\).
+\end{proof}
+
+A consequence of \autoref{thm:clt} (Central Limit Theorem) is
+\[
+    S_n \dot{\sim} \Normal\para{n \mu, n \sigma^2}
+\]
+for \(n\) large, and we have
+\[
+    s_N \approx n \mu + \sigma \sqrt{n} Z
+\]
+for a standard normal \(Z\), for large \(n\).
+
+\begin{example}[Application of Central Limit Theorem]
+    \label{ex:clt}%
+    \begin{itemize}
+        \item Let \(S_n \sim \Binomial\para{n. p}\), then \(S_n = X_1 + \cdots + X_n\) for \(X_i\) being independent and identically distributed \(\Bernoulli \para{p}\).
+
+        Hence,
+        \[
+            \frac{S_n - np}{\sqrt{n p \para{1 - p}}} \toDist \Normal\para{0, 1}.
+        \]
+
+        So
+        \[
+            S_n \dot{\sim} \Normal\para{np, np\para{1 - p}}
+        \]
+        for large \(n\).
+
+        \item Suppose instead that \(S_n \sim \Binomial\para{n, \frac{\lambda}{n}}\) for \(\lambda > 0\), and let \(S \sim \Poisson\para{\lambda}\). Then we have
+        \[
+            \Prob\para{S_n = x} \to \Prob\para{S = x}.
+        \]
+
+        \item Suppose now that \(S_n \sim \Poisson\para{n}\), then \(S_n = X_1 + \cdots + X_n\) for \(X_i\) being independent and identically distributed \(\Poisson \para{1}\). Hence,
+        \[
+            \frac{S_n - n}{\sqrt{n}} \toDist \Normal\para{0, 1},
+        \]
+        and hence
+        \[
+            S_n \dot{\sim} \Normal\para{n, n}.
+        \]
+    \end{itemize}
+   
+\end{example}
