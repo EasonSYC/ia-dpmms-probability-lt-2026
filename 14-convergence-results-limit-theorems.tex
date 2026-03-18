@@ -391,5 +391,59 @@ for a standard normal \(Z\), for large \(n\).
             S_n \dot{\sim} \Normal\para{n, n}.
         \]
     \end{itemize}
-   
+\end{example}
+
+\begin{example}[Sampling Error Estimation using Central Limit Theorem]
+    Suppose we hold a referendum, and a proportion \(p\) of individuals in inclined to vote `Yes'. In other words, every individual votes `Yes' with probability \(p\), and `No' with probability \(\para{1 - p}\), independently of each other.
+
+    We want to estimate \(p\). Sample \(N\) individuals at random, where \(N\) is large, and we record their votes. Let \(X_i\) be \(1\) if the \(i\)th individual voted `Yes', and \(0\) otherwise.
+
+    Set \(S_N = X_1 + \cdots + X_n\) be the number of `Yes' votes, and denote
+    \[
+        \hat{P}_N = \frac{S_N}{N} \toAlmostSure p
+    \]
+    by \autoref{thm:strong-law-of-large-numbers} (Strong Law of Large Numbers).
+    
+    We have \(S_N \sim \Binomial\para{N, p}\).
+    
+    Now, our goal is to estimate \(p\) with an accuracy of \(\pm 4\%\) with probability \(\geq 0.99\). How large should \(N\) to be to ensure this?
+
+    By \autoref{thm:clt} (Central Limit Theorem),
+    \[
+        S_N \approx Np + \sqrt{N p \para{1 - p}} Z
+    \]
+    for \(Z \sim \Normal\para{0, 1}\), where \(N\) is large. Rephrasing the question, we want to find \(N\), such that
+    \[
+        \Prob\para{\abs{\hat{P}_N - p} \geq 0.04} \leq 0.01.
+    \]
+
+    Hence, we have
+    \[
+        \hat{P}_N = \frac{S_N}{N} \approx p + \frac{\sqrt{p \para{1 - p}}}{\sqrt{N}} \cdot Z
+    \]  
+    for large \(N\). So we have
+    \[
+        \abs{\hat{P}_N} - p \approx \frac{\sqrt{p \para{1 - p}}}{\sqrt{N}} \cdot \abs{Z}.
+    \]
+
+    Furthermore, we have
+    \[
+        \Prob\para{\abs{Z} \geq z} = 2 \para{1 - \sNormCdf\para{z}}.
+    \]
+
+    Looking at standard tables, we have for \(z = 2.58\), we have
+    \[
+        \Prob\para{\abs{Z} \geq z} = 0.01.
+    \]
+
+    Hence, we may choose a sufficiently large \(N\), such that
+    \[
+        \frac{\sqrt{N}}{\sqrt{p \para{1 - p}}} \cdot 0.04 \geq 2.58.
+    \]
+
+    But we want this to hold for any \(p\), and note that
+    \[
+        \sqrt{p \para{1 - p}} \leq \frac{1}{2},
+    \]
+    so taking \(N \approx 1040\) should be sufficient.
 \end{example}

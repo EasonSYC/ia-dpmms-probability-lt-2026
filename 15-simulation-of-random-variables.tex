@@ -1,0 +1,94 @@
+\section{Simulation of Random Variables}
+
+\begin{example}[Simulating of Random Variable from Uniform Distribution]
+    \label{ex:simulation-from-uniform}%
+    Suppose \(X\) is a random variable with probability distribution function \(F\para{x} = \Prob\para{X \leq x}\), and suppose we know how to simulate \(U \sim \Uniform \ccintv{0}{1}\). How may we generate \(X\)?
+
+    \begin{itemize}
+        \item If \(F\) is one-to-one, i.e., \(F\) is strictly increasing. Set
+        \[
+            X = F\inverse\para{U},
+        \]
+        then
+        \[
+            \Prob\para{X \leq x} = \Prob\para{F\inverse\para{U} \leq x} = \Prob\para{U \leq F\para{x}} = F\para{x}
+        \]
+        gives the desired distribution.
+
+        \item Suppose that \(F\) is not one-to-one. Then we may define its \emph{generalised inverse} as
+        \[
+            G\para{u} = \inf \set{x \in \RR}{u \leq F\para{x}}.
+        \]
+
+        We claim that \(G\para{u} \leq x\) if and only if \(u \leq F\para{x}\). Indeed, if \(u \leq F\para{x}\), then by definition, \(G\para{u} \leq x\). On the other hand, note that there must be some sequence \(x_n \geq G\para{u}\),such that \(x_n \to G\para{u}\), with \(u \leq F\para{x_n}\). By the right-continuity of \(F\), we have
+        \[
+            \lim_{n \to \infty} F\para{x_n} = F\para{G\para{u}}.
+        \]
+
+        So \(u \leq F\para{G\para{u}}\). Therefore, if \(G\para{u} \leq x\), then
+        \[
+            u \leq F\para{G\para{u}} \leq F\para{x}
+        \]
+        since \(F\) is increasing.
+
+        Now, set \(X = G\para{U}\), then
+        \[
+            \Prob\para{X \leq x} = \Prob\para{G\para{U} \leq x} = \Prob\para{U \leq F\para{x}} = F\para{x}.
+        \]
+    \end{itemize} 
+\end{example}
+
+\begin{example}[Box--Muller Transform]
+    \label{ex:box-muller}%
+    We want to simulate \(X, Y \sim \Normal\para{0, 1}\) being independent, using two independent \(\Uniform\ccintv{0}{1}\) random variables. However, \autoref{ex:simulation-from-uniform} does not work very well, since the distribution function of the normal distribution does not have a closed form.
+
+    For \(\para{X, Y}\), we consider the polar transformation \(X = R \cos \Theta\), \(Y = R \sin \Theta\). Recall that \(R\) has density \(r e^{- r^2 / 2}\) on \(\oointv{0}{\plusinfty}\), and \(\Theta \sim \Uniform \ccintv{0}{2\pi}\), and they are independent, from \autoref{ex:transformation-cartesian-polar}.
+
+    Let \(U, V\) be independent \(\Uniform\ccintv{0}{1}\)s. Then
+    \[
+        \Theta = 2 \pi U \sim \Uniform \ccintv{0}{2\pi},
+    \]
+    and
+    \[
+        R = \sqrt{- 2 \log V},
+    \]
+    and we have that
+    \[
+        \Prob\para{R \geq r} = \Prob\para{\sqrt{- 2 \log V} \geq r} = \Prob\para{V \leq e^{- r^2 / 2}} = e^{- r^2 / 2}
+    \]
+    so \(R\) has the correct density. Then this gives \(X\) and \(Y\) as desired.
+\end{example}
+
+\begin{example}[Rejection Sampling]
+    \label{ex:rejection-sampling}%
+    Suppose we have a random variable \(\vm{X}\), with density
+    \[
+        f\para{\vm{x}} = \frac{\indicator \para{\vm{x} \in A}}{\abs{A}}
+    \]
+    where \(\emptyset \neq A \subseteq \RR^d\), and \(\abs{A} < \infty\) is the volume of \(A\). In other words, \(\vm{X}\) is uniform on the set \(A\) in \(\RR^d\).
+
+    Suppose that \(A\) is a subset of \(\ccintv{0}{1}^d\). Let \(\para{U_{k, n} : k = 1, \ldots, d, n \in \NN}\) be independent and identically distributed \(\Uniform \ccintv{0}{1}\). Then
+    \[
+        \vm{U}_n = \para{U_{1, n}, \ldots, U_{d, n}} \sim \Uniform\para{\ccintv{0}{1}^d}.
+    \]
+
+    Set the random variable
+    \[
+        N = \min \set{n \in \NN}{\vm{U}_n \in A}
+    \]
+    and set \(\vm{X} = \vm{U}_N\). To show \(\vm{X}\) is indeed our desired distribution, it suffices to check that
+    \[
+        \int_{B} f\para{\vm{x}} \Diff^d \vm{x} = \Prob\para{\vm{X} \in B} = \frac{\abs{B \cap A}}{\abs{A}}.
+    \]
+
+    We have
+    \begin{align*}
+        \Prob\para{\vm{X} \in B} &= \Prob\para{\vm{U}_N \in B} \\
+        &= \sum_{n = 1}^{\infty} \Prob\para{\vm{U}_n \in N, N = n} \\
+        &= \sum_{n = 1}^{\infty} \Prob\para{\vm{U}_n \in B, \vm{U}_n \in A, \vm{U}_{n - 1} \notin A, \ldots, \vm{U}_1 \notin A} \\
+        &= \sum_{n = 1}^{\infty} \Prob\para{\vm{U}_n \in B \cap A} \cdot \para{\Prob\para{\vm{U}_1 \notin A}}^{n - 1} \\
+        &= \sum_{n = 1}^{\infty} \abs{B \cap A} \para{1 - \abs{A}}^{n - 1} \\
+        &= \frac{\abs{B \cap A}}{\abs{A}}
+    \end{align*}
+    which gives precisely the desired probability as desired.
+\end{example}
