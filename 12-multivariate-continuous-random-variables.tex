@@ -34,7 +34,7 @@ For all \(\mathcal{B} \subseteq \RR^n\), we have
     \]
 \end{definition}
 
-\begin{theorem}[Independence if and only if Density is Seperable]
+\begin{theorem}[Independence if and only if Density is Separable]
     \label{thm:rv-independent-density-separable}%
     Let \(\vm{X} = \para{X_1, \ldots, X_n}\) have density \(f\).
     \begin{enumerate}
@@ -214,7 +214,7 @@ The continuous case is similar.
     \]
     restricting us to \(\Theta \in \cointv{0}{2\pi}\).
 
-    Applying \autoref{thm:transformation-joint-continuous-random-variable}, we have7
+    Applying \autoref{thm:transformation-joint-continuous-random-variable}, we have
     \[
         f_{\para{R, \Theta}} \para{r, \theta} = f_{\para{X, Y}} \para{r \cos \theta, r \sin \theta} \cdot \abs{\det \vm{J}},
     \]
@@ -228,7 +228,7 @@ The continuous case is similar.
     and so \(\abs{\det \vm{J}} = r\). Hence, using independence,
     \begin{align*}
         f_{\para{R, \Theta}} \para{r, \theta} &= f_X \para{r \cos \theta} \cdot f_Y \para{r \sin \theta} \cdot r \\
-        &= \frac{1}{\sqrt{2\pi}} \cdot e^{- \frac{r^2 \cos^2 \theta}{2}} \cdot \frac{1}{\sqrt{2 \pi}} \cdot e^{- \frac{r^2 \sin^2 \theta}{2}} \\
+        &= r \cdot \frac{1}{\sqrt{2\pi}} \cdot e^{- \frac{r^2 \cos^2 \theta}{2}} \cdot \frac{1}{\sqrt{2 \pi}} \cdot e^{- \frac{r^2 \sin^2 \theta}{2}} \\
         &= \frac{1}{2\pi} \cdot r \cdot e^{- \frac{r^2}{2}}.
     \end{align*}
 
