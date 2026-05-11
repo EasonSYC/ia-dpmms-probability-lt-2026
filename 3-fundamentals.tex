@@ -416,7 +416,7 @@ If \(A \indp B\), then we have
         \Prob\para{\Conditional{B_n}{A}} &= \frac{\Prob\para{B_n \cap A}}{\Prob\para{A}} \\
         &= \frac{\Prob\para{\Conditional{A}{B_n}} \cdot \Prob\para{B_n}}{\Prob\para{A}},
     \end{align*}
-    and we apply \autoref{thm:law-total-probability} (Law of Total Probability) for the numerator.
+    and we apply \autoref{thm:law-total-probability} (Law of Total Probability) for the denominator.
 \end{proof}
 
 This formula is the basis of Bayesian statistics. If we know the probability of \(\Prob\para{B_n}\), and we have a model which gives us \(\Prob\para{\Conditional{A}{B_k}}\), with this formula we can find the posterior probability of \(B_n\) given that \(A\) occurs.
