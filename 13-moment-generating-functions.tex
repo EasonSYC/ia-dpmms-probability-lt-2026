@@ -379,7 +379,7 @@ We aim to find the density of a multivariate Gaussian next.
 Now we look at the degenerate case, where one or more of the entries \(\lambda_i = 0\). By an orthogonal change of basis, we can assume that \(\vm{V}\) takes the form of
 \[
     \vm{V} = \begin{pmatrix}
-        \vm{U} & 0 \\ 0 & 0
+        \vm{U} & \vm{0}\transpose \\ \vm{0} & \zeroM
     \end{pmatrix}
 \]
 where \(\vm{U}\) is a positive definite \(m \times m\) matrix, where \(m < n\).
@@ -454,7 +454,7 @@ Therefore, combining \autoref{claim:indep-diagonal-variance} and \autoref{lem:di
 \begin{proposition}[Conditional Expectation for Bivariate Gaussian]
     Let \(\para{X_1, X_2}\) be a bivariate Gaussian. Then we have
     \[
-        \Expt\brac{\Conditional{X_2}{X_1}} = \mu_2 - a \mu_1 + a X_1,
+        \Expt\brac{\Conditional{X_2}{X_1}} = \mu_2 - a \mu_1 + a X_1 = \mu_2 + a \para{X_1 - \mu_1},
     \]
     where
     \[

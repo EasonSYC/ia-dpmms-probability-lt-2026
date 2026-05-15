@@ -102,7 +102,7 @@ When \(\Expt\brac{X}\) is well-defined, then we have
         \item If \(X \geq 0\), then \(\Expt\brac{X} \geq 0\).
         \item If \(X \geq 0\) and \(\Expt\brac{X} = 0 \), then \(\Prob\para{X = 0} = 1\).
         \item If \(c \in \RR\), then \(\Expt\brac{cX} = c \Expt\brac{X}\), and \(\Expt\brac{c + X} = c + \Expt\brac{X}\).
-        \item If \(X\) and \(Y\) are random variables, then \(\Expt\brac{X + Y} = \Expt{X} + \Expt{Y}\),
+        \item If \(X\) and \(Y\) are random variables, then \(\Expt\brac{X + Y} = \Expt\brac{X} + \Expt\brac{Y}\),
         \item Let \(c_1, \ldots, c_n \in \RR\), and \(X_1, \ldots, X_n\) be integrable random variables. Then we have
         \[
             \Expt \brac{\sum_{i = 1}^{n} c_i X_i} = \sum_{i = 1}^{n} c_i \Expt \brac{X_i}.
@@ -118,7 +118,7 @@ When \(\Expt\brac{X}\) is well-defined, then we have
     We have
     \begin{align*}
         \Expt\brac{\sum_{n \in \NN} X_n} &= \sum_{\omega \in \Omega} \para{\sum_{n \in \NN} X_n \para{\omega}} \cdot \Prob\para{\brce{\omega}} \\
-        &= \sum_{n \in \NN} \sum_{\omega \ni \Omega} X_n \para{\omega} \Prob\para{\brce{\omega}} \\
+        &= \sum_{n \in \NN} \sum_{\omega \in \Omega} X_n \para{\omega} \Prob\para{\brce{\omega}} \\
         &= \sum_{n \in \NN} \Expt\brac{X_n}.
     \end{align*}
 \end{proof}
@@ -301,7 +301,7 @@ The variance is a `measure' of how well concentrated \(X\) is around its expecta
     \]
     and hence
     \[
-        \min_{c \in \RR} f\para{c} = f\para{\Expt\para{X}} = \Var\para{X}.
+        \min_{c \in \RR} f\para{c} = f\para{\Expt\brac{X}} = \Var\para{X}.
     \]
 \end{proof}
 
@@ -381,7 +381,7 @@ This gives us a nice formula on the variance of a sum as well.
 \begin{proof}
     We have
     \begin{align*}
-        \Var\para{X + Y} &= \Expt\brac{\para{\para{X - \Expt\para{X}} + \para{Y - \Expt\para{Y}}}^2} \\
+        \Var\para{X + Y} &= \Expt\brac{\para{\para{X - \Expt\brac{X}} + \para{Y - \Expt\brac{Y}}}^2} \\
         &= \Var\para{X} + 2 \Cov\para{X, Y} + \Var\para{Y}.
     \end{align*}
 \end{proof}
@@ -498,7 +498,7 @@ The converse does not hold -- in general, for two random variables \(X\) and \(Y
 
     We want to show \(Z_1\) is not independent of \(Z_2\). Indeed,
     \[
-        \Prob\para{Z_1 = 0, Z_2 = 0} = \Prob{X_3 = 0} = \frac{1}{2},
+        \Prob\para{Z_1 = 0, Z_2 = 0} = \Prob\para{X_3 = 0} = \frac{1}{2},
     \]
     but
     \[

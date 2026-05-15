@@ -9,7 +9,7 @@ Branching Processes are also known as Galton--Watson processes (1874) or Bienaym
         \Prob\para{X_1 = k} = g_k, \quad k = 0, 1, 2, \ldots.
     \]
 
-    Each individual produces an independent number of offspring, with the same distributions as \(X_1\). Let \(\para{Y_{k, n}, k \geq 1, n \geq 0}\) be independent and identically distributed random variables with the same distribution of \(X_1\), and we define \(Y_{k, n}\) be the number of offspring the \(k\)th individual of generating \(n\) produces. We define
+    Each individual produces an independent number of offspring, with the same distributions as \(X_1\). Let \(\para{Y_{k, n} : k \geq 1, n \geq 0}\) be independent and identically distributed random variables with the same distribution of \(X_1\), and we define \(Y_{k, n}\) be the number of offspring the \(k\)th individual of generating \(n\) produces. We define
     \[
         X_{n + 1} = Y_{1, n} + Y_{2, n} + \cdots + Y_{X_n, n}
     \]
@@ -78,7 +78,7 @@ Our questions are: what is the probability that this population goes extinct, an
 
     Therefore,
     \[
-        G\para{n + 1} \para{z} = \Expt\brac{\para{G\para{z}}^{X_n}} = G_n \para{G\para{z}}.
+        G_{n + 1} \para{z} = \Expt\brac{\para{G\para{z}}^{X_n}} = G_n \para{G\para{z}}.
     \]
 \end{proof}
 

@@ -167,7 +167,7 @@ The continuous case is similar.
     \label{thm:cont-law-total-prob}%
     For continuous random variables \(X\) and \(Y\), we have
     \[
-        f_X\para{x} = \int_{\minusinfty}^{\plusinfty} f_{X, Y} \para{x, y} \Diff y = \int_{\minusinfty}^{\plusinfty} f_{\bound{\Conditional{X}{Y}}} \para{\Conditional{X}{Y}} f_Y\para{y} \Diff y.
+        f_X\para{x} = \int_{\minusinfty}^{\plusinfty} f_{X, Y} \para{x, y} \Diff y = \int_{\minusinfty}^{\plusinfty} f_{\bound{\Conditional{X}{Y}}} \para{\Conditional{x}{y}} f_Y\para{y} \Diff y.
     \]
 \end{theorem}
 
@@ -193,7 +193,7 @@ The continuous case is similar.
     \]
     be a bijection, with a continuous derivative on \(\mathcal{D}\), with
     \[
-        \det g'\para{\vm{x}} \neq 0
+        \det g'\para{\vm{x}} = \det \para{\PartialFrac{g\para{\vm{x}}_i}{x_j}} \neq 0
     \]
     for any \(\vm{x} \in \mathcal{D}\). Then for any \(\vm{y} \in g\para{\mathcal{D}}\), the random variable \(\vm{Y} = g\para{\vm{X}}\) has density
     \[

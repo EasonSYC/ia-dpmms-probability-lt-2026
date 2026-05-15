@@ -232,7 +232,7 @@ and as a function,
     We let \(r\para{z} = \Expt\brac{z^{S_N}}\). We have
     \begin{align*}
         r\para{z} &= \Expt\brac{z^{S_N}} \\
-        &= \sum_{n = 0}^{\infty} \brac{z^{S_N} \cdot \indicator\para{N = n}} \\
+        &= \Expt\brac{z^{S_N} \cdot \sum_{n = 0}^{\infty}  \indicator\para{N = n}} \\
         &= \sum_{n = 0}^{\infty} \Expt\brac{z^{S_n} \cdot \indicator \para{N = n}} \\
         &= \sum_{n = 0}^{\infty} \Expt\brac{z^{X_1 + \cdots + X_n} \cdot \indicator\para{N = n}} \\
         &= \sum_{n = 0}^{\infty} \Expt\brac{z^{X_1 + \cdots + X_n}} \cdot \Prob\para{N = n} \\
@@ -244,7 +244,7 @@ and as a function,
 \begin{proof}[by Conditional Expectation]
     We have
     \[
-        r\para{z} = \Expt\brac{z^{S_N}} = \Expt\brac{\Expt\brac{\Conditional{z^{S_N}}{N}}} = g\para{N},
+        r\para{z} = \Expt\brac{z^{S_N}} = \Expt\brac{\Expt\brac{\Conditional{z^{S_N}}{N}}} = \Expt\brac{g\para{N}},
     \]
     where
     \begin{align*}

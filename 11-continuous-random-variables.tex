@@ -81,7 +81,7 @@ The probability distribution function satisfies the following properties.
 \end{proof}
 
 \begin{proof}[of RCLL Property]
-    We first prove the right-continuity. Let \(\para{x_n}\) be a decreasing sequence such that \(x_n \to x^+\) as \(n \to \infty\). We need to show \(F\para{x_n} \to F\para{X_n}\) as \(n \to \infty\).
+    We first prove the right-continuity. Let \(\para{x_n}\) be a decreasing sequence such that \(x_n \to x^+\) as \(n \to \infty\). We need to show \(F\para{x_n} \to F\para{x}\) as \(n \to \infty\).
 
     We define the events
     \[
@@ -89,7 +89,7 @@ The probability distribution function satisfies the following properties.
     \]
     and hence we have \(\Prob\para{A_n} = F\para{x_n} - F\para{x}\).
 
-    By \autoref{prop:continuity-of-probability-measure} (Continuity of Probability Measure), since \(A_{n + 1} \subseteq A_n\), we have \(\Prob\para{A_n} \to \Prob\para{\bigcap_n A_n}\), since \(\bigcap_{n \in \NN} A_n\), and hence
+    By \autoref{prop:continuity-of-probability-measure} (Continuity of Probability Measure), since \(A_{n + 1} \subseteq A_n\), we have \(\Prob\para{A_n} \to \Prob\para{\bigcap_n A_n}\). But since \(\bigcap_{n \in \NN} A_n = \emptyset\), we have
     \[
         \Prob\para{A_n} = F\para{x_n} - F\para{x} \to 0
     \]
@@ -374,7 +374,7 @@ Inspired by this, we may provide another proof.
 
 The variance is defined identically to the discrete case
 \[
-    \Var\brac{X} = \Expt\brac{\para{X - \Expt\brac{X}}^2} = \Expt\brac{X^2} - \para{\Expt\brac{X}}^2.
+    \Var\para{X} = \Expt\brac{\para{X - \Expt\brac{X}}^2} = \Expt\brac{X^2} - \para{\Expt\brac{X}}^2.
 \]
 
 \begin{proposition}[Expectation of Uniform Random Variable]
@@ -396,7 +396,7 @@ The variance is defined identically to the discrete case
     \label{prop:expt-exponential}%
     If \(X \sim \Exponential\para{\lambda}\) for \(\lambda > 0\), we have
     \[
-        \Expt\brac{X} = \frac{1}{\lambda.}
+        \Expt\brac{X} = \frac{1}{\lambda}.
     \]
 \end{proposition}
 
