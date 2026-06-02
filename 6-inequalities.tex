@@ -353,6 +353,57 @@ Now we use \autoref{lem:convex-fn-tangents} to prove \autoref{thm:jensen} (Jense
     \]
 \end{proof}
 
+Combining both \autoref{lem:convex-fn-tangents}, we can produce a proof as follows.
+
+\begin{proof}[of \autoref{thm:jensen} (Jensen's Inequality), combining \autoref{lem:convex-fn-tangents}]
+    Let \(m = \Expt\brac{X}\). For any \(x < m < y\), let \(t \in \ccintv{0}{1}\) be such that
+    \[
+        m = tx + \para{1 - t} y.
+    \]
+
+    Then,
+    \[
+        t \para{m - x} = \para{1 - t} \para{y - m}. \eqno{(\dagger)}
+    \]
+
+    By convexity condition,
+    \[
+        f \para{m} \leq t x + \para{1 - t} f\para{y},
+    \]
+    so
+    \[
+        t \para{f\para{m} - f\para{x}} \leq \para{1 - t} \para{f\para{y} - f\para{m}}. \eqno{(\ddagger)}
+    \]
+
+    Dividing \((\ddagger)\) by \((\dagger)\) (since it is positive), we have for all \(x < m < y\), that
+    \[
+        \frac{f\para{m} - f\para{x}}{m - x} \leq \frac{f\para{y} - f\para{m}}{y - m}.
+    \]
+
+    Define
+    \[
+        a = \sup_{x < m} \frac{f\para{m} - f\para{x}}{m - x},
+    \]
+    then we have for all \(x < m < y\), that
+    \[
+        \frac{f\para{m} - f\para{x}}{m - x} \leq a \leq \frac{f\para{y} - f\para{m}}{y - m},
+    \]
+    so for all \(z \in \RR\) (by dealing with cases \(z < x\) and \(z > y\) using the inequality above)
+    \[
+        f\para{z} \geq f\para{m} + a \para{x - m}.
+    \]
+
+    Therefore,
+    \[
+        f\para{X} \geq f\para{\Expt\brac{X}} + a \para{x - \Expt\brac{X}},
+    \]  
+    and taking expectations on both sides, we have
+    \[
+        \Expt\brac{f\para{X}} \geq f\para{\Expt\brac{X}} + a \para{\Expt\brac{X} - \Expt\brac{X}} = f\para{\Expt\brac{X}}
+    \]
+    as desired.
+\end{proof}
+
 Similar to when we study Cauchy--Schwartz back then, we study the cases of equality.
 
 Let \(\functiondomain{f}{\RR}{\RR}\) be convex, and with the extra property that for \(m = \Expt\brac{X}\), there is some \(a, b \in \RR\), such that
