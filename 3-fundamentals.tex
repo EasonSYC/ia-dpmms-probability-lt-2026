@@ -115,7 +115,7 @@ This leads to \autoref{thm:inclusion-exclusion}, the Inclusion--Exclusion Formul
         &= \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} + \Prob\para{A_n} - \Prob\para{\bigcup_{i = 1}^{n - 1} \para{A_i \cap A_n}}.
     \end{align*}
 
-    No, we apply the induction hypothesis to the terms
+    Now, we apply the induction hypothesis to the terms
     \[
         \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} \quad \text{and} \quad \Prob\para{\bigcup_{i = 1}^{n - 1} \para{A_i \cap A_n}},
     \]
@@ -568,7 +568,7 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
     \begin{align*}
         \Prob\para{\Conditional{A}{C}} &= \Prob\para{\Conditional{A \cap B}{C}} + \Prob\para{\Conditional{A \cap B\compl}{C}} \\
         &= \frac{\Prob\para{A \cap B \cap C}}{\Prob\para{C}} + \frac{\Prob\para{A \cap B\compl \cap C}}{\Prob\para{C}} \\
-        &= \frac{\Prob\para{\Conditional{A}{B \cap C}} \cdot \Prob{B \cap C}}{\Prob\para{C}} + \frac{\Prob\para{\Conditional{A}{B \compl \cap C}} \cdot \Prob\para{B\compl \cap C}}{\Prob\para{C}} \\
+        &= \frac{\Prob\para{\Conditional{A}{B \cap C}} \cdot \Prob\para{B \cap C}}{\Prob\para{C}} + \frac{\Prob\para{\Conditional{A}{B \compl \cap C}} \cdot \Prob\para{B\compl \cap C}}{\Prob\para{C}} \\
         &= \Prob\para{\Conditional{A}{B \cap C}} \cdot \Prob\para{\Conditional{B}{C}} + \Prob\para{\Conditional{A}{B\compl \cap C}} \cdot \Prob\para{\Conditional{B \compl}{C}} \\
         &> \Prob\para{\Conditional{A}{B \cap C\compl}} \cdot \Prob\para{\Conditional{B}{C}} + \Prob\para{\Conditional{A}{B\compl \cap C\compl}} \cdot \Prob \para{\Conditional{B\compl}{C}}.
     \end{align*}

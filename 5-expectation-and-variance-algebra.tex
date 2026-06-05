@@ -221,7 +221,7 @@ The indicator random variable gives an alternative proof of \autoref{thm:inclusi
 
     Hence,
     \[
-        \Prob\para{A_1 \cup A_2 \cup \cdots \cup A_n} = \sum_{k = 1}^{n} \sum_{1 \leq i_1 < i_2 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_n}}.
+        \Prob\para{A_1 \cup A_2 \cup \cdots \cup A_n} = \sum_{k = 1}^{n} \sum_{1 \leq i_1 < i_2 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}.
     \]
 \end{proof}
 
@@ -279,7 +279,7 @@ The variance is a `measure' of how well concentrated \(X\) is around its expecta
     \label{prop:variance-minimalisation}%
     We have
     \[
-        \Var\para{X} = \min_{x \in \RR} \Expt\brac{\para{X - c}^2},
+        \Var\para{X} = \min_{c \in \RR} \Expt\brac{\para{X - c}^2},
     \]
     obtained for \(c = \Expt\brac{X}\).
 \end{proposition}
