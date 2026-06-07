@@ -10,56 +10,56 @@ We say \(X\) is \emph{non-negative} if \(X \geq 0\). We first define the expecta
     \label{def:expectation-non-negative}%
     The \emph{expectation}, or \emph{mean/average} of a non-negative random variable is given by
     \[
-        \Expt \brac{X} = \sum_{\omega \in \Omega} \Prob\para{\brce{\omega}} \cdot X\para{\omega}.
+        \Expt \bqty{X} = \sum_{\omega \in \Omega} \Prob\pqty{\Bqty{\omega}} \cdot X\pqty{\omega}.
     \]
 \end{definition}
 
-Equivalently, we may define the expectation as follows. If we let the range of the random variable be \(\Omega_X = \set{X\para{x}}{\omega \in \Omega}\), and partition the sample space as
+Equivalently, we may define the expectation as follows. If we let the range of the random variable be \(\Omega_X = \set{X\pqty{x}}{\omega \in \Omega}\), and partition the sample space as
 \[
-    \Omega = \bigcup_{x \in \Omega_X} \brce{X = x},
+    \Omega = \bigcup_{x \in \Omega_X} \Bqty{X = x},
 \]
 then the expectation satisfies
 \begin{align*}
-    \Expt\brac{X} &= \sum_{\omega \in \Omega} X\para{\omega} \Prob\para{\brce{\omega}} \\
-    &= \sum_{x \in \Omega_X} \sum_{\omega \in \brce{X = x}} X\para{\omega} \cdot \Prob\para{\brce{\omega}} \\
-    &= \sum_{x \in \Omega_X} \sum_{\omega \in \brce{X = x}} x \cdot \Prob\para{\brce{\omega}} \\
-    &= \sum_{x \in \Omega_X} x \sum_{\omega \in \brce{X = x}} \cdot \Prob\para{\brce{\omega}} \\
-    &= \sum_{x \in \Omega_X} x \cdot \Prob\para{X = x}.
+    \Expt\bqty{X} &= \sum_{\omega \in \Omega} X\pqty{\omega} \Prob\pqty{\Bqty{\omega}} \\
+    &= \sum_{x \in \Omega_X} \sum_{\omega \in \Bqty{X = x}} X\pqty{\omega} \cdot \Prob\pqty{\Bqty{\omega}} \\
+    &= \sum_{x \in \Omega_X} \sum_{\omega \in \Bqty{X = x}} x \cdot \Prob\pqty{\Bqty{\omega}} \\
+    &= \sum_{x \in \Omega_X} x \sum_{\omega \in \Bqty{X = x}} \cdot \Prob\pqty{\Bqty{\omega}} \\
+    &= \sum_{x \in \Omega_X} x \cdot \Prob\pqty{X = x}.
 \end{align*}
 
-In other words, the expectation of \(X\) is the average of the values \(x\) taken by \(X\), with weights given by the corresponding probabilities \(\Prob\para{X = x}\).
+In other words, the expectation of \(X\) is the average of the values \(x\) taken by \(X\), with weights given by the corresponding probabilities \(\Prob\pqty{X = x}\).
 
 \begin{example}[Expectation of Binomial Random Variable]
     \label{ex:expectation-binomial}%
-    Let \(X \sim \Binomial\para{N, p}\). This has probability mass function
+    Let \(X \sim \Binomial\pqty{N, p}\). This has probability mass function
     \[
-        \Prob\para{X = k} = \binom{N}{k} p^k \para{1 - p}^{N - k}.
+        \Prob\pqty{X = k} = \binom{N}{k} p^k \pqty{1 - p}^{N - k}.
     \]
 
     By definition,
     \begin{align*}
-        \Expt\brac{X} &= \sum_{k = 0}^{N} k \Prob\para{X = k} \\
-        &= \sum_{k = 0}^{N} k \binom{N}{k} p^k \para{1 - p}^{N - k} \\
-        &= \sum_{k = 0}^{N} k \cdot \frac{N!}{\para{N - k}! k!} p^k \para{1 - p}^{N - k} \\
-        &= \sum_{k = 1}^{N} N \cdot \frac{\para{N - 1}!}{\para{N - k}! \para{k - 1}!} p^k \para{1 - p}^{N - k} \\
-        &= \sum_{k = 0}^{N - 1} N \binom{N - 1}{k} p^{k} \para{1 - p}^{N - k - 1} p \\
-        &= Np \para{p + 1 - p}^{N - 1} \\
+        \Expt\bqty{X} &= \sum_{k = 0}^{N} k \Prob\pqty{X = k} \\
+        &= \sum_{k = 0}^{N} k \binom{N}{k} p^k \pqty{1 - p}^{N - k} \\
+        &= \sum_{k = 0}^{N} k \cdot \frac{N!}{\pqty{N - k}! k!} p^k \pqty{1 - p}^{N - k} \\
+        &= \sum_{k = 1}^{N} N \cdot \frac{\pqty{N - 1}!}{\pqty{N - k}! \pqty{k - 1}!} p^k \pqty{1 - p}^{N - k} \\
+        &= \sum_{k = 0}^{N - 1} N \binom{N - 1}{k} p^{k} \pqty{1 - p}^{N - k - 1} p \\
+        &= Np \pqty{p + 1 - p}^{N - 1} \\
         &= Np.
     \end{align*}
 \end{example}
 
 \begin{example}[Expectation of Poisson Random Variable]
     \label{ex:expectation-poisson}%
-    Let \(X \sim \Poisson\para{\lambda}\) with \(\lambda > 0\). We have
+    Let \(X \sim \Poisson\pqty{\lambda}\) with \(\lambda > 0\). We have
     \[
-        \Prob\para{X = k} = e^{-\lambda} \cdot \frac{\lambda^k}{k!}.
+        \Prob\pqty{X = k} = e^{-\lambda} \cdot \frac{\lambda^k}{k!}.
     \]
 
     By definition,
     \begin{align*}
-        \Expt\brac{X} &= \sum_{k = 0}^{\infty} k \cdot \Prob\para{X = k} \\
+        \Expt\bqty{X} &= \sum_{k = 0}^{\infty} k \cdot \Prob\pqty{X = k} \\
         &= \sum_{k = 1}^{\infty} k \cdot e^{-\lambda} \cdot \frac{\lambda^k}{k!} \\
-        &= e^{-\lambda} \cdot \lambda \cdot \sum_{k = 1}^{\infty} \frac{\lambda^{k - 1}}{\para{k - 1}!} \\
+        &= e^{-\lambda} \cdot \lambda \cdot \sum_{k = 1}^{\infty} \frac{\lambda^{k - 1}}{\pqty{k - 1}!} \\
         &=\lambda.
     \end{align*}
 \end{example}
@@ -68,48 +68,48 @@ Now we define the expectation of a general random variable \(X\). The reason why
 
 However, if we straight-away define it for a general random variable using the same sum, and if the series is only \emph{conditionally convergent}, then changing the order of summation will change the limit, which makes the expectation change. Therefore, we will formalise this considering the sum of the positive and negative values separately.
 
-Let \(X^+ = \max\brce{X, 0}\) and \(X^- = \min\brce{-X, 0}\).
+Let \(X^+ = \max\Bqty{X, 0}\) and \(X^- = \min\Bqty{-X, 0}\).
 
 We therefore have \(X = X^+ - X^-\) and \(\abs{X} = X^+ + X^-\).
 
-Suppose \(X\) is discrete. Using \autoref{def:expectation-non-negative}, we have already defined \(\Expt\brac{X^+}\) and \(\Expt\brac{X^-}\).
+Suppose \(X\) is discrete. Using \autoref{def:expectation-non-negative}, we have already defined \(\Expt\bqty{X^+}\) and \(\Expt\bqty{X^-}\).
 
 \begin{definition}[Expectation of General Random Variable]
     \label{def:expectation-general-random-variable}%
-    Let \(X\) be a discrete random variable and \(X^+\) and \(X^-\) be defined as above. If at least one of \(\Expt\brac{X^+}\) and \(\Expt\brac{X^-}\) is finite, then we define the \emph{expectation} of \(X\) as
+    Let \(X\) be a discrete random variable and \(X^+\) and \(X^-\) be defined as above. If at least one of \(\Expt\bqty{X^+}\) and \(\Expt\bqty{X^-}\) is finite, then we define the \emph{expectation} of \(X\) as
     \[
-        \Expt\brac{X} = \Expt\brac{X^+} - \Expt\brac{X^-}.
+        \Expt\bqty{X} = \Expt\bqty{X^+} - \Expt\bqty{X^-}.
     \]
 
     If both of them are infinite, then the expectation of \(X\) is \emph{undefined}.
 \end{definition}
 
-When we write \(\Expt\brac{X}\), we implicitly imply that it is defined.
+When we write \(\Expt\bqty{X}\), we implicitly imply that it is defined.
 
 \begin{definition}[Integrablility of Random Variable]
     \label{def:integrability-random-variable}%
-    If \(\Expt\brac{\abs{X}} < \infty\), then we say \(X\) is \emph{integrable}.
+    If \(\Expt\bqty{\abs{X}} < \infty\), then we say \(X\) is \emph{integrable}.
 \end{definition}
 
-When \(\Expt\brac{X}\) is well-defined, then we have
+When \(\Expt\bqty{X}\) is well-defined, then we have
 \[
-    \Expt\brac{X} = \sum_{x \in \Omega_X} x \Prob\para{X = x}.
+    \Expt\bqty{X} = \sum_{x \in \Omega_X} x \Prob\pqty{X = x}.
 \]
 
 \begin{proposition}[Properties of Expectation]
     \label{prop:properties-expectation}%
     \begin{enumerate}
-        \item If \(X \geq 0\), then \(\Expt\brac{X} \geq 0\).
-        \item If \(X \geq 0\) and \(\Expt\brac{X} = 0 \), then \(\Prob\para{X = 0} = 1\).
-        \item If \(c \in \RR\), then \(\Expt\brac{cX} = c \Expt\brac{X}\), and \(\Expt\brac{c + X} = c + \Expt\brac{X}\).
-        \item If \(X\) and \(Y\) are random variables, then \(\Expt\brac{X + Y} = \Expt\brac{X} + \Expt\brac{Y}\),
+        \item If \(X \geq 0\), then \(\Expt\bqty{X} \geq 0\).
+        \item If \(X \geq 0\) and \(\Expt\bqty{X} = 0 \), then \(\Prob\pqty{X = 0} = 1\).
+        \item If \(c \in \RR\), then \(\Expt\bqty{cX} = c \Expt\bqty{X}\), and \(\Expt\bqty{c + X} = c + \Expt\bqty{X}\).
+        \item If \(X\) and \(Y\) are random variables, then \(\Expt\bqty{X + Y} = \Expt\bqty{X} + \Expt\bqty{Y}\),
         \item Let \(c_1, \ldots, c_n \in \RR\), and \(X_1, \ldots, X_n\) be integrable random variables. Then we have
         \[
-            \Expt \brac{\sum_{i = 1}^{n} c_i X_i} = \sum_{i = 1}^{n} c_i \Expt \brac{X_i}.
+            \Expt \bqty{\sum_{i = 1}^{n} c_i X_i} = \sum_{i = 1}^{n} c_i \Expt \bqty{X_i}.
         \]
         \item Suppose \(X_1, X_2, \ldots\) are non-negative random variables. Then
         \[
-            \Expt\brac{\sum_{n \in \NN} X_n} = \sum_{n \in \NN} \Expt\brac{X_n}.
+            \Expt\bqty{\sum_{n \in \NN} X_n} = \sum_{n \in \NN} \Expt\bqty{X_n}.
         \]
     \end{enumerate}
 \end{proposition}
@@ -117,50 +117,50 @@ When \(\Expt\brac{X}\) is well-defined, then we have
 \begin{proof}[on Linearity over Countable Collection]
     We have
     \begin{align*}
-        \Expt\brac{\sum_{n \in \NN} X_n} &= \sum_{\omega \in \Omega} \para{\sum_{n \in \NN} X_n \para{\omega}} \cdot \Prob\para{\brce{\omega}} \\
-        &= \sum_{n \in \NN} \sum_{\omega \in \Omega} X_n \para{\omega} \Prob\para{\brce{\omega}} \\
-        &= \sum_{n \in \NN} \Expt\brac{X_n}.
+        \Expt\bqty{\sum_{n \in \NN} X_n} &= \sum_{\omega \in \Omega} \pqty{\sum_{n \in \NN} X_n \pqty{\omega}} \cdot \Prob\pqty{\Bqty{\omega}} \\
+        &= \sum_{n \in \NN} \sum_{\omega \in \Omega} X_n \pqty{\omega} \Prob\pqty{\Bqty{\omega}} \\
+        &= \sum_{n \in \NN} \Expt\bqty{X_n}.
     \end{align*}
 \end{proof}
 
 \begin{example}[Expectation of Indicator]
     \label{ex:expectation-indicator}%
-    Recall the definition of the \emph{indicator} of an event \(A \in \eventSpace\) is \(\indicator\para{A}\). Let \(X = \indicator\para{A}\), then \(X\para{\omega} = \indicator\para{\omega \in A}\). Therefore, \(\Expt\brac{X} = \Prob\para{A}\).
+    Recall the definition of the \emph{indicator} of an event \(A \in \eventSpace\) is \(\indicator\pqty{A}\). Let \(X = \indicator\pqty{A}\), then \(X\pqty{\omega} = \indicator\pqty{\omega \in A}\). Therefore, \(\Expt\bqty{X} = \Prob\pqty{A}\).
 \end{example}
 
 \begin{proposition}[Expectation of Function of Random Variable]
     \label{prop:expectation-function-random-variable}%
     Let \(\functiondomain{X}{\Omega}{\RR}\) be a random variable, and let \(\functiondomain{g}{\RR}{\RR}\). We define
     \[
-        g\para{X} \para{\omega} = g\para{X\para{\omega}}.
+        g\pqty{X} \pqty{\omega} = g\pqty{X\pqty{\omega}}.
     \]
 
     Then
     \[
-        \Expt\brac{g\para{X}} = \sum_{x \in \Omega_X} g\para{x} \cdot \Prob\para{X = x}.
+        \Expt\bqty{g\pqty{X}} = \sum_{x \in \Omega_X} g\pqty{x} \cdot \Prob\pqty{X = x}.
     \]
 \end{proposition}
 
 \begin{proof}
-    Set \(Y = g\para{X}\). Then we have
+    Set \(Y = g\pqty{X}\). Then we have
     \[
-        \Expt\brac{Y} = \sum_{y \in \Omega_Y} y \cdot \Prob\para{Y = y}.
+        \Expt\bqty{Y} = \sum_{y \in \Omega_Y} y \cdot \Prob\pqty{Y = y}.
     \]
 
     Now, note that the event can be simplified as
     \begin{align*}
-        \brce{Y = y} &= \set{\omega \in \Omega}{Y \para{\omega} = y} \\
-        &= \set{\omega \in \Omega}{g\para{X\para{\omega}} = y} \\
-        &= \set{\omega \in \Omega}{X\para{\omega} \in g\inverse \para{\brce{y}}} \\
-        &= \brce{X \in g\inverse \para{\brce{y}}}.
+        \Bqty{Y = y} &= \set{\omega \in \Omega}{Y \pqty{\omega} = y} \\
+        &= \set{\omega \in \Omega}{g\pqty{X\pqty{\omega}} = y} \\
+        &= \set{\omega \in \Omega}{X\pqty{\omega} \in g\inverse \pqty{\Bqty{y}}} \\
+        &= \Bqty{X \in g\inverse \pqty{\Bqty{y}}}.
     \end{align*}
 
     Therefore,
     \begin{align*}
-        \Expt\brac{Y} &= \sum_{y \in \Omega_Y} y \cdot \Prob\para{X \in g\inverse\para{\brce{y}}} \\
-        &= \sum_{y \in \Omega_Y} y \cdot \sum_{x \in g\inverse\para{\brce{y}}} \Prob\para{X = x} \\
-        &= \sum_{y \in \Omega_Y} \sum_{x \in g\inverse\para{\brce{y}}} g\para{x} \cdot \Prob\para{X = x} \\
-        &= \sum_{x \in \Omega_X} g\para{x} \Prob\para{X = x}.
+        \Expt\bqty{Y} &= \sum_{y \in \Omega_Y} y \cdot \Prob\pqty{X \in g\inverse\pqty{\Bqty{y}}} \\
+        &= \sum_{y \in \Omega_Y} y \cdot \sum_{x \in g\inverse\pqty{\Bqty{y}}} \Prob\pqty{X = x} \\
+        &= \sum_{y \in \Omega_Y} \sum_{x \in g\inverse\pqty{\Bqty{y}}} g\pqty{x} \cdot \Prob\pqty{X = x} \\
+        &= \sum_{x \in \Omega_X} g\pqty{x} \Prob\pqty{X = x}.
     \end{align*}
 \end{proof}
 
@@ -168,32 +168,32 @@ When \(\Expt\brac{X}\) is well-defined, then we have
     \label{prop:expt-natural-number-random-variable}%
     Suppose \(X \geq 0\) and takes integer values. Then we have
     \[
-        \Expt\brac{X} = \sum_{k = 1}^{\infty} \Prob\para{X \geq k} = \sum_{k = 0}^{\infty} \Prob\para{X > k}.
+        \Expt\bqty{X} = \sum_{k = 1}^{\infty} \Prob\pqty{X \geq k} = \sum_{k = 0}^{\infty} \Prob\pqty{X > k}.
     \]
 \end{proposition}
 
 \begin{proof}
     Since \(X \geq 0\) and \(X \in \NN\), we have
     \[
-        X = \sum_{k = 1}^{\infty} \indicator \para{X \geq k} = \sum_{k = 0}^{\infty} \indicator \para{X > k}.
+        X = \sum_{k = 1}^{\infty} \indicator \pqty{X \geq k} = \sum_{k = 0}^{\infty} \indicator \pqty{X > k}.
     \]
 
     Indeed, this is true for any \(X = x \in \NN\), since
     \[
-        x = \sum_{k = 1}^{x} 1 = \sum_{k = 1}^{x} \indicator \para{x \geq k} = \sum_{k = 1}^{\infty} \indicator \para{x \geq k}
+        x = \sum_{k = 1}^{x} 1 = \sum_{k = 1}^{x} \indicator \pqty{x \geq k} = \sum_{k = 1}^{\infty} \indicator \pqty{x \geq k}
     \]
     and similarly for the strict inequality case.
 
     Hence,
     \[
-        X \para{\omega} = \sum_{k = 1}^{\infty} \indicator \para{X \para{\omega} \geq k} = \sum_{k = 0}^{\infty} \indicator \para{X \para{\omega} > k}.
+        X \pqty{\omega} = \sum_{k = 1}^{\infty} \indicator \pqty{X \pqty{\omega} \geq k} = \sum_{k = 0}^{\infty} \indicator \pqty{X \pqty{\omega} > k}.
     \]
 
     Taking the expectation, we get
     \begin{align*}
-        \Expt\brac{X} &= \Expt\brac{\sum_{k = 1}^{\infty} \indicator\para{X \geq k}} \\
-        &= \sum_{k = 1}^{\infty} \Expt\brac{\indicator\para{X \geq k}} \\
-        &= \sum_{k = 1}^{\infty} \Prob\para{X \geq k},
+        \Expt\bqty{X} &= \Expt\bqty{\sum_{k = 1}^{\infty} \indicator\pqty{X \geq k}} \\
+        &= \sum_{k = 1}^{\infty} \Expt\bqty{\indicator\pqty{X \geq k}} \\
+        &= \sum_{k = 1}^{\infty} \Prob\pqty{X \geq k},
     \end{align*}
     and similarly for the strict case.
 \end{proof}
@@ -203,25 +203,25 @@ The indicator random variable gives an alternative proof of \autoref{thm:inclusi
 \begin{proof}[of \autoref{thm:inclusion-exclusion} (Inclusion--Exclusion Formula), using Indicator Functions]
     First, note that for events \(A, B \in \eventSpace\),
     \begin{itemize}
-        \item \(\indicator\para{A\compl} = 1 - \indicator\para{A}\);
-        \item \(\indicator\para{A \cap B} = \indicator\para{A} \cdot \indicator\para{B}\); and for the union,
-        \item \(\indicator\para{A \cup B} = 1 - \para{1 - \indicator\para{A}} \para{1 - \indicator\para{B}}\).
+        \item \(\indicator\pqty{A\compl} = 1 - \indicator\pqty{A}\);
+        \item \(\indicator\pqty{A \cap B} = \indicator\pqty{A} \cdot \indicator\pqty{B}\); and for the union,
+        \item \(\indicator\pqty{A \cup B} = 1 - \pqty{1 - \indicator\pqty{A}} \pqty{1 - \indicator\pqty{B}}\).
     \end{itemize}
 
     More generally, for any \(A_1, A_2, \ldots, A_n \in \eventSpace\), we have
     \begin{align*}
-        \indicator\para{A_1 \cup A_2 \cup \cdots \cup A_n} &= 1 - \prod_{i = 1}^{n} \para{1 - \indicator\para{A_i}} \\
-        &= \sum_{i = 1}^{n} \indicator \para{A_i} - \sum_{i_1 < i_2} \indicator\para{A_{i_1} \cap A_{i_2}} + \cdots + \para{-1}^{n + 1} \indicator\para{A_1 \cap \cdots \cap A_n}.
+        \indicator\pqty{A_1 \cup A_2 \cup \cdots \cup A_n} &= 1 - \prod_{i = 1}^{n} \pqty{1 - \indicator\pqty{A_i}} \\
+        &= \sum_{i = 1}^{n} \indicator \pqty{A_i} - \sum_{i_1 < i_2} \indicator\pqty{A_{i_1} \cap A_{i_2}} + \cdots + \pqty{-1}^{n + 1} \indicator\pqty{A_1 \cap \cdots \cap A_n}.
     \end{align*}
 
     We may take the expectation on both sides, and use that
     \[
-        \Expt\brac{\indicator\para{A}} = \Prob\para{A}.
+        \Expt\bqty{\indicator\pqty{A}} = \Prob\pqty{A}.
     \]
 
     Hence,
     \[
-        \Prob\para{A_1 \cup A_2 \cup \cdots \cup A_n} = \sum_{k = 1}^{n} \sum_{1 \leq i_1 < i_2 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}.
+        \Prob\pqty{A_1 \cup A_2 \cup \cdots \cup A_n} = \sum_{k = 1}^{n} \sum_{1 \leq i_1 < i_2 < \cdots < i_k \leq n} \Prob\pqty{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}.
     \]
 \end{proof}
 
@@ -231,14 +231,14 @@ Defining the expectation allows us to define several other important things abou
 
 \begin{definition}[Moment]
     \label{def:moment}%
-    Let \(X\) be a random variable, and \(r \in \NN\). \(\Expt\brac{X^r}\), i well-defined, is the \emph{\(r\)-th moment} of \(X\).
+    Let \(X\) be a random variable, and \(r \in \NN\). \(\Expt\bqty{X^r}\), i well-defined, is the \emph{\(r\)-th moment} of \(X\).
 \end{definition}
 
 \begin{definition}[Variance]
     \label{def:variance}%
     The \emph{variance} of \(X\) is given as
     \[
-        \Var\para{X} = \Expt\brac{\para{X - \Expt\brac{X}}^2}.
+        \Var\pqty{X} = \Expt\bqty{\pqty{X - \Expt\bqty{X}}^2}.
     \]
 \end{definition}
 
@@ -246,15 +246,15 @@ The variance is a `measure' of how well concentrated \(X\) is around its expecta
 
 \begin{definition}[Standard Deviation]
     \label{def:std-deviation}%
-    \(\sqrt{\Var\para{X}}\) is known as the \emph{standard deviation}.
+    \(\sqrt{\Var\pqty{X}}\) is known as the \emph{standard deviation}.
 \end{definition}
 
 \begin{proposition}[Properties of the Variance]
     \label{prop:properties-of-variance}%
     \begin{itemize}
-        \item \(\Var\para{X} \geq 0\).
-        \item If \(\Var\para{X} = 0\), then \(\Prob\para{X = \Expt\brac{X}} = 1\).
-        \item If \(c \in \RR\), then \(\Var\para{cX} = c^2 \Var\para{X}\), and \(\Var\para{X + c} = \Var\para{X}\).
+        \item \(\Var\pqty{X} \geq 0\).
+        \item If \(\Var\pqty{X} = 0\), then \(\Prob\pqty{X = \Expt\bqty{X}} = 1\).
+        \item If \(c \in \RR\), then \(\Var\pqty{cX} = c^2 \Var\pqty{X}\), and \(\Var\pqty{X + c} = \Var\pqty{X}\).
     \end{itemize}
 \end{proposition}
 
@@ -262,16 +262,16 @@ The variance is a `measure' of how well concentrated \(X\) is around its expecta
     \label{prop:alt-formulation}%
     We have
     \[
-        \Var\para{X} = \Expt\brac{X^2} - \Expt\brac{X}^2.
+        \Var\pqty{X} = \Expt\bqty{X^2} - \Expt\bqty{X}^2.
     \]
 \end{proposition}
 
 \begin{proof}
     We have
     \begin{align*}
-        \Var\para{X} &= \Expt\brac{X^2 - 2X \Expt\brac{X} + \para{\Expt\brac{X}}^2} \\
-        &= \Expt\brac{X^2} - 2 \Expt\brac{X} \Expt\brac{X} + \para{\Expt\brac{X}}^2 \\
-        &= \Expt\brac{X^2} - \para{\Expt\brac{X}}^2.
+        \Var\pqty{X} &= \Expt\bqty{X^2 - 2X \Expt\bqty{X} + \pqty{\Expt\bqty{X}}^2} \\
+        &= \Expt\bqty{X^2} - 2 \Expt\bqty{X} \Expt\bqty{X} + \pqty{\Expt\bqty{X}}^2 \\
+        &= \Expt\bqty{X^2} - \pqty{\Expt\bqty{X}}^2.
     \end{align*}
 \end{proof}
 
@@ -279,67 +279,67 @@ The variance is a `measure' of how well concentrated \(X\) is around its expecta
     \label{prop:variance-minimalisation}%
     We have
     \[
-        \Var\para{X} = \min_{c \in \RR} \Expt\brac{\para{X - c}^2},
+        \Var\pqty{X} = \min_{c \in \RR} \Expt\bqty{\pqty{X - c}^2},
     \]
-    obtained for \(c = \Expt\brac{X}\).
+    obtained for \(c = \Expt\bqty{X}\).
 \end{proposition}
 
 \begin{proof}
     We let
     \[
-        f\para{c} = \Expt\brac{\para{X - c}^2}.
+        f\pqty{c} = \Expt\bqty{\pqty{X - c}^2}.
     \]
 
     Then, we have
     \[
-        f\para{c} = \Expt\brac{X^2} = 2c \Expt\brac{X} + c^2.
+        f\pqty{c} = \Expt\bqty{X^2} = 2c \Expt\bqty{X} + c^2.
     \]
 
     Hence, differentiating gives that
     \[
-        f'\para{c} = -2 \Expt\brac{X} + 2c
+        f'\pqty{c} = -2 \Expt\bqty{X} + 2c
     \]
     and hence
     \[
-        \min_{c \in \RR} f\para{c} = f\para{\Expt\brac{X}} = \Var\para{X}.
+        \min_{c \in \RR} f\pqty{c} = f\pqty{\Expt\bqty{X}} = \Var\pqty{X}.
     \]
 \end{proof}
 
 \begin{examples}[Variances of Common Random Variables]
     \label{ex:variance-rv}%
     \begin{enumerate}
-        \item If \(X \sim \Binomial\para{n, p}\), then \(\Expt\brac{X} = np\).
+        \item If \(X \sim \Binomial\pqty{n, p}\), then \(\Expt\bqty{X} = np\).
         
         We have
         \[
-            \Var\para{X} = \Expt\brac{X\para{X - 1}} + \Expt\brac{X} - \para{\Expt\brac{X}}^2.
+            \Var\pqty{X} = \Expt\bqty{X\pqty{X - 1}} + \Expt\bqty{X} - \pqty{\Expt\bqty{X}}^2.
         \]
 
         We can find
         \begin{align*}
-            \Expt\brac{X \para{X - 1}} &= \sum_{k = 2}^{n} k\para{k - 1} \cdot \frac{n!}{k! \para{n - k}!} \cdot p^k \cdot \para{1 - p}^{n - k} \\
-            &= \para{n - 1} n p^2 \sum_{k = 0}^{n - 2} \binom{n - 2}{k} p^k \para{1 - p}^{n - 2 - k} \\
-            &= \para{n - 1} n p^2.
+            \Expt\bqty{X \pqty{X - 1}} &= \sum_{k = 2}^{n} k\pqty{k - 1} \cdot \frac{n!}{k! \pqty{n - k}!} \cdot p^k \cdot \pqty{1 - p}^{n - k} \\
+            &= \pqty{n - 1} n p^2 \sum_{k = 0}^{n - 2} \binom{n - 2}{k} p^k \pqty{1 - p}^{n - 2 - k} \\
+            &= \pqty{n - 1} n p^2.
         \end{align*}
 
         Substituting this back, we have
         \[
-            \Var\para{X} = \para{n - 1} np^2 + np - \para{np}^2 = np \para{1 - p}.
+            \Var\pqty{X} = \pqty{n - 1} np^2 + np - \pqty{np}^2 = np \pqty{1 - p}.
         \]
 
         (We will see that using that a binomial random variable is the sum of independent Bernoulli random variables, we may find this using that variance is linear for independent variables.)
 
-        \item Let \(X \sim \Poisson\para{\lambda}\) for \(\lambda > 0\), and recall that \(\Expt\brac{X} = \lambda\).
+        \item Let \(X \sim \Poisson\pqty{\lambda}\) for \(\lambda > 0\), and recall that \(\Expt\bqty{X} = \lambda\).
         
         We have
         \begin{align*}
-            \Expt\brac{X \para{X - 1}} &= \sum_{k = 2}^{\infty} k \para{k - 1} e^{-\lambda} \frac{\lambda^k}{k!} \\
-            &= e^{-\lambda} \lambda^2 \sum_{k = 2}^{\infty} \frac{\lambda^{k - 2}}{\para{k - 2}!} \\
+            \Expt\bqty{X \pqty{X - 1}} &= \sum_{k = 2}^{\infty} k \pqty{k - 1} e^{-\lambda} \frac{\lambda^k}{k!} \\
+            &= e^{-\lambda} \lambda^2 \sum_{k = 2}^{\infty} \frac{\lambda^{k - 2}}{\pqty{k - 2}!} \\
             &= \lambda^2
         \end{align*}
         and hence
         \[
-            \Var\para{X} = \lambda^2 + \lambda - \lambda^2 = \lambda.
+            \Var\pqty{X} = \lambda^2 + \lambda - \lambda^2 = \lambda.
         \]
     \end{enumerate}
 \end{examples}
@@ -350,7 +350,7 @@ The variance is a `measure' of how well concentrated \(X\) is around its expecta
     \label{def:covariance}%
     Let \(X\) and \(Y\) be random variables. We let
     \[
-        \Cov\para{X, Y} = \Expt\brac{\para{X - \Expt\brac{X}} \para{Y - \Expt\brac{Y}}}
+        \Cov\pqty{X, Y} = \Expt\bqty{\pqty{X - \Expt\bqty{X}} \pqty{Y - \Expt\bqty{Y}}}
     \]
     be the \emph{covariance} of \(X\) and \(Y\).
 \end{definition}
@@ -360,11 +360,11 @@ It is a `measure' of how dependent \(X\) and \(Y\) are.
 \begin{proposition}[Properties of Covariance]
     \label{prop:properties-of-covariance}%
     \begin{itemize}
-        \item \(\Cov\para{X, Y} = \Cov\para{Y, X}\). 
-        \item \(\Cov\para{X, X} = \Var\para{X}\).
-        \item \(\Cov\para{X, Y} = \Expt\brac{X Y} - \Expt\brac{X} \Expt\brac{Y}\).
-        \item For \(c \in \RR\), \(\Cov\para{cX, Y} = c \Cov\para{X, Y}\), and \(\Cov\para{c + X, Y} = \Cov\para{X, Y}\).
-        \item For \(c \in \RR\), \(\Cov\para{c, X} = 0\).
+        \item \(\Cov\pqty{X, Y} = \Cov\pqty{Y, X}\). 
+        \item \(\Cov\pqty{X, X} = \Var\pqty{X}\).
+        \item \(\Cov\pqty{X, Y} = \Expt\bqty{X Y} - \Expt\bqty{X} \Expt\bqty{Y}\).
+        \item For \(c \in \RR\), \(\Cov\pqty{cX, Y} = c \Cov\pqty{X, Y}\), and \(\Cov\pqty{c + X, Y} = \Cov\pqty{X, Y}\).
+        \item For \(c \in \RR\), \(\Cov\pqty{c, X} = 0\).
     \end{itemize}
 \end{proposition}
 
@@ -374,15 +374,15 @@ This gives us a nice formula on the variance of a sum as well.
     \label{prop:variance-of-sum}%
     We have
     \[
-        \Var\para{X + Y} = \Var\para{X} + \Var\para{Y} + 2 \Cov\para{X, Y}.
+        \Var\pqty{X + Y} = \Var\pqty{X} + \Var\pqty{Y} + 2 \Cov\pqty{X, Y}.
     \]    
 \end{proposition}
 
 \begin{proof}
     We have
     \begin{align*}
-        \Var\para{X + Y} &= \Expt\brac{\para{\para{X - \Expt\brac{X}} + \para{Y - \Expt\brac{Y}}}^2} \\
-        &= \Var\para{X} + 2 \Cov\para{X, Y} + \Var\para{Y}.
+        \Var\pqty{X + Y} &= \Expt\bqty{\pqty{\pqty{X - \Expt\bqty{X}} + \pqty{Y - \Expt\bqty{Y}}}^2} \\
+        &= \Var\pqty{X} + 2 \Cov\pqty{X, Y} + \Var\pqty{Y}.
     \end{align*}
 \end{proof}
 
@@ -390,12 +390,12 @@ This gives us a nice formula on the variance of a sum as well.
     \label{prop:linearity-of-covariance}%
     For random variables \(X, Y\) and \(Z\), we have
     \[
-        \Cov\para{X + Y, Z} = \Cov\para{X, Z} + \Cov\para{Y, Z}.
+        \Cov\pqty{X + Y, Z} = \Cov\pqty{X, Z} + \Cov\pqty{Y, Z}.
     \]
 
     More generally, we for any real constants  \(c_1, c_2, \ldots, c_n\) and \(d_1, d_2, \ldots, d_m\) and random variables \(X_1, X_2, \ldots, X_n\) and \(Y_1, Y_2, \ldots, Y_m\), that
     \[
-        \Cov\para{\sum_{i = 1}^{n} c_i X_i, \sum_{j = 1}^{m} d_j Y_j} = \sum_{i = 1}^{n} \sum_{j = 1}^{m} c_i d_j \Cov\para{X_i, Y_j}.
+        \Cov\pqty{\sum_{i = 1}^{n} c_i X_i, \sum_{j = 1}^{m} d_j Y_j} = \sum_{i = 1}^{n} \sum_{j = 1}^{m} c_i d_j \Cov\pqty{X_i, Y_j}.
     \]
 \end{proposition}
 
@@ -403,7 +403,7 @@ This gives us a nice formula on the variance of a sum as well.
     \label{cor:variance-of-sum}%
     We have
     \[
-        \Var\para{\sum_{i = 1}^{n} X_i} = \Cov\para{\sum_{i = 1}^{n} X_i, \sum_{i = 1}^{n} X_i} = \sum_{i = 1}^{n} \Var\para{X_i} + \sum_{i \neq j} \Cov\para{X_i, X_j}.
+        \Var\pqty{\sum_{i = 1}^{n} X_i} = \Cov\pqty{\sum_{i = 1}^{n} X_i, \sum_{i = 1}^{n} X_i} = \sum_{i = 1}^{n} \Var\pqty{X_i} + \sum_{i \neq j} \Cov\pqty{X_i, X_j}.
     \]
 \end{corollary}
 
@@ -413,7 +413,7 @@ We stated before that the covariance is a `measure' of how independent two rando
     \label{lem:indep-pairwise-indep}%
     Let \(X_1, X_2, X_3\) be independent, i.e.,
     \[
-        \Prob\para{X_1 = x_1, X_2 = x_2, X_3 = x_3} = \prod_{i = 1}^{3} \Prob\para{X_i = x_i}.
+        \Prob\pqty{X_1 = x_1, X_2 = x_2, X_3 = x_3} = \prod_{i = 1}^{3} \Prob\pqty{X_i = x_i}.
     \]
 
     Then \(X_1\) is independent of \(X_2\).
@@ -422,10 +422,10 @@ We stated before that the covariance is a `measure' of how independent two rando
 \begin{proof}
     We have
     \begin{align*}
-        \Prob\para{X_1 = x_1, X_2 = x_2} &= \sum_{x_3} \Prob\para{X_1 = x_1, X_2 = x_2, X_3 = x_3} \\
-        &= \sum_{x_3} \Prob\para{X_1 = x_1} \Prob\para{X_2 = x_2} \Prob\para{X_3 = x_3} \\
-        &= \Prob\para{X_1 = x_1} \Prob\para{X_2 = x_2} \sum_{x_3} \Prob\para{X_3 = x_3} \\
-        &= \Prob\para{X_1 = x_1} \Prob\para{X_2 = x_2}.
+        \Prob\pqty{X_1 = x_1, X_2 = x_2} &= \sum_{x_3} \Prob\pqty{X_1 = x_1, X_2 = x_2, X_3 = x_3} \\
+        &= \sum_{x_3} \Prob\pqty{X_1 = x_1} \Prob\pqty{X_2 = x_2} \Prob\pqty{X_3 = x_3} \\
+        &= \Prob\pqty{X_1 = x_1} \Prob\pqty{X_2 = x_2} \sum_{x_3} \Prob\pqty{X_3 = x_3} \\
+        &= \Prob\pqty{X_1 = x_1} \Prob\pqty{X_2 = x_2}.
     \end{align*}
 \end{proof}
 
@@ -433,45 +433,45 @@ We stated before that the covariance is a `measure' of how independent two rando
     \label{lem:independence-expectation-product}%
     Let \(X\) and \(Y\) be independent random variables, and \(\functiondomain{f, g}{\RR}{\RR_{+}}\). Then
     \[
-        \Expt\brac{f\para{X} g\para{Y}} = \Expt\brac{f\para{X}} \Expt\brac{g\para{Y}}.
+        \Expt\bqty{f\pqty{X} g\pqty{Y}} = \Expt\bqty{f\pqty{X}} \Expt\bqty{g\pqty{Y}}.
     \]
 \end{lemma}
 
 \begin{proof}
-    Let \(Z = \para{X, Y}\), and define
+    Let \(Z = \pqty{X, Y}\), and define
     \[  
-        h\para{Z} = f\para{X} g\para{Y}.
+        h\pqty{Z} = f\pqty{X} g\pqty{Y}.
     \]
 
     Then we have
     \begin{align*}
-        \Expt\brac{h\para{Z}} &= \sum_{\para{x, y}} h\para{x, y} \Prob\para{Z = \para{x, y}} \\
-        &= \sum_{\para{x, y}} f\para{x} g\para{y} \Prob\para{X = x, Y = y} \\
-        &= \sum_{x, y} f\para{x} g\para{y} \Prob\para{X = x} \Prob\para{Y = y} \\
-        &= \sum_{x} f\para{x} \Prob\para{X = x} \sum_{y} g\para{y} \Prob\para{Y = y} \\
-        &= \Expt\brac{f\para{X}} \cdot \Expt\brac{g\para{Y}}.
+        \Expt\bqty{h\pqty{Z}} &= \sum_{\pqty{x, y}} h\pqty{x, y} \Prob\pqty{Z = \pqty{x, y}} \\
+        &= \sum_{\pqty{x, y}} f\pqty{x} g\pqty{y} \Prob\pqty{X = x, Y = y} \\
+        &= \sum_{x, y} f\pqty{x} g\pqty{y} \Prob\pqty{X = x} \Prob\pqty{Y = y} \\
+        &= \sum_{x} f\pqty{x} \Prob\pqty{X = x} \sum_{y} g\pqty{y} \Prob\pqty{Y = y} \\
+        &= \Expt\bqty{f\pqty{X}} \cdot \Expt\bqty{g\pqty{Y}}.
     \end{align*}
 \end{proof}
 
 \begin{proposition}[Independence gives Zero Covariance]
     If \(X\) and \(Y\) are independent, then
     \[
-        \Cov\para{X, Y} = 0.
+        \Cov\pqty{X, Y} = 0.
     \]
 \end{proposition}
 
 \begin{proof}
     This follows from \autoref{lem:independence-expectation-product}, since
     \[
-        \Expt\brac{X - \Expt\brac{X}} = \Expt\brac{Y - \Expt\brac{Y}} = 0.
+        \Expt\bqty{X - \Expt\bqty{X}} = \Expt\bqty{Y - \Expt\bqty{Y}} = 0.
     \]
 \end{proof}
 
-The converse does not hold -- in general, for two random variables \(X\) and \(Y\), \(\Cov\para{X, Y} = 0\) does \textbf{not} tell us that \(X\) and \(Y\) are independent.
+The converse does not hold -- in general, for two random variables \(X\) and \(Y\), \(\Cov\pqty{X, Y} = 0\) does \textbf{not} tell us that \(X\) and \(Y\) are independent.
 
 \begin{example}[Zero Variance but Not Independent]
     \label{ex:zero-variance-no-independent}%
-    Let \(X_1, X_2, X_3 \sim \Bernoulli\para{\frac{1}{2}}\). Set
+    Let \(X_1, X_2, X_3 \sim \Bernoulli\pqty{\frac{1}{2}}\). Set
     \[
         Y_1 = 2 X_1 - 1, \quad Y_2 = 2 X_2 - 1,
     \]
@@ -482,48 +482,48 @@ The converse does not hold -- in general, for two random variables \(X\) and \(Y
 
     Then
     \[
-        \Expt\brac{Y_1} = \Expt\brac{Y_2} = 0.
+        \Expt\bqty{Y_1} = \Expt\bqty{Y_2} = 0.
     \]
 
     By independence,
     \[
-        \Expt\brac{Z_1} = \Expt\brac{Y_1 \cdot X_3} = \Expt\brac{Y_1} \cdot \Expt\brac{X_3} = 0,
+        \Expt\bqty{Z_1} = \Expt\bqty{Y_1 \cdot X_3} = \Expt\bqty{Y_1} \cdot \Expt\bqty{X_3} = 0,
     \]
-    and similarly \(\Expt\brac{Z_2} = 0\).
+    and similarly \(\Expt\bqty{Z_2} = 0\).
 
     Therefore,
     \[
-        \Cov\para{Z_1, Z_2} = \Expt\brac{Z_1 \cdot Z_2} = \Expt\brac{Y_1 \cdot Y_2 \cdot X_3^2} = 0.
+        \Cov\pqty{Z_1, Z_2} = \Expt\bqty{Z_1 \cdot Z_2} = \Expt\bqty{Y_1 \cdot Y_2 \cdot X_3^2} = 0.
     \]
 
     We want to show \(Z_1\) is not independent of \(Z_2\). Indeed,
     \[
-        \Prob\para{Z_1 = 0, Z_2 = 0} = \Prob\para{X_3 = 0} = \frac{1}{2},
+        \Prob\pqty{Z_1 = 0, Z_2 = 0} = \Prob\pqty{X_3 = 0} = \frac{1}{2},
     \]
     but
     \[
-        \Prob\para{Z_1 = 0} = \Prob\para{Z_2 = 0} = \frac{1}{2}.
+        \Prob\pqty{Z_1 = 0} = \Prob\pqty{Z_2 = 0} = \frac{1}{2}.
     \]
 \end{example}
 
 Similarly, let \(X_1, \ldots, X_n\) be independent random variables. Then
 \[
-    \Var\para{\sum_{i = 1}^{n} X_i} = \sum_{i = 1}^{n} \Var\para{X_i}.
+    \Var\pqty{\sum_{i = 1}^{n} X_i} = \sum_{i = 1}^{n} \Var\pqty{X_i}.
 \]
 
 \begin{example}[Binomial as a sum of Bernoulli Random Variables]
     \label{ex:binomial-sum-bernoulli}%
-    Let \(S_n \sim \Binomial\para{n, p}\). We recall last time that \(\Var\para{S_n} = n p \para{1 - p}\).
+    Let \(S_n \sim \Binomial\pqty{n, p}\). We recall last time that \(\Var\pqty{S_n} = n p \pqty{1 - p}\).
 
     Now, recall that
     \[
         S_n = X_1 + X_2 + \cdots + X_n
     \]
-    where \(X_i\) are independent and identically distributed, with \(X_i \sim \Bernoulli\para{p}\).
+    where \(X_i\) are independent and identically distributed, with \(X_i \sim \Bernoulli\pqty{p}\).
 
     Therefore,
     \[
-        \Var\para{S_n} = \sum_{i = 1}^{n} \Var\para{X_i} = np \para{1 - p}
+        \Var\pqty{S_n} = \sum_{i = 1}^{n} \Var\pqty{X_i} = np \pqty{1 - p}
     \]
     as desired.
 \end{example}

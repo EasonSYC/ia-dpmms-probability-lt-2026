@@ -5,15 +5,15 @@ Now we consider some examples of probability spaces, where the outcomes are fini
 
 \begin{example}[Rolling a Fair Die]
     \label{ex:rolling-a-fair-die}%
-    We consider the outcomes \(\Omega = \brce{1, 2, \ldots, 6}\), and \(\eventSpace = \powerset\para{\Omega}\) for all subsets of \(\Omega\) (since \(\Omega\) is countable).
+    We consider the outcomes \(\Omega = \Bqty{1, 2, \ldots, 6}\), and \(\eventSpace = \powerset\pqty{\Omega}\) for all subsets of \(\Omega\) (since \(\Omega\) is countable).
         
     We naturally take for all \(\omega \in \Omega\),
     \[
-        \Prob\para{\brce{\omega}} = \frac{1}{6},
+        \Prob\pqty{\Bqty{\omega}} = \frac{1}{6},
     \]
     and for all \(A \subseteq \Omega\), we take
     \[
-        \Prob\para{A} = \frac{\abs{A}}{6}.
+        \Prob\pqty{A} = \frac{\abs{A}}{6}.
     \]
 
     All outcomes are equally likely.
@@ -23,7 +23,7 @@ Lots of situations are like this in real life, and we refer to such setup as \em
 
 \begin{definition}[Equally Likely Outcomes]
     \label{def:equally-likely-outcomes}%
-    For any finite set \(\Omega = \brce{\omega_1, \omega_2, \ldots, \omega_n}\), take \(\eventSpace = \powerset\para{\Omega}\). We define the probability measure to be
+    For any finite set \(\Omega = \Bqty{\omega_1, \omega_2, \ldots, \omega_n}\), take \(\eventSpace = \powerset\pqty{\Omega}\). We define the probability measure to be
     \[
         \function{\Prob}{\eventSpace}{\ccintv{0}{1}}{A}{\frac{\abs{A}}{\abs{\Omega}}.}
     \]
@@ -33,7 +33,7 @@ Lots of situations are like this in real life, and we refer to such setup as \em
 
 This models the experiment of picking a \emph{random} element of \(\Omega\). For all \(\omega \in \Omega\),
 \[
-    \Prob\para{\brce{\omega}} = \frac{1}{\abs{\Omega}}
+    \Prob\pqty{\Bqty{\omega}} = \frac{1}{\abs{\Omega}}
 \]
 
 We look at some more examples on calculating the probability under such setup. Effectively, those are combinatorial problems counting the size of sets.
@@ -42,9 +42,9 @@ This example is more about counting the size of the \emph{sample space} which is
 
 \begin{example}[Picking Balls from a Bag]
     \label{ex:picking-balls-from-bag}%
-    Suppose we have \(n\) balls labelled \(\brce{1, \ldots, n}\), and they are indistinguishable by touch. Pick \(k \leq n\) balls \emph{at random} (any outcome is equally likely) without replacement. We let the outcomes be
+    Suppose we have \(n\) balls labelled \(\Bqty{1, \ldots, n}\), and they are indistinguishable by touch. Pick \(k \leq n\) balls \emph{at random} (any outcome is equally likely) without replacement. We let the outcomes be
     \[
-        \Omega = \set{A \subseteq \brce{1, 2, \ldots, n}}{\abs{A} = k}
+        \Omega = \set{A \subseteq \Bqty{1, 2, \ldots, n}}{\abs{A} = k}
     \]
     and hence
     \[
@@ -53,7 +53,7 @@ This example is more about counting the size of the \emph{sample space} which is
 
     Hence, for any \(\omega \in \Omega\), we have
     \[
-        \Prob\para{\brce{\omega}} = \frac{1}{\binom{n}{k}}.
+        \Prob\pqty{\Bqty{\omega}} = \frac{1}{\binom{n}{k}}.
     \]
 \end{example}
 
@@ -63,16 +63,16 @@ The following examples also require counting on the numerator, which is the card
     \label{ex:deck-of-cards}%
     In a well-shuffled deck of 52 cards, take
     \[
-        \Omega = \brce{\text{all permutations of 52 cards}}
+        \Omega = \Bqty{\text{all permutations of 52 cards}}
     \]
     and hence
     \[
         \abs{\Omega} = 52! = 80,658,175,170,943,878,571,660,636,856,403,766,975,289,505,440,883,277,824,000,000,000,000.
     \]
     
-    Take \(\eventSpace = \powerset\para{\Omega}\). Then
+    Take \(\eventSpace = \powerset\pqty{\Omega}\). Then
     \[
-        \Prob\para{\text{top 2 cards are aces}} = \frac{4 \times 3 \times 50!}{52!}.
+        \Prob\pqty{\text{top 2 cards are aces}} = \frac{4 \times 3 \times 50!}{52!}.
     \]
 \end{example}
 
@@ -82,18 +82,18 @@ The next example uses results on set cardinalities.
     \label{ex:largest-digit}%
     Consider a string of \(n\) random digits from \(0, 1, \ldots, 9\). Let
     \[
-        \Omega = \brce{0, 1, \ldots, 9}^n,
+        \Omega = \Bqty{0, 1, \ldots, 9}^n,
     \]
     and we have \(\abs{\Omega} = 10^n\).
 
-    Let the event \(A_k = \brce{\text{no digit exceeds }k}\), then
+    Let the event \(A_k = \Bqty{\text{no digit exceeds }k}\), then
     \[
-        \Prob\para{A_k} = \frac{\para{k + 1}^{n}}{10^n}.
+        \Prob\pqty{A_k} = \frac{\pqty{k + 1}^{n}}{10^n}.
     \]
 
-    Now we consider the event \(B_k = \brce{\text{the largest digit is equal to }k}\), then note \(B_k = A_k \setminus A_{k - 1}\), so
+    Now we consider the event \(B_k = \Bqty{\text{the largest digit is equal to }k}\), then note \(B_k = A_k \setminus A_{k - 1}\), so
     \[
-        \Prob\para{B_k} = \Prob\para{A_k \setminus A_{k - 1}} = \Prob\para{A_k} - \Prob\para{A_{k - 1}} = \frac{\para{k + 1}^n - k^n}{10^n}.
+        \Prob\pqty{B_k} = \Prob\pqty{A_k \setminus A_{k - 1}} = \Prob\pqty{A_k} - \Prob\pqty{A_{k - 1}} = \frac{\pqty{k + 1}^n - k^n}{10^n}.
     \]
 \end{example}
 
@@ -101,27 +101,27 @@ The next example uses results on set cardinalities.
     \label{ex:birthbay-problem}%
     There are \(n\) people. What is the probability that at least 2 of them share the same birthday?
         
-    Assume each birthday is equally likely to be one of \(\brce{1, 2, \ldots, 365}\). Take
+    Assume each birthday is equally likely to be one of \(\Bqty{1, 2, \ldots, 365}\). Take
     \[
-        \Omega = \brce{1, 2, \ldots, 365}^n,
+        \Omega = \Bqty{1, 2, \ldots, 365}^n,
     \]
-    and take \(\eventSpace = \powerset\para{\Omega}\). Hence, for all \(\omega \in \Omega\), we have
+    and take \(\eventSpace = \powerset\pqty{\Omega}\). Hence, for all \(\omega \in \Omega\), we have
     \[
-        \Prob\para{\brce{\omega}} = \frac{1}{365^n}.
+        \Prob\pqty{\Bqty{\omega}} = \frac{1}{365^n}.
     \]
 
-    Consider the event \(A = \brce{\text{at least 2 people have the same birthday}}\).
+    Consider the event \(A = \Bqty{\text{at least 2 people have the same birthday}}\).
 
-    Then \(A\compl = \brce{\text{all }n\text{ birthdays are different}}\). Hence,
+    Then \(A\compl = \Bqty{\text{all }n\text{ birthdays are different}}\). Hence,
     \[
-        \Prob\para{A\compl} = \frac{365 \times 364 \times \cdots \times \para{365 - n + 1}}{365^n}
+        \Prob\pqty{A\compl} = \frac{365 \times 364 \times \cdots \times \pqty{365 - n + 1}}{365^n}
     \]
     and hence
     \[
-        \Prob\para{A} = 1 - \Prob\para{A\compl}.
+        \Prob\pqty{A} = 1 - \Prob\pqty{A\compl}.
     \]
 
-    Note that \(n = 22\) gives \(\Prob\para{A} \approx 0.476\), and \(n = 23\) gives \(\Prob\para{A} \approx 0.507\).
+    Note that \(n = 22\) gives \(\Prob\pqty{A} \approx 0.476\), and \(n = 23\) gives \(\Prob\pqty{A} \approx 0.507\).
 \end{example}
 
 \subsection{Combinatorial Analysis}
@@ -133,7 +133,7 @@ We start off by investigating some easy problems in combinatorics.
 
     Let \(M\) be the number of ways to do this. We have
     \begin{align*}
-        M &= \binom{n}{n_1} \times \binom{n - n_1}{n_2} \times \cdots \times \binom{n - \para{n_1 + \cdots + n_{k - 1}}}{n_k} \\
+        M &= \binom{n}{n_1} \times \binom{n - n_1}{n_2} \times \cdots \times \binom{n - \pqty{n_1 + \cdots + n_{k - 1}}}{n_k} \\
         &= \frac{n!}{n_1! n_2! \cdots n_k!}.
     \end{align*}
 \end{example}
@@ -148,9 +148,9 @@ We start off by investigating some easy problems in combinatorics.
 
 \begin{examples}[Increasing and Strictly Increasing Functions]
     \label{ex:increasing-functions}%
-    We say \(f\) is \emph{strictly increasing} if \(x < y\) implies \(f\para{x} < f\para{y}\), and \(f\) is \emph{(weakly) increasing}, if \(x \leq y\) implies \(f\para{x} \leq f\para{y}\).
+    We say \(f\) is \emph{strictly increasing} if \(x < y\) implies \(f\pqty{x} < f\pqty{y}\), and \(f\) is \emph{(weakly) increasing}, if \(x \leq y\) implies \(f\pqty{x} \leq f\pqty{y}\).
 
-    Let \(\functiondomain{f}{\brce{1, 2, \ldots, k}}{\brce{1, 2, \ldots, n}}\).
+    Let \(\functiondomain{f}{\Bqty{1, 2, \ldots, k}}{\Bqty{1, 2, \ldots, n}}\).
     
     \begin{enumerate}
         \item \textit{Strictly Increasing Functions.} Let \(k \leq n\). How many strictly increasing functions \(f\) are there? Such a function is uniquely determined by its range, so there are \(\binom{n}{k}\) of them.
@@ -158,18 +158,18 @@ We start off by investigating some easy problems in combinatorics.
         
         Let the function space
         \[
-            \eventSpace\para{k, n} = \set{f}{\functiondomain{f}{\brce{1, 2, \ldots, k}}{\brce{1, 2, \ldots, n}}}.
+            \eventSpace\pqty{k, n} = \set{f}{\functiondomain{f}{\Bqty{1, 2, \ldots, k}}{\Bqty{1, 2, \ldots, n}}}.
         \]
         
         We define a bijection
         \[
-            \set{f \in \eventSpace\para{k, n}}{f \text{ is increasing}} \to \set{g \in \eventSpace\para{k, n + k - 1}}{g \text{ is strictly increasing}},
+            \set{f \in \eventSpace\pqty{k, n}}{f \text{ is increasing}} \to \set{g \in \eventSpace\pqty{k, n + k - 1}}{g \text{ is strictly increasing}},
         \]
-        where \(g\para{i} = f\para{i} + i - 1\) that is strictly increasing. Hence, there are
+        where \(g\pqty{i} = f\pqty{i} + i - 1\) that is strictly increasing. Hence, there are
         \[
             \binom{n + k - 1}{k}
         \]
-        such increasing functions in \(\eventSpace\para{k, n}\).
+        such increasing functions in \(\eventSpace\pqty{k, n}\).
     \end{enumerate}
 \end{examples}
 
@@ -179,7 +179,7 @@ The following asymptotic formula is very useful in the study of probability. Alt
 
 \begin{definition}[Asymptotic]
     \label{def:asymptotic}%
-    For two sequences \(\para{a_n}, \para{b_n}\), we say \(\para{a_n}\) is \emph{asymptotic} to \(\para{b_n}\), denoted as
+    For two sequences \(\pqty{a_n}, \pqty{b_n}\), we say \(\pqty{a_n}\) is \emph{asymptotic} to \(\pqty{b_n}\), denoted as
     \[
         a_n \sim b_n
     \]
@@ -199,13 +199,13 @@ This statement is relatively long to prove (and is non-examinable), but a statem
 
 \begin{corollary}
     \label{cor:weaker-statement-of-stirling}%
-    We have \(\log \para{n!} \sim n \log n\) as \(n \to \infty\).
+    We have \(\log \pqty{n!} \sim n \log n\) as \(n \to \infty\).
 \end{corollary}
 
 \begin{proof}
     Define
     \[
-        l_n = \log\para{n!} = \log 2 + \cdots + \log n.
+        l_n = \log\pqty{n!} = \log 2 + \cdots + \log n.
     \]
 
     For all \(x \in \RR\), denote \(\floor{x}\) as the integer part of \(x\). We have
@@ -215,7 +215,7 @@ This statement is relatively long to prove (and is non-examinable), but a statem
 
     We integrate this inequality from \(1\) to \(n\), and hence, we have
     \[
-        \sum_{k = 1}^{n - 1} \log k \leq \int_{1}^{n} \log x \Diff x \leq \sum_{k = 1}^{n} \log k
+        \sum_{k = 1}^{n - 1} \log k \leq \int_{1}^{n} \log x \dd{x} \leq \sum_{k = 1}^{n} \log k
     \]
     and hence we have
     \[
@@ -224,7 +224,7 @@ This statement is relatively long to prove (and is non-examinable), but a statem
 
     Therefore, rearranging this gives
     \[
-        n \log n - n + 1 \leq l_n \leq \para{n + 1} \log \para{n + 1} - \para{n + 1} + 1,
+        n \log n - n + 1 \leq l_n \leq \pqty{n + 1} \log \pqty{n + 1} - \pqty{n + 1} + 1,
     \]
     and dividing this through by \(n \log n\) gives
     \[
@@ -239,7 +239,7 @@ We first show that Stirling's Formula is true, up to some constant (which would 
     \label{lem:some-integration-formula}%
     For any \(\functiondomain{f}{\RR}{\RR}\) which is twice differentiable, for all \(a < b\), we have
     \[
-        \int_a^b f\para{x} \Diff x = \frac{f\para{a} + f\para{b}}{2} \cdot \para{b - a} - \frac{1}{2} \int_a^b \para{x - a} \para{b - x} f''\para{x} \Diff x.
+        \int_a^b f\pqty{x} \dd{x} = \frac{f\pqty{a} + f\pqty{b}}{2} \cdot \pqty{b - a} - \frac{1}{2} \int_a^b \pqty{x - a} \pqty{b - x} f''\pqty{x} \dd{x}.
     \]
 \end{lemma}
 
@@ -258,37 +258,37 @@ We first show that Stirling's Formula is true, up to some constant (which would 
 \end{lemma}
 
 \begin{proof}
-    Take \(f\para{x} = \log x\), with \(a = k\), \(b = k + 1\), for \(k \in \NN\). Using \autoref{lem:some-integration-formula}, we have
+    Take \(f\pqty{x} = \log x\), with \(a = k\), \(b = k + 1\), for \(k \in \NN\). Using \autoref{lem:some-integration-formula}, we have
     \[
-        \int_{k}^{k + 1} \log x \Diff x = \frac{\log k + \log\para{k + 1}}{2} + \frac{1}{2} \int_{k}^{k + 1} \frac{\para{x - k} \para{k + 1 - x}}{x^2} \Diff x.
+        \int_{k}^{k + 1} \log x \dd{x} = \frac{\log k + \log\pqty{k + 1}}{2} + \frac{1}{2} \int_{k}^{k + 1} \frac{\pqty{x - k} \pqty{k + 1 - x}}{x^2} \dd{x}.
     \]
 
     Summing this from \(k = 1\) to \(n - 1\) gives
     \[
-        \int_{1}^{n} \log x \Diff x = \frac{\log \para{n - 1}! + \log \para{n!}}{2} + \sum_{k = 1}^{n - 1} a_k,
+        \int_{1}^{n} \log x \dd{x} = \frac{\log \pqty{n - 1}! + \log \pqty{n!}}{2} + \sum_{k = 1}^{n - 1} a_k,
     \]
     where
     \[
-        a_k = \frac{1}{2} \int_{0}^{1} \frac{x \para{1 - x}}{\para{x + k}^2} \Diff x.
+        a_k = \frac{1}{2} \int_{0}^{1} \frac{x \pqty{1 - x}}{\pqty{x + k}^2} \dd{x}.
     \]
 
     Hence, we have
     \[
-        n \log n - n + 1 = \log\para{n!} - \frac{\log n}{2} + \sum_{k = 1}^{n - 1} a_k
+        n \log n - n + 1 = \log\pqty{n!} - \frac{\log n}{2} + \sum_{k = 1}^{n - 1} a_k
     \]
 
     Therefore,
     \[
-        \log \para{n!} = n \log n - n + 1 + \frac{\log n}{2} - \sum_{k = 1}^{n - 1} a_k,
+        \log \pqty{n!} = n \log n - n + 1 + \frac{\log n}{2} - \sum_{k = 1}^{n - 1} a_k,
     \]
     and hence
     \[
-        n! = n^n \cdot e^{-n} \cdot \sqrt{n} \cdot \exp\para{1 - \sum_{k = 1}^{n - 1} a_k}.
+        n! = n^n \cdot e^{-n} \cdot \sqrt{n} \cdot \exp\pqty{1 - \sum_{k = 1}^{n - 1} a_k}.
     \]
 
     Now, we have
     \[
-        a_k = \frac{1}{2} \int_{0}^{1} \frac{x \para{1 - x}}{\para{x + k}^2} \Diff x \leq \frac{1}{2k^2} \int_{0}^{1} x\para{1 - x} \Diff x = \frac{1}{12k^2}.
+        a_k = \frac{1}{2} \int_{0}^{1} \frac{x \pqty{1 - x}}{\pqty{x + k}^2} \dd{x} \leq \frac{1}{2k^2} \int_{0}^{1} x\pqty{1 - x} \dd{x} = \frac{1}{12k^2}.
     \]
 
     Therefore,
@@ -296,12 +296,12 @@ We first show that Stirling's Formula is true, up to some constant (which would 
         \sum_{k = 1}^{\infty} a_k < \infty.
     \]
 
-    Let \(A = \exp\para{1 - \sum_{k = 1}^{\infty} a_k}\). Therefore,
+    Let \(A = \exp\pqty{1 - \sum_{k = 1}^{\infty} a_k}\). Therefore,
     \[
-        n! = n^n \cdot e^{-n} \cdot \sqrt{n} \cdot A \cdot \exp\para{\sum_{k = n}^{\infty} a_k}.
+        n! = n^n \cdot e^{-n} \cdot \sqrt{n} \cdot A \cdot \exp\pqty{\sum_{k = n}^{\infty} a_k}.
     \]
 
-    The \(\exp\para{\sum_{k = n}^{\infty} a_k}\) will converge to \(1\) as \(n \to \infty\), since the inner sum converges to \(0\).
+    The \(\exp\pqty{\sum_{k = n}^{\infty} a_k}\) will converge to \(1\) as \(n \to \infty\), since the inner sum converges to \(0\).
 
     We have showed that
     \[
@@ -324,8 +324,8 @@ To finish the proof of \autoref{thm:stirling-formula} (Stirling's Formula), we w
 \begin{proof}
     Notice that
     \begin{align*}
-        2^{-2n} \binom{2n}{n} &= 2^{-2n} \cdot \frac{\para{2n}!}{n! \cdot n!} \\
-        &\sim \frac{2^{-2n} \cdot \para{2n}^{2n} \cdot e^{-2n} \cdot \sqrt{2n} \cdot A}{n^n \cdot e^{-n} \cdot \sqrt{n} \cdot A \cdot n^n \cdot e^{-n} \cdot \sqrt{n} \cdot A} \\
+        2^{-2n} \binom{2n}{n} &= 2^{-2n} \cdot \frac{\pqty{2n}!}{n! \cdot n!} \\
+        &\sim \frac{2^{-2n} \cdot \pqty{2n}^{2n} \cdot e^{-2n} \cdot \sqrt{2n} \cdot A}{n^n \cdot e^{-n} \cdot \sqrt{n} \cdot A \cdot n^n \cdot e^{-n} \cdot \sqrt{n} \cdot A} \\
         &= \frac{\sqrt{2}}{A \sqrt{n}}.
     \end{align*}
 \end{proof}
@@ -336,7 +336,7 @@ Another way to study the asymptotic behaviour of this function, is to relate thi
     \label{lem:wallis-integral}%
     Let
     \[
-        I_n = \int_{0}^{\frac{\pi}{2}} \cos^n \theta \Diff \theta
+        I_n = \int_{0}^{\frac{\pi}{2}} \cos^n \theta \dd{\theta}
     \]
     be the Wallis Integrals. We have
     \[
@@ -344,7 +344,7 @@ Another way to study the asymptotic behaviour of this function, is to relate thi
     \]
     and
     \[
-        I_{2n + 1} = \frac{1}{2n + 1} \cdot \para{2^{-2n} \cdot \binom{2n}{n}}\inverse.
+        I_{2n + 1} = \frac{1}{2n + 1} \cdot \pqty{2^{-2n} \cdot \binom{2n}{n}}\inverse.
     \]
 \end{lemma}
 
@@ -357,9 +357,9 @@ Another way to study the asymptotic behaviour of this function, is to relate thi
     \begin{align*}
         I_{2n} &= \frac{2n - 1}{2n} \cdot I_{2n - 2} \\
         &= \cdots \\
-        &= \frac{\para{2n - 1} \cdot \para{2n - 3} \cdots 3 \cdot 1}{\para{2n} \cdot \para{2n - 2} \cdots 2} I_0 \\
-        &= \frac{\para{2n} \cdot \para{2n - 1} \cdot \para{2n - 2} \cdot \para{2n - 3} \cdots 3 \cdot 2 \cdot 1}{2n \cdot 2n \cdot \para{2n - 2} \cdot \para{2n - 2} \cdots 2 \cdot 2} \cdot \frac{\pi}{2} \\
-        &= \frac{\para{2n}!}{2^{2n} \cdot n! \cdot n!} \cdot \frac{\pi}{2} \\
+        &= \frac{\pqty{2n - 1} \cdot \pqty{2n - 3} \cdots 3 \cdot 1}{\pqty{2n} \cdot \pqty{2n - 2} \cdots 2} I_0 \\
+        &= \frac{\pqty{2n} \cdot \pqty{2n - 1} \cdot \pqty{2n - 2} \cdot \pqty{2n - 3} \cdots 3 \cdot 2 \cdot 1}{2n \cdot 2n \cdot \pqty{2n - 2} \cdot \pqty{2n - 2} \cdots 2 \cdot 2} \cdot \frac{\pi}{2} \\
+        &= \frac{\pqty{2n}!}{2^{2n} \cdot n! \cdot n!} \cdot \frac{\pi}{2} \\
         &= \frac{\pi}{2} \cdot 2^{-2n} \cdot \binom{2n}{n},
     \end{align*}
     so we have
@@ -369,7 +369,7 @@ Another way to study the asymptotic behaviour of this function, is to relate thi
 
     Similarly, we have
     \[
-        I_{2n + 1} = \frac{2n \cdot \para{2n - 1} \cdots 4 \cdot 2}{\para{2n + 1} \cdot \para{2n - 1} \cdots 3 \cdot 1} I_1 = \frac{1}{2n + 1} \cdot \para{2^{-2n} \cdot \binom{2n}{n}}\inverse.
+        I_{2n + 1} = \frac{2n \cdot \pqty{2n - 1} \cdots 4 \cdot 2}{\pqty{2n + 1} \cdot \pqty{2n - 1} \cdots 3 \cdot 1} I_1 = \frac{1}{2n + 1} \cdot \pqty{2^{-2n} \cdot \binom{2n}{n}}\inverse.
     \]
 
 \end{proof}
@@ -399,11 +399,11 @@ Another way to study the asymptotic behaviour of this function, is to relate thi
 
     Hence,
     \[
-        \frac{\frac{\pi}{2} \cdot 2^{-2n} \cdot \binom{2n}{n}}{\frac{1}{2n + 1} \cdot \para{2^{-2n} \cdot \binom{2n}{n}}\inverse} \to 1
+        \frac{\frac{\pi}{2} \cdot 2^{-2n} \cdot \binom{2n}{n}}{\frac{1}{2n + 1} \cdot \pqty{2^{-2n} \cdot \binom{2n}{n}}\inverse} \to 1
     \]
     which gives
     \[
-        \para{2^{-2n} \cdot \binom{2n}{n}}^2 \sim \frac{1}{\pi n}
+        \pqty{2^{-2n} \cdot \binom{2n}{n}}^2 \sim \frac{1}{\pi n}
     \]
     as \(n \to \infty\), as desired.
 \end{proof}

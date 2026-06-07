@@ -4,7 +4,7 @@ Note that all natural numbers \(\NN\) in this section includes \(0\).
 
 Let \(X\) be a random variable with values in \(\NN\). We denote the probability mass function of \(X\) as
 \[
-    p_r = \Prob\para{X = r}, \quad r \in \NN.
+    p_r = \Prob\pqty{X = r}, \quad r \in \NN.
 \]
 
 \subsection{Definitions and Properties}
@@ -13,14 +13,14 @@ Let \(X\) be a random variable with values in \(\NN\). We denote the probability
     \label{def:probability-generating-function}%
     The \emph{probability generating function} of \(X\) is defined to be
     \[
-        p \para{z} = \Expt\brac{z^X} = \sum_{r = 0}^{\infty} p_r \cdot z^r = p_0 + p_1 \cdot z + p_2 \cdot z^2 + \cdots
+        p \pqty{z} = \Expt\bqty{z^X} = \sum_{r = 0}^{\infty} p_r \cdot z^r = p_0 + p_1 \cdot z + p_2 \cdot z^2 + \cdots
     \]
     where \(\abs{z} < 1\).
 \end{definition}
 
 Note that this infinite series is indeed well-defined. Taking the absolute value, we have
 \begin{align*}
-    \abs{p\para{z}} &= \abs{\sum_{r = 0}^{\infty} p_r \cdot z^r} \\
+    \abs{p\pqty{z}} &= \abs{\sum_{r = 0}^{\infty} p_r \cdot z^r} \\
     &\leq \sum_{r = 0}^{\infty} p_r \cdot \abs{z^r} \\
     &\leq \sum_{r = 0}^{\infty} p_r \\
     &= 1,
@@ -33,7 +33,7 @@ so the series converges absolutely for \(\abs{z} \leq 1\), and hence in particul
 \end{theorem}
 
 \begin{proof}
-    Let \(\para{p_r}\) and \(\para{q_r}\) be two probability distributions with the same probability generating functions, i.e., for all \(\abs{z} \leq 1\), we have
+    Let \(\pqty{p_r}\) and \(\pqty{q_r}\) be two probability distributions with the same probability generating functions, i.e., for all \(\abs{z} \leq 1\), we have
     \[
         \sum_{r = 0}^{\infty} p_r z^r = \sum_{r = 0}^{\infty} q_r z^r.
     \]
@@ -55,20 +55,20 @@ so the series converges absolutely for \(\abs{z} \leq 1\), and hence in particul
     \label{prop:pgf-sum}%
     Let \(X_1, \ldots, X_n\) be independent random variables, with probability generating functions
     \[
-        q_i\para{z} = \Expt\brac{z^{X_i}}.
+        q_i\pqty{z} = \Expt\bqty{z^{X_i}}.
     \]
 
     Then, we have
     \[
-        p\para{z} = q_1\para{z} \cdots q_n\para{z}.
+        p\pqty{z} = q_1\pqty{z} \cdots q_n\pqty{z}.
     \]
 \end{proposition}
 
 \begin{proof}
     We have
     \begin{align*}
-        p\para{z} &= \Expt\brac{z^{X_1 + \cdots + X_n}} \\
-        &= \Expt\brac{z^{X_1}} \cdots \Expt\brac{z^{x_n}}
+        p\pqty{z} &= \Expt\bqty{z^{X_1 + \cdots + X_n}} \\
+        &= \Expt\bqty{z^{X_1}} \cdots \Expt\bqty{z^{x_n}}
     \end{align*}
     by independence, as desired.
 \end{proof}
@@ -77,47 +77,47 @@ so the series converges absolutely for \(\abs{z} \leq 1\), and hence in particul
 
 \begin{example}[Probability Generating Function of Binomial Distribution]
     \label{ex:pgf-binomial}%
-    Suppose \(X \sim \Binomial\para{n, p}\). We have
+    Suppose \(X \sim \Binomial\pqty{n, p}\). We have
     \begin{align*}
-        p\para{z} = \Expt\brac{z^X} &= \sum_{k = 0}^{n} z^k \cdot \binom{n}{k} \cdot p^k \cdot \para{1 - p}^{n - k} \\
-        &= \para{pz + 1 - p}^n.
+        p\pqty{z} = \Expt\bqty{z^X} &= \sum_{k = 0}^{n} z^k \cdot \binom{n}{k} \cdot p^k \cdot \pqty{1 - p}^{n - k} \\
+        &= \pqty{pz + 1 - p}^n.
     \end{align*}
 \end{example}
 
 \begin{example}[Sum of Independent Binomial Distributions]
     \label{ex:sum-binomial}%
-    Suppose \(X \sim \Binomial\para{n, p}\) and \(Y \sim \Binomial\para{m, p}\), with \(X \indp Y\). We want to find the distribution of \(\para{X + Y}\). We have
+    Suppose \(X \sim \Binomial\pqty{n, p}\) and \(Y \sim \Binomial\pqty{m, p}\), with \(X \indp Y\). We want to find the distribution of \(\pqty{X + Y}\). We have
     \begin{align*}
-        \Expt\brac{z^{X + Y}} &= \Expt\brac{z^X} \cdot \Expt\brac{z^Y} \\
-        &= \para{pz + 1 - p}^{n} \cdot \para{pz + 1 - p}^{m} \\
-        &= \para{pz + 1 - p}^{n + m}.
+        \Expt\bqty{z^{X + Y}} &= \Expt\bqty{z^X} \cdot \Expt\bqty{z^Y} \\
+        &= \pqty{pz + 1 - p}^{n} \cdot \pqty{pz + 1 - p}^{m} \\
+        &= \pqty{pz + 1 - p}^{n + m}.
     \end{align*}
 
-    Therefore, \(X + Y \sim \Binomial\para{n + m, p}\).
+    Therefore, \(X + Y \sim \Binomial\pqty{n + m, p}\).
 \end{example}
 
 \begin{example}[Probability Generating Function of Geometric Distribution]
     \label{ex:pgf-geometric}%
-    Suppose \(X \sim \Geometric\para{p}\), where we use the convention of failures, starting from zero. Then
+    Suppose \(X \sim \Geometric\pqty{p}\), where we use the convention of failures, starting from zero. Then
     \[
-        \Expt\brac{z^X} = \sum_{r = 0}^{\infty} z^r \para{1 - p}^r p = \frac{p}{1 - z\para{1 - p}}.
+        \Expt\bqty{z^X} = \sum_{r = 0}^{\infty} z^r \pqty{1 - p}^r p = \frac{p}{1 - z\pqty{1 - p}}.
     \]
 \end{example}
 
 \begin{example}[Probability Generating Function of Poisson Distribution]
     \label{ex:pgf-poisson}%
-    Suppose \(X \sim \Poisson\para{\lambda}\). Then
+    Suppose \(X \sim \Poisson\pqty{\lambda}\). Then
     \[
-        \Expt\brac{z^X} = \sum_{r = 0}^{\infty} z^r \cdot e^{-\lambda} \cdot \frac{\lambda^r}{r!} = e^{-\lambda} \cdot e^{\lambda z} = e^{\lambda \para{z - 1}}.
+        \Expt\bqty{z^X} = \sum_{r = 0}^{\infty} z^r \cdot e^{-\lambda} \cdot \frac{\lambda^r}{r!} = e^{-\lambda} \cdot e^{\lambda z} = e^{\lambda \pqty{z - 1}}.
     \]
 \end{example}
 
 \begin{example}[Sum of Independent Poisson Distributions]
-    Suppose \(X \sim \Poisson\para{\lambda}\), \(Y \sim \Poisson\para{\mu}\), and \(X \indp Y\). Then we have
+    Suppose \(X \sim \Poisson\pqty{\lambda}\), \(Y \sim \Poisson\pqty{\mu}\), and \(X \indp Y\). Then we have
     \[
-        \Expt\brac{z^{X + Y}} = e^{\lambda \para{z - 1}} \cdot e^{\mu\para{z - 1}} = e^{\para{\lambda + \mu} \para{z - 1}},
+        \Expt\bqty{z^{X + Y}} = e^{\lambda \pqty{z - 1}} \cdot e^{\mu\pqty{z - 1}} = e^{\pqty{\lambda + \mu} \pqty{z - 1}},
     \]
-    so \(X + Y \sim \Poisson\para{\lambda + \mu}\).
+    so \(X + Y \sim \Poisson\pqty{\lambda + \mu}\).
 \end{example}
 
 \subsection{Expectation and Moments}
@@ -128,44 +128,44 @@ We now investigate how to find the expectation (and moments) using the probabili
     \label{thm:expt-pgf}%
     We have
     \[
-        \lim_{z \to 1^{-}} p'\para{z} = p'\para{1^{-}} = \Expt\brac{X}.
+        \lim_{z \to 1^{-}} p'\pqty{z} = p'\pqty{1^{-}} = \Expt\bqty{X}.
     \]
 \end{theorem}
 
 \begin{proof}
-    Suppose \(\Expt\brac{X} < \infty\). Take \(0 < z < 1\), so
+    Suppose \(\Expt\bqty{X} < \infty\). Take \(0 < z < 1\), so
     \[
-        p'\para{z} = \sum_{r = 1}^{\infty} r p_r z^{r - 1} \leq \sum_{r = 1}^{\infty} r p_r = \Expt\brac{X}.
+        p'\pqty{z} = \sum_{r = 1}^{\infty} r p_r z^{r - 1} \leq \sum_{r = 1}^{\infty} r p_r = \Expt\bqty{X}.
     \]
 
-    Therefore, \(p'\para{z}\) is an increasing function of \(z\), and hence,
+    Therefore, \(p'\pqty{z}\) is an increasing function of \(z\), and hence,
     \[
-        \lim_{z \to 1^{-}} p'\para{z} \leq \Expt\brac{X}.
+        \lim_{z \to 1^{-}} p'\pqty{z} \leq \Expt\bqty{X}.
     \]
 
     Let \(\epsilon > 0\). There exists \(N\) large, such that
     \[
-        \sum_{r = 1}^{N} r p_r \geq \Expt\brac{X} - \epsilon.
+        \sum_{r = 1}^{N} r p_r \geq \Expt\bqty{X} - \epsilon.
     \]
 
     Therefore,
     \[
-        \lim_{z \to 1^{-}} p'\para{z} \geq \lim_{z \to 1^{-}} \sum_{r = 1}^{N} r p_r z^{r - 1} = \sum_{r = 1}^{N} r p_r \geq \Expt\brac{X} - \epsilon.
+        \lim_{z \to 1^{-}} p'\pqty{z} \geq \lim_{z \to 1^{-}} \sum_{r = 1}^{N} r p_r z^{r - 1} = \sum_{r = 1}^{N} r p_r \geq \Expt\bqty{X} - \epsilon.
     \]
 
     This finishes the proof.
 
-    Now, suppose \(\Expt\brac{X} = \infty\). Then for any \(M > 0\), there is some \(N \in \NN\), such that
+    Now, suppose \(\Expt\bqty{X} = \infty\). Then for any \(M > 0\), there is some \(N \in \NN\), such that
     \[
         \sum_{r = 1}^{N} r p_r \geq M.
     \]
 
     Therefore, from before, we have
     \[
-        \lim_{z \to 1^{-}} p'\para{z} \geq \lim_{z \to 1^{-}} \sum_{r = 1}^{N} r p_r z^{r - 1} = \sum_{r = 1}^{N} r p_r \geq M.
+        \lim_{z \to 1^{-}} p'\pqty{z} \geq \lim_{z \to 1^{-}} \sum_{r = 1}^{N} r p_r z^{r - 1} = \sum_{r = 1}^{N} r p_r \geq M.
     \]
 
-    Therefore, \(\lim_{z \to 1^{-}} p'\para{z} = \infty\).
+    Therefore, \(\lim_{z \to 1^{-}} p'\pqty{z} = \infty\).
 \end{proof}
 
 Similarly, we may find the factorial moments by taking the derivatives.
@@ -174,12 +174,12 @@ Similarly, we may find the factorial moments by taking the derivatives.
     \label{thm:factorial-moments-pgf}%
     For the second factorial moment, we have
     \[
-        p''\para{1^-} = \lim_{z \to 1^-} p''\para{z} = \Expt\brac{X \para{X - 1}}.
+        p''\pqty{1^-} = \lim_{z \to 1^-} p''\pqty{z} = \Expt\bqty{X \pqty{X - 1}}.
     \]
 
     In general, for any \(k \geq 0\), we have
     \[
-        p^{\para{k}} \para{1^-} = \lim_{z \to 1^-} p^{\para{k}}\para{z} = \Expt\brac{X \para{X - 1} \cdots \para{X - k + 1}}.
+        p^{\pqty{k}} \pqty{1^-} = \lim_{z \to 1^-} p^{\pqty{k}}\pqty{z} = \Expt\bqty{X \pqty{X - 1} \cdots \pqty{X - k + 1}}.
     \]
 \end{theorem}
 
@@ -187,7 +187,7 @@ Similarly, we may find the factorial moments by taking the derivatives.
     \label{cor:var-pgf}%
     We have
     \[
-        \Var\para{X} = p''\para{1^-} + p'\para{1^-} - \para{p'\para{1^-}}^2.
+        \Var\pqty{X} = p''\pqty{1^-} + p'\pqty{1^-} - \pqty{p'\pqty{1^-}}^2.
     \]
 \end{corollary}
 
@@ -195,7 +195,7 @@ Similarly, we may find the factorial moments by taking the derivatives.
     \label{prop:prob-pgf}%
     We have
     \[
-        \Prob\para{X = n} = p^{\para{n}} \para{0} \cdot \frac{1}{n!}.
+        \Prob\pqty{X = n} = p^{\pqty{n}} \pqty{0} \cdot \frac{1}{n!}.
     \]
 \end{proposition}
 
@@ -209,54 +209,54 @@ We set the sum
 \]
 and as a function,
 \[
-    S_n\para{\omega} = \sum_{i = 1}^{n} X_i\para{\omega}.
+    S_n\pqty{\omega} = \sum_{i = 1}^{n} X_i\pqty{\omega}.
 \]
 
 \begin{definition}[Sum of a Random Number of Random Variables]
     \label{def:sum-random-number-rvs}%
     We define
     \[
-        S_N \para{\omega} = S_{N\para{\omega}} \para{\omega} = \sum_{i = 1}^{N\para\omega} X_i\para{\omega}.
+        S_N \pqty{\omega} = S_{N\pqty{\omega}} \pqty{\omega} = \sum_{i = 1}^{N\pqty{\omega}} X_i\pqty{\omega}.
     \]
 \end{definition}
 
 \begin{lemma}[Probability Generating Function of a Sum]
     \label{lem:pgf-sum}%
-    Let \(q\para{z} = \Expt\brac{z^N}\) be the probability generating function of \(N\), and \(p\para{z} = \Expt\brac{z^{X_i}}\) be the probability generating function of \(X_i\)s. Then we have
+    Let \(q\pqty{z} = \Expt\bqty{z^N}\) be the probability generating function of \(N\), and \(p\pqty{z} = \Expt\bqty{z^{X_i}}\) be the probability generating function of \(X_i\)s. Then we have
     \[
-        r\para{z} = \Expt\brac{z^{S_N}} = q\para{p\para{z}}.
+        r\pqty{z} = \Expt\bqty{z^{S_N}} = q\pqty{p\pqty{z}}.
     \]
 \end{lemma}
 
 \begin{proof}[by Indicator Function]
-    We let \(r\para{z} = \Expt\brac{z^{S_N}}\). We have
+    We let \(r\pqty{z} = \Expt\bqty{z^{S_N}}\). We have
     \begin{align*}
-        r\para{z} &= \Expt\brac{z^{S_N}} \\
-        &= \Expt\brac{z^{S_N} \cdot \sum_{n = 0}^{\infty}  \indicator\para{N = n}} \\
-        &= \sum_{n = 0}^{\infty} \Expt\brac{z^{S_n} \cdot \indicator \para{N = n}} \\
-        &= \sum_{n = 0}^{\infty} \Expt\brac{z^{X_1 + \cdots + X_n} \cdot \indicator\para{N = n}} \\
-        &= \sum_{n = 0}^{\infty} \Expt\brac{z^{X_1 + \cdots + X_n}} \cdot \Prob\para{N = n} \\
-        &= \sum_{n = 0}^{\infty} \para{p\para{z}}^{n} \cdot \Prob\para{N = n} \\
-        &= q\para{p\para{z}}.
+        r\pqty{z} &= \Expt\bqty{z^{S_N}} \\
+        &= \Expt\bqty{z^{S_N} \cdot \sum_{n = 0}^{\infty}  \indicator\pqty{N = n}} \\
+        &= \sum_{n = 0}^{\infty} \Expt\bqty{z^{S_n} \cdot \indicator \pqty{N = n}} \\
+        &= \sum_{n = 0}^{\infty} \Expt\bqty{z^{X_1 + \cdots + X_n} \cdot \indicator\pqty{N = n}} \\
+        &= \sum_{n = 0}^{\infty} \Expt\bqty{z^{X_1 + \cdots + X_n}} \cdot \Prob\pqty{N = n} \\
+        &= \sum_{n = 0}^{\infty} \pqty{p\pqty{z}}^{n} \cdot \Prob\pqty{N = n} \\
+        &= q\pqty{p\pqty{z}}.
     \end{align*}
 \end{proof}
 
 \begin{proof}[by Conditional Expectation]
     We have
     \[
-        r\para{z} = \Expt\brac{z^{S_N}} = \Expt\brac{\Expt\brac{\Conditional{z^{S_N}}{N}}} = \Expt\brac{g\para{N}},
+        r\pqty{z} = \Expt\bqty{z^{S_N}} = \Expt\bqty{\Expt\bqty{\Conditional{z^{S_N}}{N}}} = \Expt\bqty{g\pqty{N}},
     \]
     where
     \begin{align*}
-        g\para{n} &= \Expt\brac{\Conditional{z^{S_N}}{N=n}} \\
-        &= \Expt\brac{\Conditional{z^{S_n}}{N = n}} \\
-        &= \Expt\brac{z^{S_n}} \\
-        &= \para{p\para{z}}^{n}.
+        g\pqty{n} &= \Expt\bqty{\Conditional{z^{S_N}}{N=n}} \\
+        &= \Expt\bqty{\Conditional{z^{S_n}}{N = n}} \\
+        &= \Expt\bqty{z^{S_n}} \\
+        &= \pqty{p\pqty{z}}^{n}.
     \end{align*}
 
     Hence, we have
     \[
-        r\para{z} = \Expt\brac{p\para{z}^{N}} = q\para{p\para{z}}.
+        r\pqty{z} = \Expt\bqty{p\pqty{z}^{N}} = q\pqty{p\pqty{z}}.
     \]
 \end{proof}
 
@@ -264,14 +264,14 @@ and as a function,
     \label{cor:expt-random-sum}%
     We have
     \[
-        \Expt\brac{S_N} = \Expt\brac{N} \cdot \Expt\brac{X_i}.
+        \Expt\bqty{S_N} = \Expt\bqty{N} \cdot \Expt\bqty{X_i}.
     \]
 \end{corollary}
 
 \begin{proof}
     We have
     \[
-        \Expt\brac{S_N} = r' \para{1^-} = q' \para{p\para{1^-}} \cdot p'\para{1^-} = \Expt\brac{N} \cdot \Expt\brac{X_i}.
+        \Expt\bqty{S_N} = r' \pqty{1^-} = q' \pqty{p\pqty{1^-}} \cdot p'\pqty{1^-} = \Expt\bqty{N} \cdot \Expt\bqty{X_i}.
     \]
 \end{proof}
 
@@ -279,7 +279,7 @@ and as a function,
     \label{cor:var-random-sum}%
     We have
     \[
-        \Var\para{S_N} = \Expt\brac{N} \cdot \Var\para{X_i} + \Var\para{N} \cdot \para{\Expt\brac{X_i}}^2.
+        \Var\pqty{S_N} = \Expt\bqty{N} \cdot \Var\pqty{X_i} + \Var\pqty{N} \cdot \pqty{\Expt\bqty{X_i}}^2.
     \]
 \end{corollary}
 

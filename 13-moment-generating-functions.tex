@@ -4,9 +4,9 @@
     \label{def:moment-generating-fn}%
     Let \(X\) be a random variable with density \(f\). The \emph{moment generating function} of \(X\) is defined to be
     \[
-        m\para{\theta} = \Expt\brac{e^{\theta X}} = \int_{\RR} e^{\theta x} f\para{x} \Diff x
+        m\pqty{\theta} = \Expt\bqty{e^{\theta X}} = \int_{\RR} e^{\theta x} f\pqty{x} \dd{x}
     \]
-    whenever this is well-defined, and by convention we let \(m\para{0} = 1\).
+    whenever this is well-defined, and by convention we let \(m\pqty{0} = 1\).
 \end{definition}
 
 \begin{theorem}[Uniqueness of Moment Generating Function]
@@ -18,7 +18,7 @@
     \label{thm:derivative-mgf-moment}%
     Suppose the moment generating function is defined for an open interval of values of \(\theta\). Then
     \[
-        m^{\para{r}} \para{0} = \rightbar{\DiffNFrac{m\para{\theta}}{\theta}{r}}_{\theta = 0} = \Expt\brac{X^r}.
+        m^{\pqty{r}} \pqty{0} = \rightbar{\dv[r]{m\pqty{\theta}}{\theta}}_{\theta = 0} = \Expt\bqty{X^r}.
     \]
 \end{theorem}
 
@@ -28,7 +28,7 @@ We may very easily find the moment generating function of the sum of independent
     \label{claim:mgf-sum-independent}%
     If the random variables \(X_1, \ldots, X_n\) are independent, then
     \[
-        m\para{\theta} = \Expt\brac{e^{\theta \para{X_1 + \cdots + X_n}}} = \prod_{i = 1}^{n} \Expt\brac{e^{\theta X_i}}.
+        m\pqty{\theta} = \Expt\bqty{e^{\theta \pqty{X_1 + \cdots + X_n}}} = \prod_{i = 1}^{n} \Expt\bqty{e^{\theta X_i}}.
     \]
 \end{claim}
 
@@ -36,9 +36,9 @@ We may very easily find the moment generating function of the sum of independent
 
 \begin{definition}[Gamma Distribution]
     \label{def:gamma-distribution}%
-    The \emph{Gamma Distribution} with parameters \(n \in \NN\) and \(\lambda > 0\), denoted by \(\Gamma\para{n, \lambda}\), is given by the density function
+    The \emph{Gamma Distribution} with parameters \(n \in \NN\) and \(\lambda > 0\), denoted by \(\Gamma\pqty{n, \lambda}\), is given by the density function
     \[
-        f\para{x} = \frac{e^{-\lambda x} \cdot \lambda^n \cdot x^{n - 1}}{\para{n - 1}!}
+        f\pqty{x} = \frac{e^{-\lambda x} \cdot \lambda^n \cdot x^{n - 1}}{\pqty{n - 1}!}
     \]
     for \(x > 0\).
 \end{definition}
@@ -49,20 +49,20 @@ We may very easily find the moment generating function of the sum of independent
 \end{proposition}
 
 \begin{proof}
-    Let \(X \sim \Gamma\para{n, \lambda}\) have density \(f\). Then
+    Let \(X \sim \Gamma\pqty{n, \lambda}\) have density \(f\). Then
     \[
-        I_n = \int_{0}^{\plusinfty} f\para{x} \Diff x = \int_{0}^{\plusinfty}  \lambda e^{-\lambda x} \cdot \frac{\lambda^{n - 1} x^{n - 1}}{\para{n - 1}!} \Diff x.
+        I_n = \int_{0}^{\plusinfty} f\pqty{x} \dd{x} = \int_{0}^{\plusinfty}  \lambda e^{-\lambda x} \cdot \frac{\lambda^{n - 1} x^{n - 1}}{\pqty{n - 1}!} \dd{x}.
     \]
 
     Hence,
     \begin{align*}
-        I_n &= \int_{0}^{\plusinfty} e^{-\lambda x} \cdot \frac{\para{n - 1} \cdot \lambda^{n - 1} x^{n - 2}}{\para{n - 1}!} \Diff x \\
-        &= \int_{0}^{\plusinfty} \frac{e^{-\lambda x} \cdot \lambda^{n - 1} \cdot x^{n - 2}}{\para{n - 2}!} \Diff x \\
+        I_n &= \int_{0}^{\plusinfty} e^{-\lambda x} \cdot \frac{\pqty{n - 1} \cdot \lambda^{n - 1} x^{n - 2}}{\pqty{n - 1}!} \dd{x} \\
+        &= \int_{0}^{\plusinfty} \frac{e^{-\lambda x} \cdot \lambda^{n - 1} \cdot x^{n - 2}}{\pqty{n - 2}!} \dd{x} \\
         &= I_{n - 1},
     \end{align*}
     so all \(I_n\)s are equal to \(I_1\). We have
     \[
-        I_1 = \int_{0}^{\plusinfty} \lambda e^{-\lambda x} \Diff x = 1,
+        I_1 = \int_{0}^{\plusinfty} \lambda e^{-\lambda x} \dd{x} = 1,
     \]
     so \(f\) is a density.
 \end{proof}
@@ -71,53 +71,53 @@ We may very easily find the moment generating function of the sum of independent
     \label{ex:gamma-distribution-mgf}%
     We have
     \begin{align*}
-        m\para{\theta} = \Expt\brac{e^{\theta X}} &= \int_{0}^{\plusinfty} e^{\theta x} \cdot e^{- \lambda x} \cdot \frac{\lambda^n \cdot x^{n - 1}}{\para{n - 1}!} \Diff x \\
-        &= \int_{0}^{\plusinfty} e^{- \para{\lambda - \theta} x} \cdot \frac{\para{\lambda - \theta}^n \cdot x^{n - 1}}{\para{n - 1}!} \Diff x \cdot \frac{\lambda^n}{\para{\lambda - \theta}^n}.
+        m\pqty{\theta} = \Expt\bqty{e^{\theta X}} &= \int_{0}^{\plusinfty} e^{\theta x} \cdot e^{- \lambda x} \cdot \frac{\lambda^n \cdot x^{n - 1}}{\pqty{n - 1}!} \dd{x} \\
+        &= \int_{0}^{\plusinfty} e^{- \pqty{\lambda - \theta} x} \cdot \frac{\pqty{\lambda - \theta}^n \cdot x^{n - 1}}{\pqty{n - 1}!} \dd{x} \cdot \frac{\lambda^n}{\pqty{\lambda - \theta}^n}.
     \end{align*}
 
     Therefore, if \(\theta < \lambda\), then
     \[
-        m \para{\theta} = \para{\frac{\lambda}{\lambda - \theta}}^n
+        m \pqty{\theta} = \pqty{\frac{\lambda}{\lambda - \theta}}^n
     \]
     for \(\theta < \lambda\).
 \end{example}
 
 \begin{example}[Sum of Gamma Random Variables]
     \label{ex:sum-gamma}%
-    Let \(X \sim \Gamma\para{n, \lambda}\) and \(Y \sim \Gamma\para{m, \lambda}\), with \(n, m \in \NN\) and \(\lambda > 0\), and \(X \indp Y\).
+    Let \(X \sim \Gamma\pqty{n, \lambda}\) and \(Y \sim \Gamma\pqty{m, \lambda}\), with \(n, m \in \NN\) and \(\lambda > 0\), and \(X \indp Y\).
 
     We have
     \begin{align*}
-        \Expt\brac{e^{\theta \para{X + Y}}} &= \Expt\brac{e^{\theta X}} \cdot \Expt\brac{e^{\theta Y}} \\
-        &= \para{\frac{\lambda}{\lambda - \theta}}^n \cdot \para{\frac{\lambda}{\lambda - \theta}}^m \\
-        &= \para{\frac{\lambda}{\lambda - \theta}}^{n + m},
+        \Expt\bqty{e^{\theta \pqty{X + Y}}} &= \Expt\bqty{e^{\theta X}} \cdot \Expt\bqty{e^{\theta Y}} \\
+        &= \pqty{\frac{\lambda}{\lambda - \theta}}^n \cdot \pqty{\frac{\lambda}{\lambda - \theta}}^m \\
+        &= \pqty{\frac{\lambda}{\lambda - \theta}}^{n + m},
     \end{align*}
-    and hence \(X + Y \sim \Gamma\para{n + m, \lambda}\).
+    and hence \(X + Y \sim \Gamma\pqty{n + m, \lambda}\).
 \end{example}
 
 \begin{example}[Sum of Exponential Random Variables]
     \label{ex:sum-exponential}%
-    Let \(X_1, \ldots, X_n\) be independent and identically distributed \(\Exponential\para{\lambda} \sim \Gamma\para{1, \lambda}\) random variables, with \(\lambda > 0\). Then we have
+    Let \(X_1, \ldots, X_n\) be independent and identically distributed \(\Exponential\pqty{\lambda} \sim \Gamma\pqty{1, \lambda}\) random variables, with \(\lambda > 0\). Then we have
     \[
-        X_1 + \cdots + X_n \sim \Gamma\para{n, \lambda}.
+        X_1 + \cdots + X_n \sim \Gamma\pqty{n, \lambda}.
     \]
 \end{example}
 
 \begin{remark}
-    We specified for \(\Gamma\para{n, \lambda}\), that \(n \in \NN\). In fact, we may define \(\Gamma\para{\alpha, \lambda}\) for \(\alpha > 0\), where \(n\) is replaced by \(\alpha\), with the density function
+    We specified for \(\Gamma\pqty{n, \lambda}\), that \(n \in \NN\). In fact, we may define \(\Gamma\pqty{\alpha, \lambda}\) for \(\alpha > 0\), where \(n\) is replaced by \(\alpha\), with the density function
     \[
-        f\para{x} = \frac{e^{-\lambda x} \cdot \lambda^{\alpha} \cdot x^{\alpha - 1}}{\Gamma\para{\alpha}}
+        f\pqty{x} = \frac{e^{-\lambda x} \cdot \lambda^{\alpha} \cdot x^{\alpha - 1}}{\Gamma\pqty{\alpha}}
     \]
     where \(\Gamma\) is the \emph{Gamma Function}
     \[
-        \Gamma\para{\alpha} = \int_{0}^{\plusinfty} e^{-x} \cdot x^{\alpha - 1} \Diff x.
+        \Gamma\pqty{\alpha} = \int_{0}^{\plusinfty} e^{-x} \cdot x^{\alpha - 1} \dd{x}.
     \]
 \end{remark}
 
 \begin{definition}[Cauchy Distribution]
     The \emph{Cauchy Distribution} is the continuous random variable defined by the density function
     \[
-        f\para{x} = \frac{1}{\pi \para{1 + x^2}}
+        f\pqty{x} = \frac{1}{\pi \pqty{1 + x^2}}
     \]
     for \(x \in \RR\).
 \end{definition}
@@ -125,80 +125,80 @@ We may very easily find the moment generating function of the sum of independent
 \begin{remark}
     For any non-zero \(\theta\), we have
     \[
-        m\para{\theta} = \int_{\minusinfty}^{\plusinfty} \frac{e^{\theta x}}{\pi \para{1 + x^2}} \Diff x = \plusinfty,
+        m\pqty{\theta} = \int_{\minusinfty}^{\plusinfty} \frac{e^{\theta x}}{\pi \pqty{1 + x^2}} \dd{x} = \plusinfty,
     \]
-    while \(m\para{0} = 1\).
+    while \(m\pqty{0} = 1\).
 \end{remark}
 
 Note that multiples of the Cauchy distribution therefore would have the same moment generating function -- so the condition on the moment generating functions to agree on an \emph{open set} of values is essential.
 
 \begin{example}[Moment Generating Function of Normal Distribution]
     \label{ex:mgf-normal}%
-    For a normal distribution \(X \sim \Normal\para{\mu, \sigma^2}\), we have
+    For a normal distribution \(X \sim \Normal\pqty{\mu, \sigma^2}\), we have
     \[
-        f\para{x} = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{- \frac{\para{x - \mu}^2}{2 \sigma^2}}
+        f\pqty{x} = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\pqty{- \frac{\pqty{x - \mu}^2}{2 \sigma^2}}
     \]
     for \(x \in \RR\). Therefore, we have
     \begin{align*}
-        m\para{\theta} &= \Expt\brac{e^{\theta X}} \\
-        &= \int_{\minusinfty}^{\infty} e^{\theta x} \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{- \frac{\para{x - \mu}^2}{2 \sigma^2}} \Diff x.
+        m\pqty{\theta} &= \Expt\bqty{e^{\theta X}} \\
+        &= \int_{\minusinfty}^{\infty} e^{\theta x} \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\pqty{- \frac{\pqty{x - \mu}^2}{2 \sigma^2}} \dd{x}.
     \end{align*}
 
     We may simplify the exponent as
     \begin{align*}
-        \theta x - \frac{\para{x - \mu}^2}{2 \sigma^2} &= \theta x - \frac{x^2}{2 \sigma^2} + \frac{2 x \mu}{2 \sigma^2} - \frac{\mu^2}{2 \sigma^2} \\
-        &= - \frac{x^2}{2 \sigma^2} + 2 \cdot \frac{x}{2 \sigma^2} \para{\mu + \theta \sigma^2} - \frac{\mu^2}{2 \sigma^2} \\
-        &= - \frac{x^2}{2 \sigma^2} + 2 \cdot \frac{x}{2 \sigma^2} \para{\mu + \theta \sigma^2} - \frac{\para{mu + \theta \sigma^2}^2}{2 \sigma^2} + \frac{\para{\mu + \theta \sigma^2}^2}{2 \sigma^2} - \frac{\mu^2}{2 \sigma^2} \\
-        &= - \frac{1}{2 \sigma^2} \para{x - \para{\mu + \theta \sigma^2}}^2 + \frac{\mu^2}{2 \sigma^2} + \frac{2 \mu \theta \sigma^2}{2 \sigma^2} + \frac{\theta^2 \sigma^2}{2} - \frac{\mu^2}{2 \sigma^2} \\
-        &= - \frac{1}{2 \sigma^2} \para{x - \para{\mu + \theta \sigma^2}}^2 + \mu \theta + \frac{\theta^2 \sigma^2}{2}.
+        \theta x - \frac{\pqty{x - \mu}^2}{2 \sigma^2} &= \theta x - \frac{x^2}{2 \sigma^2} + \frac{2 x \mu}{2 \sigma^2} - \frac{\mu^2}{2 \sigma^2} \\
+        &= - \frac{x^2}{2 \sigma^2} + 2 \cdot \frac{x}{2 \sigma^2} \pqty{\mu + \theta \sigma^2} - \frac{\mu^2}{2 \sigma^2} \\
+        &= - \frac{x^2}{2 \sigma^2} + 2 \cdot \frac{x}{2 \sigma^2} \pqty{\mu + \theta \sigma^2} - \frac{\pqty{mu + \theta \sigma^2}^2}{2 \sigma^2} + \frac{\pqty{\mu + \theta \sigma^2}^2}{2 \sigma^2} - \frac{\mu^2}{2 \sigma^2} \\
+        &= - \frac{1}{2 \sigma^2} \pqty{x - \pqty{\mu + \theta \sigma^2}}^2 + \frac{\mu^2}{2 \sigma^2} + \frac{2 \mu \theta \sigma^2}{2 \sigma^2} + \frac{\theta^2 \sigma^2}{2} - \frac{\mu^2}{2 \sigma^2} \\
+        &= - \frac{1}{2 \sigma^2} \pqty{x - \pqty{\mu + \theta \sigma^2}}^2 + \mu \theta + \frac{\theta^2 \sigma^2}{2}.
     \end{align*}
 
     Therefore, we have
     \begin{align*}
-        m\para{\theta} &= \int_{\minusinfty}^{\plusinfty} \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{- \frac{\para{x - \para{\mu + \theta \sigma^2}}^2}{2 \sigma^2}} \Diff x  \cdot \exp \para{\mu \theta + \frac{\theta^2 \sigma^2}{2}} \\
-        &= \exp\para{\mu \theta + \frac{\theta^2 \sigma^2}{2}}.
+        m\pqty{\theta} &= \int_{\minusinfty}^{\plusinfty} \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\pqty{- \frac{\pqty{x - \pqty{\mu + \theta \sigma^2}}^2}{2 \sigma^2}} \dd{x}  \cdot \exp \pqty{\mu \theta + \frac{\theta^2 \sigma^2}{2}} \\
+        &= \exp\pqty{\mu \theta + \frac{\theta^2 \sigma^2}{2}}.
     \end{align*}
 
-    Now, suppose \(X \sim \Normal\para{\mu, \sigma^2}\) and \(Y \sim \Normal\para{\nu, \tau^2}\), and \(X \indp Y\).
+    Now, suppose \(X \sim \Normal\pqty{\mu, \sigma^2}\) and \(Y \sim \Normal\pqty{\nu, \tau^2}\), and \(X \indp Y\).
 
     Then, we have
     \begin{align*}
-        m\para{\theta} &= \Expt\brac{e^{\theta \para{X + Y}}} \\
-        &= \exp\para{\mu \theta + \frac{\theta^2 \sigma^2}{2}} \cdot \exp\para{\nu \theta + \frac{\theta^2 \tau^2}{2}} \\
-        &= \exp\para{\para{\mu + \nu} \theta + \frac{\theta^2}{2} \para{\sigma^2 + \tau^2}}.
+        m\pqty{\theta} &= \Expt\bqty{e^{\theta \pqty{X + Y}}} \\
+        &= \exp\pqty{\mu \theta + \frac{\theta^2 \sigma^2}{2}} \cdot \exp\pqty{\nu \theta + \frac{\theta^2 \tau^2}{2}} \\
+        &= \exp\pqty{\pqty{\mu + \nu} \theta + \frac{\theta^2}{2} \pqty{\sigma^2 + \tau^2}}.
     \end{align*}
 
-    Therefore, \(X + Y \sim \Normal\para{\mu + \nu, \sigma^2 + \tau^2}\).
+    Therefore, \(X + Y \sim \Normal\pqty{\mu + \nu, \sigma^2 + \tau^2}\).
 \end{example}
 
 \subsection{Multivariate Moment Generating Functions}
 
 \begin{definition}[Multivariate Moment Generating Function]
     \label{def:multivariate-mgf}%
-    Let \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) be an \(n\)-dimensional random variable. Its \emph{moment generating function} is defined to be
+    Let \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) be an \(n\)-dimensional random variable. Its \emph{moment generating function} is defined to be
     \[
-        m\para{\vmb{\theta}} = \Expt\brac{e^{\vmb{\theta}\transpose \vm{X}}} = \Expt\brac{e^{\sum_{i = 1}^{n} \theta_i X_i}}
+        m\pqty{\vb*{\theta}} = \Expt\bqty{e^{\vb*{\theta}\transpose \vb{X}}} = \Expt\bqty{e^{\sum_{i = 1}^{n} \theta_i X_i}}
     \]
-    where \(\vmb{\theta} = \para{\theta_1, \ldots, \theta_n} \transpose\).
+    where \(\vb*{\theta} = \pqty{\theta_1, \ldots, \theta_n} \transpose\).
 \end{definition}
 
 \begin{theorem}[Uniqueness of Multivariate Moment Generating Function]
     \label{thm:uniqueness-multivarite-mgf-moments}%
-    If the moment generating function is finite for an open set of values of \(\vmb{\theta}\), then it uniquely determines the distribution, and we have
+    If the moment generating function is finite for an open set of values of \(\vb*{\theta}\), then it uniquely determines the distribution, and we have
     \[
-        \rightbar{\PartialNFrac{m}{\theta_i}{r}}_{\vmb{\theta} = \vm{0}} = \Expt\brac{X_i^r}
+        \rightbar{\pdv[r]{m}{\theta_i}}_{\vb*{\theta} = \vb{0}} = \Expt\bqty{X_i^r}
     \]
     and
     \[
-        \rightbar{\frac{\partial^{r + s} m}{\partial \theta_i^r \partial \theta_j^s}}_{\vmb{\theta} = \vm{0}} = \Expt\brac{X_i^r \cdot X_j^s}.
+        \rightbar{\frac{\partial^{r + s} m}{\partial \theta_i^r \partial \theta_j^s}}_{\vb*{\theta} = \vb{0}} = \Expt\bqty{X_i^r \cdot X_j^s}.
     \]
 \end{theorem}
 
 \begin{claim}[Independent Random Variables give Separable Moment Generating Function]
     \label{claim:independent-rv-separable-mgf}%
-    Let \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) be a random variable. Then
+    Let \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) be a random variable. Then
     \[
-        m\para{\vmb{\theta}} = \prod_{i = 1}^{n} \Expt\brac{e^{\theta_i X_i}}
+        m\pqty{\vb*{\theta}} = \prod_{i = 1}^{n} \Expt\bqty{e^{\theta_i X_i}}
     \]
     if and only if \(X_1, \ldots, X_n\) are independent.
 \end{claim}
@@ -206,7 +206,7 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
 \begin{proof}
     If they are independent, this statement is straightforward.
 
-    If \(m\para{\vmb{\theta}}\) factorises, then by \autoref{thm:uniqueness-multivarite-mgf-moments} (Uniqueness of Moment Generating Functions), we get that this \(\vm{X}\) agrees with the distribution when the \(X_i\)s are independent, so they must be independent.
+    If \(m\pqty{\vb*{\theta}}\) factorises, then by \autoref{thm:uniqueness-multivarite-mgf-moments} (Uniqueness of Moment Generating Functions), we get that this \(\vb{X}\) agrees with the distribution when the \(X_i\)s are independent, so they must be independent.
 \end{proof}
 
 \subsection{Multivariate Gaussian Random Variable}
@@ -217,58 +217,58 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
     \[
         X = \mu + \sigma Z
     \]
-    where \(Z \sim \Normal\para{0, 1}\) and \(\mu \in \RR, \sigma \geq 0\). (This includes all normal distributions defined before and the trivial distribution.)
+    where \(Z \sim \Normal\pqty{0, 1}\) and \(\mu \in \RR, \sigma \geq 0\). (This includes all normal distributions defined before and the trivial distribution.)
 
-    Let \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) be a random variable. Then \(\vm{X}\) is \emph{Gaussian}, if for any \(\vm{u} = \para{u_1, \ldots, u_n}\transpose \in \RR^n\), the dot product
+    Let \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) be a random variable. Then \(\vb{X}\) is \emph{Gaussian}, if for any \(\vb{u} = \pqty{u_1, \ldots, u_n}\transpose \in \RR^n\), the dot product
     \[
-        \vm{u}\transpose \vm{X} = \sum_{i = 1}^{n} u_i X_i
+        \vb{u}\transpose \vb{X} = \sum_{i = 1}^{n} u_i X_i
     \]
     is a Gaussian random variable in \(\RR\).
 \end{definition}
 
 \begin{claim}[Affine Transformation of Gaussian is Gaussian]
     \label{claim:affine-transformation-preserves-gaussian}%
-    Let \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) be Gaussian. Let \(\vm{A}\) be an \(m \times n\) matrix, and \(\vm{b} \in \RR^m\). Then the result
+    Let \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) be Gaussian. Let \(\vb{A}\) be an \(m \times n\) matrix, and \(\vb{b} \in \RR^m\). Then the result
     \[
-        \vm{A} \vm{X} + \vm{b}
+        \vb{A} \vb{X} + \vb{b}
     \]
     is also Gaussian.
 \end{claim}
 
 \begin{proof}
-    Let \(\vm{u} = \para{u_1, \ldots, u_m} \transpose \in \RR^m\) be arbitrary. We want to show \(\vm{u}\transpose \para{\vm{A} \vm{X} + \vm{b}}\) is Gaussian in \(\RR\). We have
+    Let \(\vb{u} = \pqty{u_1, \ldots, u_m} \transpose \in \RR^m\) be arbitrary. We want to show \(\vb{u}\transpose \pqty{\vb{A} \vb{X} + \vb{b}}\) is Gaussian in \(\RR\). We have
     \[
-        \vm{u}\transpose \para{\vm{A} \vm{X} + \vm{b}} = \vm{u}\transpose \vm{A} \vm{X} + \vm{u}\transpose \vm{b}.
+        \vb{u}\transpose \pqty{\vb{A} \vb{X} + \vb{b}} = \vb{u}\transpose \vb{A} \vb{X} + \vb{u}\transpose \vb{b}.
     \]
 
-    Let \(\vm{v} = \vm{A}\transpose \vm{u}\). Then we have
+    Let \(\vb{v} = \vb{A}\transpose \vb{u}\). Then we have
     \[
-        \vm{u}\transpose \para{\vm{A} \vm{X} + \vm{b}} = \vm{v}\transpose \vm{X} + \vm{u}\transpose \vm{b}.
+        \vb{u}\transpose \pqty{\vb{A} \vb{X} + \vb{b}} = \vb{v}\transpose \vb{X} + \vb{u}\transpose \vb{b}.
     \]
 
-    \(\vm{v}\transpose \vm{X}\) is Gaussian in \(\RR\), since \(\vm{X}\) is Gaussian. Adding a constant to a Gaussian will still produce a Gaussian in \(\RR\). So
+    \(\vb{v}\transpose \vb{X}\) is Gaussian in \(\RR\), since \(\vb{X}\) is Gaussian. Adding a constant to a Gaussian will still produce a Gaussian in \(\RR\). So
     \[
-        \vm{u}\transpose \para{\vm{A} \vm{X} + \vm{b}}
+        \vb{u}\transpose \pqty{\vb{A} \vb{X} + \vb{b}}
     \]
     is Gaussian in \(\RR\), as desired.
 \end{proof}
 
 \begin{proposition}[Moment Generating Function for Multivariate Gaussian]
     \label{prop:mgf-multivariate-gaussian}%
-    Let \(\vm{X} = \para{X_1, \ldots, X_n}\) be a multivariate Gaussian random variable. Then its moment generating function, \(m\para{\vmb{\lambda}}\), is given by
+    Let \(\vb{X} = \pqty{X_1, \ldots, X_n}\) be a multivariate Gaussian random variable. Then its moment generating function, \(m\pqty{\vb*{\lambda}}\), is given by
     \[
-        m\para{\vmb{\lambda}} = \Expt\brac{e^{\vmb{\lambda} \transpose \vm{X}}} = \exp\para{\vmb{\lambda} \transpose \vmb{\mu} + \frac{\vmb{\lambda} \transpose \vm{V} \vmb{\lambda}}{2}},
+        m\pqty{\vb*{\lambda}} = \Expt\bqty{e^{\vb*{\lambda} \transpose \vb{X}}} = \exp\pqty{\vb*{\lambda} \transpose \vb*{\mu} + \frac{\vb*{\lambda} \transpose \vb{V} \vb*{\lambda}}{2}},
     \]
     where
     \[
-        \vmb{\mu} = \Expt\brac{\vm{X}}, \quad \vm{V} = \Var\para{\vm{X}}.
+        \vb*{\mu} = \Expt\bqty{\vb{X}}, \quad \vb{V} = \Var\pqty{\vb{X}}.
     \]
 \end{proposition}
 
 \begin{proof}
-    Note that \(\vmb{\lambda \transpose \vm{X}}\) is a normal distribution with parameters
+    Note that \(\vb*{\lambda \transpose \vb{X}}\) is a normal distribution with parameters
     \[
-        \Normal\para{\vmb{\lambda}\transpose\vmb{\mu}, \vmb{\lambda}\transpose \vm{V} \vmb{\lambda}}
+        \Normal\pqty{\vb*{\lambda}\transpose\vb*{\mu}, \vb*{\lambda}\transpose \vb{V} \vb*{\lambda}}
     \]
     by \autoref{prop:expt-var-transform-multivariate-rv}. The result follows.
 \end{proof}
@@ -276,9 +276,9 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
 Since the moment generating function (on an open set) uniquely characterises the distribution, it is sufficient to know the mean and the variance to characterise the multivariate Gaussian distribution.
 
 \begin{notation}
-    We write the Multivariate Gaussian distribution \(\vm{X}\) with mean \(\vmb{\mu} \in \RR^n\), and non-negative definite matrix \(\vm{V}\), as
+    We write the Multivariate Gaussian distribution \(\vb{X}\) with mean \(\vb*{\mu} \in \RR^n\), and non-negative definite matrix \(\vb{V}\), as
     \[
-        \vm{X} \sim \Normal\para{\vmb{\mu}, \vm{V}}.
+        \vb{X} \sim \Normal\pqty{\vb*{\mu}, \vb{V}}.
     \]
 \end{notation}
 
@@ -286,119 +286,115 @@ The next question is, does the multivariate Gaussian always exist, for any speci
 
 \begin{lemma}[Standard Normals produce a Multivariate Gaussian]
     \label{lem:standard-normal-multivariate-gaussian}%
-    Let \(Z_1, \ldots, Z_n\) be independent and identically distributed \(\Normal\para{0, 1}\) random variables. Then the multivariate random variable
+    Let \(Z_1, \ldots, Z_n\) be independent and identically distributed \(\Normal\pqty{0, 1}\) random variables. Then the multivariate random variable
     \[
-        \vm{Z} = \para{Z_1, \ldots, Z_n}
+        \vb{Z} = \pqty{Z_1, \ldots, Z_n}
     \]
     is Gaussian. In particular,
     \[
-        \vm{Z} \sim \Normal\para{\vm{0}, \identityM_n}.
+        \vb{Z} \sim \Normal\pqty{\vb{0}, \identityM_n}.
     \]
 \end{lemma}
 
 \begin{proof}
-    We find the moment generating function of \(\vm{u} \transpose \vm{Z}\). We have
+    We find the moment generating function of \(\vb{u} \transpose \vb{Z}\). We have
     \begin{align*}
-        m\para{\lambda} &= \Expt\brac{e^{\lambda \vm{u}\transpose \vm{Z}}} \\
-        &= \Expt\brac{e^{\lambda \sum_{i = 1}^{n} u_i Z_i}} \\
-        &= \prod_{i = 1}^{n} \Expt\brac{e^{\lambda u_i Z_i}} \\
-        &= \prod_{i = 1}^{n} \exp\para{\frac{\lambda^2 u_i^2}{2}} \\
-        &= \exp\para{\frac{\lambda^2 \abs{\vm{u}}^2}{2}}.
+        m\pqty{\lambda} &= \Expt\bqty{e^{\lambda \vb{u}\transpose \vb{Z}}} \\
+        &= \Expt\bqty{e^{\lambda \sum_{i = 1}^{n} u_i Z_i}} \\
+        &= \prod_{i = 1}^{n} \Expt\bqty{e^{\lambda u_i Z_i}} \\
+        &= \prod_{i = 1}^{n} \exp\pqty{\frac{\lambda^2 u_i^2}{2}} \\
+        &= \exp\pqty{\frac{\lambda^2 \abs{\vb{u}}^2}{2}}.
     \end{align*}
 
     Hence,
     \[
-        \vm{u}\transpose \vm{Z} \sim \Normal \para{0, \abs{\vm{u}}^2}
+        \vb{u}\transpose \vb{Z} \sim \Normal \pqty{0, \abs{\vb{u}}^2}
     \]
     is normal, with the desired parameters, as desired.
 \end{proof}
 
 \begin{lemma}[Construction of Multivariate Gaussian]
     \label{lem:construction-multivariate-gaussian}%
-    Let \(\vmb{\mu} \in \RR^n\), and \(\vm{V}\) be a non-negative definite matrix. Let \(Z_1, \ldots, Z_n\) be identically and independently distributed with \(\Normal\para{0, 1}\). Let \(\vm{Z} = \para{Z_1, \ldots, Z_n}\).
+    Let \(\vb*{\mu} \in \RR^n\), and \(\vb{V}\) be a non-negative definite matrix. Let \(Z_1, \ldots, Z_n\) be identically and independently distributed with \(\Normal\pqty{0, 1}\). Let \(\vb{Z} = \pqty{Z_1, \ldots, Z_n}\).
 
     Then the random variable
     \[
-        \vm{X} = \vmb{\mu} + \vmb{\sigma} \vm{Z}
+        \vb{X} = \vb*{\mu} + \vb*{\sigma} \vb{Z}
     \]
-    is Gaussian, with \(X \sim \Normal\para{\vmb{\mu}, \vm{V}}\), where \(\vmb{\sigma}\) is the square-root of \(\vm{V}\).
+    is Gaussian, with \(X \sim \Normal\pqty{\vb*{\mu}, \vb{V}}\), where \(\vb*{\sigma}\) is the square-root of \(\vb{V}\).
 \end{lemma}
 
 \begin{proof}
-    First, \(\vm{X}\) is Gaussian since it is a linear transformation of a Gaussian vector. We have \(\Expt\brac{\vm{X}} = \vmb{\mu}\). For the variance, we have
+    First, \(\vb{X}\) is Gaussian since it is a linear transformation of a Gaussian vector. We have \(\Expt\bqty{\vb{X}} = \vb*{\mu}\). For the variance, we have
     \begin{align*}
-        \Var\para{\vm{X}} &= \Expt\brac{\para{\vm{X} - \vmb{\mu}} \cdot \para{\vm{X} - \vmb{\mu}}\transpose} \\
-        &= \Expt\brac{\para{\vmb{\sigma} \cdot \vm{Z}} \cdot \para{\vm{Z}\transpose \cdot \vmb{\sigma}\transpose}} \\
-        &= \vmb{\sigma} \cdot \Expt\brac{\vm{Z} \cdot \vm{Z}\transpose} \vmb{\sigma}\transpose \\
-        &= \vmb{\sigma} \cdot \identityM_n \cdot \vmb{\sigma}\transpose \\
-        &= \vmb{\sigma} \cdot \vmb{\sigma} \\
-        &= \vm{V}.
+        \Var\pqty{\vb{X}} &= \Expt\bqty{\pqty{\vb{X} - \vb*{\mu}} \pqty{\vb{X} - \vb*{\mu}}\transpose} \\
+        &= \Expt\bqty{\pqty{\vb*{\sigma} \vb{Z}} \pqty{\vb{Z}\transpose \vb*{\sigma}\transpose}} \\
+        &= \vb*{\sigma} \Expt\bqty{\vb{Z} \vb{Z}\transpose} \vb*{\sigma}\transpose \\
+        &= \vb*{\sigma} \identityM_n \vb*{\sigma}\transpose \\
+        &= \vb*{\sigma} \vb*{\sigma}\transpose \\
+        &= \vb{V}.
     \end{align*}
 \end{proof}
 
 We aim to find the density of a multivariate Gaussian next.
 
 \begin{proposition}[Density of Multivariate Gaussian with Positive Definite Variance]
-    If \(\vm{V}\) is positive definite, then the density of \(\Normal\para{\vmb{\mu}, \vm{V}}\) is given by
+    If \(\vb{V}\) is positive definite, then the density of \(\Normal\pqty{\vb*{\mu}, \vb{V}}\) is given by
     \[
-        f_{\vm{X}}\para{\vm{x}} = \frac{1}{\sqrt{\para{2\pi}^n \det \vm{V}}} \exp\para{- \frac{\para{\vm{x} - \vmb{\mu}}\transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}{2}}.
+        f_{\vb{X}}\pqty{\vb{x}} = \frac{1}{\sqrt{\pqty{2\pi}^n \det \vb{V}}} \exp\pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}}\transpose \vb{V}\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}}.
     \]
 \end{proposition}
 
 \begin{proof}
-    We have \(\vm{X} = \vmb{\mu} + \vmb{\sigma} \vm{Z}\), where \(\vm{Z} \sim \Normal\para{\vm{0}, \identityM_n}\).
+    We have \(\vb{X} = \vb*{\mu} + \vb*{\sigma} \vb{Z}\), where \(\vb{Z} \sim \Normal\pqty{\vb{0}, \identityM_n}\).
 
-    Therefore, \(\vm{Z} = \vmb{\sigma}\inverse \para{\vm{X} - \vmb{\mu}}\).
+    Therefore, \(\vb{Z} = \vb*{\sigma}\inverse \pqty{\vb{X} - \vb*{\mu}}\).
 
     Hence,
     \[
-        f_{\vm{X}} \para{\vm{x}} = f_{\vm{Z}} \para{\vmb{\sigma}\inverse \para{\vm{x} - \vmb{\mu}}} \cdot \abs{\det \vm{J}},
+        f_{\vb{X}} \pqty{\vb{x}} = f_{\vb{Z}} \pqty{\vb*{\sigma}\inverse \pqty{\vb{x} - \vb*{\mu}}} \cdot \abs{\det \vb{J}},
     \]
-    where \(\vm{J} = \vmb{\sigma}\inverse\).
+    where \(\vb{J} = \vb*{\sigma}\inverse\).
 
     Hence,
     \begin{align*}
-        f_{\vm{X}} \para{\vm{x}} &= f_{\vm{Z}} \para{\vmb{\sigma}\inverse \para{\vm{x} - \vmb{\mu}}} \cdot \abs{\det \vm{J}} \\
-        &= f_{\vm{Z}} \para{z_1, \cdots, z_n} \cdot \det\para{\vmb{\sigma} \inverse} \\
-        &= \frac{1}{\para{2 \pi}^{n / 2}} \exp\para{- \frac{\abs{\vm{z}}^2}{2}} \cdot \det\para{\vmb{\sigma}\inverse} \\
-        &= \frac{1}{\para{2 \pi}^{n / 2}} \exp\para{- \frac{\vm{z}\transpose \vm{z}}{2}} \frac{1}{\det \vmb{\sigma}}.
+        f_{\vb{X}} \pqty{\vb{x}} &= f_{\vb{Z}} \pqty{\vb*{\sigma}\inverse \pqty{\vb{x} - \vb*{\mu}}} \cdot \abs{\det \vb{J}} \\
+        &= f_{\vb{Z}} \pqty{z_1, \cdots, z_n} \cdot \det\pqty{\vb*{\sigma} \inverse} \\
+        &= \frac{1}{\pqty{2 \pi}^{\flatfrac{n}{2}}} \exp\pqty{- \frac{\abs{\vb{z}}^2}{2}} \cdot \det\pqty{\vb*{\sigma}\inverse} \\
+        &= \frac{1}{\pqty{2 \pi}^{\flatfrac{n}{2}}} \exp\pqty{- \frac{\vb{z}\transpose \vb{z}}{2}} \frac{1}{\det \vb*{\sigma}}.
     \end{align*}
 
     Hence,
     \[
-        f_{\vm{X}}\para{\vm{x}} = \frac{1}{\para{2 \pi}^{n / 2} \det \vmb{\sigma}} \exp\para{- \frac{\para{\vm{x} - \vmb{\mu}}\transpose \cdot \para{\vmb{\sigma}\inverse}\transpose \cdot \vmb{\sigma}\inverse \cdot \para{\vm{x} - \vmb{\mu}}}{2}}.
+        f_{\vb{X}}\pqty{\vb{x}} = \frac{1}{\pqty{2 \pi}^{\flatfrac{n}{2}} \det \vb*{\sigma}} \exp\pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}}\transpose \pqty{\vb*{\sigma}\inverse}\transpose \vb*{\sigma}\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}}.
     \]
 
-    We have \(\para{\vmb{\sigma}\inverse}\transpose = \vmb{\sigma}\inverse\), and \(\det\vmb{\sigma} = \sqrt{\det \vm{V}}\), and hence
+    We have \(\pqty{\vb*{\sigma}\inverse}\transpose = \vb*{\sigma}\inverse\), and \(\det\vb*{\sigma} = \sqrt{\det \vb{V}}\), and hence
     \[
-        f_{\vm{X}}\para{\vm{x}} = \frac{1}{\sqrt{\para{2\pi}^n \det \vm{V}}} \exp\para{- \frac{\para{\vm{x} - \vmb{\mu}}\transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}{2}}
+        f_{\vb{X}}\pqty{\vb{x}} = \frac{1}{\sqrt{\pqty{2\pi}^n \det \vb{V}}} \exp\pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}}\transpose \vb{V}\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}}
     \]
     as desired.
 \end{proof}
 
-Now we look at the degenerate case, where one or more of the entries \(\lambda_i = 0\). By an orthogonal change of basis, we can assume that \(\vm{V}\) takes the form of
+Now we look at the degenerate case, where one or more of the entries \(\lambda_i = 0\). By an orthogonal change of basis, we can assume that \(\vb{V}\) takes the form of
 \[
-    \vm{V} = \begin{pmatrix}
-        \vm{U} & \vm{0}\transpose \\ \vm{0} & \zeroM
-    \end{pmatrix}
+    \vb{V} = \pmqty{
+        \vb{U} & \vb{0}\transpose \\ \vb{0} & \zeroM
+    }
 \]
-where \(\vm{U}\) is a positive definite \(m \times m\) matrix, where \(m < n\).
+where \(\vb{U}\) is a positive definite \(m \times m\) matrix, where \(m < n\).
 
 Under this change of basis, we have
 \[
-    \vmb{\mu} = \begin{pmatrix}
-        \vmb{\lambda} \\ \vmb{\nu}
-    \end{pmatrix}
+    \vb*{\mu} = \pmqty{\vb*{\lambda} \\ \vb*{\nu}}
 \]
-for \(\vmb{\lambda} \in \RR^m, \vmb{\nu} \in \RR^{n - m}\). Hence, we can write the random variable in the form
+for \(\vb*{\lambda} \in \RR^m, \vb*{\nu} \in \RR^{n - m}\). Hence, we can write the random variable in the form
 \[
-    \vm{X} = \begin{pmatrix}
-        \vm{Y} \\ \vmb{\nu}
-    \end{pmatrix}
+    \vb{X} = \pmqty{\vb{Y} \\ \vb*{\nu}}
 \]
-where \(\vm{Y} \sim \Normal\para{\vmb{\lambda}, \vm{U}}\) and \(\vm{Y} \in \RR^m\). Hence, it has density
+where \(\vb{Y} \sim \Normal\pqty{\vb*{\lambda}, \vb{U}}\) and \(\vb{Y} \in \RR^m\). Hence, it has density
 \[
-    f_{\vm{Y}} \para{\vm{y}} = \frac{1}{\sqrt{\para{2 \pi}^m \det \vm{U}}} \exp \para{- \frac{\para{\vm{y} - \vmb{\lambda}}\transpose \vm{U}\inverse \para{\vm{y} - \vmb{\lambda}}}{2}}
+    f_{\vb{Y}} \pqty{\vb{y}} = \frac{1}{\sqrt{\pqty{2 \pi}^m \det \vb{U}}} \exp \pqty{- \frac{\pqty{\vb{y} - \vb*{\lambda}}\transpose \vb{U}\inverse \pqty{\vb{y} - \vb*{\lambda}}}{2}}
 \]
 for the first \(m\) components.
 
@@ -406,40 +402,40 @@ For a Gaussian random variable, we have the converse of \autoref{claim:indep-dia
 
 \begin{lemma}[Diagonal Variance implies Independence for Gaussian]
     \label{lem:diagonal-variance-independence-gaussian}%
-    Let \(\vm{X} \sim \Normal\para{\vmb{\mu}, \vm{V}}\) where \(\vm{V}\) is positive definite. If \(\vm{V}\) is diagonal, then the \(X_i\)s are independent.
+    Let \(\vb{X} \sim \Normal\pqty{\vb*{\mu}, \vb{V}}\) where \(\vb{V}\) is positive definite. If \(\vb{V}\) is diagonal, then the \(X_i\)s are independent.
 \end{lemma}
 
 \begin{proof}[using Probability Density Function]
     Let
     \[
-        \vm{V} = \diag\para{\lambda_1, \ldots, \lambda_n},
+        \vb{V} = \diag\pqty{\lambda_1, \ldots, \lambda_n},
     \]
     and
     \[
-        \mu = \para{\mu_1, \ldots, \mu_n}\transpose.
+        \mu = \pqty{\mu_1, \ldots, \mu_n}\transpose.
     \]
 
-    The probability density function of \(\vm{X}\) is given by
+    The probability density function of \(\vb{X}\) is given by
     \begin{align*}
-        f_{\vm{X}} \para{\vm{x}} &= \frac{1}{\sqrt{\para{2 \pi}^n \det \vm{V}}} \exp \para{- \frac{\para{\vm{x} - \vmb{\mu}} \transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}{2}} \\
-        &= \frac{1}{\sqrt{\para{2\pi}^n \det \vm{V}}} \cdot \exp\para{- \sum_{i = 1}^{n} \frac{\para{x_i - \mu_i}^2}{2 \lambda_i}},
+        f_{\vb{X}} \pqty{\vb{x}} &= \frac{1}{\sqrt{\pqty{2 \pi}^n \det \vb{V}}} \exp \pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}} \transpose \vb{V}\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}} \\
+        &= \frac{1}{\sqrt{\pqty{2\pi}^n \det \vb{V}}} \cdot \exp\pqty{- \sum_{i = 1}^{n} \frac{\pqty{x_i - \mu_i}^2}{2 \lambda_i}},
     \end{align*}
-    and the density function factorises. Therefore, \(X_i \sim \Normal\para{\mu_i, \lambda_i}\) is independent.
+    and the density function factorises. Therefore, \(X_i \sim \Normal\pqty{\mu_i, \lambda_i}\) is independent.
 \end{proof}
 
 \begin{proof}[using Moment Generating Function]
     We inspect the moment generation function. Recall that
     \[
-        \vmb{\theta}\transpose \vm{X} \sim \Normal\para{\vmb{\theta}\transpose \vmb{\mu}, \vmb{\theta}\transpose \vm{V} \vmb{\theta}}.
+        \vb*{\theta}\transpose \vb{X} \sim \Normal\pqty{\vb*{\theta}\transpose \vb*{\mu}, \vb*{\theta}\transpose \vb{V} \vb*{\theta}}.
     \]
     
     We have
     \begin{align*}
-        m\para{\vmb{\theta}} &= \exp\para{\vmb{\theta}\transpose \vmb{\mu} + \frac{\vmb{\theta}\transpose \vm{V} \vmb{\theta}}{2}} \\
-        &= \exp\para{\sum_{i = 1}^{n} \theta_i \mu_i + \sum_{i = 1}^{n} \frac{\theta_i^2 \lambda_i}{2}} \\
-        &= \prod_{i = 1}^{n} \exp\para{\theta_i \mu_i + \frac{\theta_i^2 \lambda_i}{2}}
+        m\pqty{\vb*{\theta}} &= \exp\pqty{\vb*{\theta}\transpose \vb*{\mu} + \frac{\vb*{\theta}\transpose \vb{V} \vb*{\theta}}{2}} \\
+        &= \exp\pqty{\sum_{i = 1}^{n} \theta_i \mu_i + \sum_{i = 1}^{n} \frac{\theta_i^2 \lambda_i}{2}} \\
+        &= \prod_{i = 1}^{n} \exp\pqty{\theta_i \mu_i + \frac{\theta_i^2 \lambda_i}{2}}
     \end{align*}
-    factorised into moment generating functions for \(\Normal\para{\mu_i, \lambda_i}\). Therefore, \(X_1, \ldots, X_n\) are independent.
+    factorised into moment generating functions for \(\Normal\pqty{\mu_i, \lambda_i}\). Therefore, \(X_1, \ldots, X_n\) are independent.
 \end{proof}
 
 Therefore, combining \autoref{claim:indep-diagonal-variance} and \autoref{lem:diagonal-variance-independence-gaussian}, we have that the components of a Gaussian vector is independent, if and only if their pairwise covariances are zero.
@@ -452,13 +448,13 @@ Therefore, combining \autoref{claim:indep-diagonal-variance} and \autoref{lem:di
 \end{definition}
 
 \begin{proposition}[Conditional Expectation for Bivariate Gaussian]
-    Let \(\para{X_1, X_2}\) be a bivariate Gaussian. Then we have
+    Let \(\pqty{X_1, X_2}\) be a bivariate Gaussian. Then we have
     \[
-        \Expt\brac{\Conditional{X_2}{X_1}} = \mu_2 - a \mu_1 + a X_1 = \mu_2 + a \para{X_1 - \mu_1},
+        \Expt\bqty{\Conditional{X_2}{X_1}} = \mu_2 - a \mu_1 + a X_1 = \mu_2 + a \pqty{X_1 - \mu_1},
     \]
     where
     \[
-        a = \frac{\Cov\para{X_1, X_2}}{\Var\para{X_1}}.
+        a = \frac{\Cov\pqty{X_1, X_2}}{\Var\pqty{X_1}}.
     \]
 \end{proposition}
 
@@ -466,31 +462,27 @@ Therefore, combining \autoref{claim:indep-diagonal-variance} and \autoref{lem:di
 \begin{proof}
     Let \(Y = X_2 - a X_1\) for some \(a \in \RR\). Then the vector
     \[
-        \begin{pmatrix}
-            X_1 \\ Y
-        \end{pmatrix}
+        \pmqty{X_1 \\ Y}
         =
-        \begin{pmatrix}
+        \pmqty{
             1 & 0 \\
             -a & 1
-        \end{pmatrix}
-        \begin{pmatrix}
-            X_1 \\ X_2
-        \end{pmatrix}
+        }
+        \pmqty{X_1 \\ X_2}
     \]
     is Gaussian. The covariance satisfies
     \[
-        \Cov\para{X_1, Y} = \Cov\para{X_1, X_2 - a X_1} = \Cov\para{X_1, X_2} - a \Var\para{X_1}.
+        \Cov\pqty{X_1, Y} = \Cov\pqty{X_1, X_2 - a X_1} = \Cov\pqty{X_1, X_2} - a \Var\pqty{X_1}.
     \]
     
     Taking
     \[
-        a = \frac{\Cov\para{X_1, X_2}}{\Var\para{X_1}}
+        a = \frac{\Cov\pqty{X_1, X_2}}{\Var\pqty{X_1}}
     \]
-    gives \(\Cov\para{X_1, Y} = 0\), which in turn makes them independent. Hence,
+    gives \(\Cov\pqty{X_1, Y} = 0\), which in turn makes them independent. Hence,
     \begin{align*}
-        \Expt\brac{\Conditional{X_2}{X_1}} &= \Expt\brac{\Conditional{X_2 - a X_1}{X_1}} + \Expt\brac{\Conditional{a X_1}{X_1}} \\
-        &= \Expt\brac{X_2 - a X_1} + a X_1 \\
+        \Expt\bqty{\Conditional{X_2}{X_1}} &= \Expt\bqty{\Conditional{X_2 - a X_1}{X_1}} + \Expt\bqty{\Conditional{a X_1}{X_1}} \\
+        &= \Expt\bqty{X_2 - a X_1} + a X_1 \\
         &= \mu_2 - a \mu_1 + a X_1.
     \end{align*}
 \end{proof}

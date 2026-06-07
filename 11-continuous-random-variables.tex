@@ -4,7 +4,7 @@
 
 We return to the axiomatic approach. Recall that in \autoref{def:random-variable}, we required that
 \[
-    \brce{X \leq x} = \set{\omega}{X\para{\omega} \leq x} \in \eventSpace.
+    \Bqty{X \leq x} = \set{\omega}{X\pqty{\omega} \leq x} \in \eventSpace.
 \]
 
 Recall we defined in \autoref{def:probability-distribution-function} the Probability/Cumulative Distribution Function. These look like \autoref{fig:cdf-discrete} for discrete random variables.
@@ -15,7 +15,7 @@ Recall we defined in \autoref{def:probability-distribution-function} the Probabi
         \begin{axis}[
             axis lines = middle,
             xlabel = {\(x\)},
-            ylabel = {\(F\para{x}\)},
+            ylabel = {\(F\pqty{x}\)},
             xmin = -0.25, xmax = 4.25,
             ymin = -0.25, ymax = 1.25,
             xtick = \empty,
@@ -56,48 +56,48 @@ The probability distribution function satisfies the following properties.
 \begin{proposition}[Properties of Probability Distribution Function]
     \label{prop:property-probability-distribution-fn}%
     \begin{enumerate}
-        \item If \(x \leq y\), then \(F\para{x} \leq F\para{y}\).
+        \item If \(x \leq y\), then \(F\pqty{x} \leq F\pqty{y}\).
         \item For all \(a, b \in \RR\) with \(a < b\), we have
         \[
-            \Prob\para{a < X \leq b} = F\para{b} - F\para{a}.
+            \Prob\pqty{a < X \leq b} = F\pqty{b} - F\pqty{a}.
         \]
         \item \(F\) is right continuous and \(F\) always has left limits, with
         \[
-            F\para{x^-} = \lim_{y \to x^-} F\para{y} \leq F\para{x}.
+            F\pqty{x^-} = \lim_{y \to x^-} F\pqty{y} \leq F\pqty{x}.
         \]
-        \item \(F\para{x^-} = \Prob\para{X < x}\).
-        \item \(\lim_{x \to \plusinfty} F\para{x} = 1\) and \(\lim_{x \to \minusinfty} F\para{x} = 0\).
+        \item \(F\pqty{x^-} = \Prob\pqty{X < x}\).
+        \item \(\lim_{x \to \plusinfty} F\pqty{x} = 1\) and \(\lim_{x \to \minusinfty} F\pqty{x} = 0\).
     \end{enumerate}
 \end{proposition}
 
 \begin{proof}[of Second Property]
     We have
     \begin{align*}
-        \Prob\para{a < X \leq b} &= \Prob\para{X \leq b, X > a} \\
-        &= \Prob\para{X \leq b} - \Prob\para{X \leq b, X \leq a} \\
-        &= \Prob\para{X \leq b} - \Prob\para{X \leq a} \\
-        &= F\para{b} - F\para{a}.
+        \Prob\pqty{a < X \leq b} &= \Prob\pqty{X \leq b, X > a} \\
+        &= \Prob\pqty{X \leq b} - \Prob\pqty{X \leq b, X \leq a} \\
+        &= \Prob\pqty{X \leq b} - \Prob\pqty{X \leq a} \\
+        &= F\pqty{b} - F\pqty{a}.
     \end{align*}
 \end{proof}
 
 \begin{proof}[of RCLL Property]
-    We first prove the right-continuity. Let \(\para{x_n}\) be a decreasing sequence such that \(x_n \to x^+\) as \(n \to \infty\). We need to show \(F\para{x_n} \to F\para{x}\) as \(n \to \infty\).
+    We first prove the right-continuity. Let \(\pqty{x_n}\) be a decreasing sequence such that \(x_n \to x^+\) as \(n \to \infty\). We need to show \(F\pqty{x_n} \to F\pqty{x}\) as \(n \to \infty\).
 
     We define the events
     \[
-        A_n = \brce{x < X \leq x_n},
+        A_n = \Bqty{x < X \leq x_n},
     \]
-    and hence we have \(\Prob\para{A_n} = F\para{x_n} - F\para{x}\).
+    and hence we have \(\Prob\pqty{A_n} = F\pqty{x_n} - F\pqty{x}\).
 
-    By \autoref{prop:continuity-of-probability-measure} (Continuity of Probability Measure), since \(A_{n + 1} \subseteq A_n\), we have \(\Prob\para{A_n} \to \Prob\para{\bigcap_n A_n}\). But since \(\bigcap_{n \in \NN} A_n = \emptyset\), we have
+    By \autoref{prop:continuity-of-probability-measure} (Continuity of Probability Measure), since \(A_{n + 1} \subseteq A_n\), we have \(\Prob\pqty{A_n} \to \Prob\pqty{\bigcap_n A_n}\). But since \(\bigcap_{n \in \NN} A_n = \emptyset\), we have
     \[
-        \Prob\para{A_n} = F\para{x_n} - F\para{x} \to 0
+        \Prob\pqty{A_n} = F\pqty{x_n} - F\pqty{x} \to 0
     \]
     as \(n \to \infty\).
 
     Since \(f\) is increasing, left limits always exist, with
     \[
-        F\para{x^-} = \lim_{y \to x^-} F\para{y} \leq F\para{x}
+        F\pqty{x^-} = \lim_{y \to x^-} F\pqty{y} \leq F\pqty{x}
     \]
     due to monotonic property.
 \end{proof}
@@ -105,19 +105,19 @@ The probability distribution function satisfies the following properties.
 \begin{proof}[of Left Limit]
     We note
     \[
-        F\para{x^-} = \lim_{n \to \infty} F\para{x - \frac{1}{n}}.
+        F\pqty{x^-} = \lim_{n \to \infty} F\pqty{x - \frac{1}{n}}.
     \]
 
     Define the events
     \[
-        B_n = \brce{X \leq x - \frac{1}{n}}.
+        B_n = \Bqty{X \leq x - \frac{1}{n}}.
     \]
 
     We have \(B_n \subseteq B_{n + 1}\), and hence by \autoref{prop:continuity-of-probability-measure} (Continuity of Probability Measure),
     \[
-        \Prob\para{B_n} \to \Prob\para{\bigcup_{n \in \NN} B_n} = \Prob\para{X < x}
+        \Prob\pqty{B_n} \to \Prob\pqty{\bigcup_{n \in \NN} B_n} = \Prob\pqty{X < x}
     \]
-    since \(\bigcup_{n \in \NN} B_n = \brce{X < x}\).
+    since \(\bigcup_{n \in \NN} B_n = \Bqty{X < x}\).
 \end{proof}
 
 We may now define a continuous random variable as follows.
@@ -126,15 +126,15 @@ We may now define a continuous random variable as follows.
     \label{def:continuous-random-variable}%
     A random variable \(X\) is \emph{continuous} if its probability distribution function is continuous. This means that
     \[
-        F\para{x^-} = F\para{x},
+        F\pqty{x^-} = F\pqty{x},
     \]
     or equivalently,
     \[
-        \Prob\para{X < x} = \Prob\para{X \leq x},
+        \Prob\pqty{X < x} = \Prob\pqty{X \leq x},
     \]
     or equivalently,
     \[
-        \Prob\para{X = x} = 0
+        \Prob\pqty{X = x} = 0
     \]
     for all \(x \in \RR\)
 \end{definition}
@@ -145,17 +145,17 @@ We only work on continuous random variables whose probability distribution funct
     \label{def:probability-density-function}%
     We denote
     \[
-        f\para{x} = F'\para{x}
+        f\pqty{x} = F'\pqty{x}
     \]
     which is the \emph{probability density function} of \(X\).
 \end{definition}
 
 The intuition meaning of the probability density function is as follows. Take a very small interval \(\delta x\) around some \(x\), then we have
 \[
-    \Prob\para{x \leq X \leq x + \delta x} = \int_{x}^{x + \delta x} f\para{y} \Diff y \approx f\para{x} \cdot \delta x.
+    \Prob\pqty{x \leq X \leq x + \delta x} = \int_{x}^{x + \delta x} f\pqty{y} \dd{y} \approx f\pqty{x} \cdot \delta x.
 \]
 
-In other words, we can think of \(f\para{x}\) as being proportional to the probability that \(X\) is close to \(x\).
+In other words, we can think of \(f\pqty{x}\) as being proportional to the probability that \(X\) is close to \(x\).
 
 \begin{remark}
     In probability theory, we generally work with Lebesgue integrals (so some weird counterexamples with Riemann integrals disappear). However,  in this course there will be no problem working with Riemann integrals. For examples, we shall not worry about cases where a function being not Riemann integrable but Lebesgue integrable.
@@ -166,10 +166,10 @@ In other words, we can think of \(f\para{x}\) as being proportional to the proba
     We have
     \begin{enumerate}
         \item \(f \geq 0\),
-        \item \(\int_{\minusinfty}^{\plusinfty} f\para{x} \Diff x = 1\),
-        \item \(F\para{x} = \int_{\minusinfty}^{x} f\para{y} \Diff y\), and more generally, for any \(A \subseteq \RR\), we have
+        \item \(\int_{\minusinfty}^{\plusinfty} f\pqty{x} \dd{x} = 1\),
+        \item \(F\pqty{x} = \int_{\minusinfty}^{x} f\pqty{y} \dd{y}\), and more generally, for any \(A \subseteq \RR\), we have
         \[
-            \Prob\para{X \in A} = \int_{A} f\para{x} \Diff x.
+            \Prob\pqty{X \in A} = \int_{A} f\pqty{x} \dd{x}.
         \]
     \end{enumerate}
 \end{proposition}
@@ -180,7 +180,7 @@ In other words, we can think of \(f\para{x}\) as being proportional to the proba
     \label{def:uniform-distribution}%
     The \emph{uniform distribution} on \(\ccintv{a}{b}\) for \(a < b\), denoted as \(\Uniform\ccintv{a}{b}\), is given by the probability density function
     \[
-        f\para{x} = \begin{cases}
+        f\pqty{x} = \begin{cases}
             \frac{1}{b - a}, & x \in \ccintv{a}{b}, \\
             0, & \text{otherwise}.
         \end{cases}
@@ -191,7 +191,7 @@ In other words, we can think of \(f\para{x}\) as being proportional to the proba
     \label{prop:cdf-uniform}%
     The uniform distribution has probability distribution function
     \[
-        F\para{x} = \begin{cases}
+        F\pqty{x} = \begin{cases}
             0, & x \leq a, \\
             \frac{x - a}{b - a}, & a < x \leq b, \\
             1, & b < x.
@@ -201,9 +201,9 @@ In other words, we can think of \(f\para{x}\) as being proportional to the proba
 
 \begin{definition}[Exponential Distribution]
     \label{def:exponential-distribution}%
-    The \emph{exponential distribution} with parameter \(\lambda > 0\), denoted as \(\Exponential\para{\lambda}\), is given by the probability density function
+    The \emph{exponential distribution} with parameter \(\lambda > 0\), denoted as \(\Exponential\pqty{\lambda}\), is given by the probability density function
     \[
-        f\para{x} = \begin{cases}
+        f\pqty{x} = \begin{cases}
             \lambda e^{-\lambda x}, & x > 0, \\
             0, & \text{otherwise}.
         \end{cases}
@@ -214,25 +214,25 @@ In other words, we can think of \(f\para{x}\) as being proportional to the proba
     \label{prop:cdf-exponential}%
     The exponential distribution has probability distribution function
     \[
-        F\para{x} = \begin{cases}
+        F\pqty{x} = \begin{cases}
             0, & x \leq 0, \\
             1-  e^{-\lambda x}, & x > 0.
         \end{cases}
     \]
 
-    In other words, for \(x \geq 0\), we have \(\Prob\para{X \geq x} = e^{-\lambda x}\).
+    In other words, for \(x \geq 0\), we have \(\Prob\pqty{X \geq x} = e^{-\lambda x}\).
 \end{proposition}
 
-This could remind us of the geometric distribution. Indeed, let \(T \sim \Exponential \para{\lambda}\), with \(n \in \NN\), and denote the random variables \(T_n = \floor{nT}\).
+This could remind us of the geometric distribution. Indeed, let \(T \sim \Exponential \pqty{\lambda}\), with \(n \in \NN\), and denote the random variables \(T_n = \floor{nT}\).
 
 For \(k \in \NN\), we have
 \begin{align*}
-    \Prob\para{T_n \geq k} &= \Prob\para{nT \geq k} \\
-    &= \Prob\para{T \geq \frac{k}{n}} \\
+    \Prob\pqty{T_n \geq k} &= \Prob\pqty{nT \geq k} \\
+    &= \Prob\pqty{T \geq \frac{k}{n}} \\
     &= e^{- \lambda \cdot \frac{k}{n}} \\
-    &= \para{e^{-{\frac{\lambda}{n}}}}^{k},
+    &= \pqty{e^{-{\frac{\lambda}{n}}}}^{k},
 \end{align*}
-and so we see \(T_n \sim \Geometric\para{1 - e^{-\lambda / n}}\), where we use the convention starting from zero (failures), and if \(n\) is large,
+and so we see \(T_n \sim \Geometric\pqty{1 - e^{- \flatfrac{\lambda}{n}}}\), where we use the convention starting from zero (failures), and if \(n\) is large,
 \[
     e^{- \frac{\lambda}{n}} \approx \frac{\lambda}{n}
 \]
@@ -244,19 +244,19 @@ as \(n \to \infty\), so we can obtain the exponential distribution as a (scaled)
 
 \begin{proposition}[Memoryless Property of Exponential Distribution]
     \label{prop:memoryless-property-exponential}%
-    Suppose \(T \sim \Exponential\para{\lambda}\) for \(\lambda > 0\), and let \(t, s > 0\). We have
+    Suppose \(T \sim \Exponential\pqty{\lambda}\) for \(\lambda > 0\), and let \(t, s > 0\). We have
     \[
-        \Prob\para{\Conditional{T \geq s + t}{T \geq s}} = \Prob\para{T \geq t}.
+        \Prob\pqty{\Conditional{T \geq s + t}{T \geq s}} = \Prob\pqty{T \geq t}.
     \]
 \end{proposition}
 
 \begin{proof}
     By definition,
     \begin{align*}
-        \Prob\para{\Conditional{T \geq s + t}{T \geq s}} &= \frac{\Prob\para{T \geq s + t, T \geq s}}{\Prob\para{T \geq s}} \\
-        &= \frac{e^{-\lambda \para{s + t}}}{e^{-\lambda s}} \\
+        \Prob\pqty{\Conditional{T \geq s + t}{T \geq s}} &= \frac{\Prob\pqty{T \geq s + t, T \geq s}}{\Prob\pqty{T \geq s}} \\
+        &= \frac{e^{-\lambda \pqty{s + t}}}{e^{-\lambda s}} \\
         &= e^{-\lambda t} \\
-        &= \Prob\para{T \geq t}.
+        &= \Prob\pqty{T \geq t}.
     \end{align*}
 \end{proof}
 
@@ -272,41 +272,41 @@ In fact, the exponential random variable is the only positive random variable wi
 \begin{proof}
     Suppose \(T\) has the memoryless property, we want to show that \(T\) is exponential. Set
     \[
-        g\para{t} = \Prob\para{T \geq t}.
+        g\pqty{t} = \Prob\pqty{T \geq t}.
     \]
 
     Therefore, by definition,
     \[
-        g\para{t + s} = g\para{t} \cdot g\para{s}.
+        g\pqty{t + s} = g\pqty{t} \cdot g\pqty{s}.
     \]
 
     Therefore, for any \(t > 0\) and \(m \in \NN\), we have
     \[
-        g\para{mt} = \para{g\para{t}}^m.
+        g\pqty{mt} = \pqty{g\pqty{t}}^m.
     \]
 
-    In particular, taking \(t = 1\), set \(g\para{1} = \Prob\para{T \geq 1} = e^{-\lambda}\), then \(\lambda > 0\), and we have for any \(m \in \NN\),
+    In particular, taking \(t = 1\), set \(g\pqty{1} = \Prob\pqty{T \geq 1} = e^{-\lambda}\), then \(\lambda > 0\), and we have for any \(m \in \NN\),
     \[
-        g\para{m} = e^{-\lambda m}.
+        g\pqty{m} = e^{-\lambda m}.
     \]
 
     We also have that for \(m, n \in \NN\), that
     \[
-        \para{g\para{\frac{m}{n}}}^{n} = g\para{m},
+        \pqty{g\pqty{\frac{m}{n}}}^{n} = g\pqty{m},
     \]
     and hence
     \[
-        g\para{\frac{m}{n}} = e^{- \frac{\lambda m}{n}}.
+        g\pqty{\frac{m}{n}} = e^{- \frac{\lambda m}{n}}.
     \]
 
-    Therefore, \(g\para{r} = e^{-\lambda r}\) for any \(r \in \QQ, r > 0\).
+    Therefore, \(g\pqty{r} = e^{-\lambda r}\) for any \(r \in \QQ, r > 0\).
 
     It remains to show this for the whole positive real line. Let \(t > 0\) be an arbitrary real number, and let \(r, s \in \QQ\), \(r > 0\) such that \(s < t < r\) with \(\abs{s - r} \leq \epsilon\). Then by the decreasing property of \(g\), we have
     \[
-        e^{-\lambda r} = g\para{r} \leq g\para{t} \leq g\para{s} = e^{-\lambda s}.
+        e^{-\lambda r} = g\pqty{r} \leq g\pqty{t} \leq g\pqty{s} = e^{-\lambda s}.
     \]
 
-    Taking \(\epsilon \to 0\), we get \(g\para{t} = e^{-\lambda t}\) for any real \(t > 0\).
+    Taking \(\epsilon \to 0\), we get \(g\pqty{t} = e^{-\lambda t}\) for any real \(t > 0\).
 \end{proof}
 
 \subsection{Expectation and Variance for Continuous Random Variable}
@@ -315,46 +315,46 @@ In fact, the exponential random variable is the only positive random variable wi
     \label{def:expectation-continuous}%
     For a non-negative continuous random variable \(X \geq 0\) with density \(f\), we define the expectation to be
     \[
-        \Expt\brac{X} = \int_{0}^{\plusinfty} x f\para{x} \Diff x.
+        \Expt\bqty{X} = \int_{0}^{\plusinfty} x f\pqty{x} \dd{x}.
     \]
 
     For \(g \geq 0\), and a random variable \(X\), we define
     \[
-        \Expt\brac{g\para{X}} = \int_{\minusinfty}^{\plusinfty} g\para{x} f\para{x} \Diff x.
+        \Expt\bqty{g\pqty{X}} = \int_{\minusinfty}^{\plusinfty} g\pqty{x} f\pqty{x} \dd{x}.
     \]
 
-    For a general continuous random variable \(X\), let \(X_+ = \max\brce{X, 0}\) and \(X_- = \max\brce{-X, 0}\). If one of \(\Expt\brac{X_+}\) and \(\Expt\brac{X_-}\) is not infinity, then we may define
+    For a general continuous random variable \(X\), let \(X_+ = \max\Bqty{X, 0}\) and \(X_- = \max\Bqty{-X, 0}\). If one of \(\Expt\bqty{X_+}\) and \(\Expt\bqty{X_-}\) is not infinity, then we may define
     \[
-        \Expt\brac{X} = \Expt\brac{X_+} - \Expt\brac{X_-} = \int_{\minusinfty}^{\plusinfty} x f\para{x} \Diff x.
+        \Expt\bqty{X} = \Expt\bqty{X_+} - \Expt\bqty{X_-} = \int_{\minusinfty}^{\plusinfty} x f\pqty{x} \dd{x}.
     \]  
 \end{definition}
 
 Similar to the discrete case, we have the \emph{linearity} of expectation
 \[
-    \Expt\brac{\sum_{i = 1}^{n} a_i X_i} = \sum_{i = 1}^{n} a_i \Expt\brac{X_i}.
+    \Expt\bqty{\sum_{i = 1}^{n} a_i X_i} = \sum_{i = 1}^{n} a_i \Expt\bqty{X_i}.
 \]
 
 \begin{lemma}[Expectation Formula for Non-Negative Continuous Random Variable]
     \label{lem:formula-expectation-non-negative-continuous-random-variable}
     Let \(X\) be a continuous random variable with \(X \geq 0\). Then
     \[
-        \Expt\brac{X} = \int_{0}^{\plusinfty} \Prob\para{X \geq x} \Diff x.
+        \Expt\bqty{X} = \int_{0}^{\plusinfty} \Prob\pqty{X \geq x} \dd{x}.
     \]
 \end{lemma}
 
 \begin{proof}
     We have
     \begin{align*}
-        \Expt\brac{X} &= \int_{0}^{\plusinfty} x \cdot f\para{x} \Diff x \\
-        &= \int_{0}^{\plusinfty} \para{\int_{0}^{x} 1 \Diff y} f\para{x} \Diff x \\
-        &= \int_{0}^{\plusinfty} \para{\int_{y}^{\infty} f\para{x} \Diff x} \Diff y \\
-        &= \int_{0}^{\plusinfty} \Prob\para{X \geq y} \Diff y. 
+        \Expt\bqty{X} &= \int_{0}^{\plusinfty} x \cdot f\pqty{x} \dd{x} \\
+        &= \int_{0}^{\plusinfty} \pqty{\int_{0}^{x} 1 \dd{y}} f\pqty{x} \dd{x} \\
+        &= \int_{0}^{\plusinfty} \pqty{\int_{y}^{\infty} f\pqty{x} \dd{x}} \dd{y} \\
+        &= \int_{0}^{\plusinfty} \Prob\pqty{X \geq y} \dd{y}. 
     \end{align*}
 \end{proof}
 
 Recall in the discrete case, we have
 \[
-    X = \sum_{n = 1}^{\infty} \indicator\para{X \geq n}.
+    X = \sum_{n = 1}^{\infty} \indicator\pqty{X \geq n}.
 \]
 
 Inspired by this, we may provide another proof.
@@ -362,11 +362,11 @@ Inspired by this, we may provide another proof.
 \begin{proof}[(Alternative, Slightly Unjustified)]
     For the continuous case, we have
     \[
-        X = \int_{0}^{\plusinfty} \indicator\para{X \geq x} \Diff x,
+        X = \int_{0}^{\plusinfty} \indicator\pqty{X \geq x} \dd{x},
     \]
     and hence
     \[
-        \Expt\brac{X} = \Expt\brac{\int_{0}^{\plusinfty} \indicator\para{X \geq x} \Diff x} = \int_{0}^{\plusinfty} \Expt\brac{\indicator\para{X \geq x}} \Diff x = \int_{0}^{\plusinfty} \Prob\para{X \geq x} \Diff x.
+        \Expt\bqty{X} = \Expt\bqty{\int_{0}^{\plusinfty} \indicator\pqty{X \geq x} \dd{x}} = \int_{0}^{\plusinfty} \Expt\bqty{\indicator\pqty{X \geq x}} \dd{x} = \int_{0}^{\plusinfty} \Prob\pqty{X \geq x} \dd{x}.
     \]
 
     Note that we have not justified swapping the integral and the expectation.
@@ -374,43 +374,43 @@ Inspired by this, we may provide another proof.
 
 The variance is defined identically to the discrete case
 \[
-    \Var\para{X} = \Expt\brac{\para{X - \Expt\brac{X}}^2} = \Expt\brac{X^2} - \para{\Expt\brac{X}}^2.
+    \Var\pqty{X} = \Expt\bqty{\pqty{X - \Expt\bqty{X}}^2} = \Expt\bqty{X^2} - \pqty{\Expt\bqty{X}}^2.
 \]
 
 \begin{proposition}[Expectation of Uniform Random Variable]
     \label{prop:expt-uniform}%
     If \(X \sim \Uniform\ccintv{a}{b}\) for \(a < b\), we have
     \[
-        \Expt\brac{X} = \frac{a + b}{2}.
+        \Expt\bqty{X} = \frac{a + b}{2}.
     \]
 \end{proposition}
 
 \begin{proof}
     We have
     \[
-        \Expt\brac{X} = \int_{a}^{b} x \cdot \frac{1}{b - a} \Diff x = \frac{a + b}{2}.
+        \Expt\bqty{X} = \int_{a}^{b} x \cdot \frac{1}{b - a} \dd{x} = \frac{a + b}{2}.
     \]
 \end{proof}
 
 \begin{proposition}[Expectation of Exponential Random Variable]
     \label{prop:expt-exponential}%
-    If \(X \sim \Exponential\para{\lambda}\) for \(\lambda > 0\), we have
+    If \(X \sim \Exponential\pqty{\lambda}\) for \(\lambda > 0\), we have
     \[
-        \Expt\brac{X} = \frac{1}{\lambda}.
+        \Expt\bqty{X} = \frac{1}{\lambda}.
     \]
 \end{proposition}
 
 \begin{proof}[from Definition]
     We have
     \[
-        \Expt\brac{X} = \int_{0}^{\plusinfty} x \cdot \lambda \cdot e^{-\lambda x} \Diff x = \frac{1}{\lambda}.
+        \Expt\bqty{X} = \int_{0}^{\plusinfty} x \cdot \lambda \cdot e^{-\lambda x} \dd{x} = \frac{1}{\lambda}.
     \]
 \end{proof}
 
 \begin{proof}[from \autoref{lem:formula-expectation-non-negative-continuous-random-variable}]
     We have
     \[
-        \Expt\brac{X} = \int_{0}^{\plusinfty} \Prob\para{X \geq x} \Diff x = \int_{0}^{\plusinfty} e^{-\lambda x} \Diff x = \frac{1}{\lambda}.
+        \Expt\bqty{X} = \int_{0}^{\plusinfty} \Prob\pqty{X \geq x} \dd{x} = \int_{0}^{\plusinfty} e^{-\lambda x} \dd{x} = \frac{1}{\lambda}.
     \]
 \end{proof}
 
@@ -422,33 +422,33 @@ We first prove that the density function is indeed a distribution.
     \label{prop:gaussian-integral}%
     For any \(\mu \in \RR\) and \(\sigma > 0\), we let
     \[
-        f\para{x} = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{-\frac{\para{x - \mu}^2}{2 \sigma^2}}.
+        f\pqty{x} = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\pqty{-\frac{\pqty{x - \mu}^2}{2 \sigma^2}}.
     \]
 
     Then
     \[
-        \int_{\minusinfty}^{\plusinfty} f\para{x} \Diff x = 1.
+        \int_{\minusinfty}^{\plusinfty} f\pqty{x} \dd{x} = 1.
     \]
 \end{proposition}
 
 \begin{proof}
     We have, using the substitution \(u = \frac{x - \mu}{\sigma}\), that
     \begin{align*}
-        \int_{\minusinfty}^{\plusinfty} f\para{x} \Diff x &= \int_{\minusinfty}^{\plusinfty} \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{-\frac{\para{x - \mu}^2}{2 \sigma^2}} \Diff x \\
-        &= \int_{\minusinfty}^{\plusinfty} \frac{1}{\sqrt{2 \pi}} \exp\para{- \frac{u^2}{2}} \Diff u \\
-        &= 2 \int_{0}^{\plusinfty} \frac{1}{\sqrt{2 \pi}} \exp\para{- \frac{u^2}{2}} \Diff u.
+        \int_{\minusinfty}^{\plusinfty} f\pqty{x} \dd{x} &= \int_{\minusinfty}^{\plusinfty} \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\pqty{-\frac{\pqty{x - \mu}^2}{2 \sigma^2}} \dd{x} \\
+        &= \int_{\minusinfty}^{\plusinfty} \frac{1}{\sqrt{2 \pi}} \exp\pqty{- \frac{u^2}{2}} \dd{u} \\
+        &= 2 \int_{0}^{\plusinfty} \frac{1}{\sqrt{2 \pi}} \exp\pqty{- \frac{u^2}{2}} \dd{u}.
     \end{align*}
 
     It remains to show that
     \[
-        I = \int_{0}^{\plusinfty} \sqrt{\frac{2}{\pi}} \exp\para{- \frac{u^2}{2}} \Diff u = 1.
+        I = \int_{0}^{\plusinfty} \sqrt{\frac{2}{\pi}} \exp\pqty{- \frac{u^2}{2}} \dd{u} = 1.
     \]
 
     We have
     \begin{align*}
-        I^2 &= \frac{2}{\pi} \int_{0}^{\plusinfty} \Diff u \int_{0}^{\plusinfty} \Diff v \cdot \exp\para{- \frac{u^2}{2}} \cdot \exp\para{- \frac{v^2}{2}} \\
-        &= \frac{2}{\pi} \int_{0}^{\plusinfty} r \Diff r \int_{0}^{\frac{\pi}{2}} \Diff \theta \cdot \exp\para{- \frac{u^2 + v^2}{2}} \\
-        &= \int_{0}^{\plusinfty} r \cdot e^{-\frac{r^2}{2}} \Diff r \\
+        I^2 &= \frac{2}{\pi} \int_{0}^{\plusinfty} \dd{u} \int_{0}^{\plusinfty} \dd{v} \cdot \exp\pqty{- \frac{u^2}{2}} \cdot \exp\pqty{- \frac{v^2}{2}} \\
+        &= \frac{2}{\pi} \int_{0}^{\plusinfty} r \dd{r} \int_{0}^{\frac{\pi}{2}} \dd{\theta} \cdot \exp\pqty{- \frac{u^2 + v^2}{2}} \\
+        &= \int_{0}^{\plusinfty} r \cdot e^{-\frac{r^2}{2}} \dd{r} \\
         &= 1,
     \end{align*}
     and so \(I = 1\).
@@ -456,42 +456,42 @@ We first prove that the density function is indeed a distribution.
 
 \begin{definition}[Normal Distribution]
     \label{def:normal}%
-    The distribution with the probability density function \(f\) given as above is the \emph{normal distribution} with mean \(\mu\) and variance \(\sigma^2\), denoted as \(\Normal\para{\mu, \sigma^2}\).
+    The distribution with the probability density function \(f\) given as above is the \emph{normal distribution} with mean \(\mu\) and variance \(\sigma^2\), denoted as \(\Normal\pqty{\mu, \sigma^2}\).
 \end{definition}
 
 \begin{proposition}[Mean and Variance of Normal Distribution]
     \label{prop:mean-variance-normal}%
-    If \(X \sim \Normal\para{\mu, \sigma^2}\), then \(\Expt\brac{X} = \mu, \Var\para{X} = \sigma^2\).
+    If \(X \sim \Normal\pqty{\mu, \sigma^2}\), then \(\Expt\bqty{X} = \mu, \Var\pqty{X} = \sigma^2\).
 \end{proposition}
 
 \begin{proof}
     For the mean, we have
     \begin{align*}
-        \Expt\brac{X} &= \int_{\minusinfty}^{\plusinfty} x f\para{x} \Diff x \\
-        &= \int_{\minusinfty}^{\plusinfty} \para{x - \mu} f\para{x} \Diff x + \mu \int_{\minusinfty}^{\plusinfty} f\para{x} \Diff x \\
-        &= \mu + \int_{\minusinfty}^{\plusinfty} \para{x - \mu} \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{-\frac{\para{x - \mu}^2}{2 \sigma^2}} \Diff x.
+        \Expt\bqty{X} &= \int_{\minusinfty}^{\plusinfty} x f\pqty{x} \dd{x} \\
+        &= \int_{\minusinfty}^{\plusinfty} \pqty{x - \mu} f\pqty{x} \dd{x} + \mu \int_{\minusinfty}^{\plusinfty} f\pqty{x} \dd{x} \\
+        &= \mu + \int_{\minusinfty}^{\plusinfty} \pqty{x - \mu} \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\pqty{-\frac{\pqty{x - \mu}^2}{2 \sigma^2}} \dd{x}.
     \end{align*}
 
-    Noticing the second function is odd about \(\mu\), it must integrate to zero, so we have \(\Expt\brac{X} = \mu\).
+    Noticing the second function is odd about \(\mu\), it must integrate to zero, so we have \(\Expt\bqty{X} = \mu\).
 
     For the variance, we have, using the substitution \(u = \frac{x - \mu}{\sigma^2}\)
     \begin{align*}
-        \Var\para{X} &= \Expt\brac{\para{X - \mu}^2} \\
-        &=  \int_{\minusinfty}^{\plusinfty} \para{x - \mu}^2 \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{-\frac{\para{x - \mu}^2}{2 \sigma^2}} \Diff x \\
-        &= \sigma^2 \int_{\minusinfty}^{\plusinfty} \frac{u^2}{\sqrt{2\pi}} \cdot \exp\para{-\frac{u^2}{2}} \Diff u \\
+        \Var\pqty{X} &= \Expt\bqty{\pqty{X - \mu}^2} \\
+        &=  \int_{\minusinfty}^{\plusinfty} \pqty{x - \mu}^2 \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\pqty{-\frac{\pqty{x - \mu}^2}{2 \sigma^2}} \dd{x} \\
+        &= \sigma^2 \int_{\minusinfty}^{\plusinfty} \frac{u^2}{\sqrt{2\pi}} \cdot \exp\pqty{-\frac{u^2}{2}} \dd{u} \\
         &= \sigma^2.
     \end{align*}
 \end{proof}
 
 \begin{definition}[Standard Normal Distribution]
     \label{def:standard-normal}%
-    The distribution \(\Normal\para{0, 1}\) is the standard normal distribution. Its density function is denoted by
+    The distribution \(\Normal\pqty{0, 1}\) is the standard normal distribution. Its density function is denoted by
     \[
-        \sNormPdf\para{x} = \frac{1}{\sqrt{2\pi}} \exp\para{- \frac{x^2}{2}}
+        \sNormPdf\pqty{x} = \frac{1}{\sqrt{2\pi}} \exp\pqty{- \frac{x^2}{2}}
     \]
     and its distribution function is denoted by
     \[
-        \sNormCdf\para{x} = \int_{\minusinfty}^{x} \sNormPdf\para{x} \Diff x.
+        \sNormCdf\pqty{x} = \int_{\minusinfty}^{x} \sNormPdf\pqty{x} \dd{x}.
     \]  
 \end{definition}
 
@@ -499,29 +499,29 @@ We first prove that the density function is indeed a distribution.
 
 \begin{theorem}[Transformation of Random Variable]
     \label{thm:transformation-of-random-variable}
-    Let \(X\) have density \(f\). Let \(g\) be a function which is either strictly increasing or strictly decreasing, and \(g\inverse\) is differentiable. Then \(g\para{X}\) has density given by
+    Let \(X\) have density \(f\). Let \(g\) be a function which is either strictly increasing or strictly decreasing, and \(g\inverse\) is differentiable. Then \(g\pqty{X}\) has density given by
     \[
-        f\para{g\inverse\para{x}} \cdot \abs{\DiffOp{x} g\inverse\para{x}}.
+        f\pqty{g\inverse\pqty{x}} \cdot \abs{\dv{x} g\inverse\pqty{x}}.
     \]
 \end{theorem}
 
 \begin{proof}
     Suppose \(g\) is strictly increasing. Then we have
     \[
-        \Prob\para{g\para{X} \leq x} = \Prob\para{X \leq g\inverse\para{x}} = F\para{g\inverse\para{x}},
+        \Prob\pqty{g\pqty{X} \leq x} = \Prob\pqty{X \leq g\inverse\pqty{x}} = F\pqty{g\inverse\pqty{x}},
     \]
     and hence differentiating gives
     \[
-        \DiffOp{x} \Prob\para{g \para{X} \leq x} = \DiffOp{x} F\para{g\inverse\para{x}} = f\para{g\inverse\para{x}} \DiffOp{x} g\inverse\para{x}.
+        \dv{x} \Prob\pqty{g \pqty{X} \leq x} = \dv{x} F\pqty{g\inverse\pqty{x}} = f\pqty{g\inverse\pqty{x}} \dv{x} g\inverse\pqty{x}.
     \]
 
     Suppose \(g\) now is strictly decreasing. Then
     \[
-        \Prob\para{g\para{X} \leq x} = \Prob\para{X \geq g\inverse\para{x}} = 1 - F\para{g\inverse\para{x}},
+        \Prob\pqty{g\pqty{X} \leq x} = \Prob\pqty{X \geq g\inverse\pqty{x}} = 1 - F\pqty{g\inverse\pqty{x}},
     \]
     and hence differentiating gives
     \[
-        \DiffOp{x} \Prob\para{g\para{X} \leq x} = - f\para{g\inverse\para{x}} \cdot \DiffOp{x} g\inverse\para{x} = f\para{g\inverse\para{x}} \cdot \abs{\DiffOp{x} g\inverse\para{x}}.
+        \dv{x} \Prob\pqty{g\pqty{X} \leq x} = - f\pqty{g\inverse\pqty{x}} \cdot \dv{x} g\inverse\pqty{x} = f\pqty{g\inverse\pqty{x}} \cdot \abs{\dv{x} g\inverse\pqty{x}}.
     \]
 \end{proof}
 
@@ -529,31 +529,31 @@ Now we restrict ourselves to the case where the transformation is linear.
 
 \begin{proposition}[Linear Transformation of Normal Random Variable is Normal]
     \label{prop:lin-transformatino-normal}%
-    Let \(g\para{x} = ax + b\) for \(a \neq 0\) and \(b \in \RR\). Then for \(X \sim \Normal\para{\mu, \sigma^2}\), we have \(Y = g\para{X} \sim \Normal\para{a \mu + b, \para{a \sigma}^2}\).
+    Let \(g\pqty{x} = ax + b\) for \(a \neq 0\) and \(b \in \RR\). Then for \(X \sim \Normal\pqty{\mu, \sigma^2}\), we have \(Y = g\pqty{X} \sim \Normal\pqty{a \mu + b, \pqty{a \sigma}^2}\).
 \end{proposition}
 
 \begin{proof}
-    Note \(g\inverse\para{x} = \frac{x - b}{a}\), and \(\DiffOp{x} g\inverse\para{x} = \frac{1}{a}\). Hence,
+    Note \(g\inverse\pqty{x} = \frac{x - b}{a}\), and \(\dv{x} g\inverse\pqty{x} = \frac{1}{a}\). Hence,
     \begin{align*}
-        f_Y\para{y} &= f_X\para{g\inverse\para{y}} \cdot \abs{\DiffOp{y} g\inverse\para{y}} \\
-        &= \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\para{- \frac{\para{\frac{y - b}{a} - \mu}^2}{2 \sigma^2}} \cdot \frac{1}{\abs{a}} \\
-        &= \frac{1}{\sqrt{2 \pi \para{a \sigma}^2}} \exp\para{- \frac{\para{y - \para{a\mu + b}^2}}{2 a^2 \sigma^2}},
+        f_Y\pqty{y} &= f_X\pqty{g\inverse\pqty{y}} \cdot \abs{\dv{y} g\inverse\pqty{y}} \\
+        &= \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\pqty{- \frac{\pqty{\frac{y - b}{a} - \mu}^2}{2 \sigma^2}} \cdot \frac{1}{\abs{a}} \\
+        &= \frac{1}{\sqrt{2 \pi \pqty{a \sigma}^2}} \exp\pqty{- \frac{\pqty{y - \pqty{a\mu + b}^2}}{2 a^2 \sigma^2}},
     \end{align*}
-    and so \(Y \sim \Normal\para{a \mu + b, \para{a \sigma}^2}\).
+    and so \(Y \sim \Normal\pqty{a \mu + b, \pqty{a \sigma}^2}\).
 \end{proof}
 
-In particular, if \(X \sim \Normal\para{\mu, \sigma^2}\), we have
+In particular, if \(X \sim \Normal\pqty{\mu, \sigma^2}\), we have
 \[
-    \frac{X - \mu}{\sigma} \sim \Normal\para{0, 1}
+    \frac{X - \mu}{\sigma} \sim \Normal\pqty{0, 1}
 \]
 is the standard normal. This is very useful. For example, if we want to find the probability that a normal distribution lies with in two standard deviations of the mean, we have
 \begin{align*}
-    \Prob\para{\mu - 2 \sigma < X < \mu + 2 \sigma} &= \Prob\para{-2\sigma < X - \mu < 2\sigma} \\
-    &= \Prob\para{-2 < \frac{X - \mu}{\sigma} < 2} \\
-    &= \sNormCdf\para{2} - \sNormCdf\para{-2}.
+    \Prob\pqty{\mu - 2 \sigma < X < \mu + 2 \sigma} &= \Prob\pqty{-2\sigma < X - \mu < 2\sigma} \\
+    &= \Prob\pqty{-2 < \frac{X - \mu}{\sigma} < 2} \\
+    &= \sNormCdf\pqty{2} - \sNormCdf\pqty{-2}.
 \end{align*}
 
-By symmetry, we have \(\sNormCdf\para{x} + \sNormCdf\para{-x} = 2 \sNormCdf\para{0} = 1\), so this is equal to \(2 \sNormCdf\para{x} - 1\). Hence, by looking up tables, we can find this probability is approximately \(0.95\).
+By symmetry, we have \(\sNormCdf\pqty{x} + \sNormCdf\pqty{-x} = 2 \sNormCdf\pqty{0} = 1\), so this is equal to \(2 \sNormCdf\pqty{x} - 1\). Hence, by looking up tables, we can find this probability is approximately \(0.95\).
 
 \subsection{Median}
 
@@ -561,20 +561,20 @@ By symmetry, we have \(\sNormCdf\para{x} + \sNormCdf\para{-x} = 2 \sNormCdf\para
     \label{def:median-continuous-rv}%
     Let \(X\) be a continuous random variable. The median of \(X\), denoted by \(m\), is the number satisfying
     \[
-        \Prob\para{X \geq m} = \Prob\para{X \leq m} = \frac{1}{2}.
+        \Prob\pqty{X \geq m} = \Prob\pqty{X \leq m} = \frac{1}{2}.
     \]
 
     In other words,
     \[
-        \int_{\minusinfty}^{m} f\para{x} \Diff x = \int_{m}^{\plusinfty} f\para{x} \Diff x = \frac{1}{2}.
+        \int_{\minusinfty}^{m} f\pqty{x} \dd{x} = \int_{m}^{\plusinfty} f\pqty{x} \dd{x} = \frac{1}{2}.
     \]
 \end{definition}
 
 \begin{example}[Median of Standard Normal Distribution]
     \label{ex:median-standard-normal}%
-    Let \(X \sim \Normal\para{\mu, \sigma^2}\). We have
+    Let \(X \sim \Normal\pqty{\mu, \sigma^2}\). We have
     \[
-        \Prob\para{X \leq \mu} = \Prob\para{\frac{X - \mu}{\sigma} \leq 0} = \Prob\para{Z \leq 0} = \frac{1}{2}
+        \Prob\pqty{X \leq \mu} = \Prob\pqty{\frac{X - \mu}{\sigma} \leq 0} = \Prob\pqty{Z \leq 0} = \frac{1}{2}
     \]
-    where \(Z \sim \Normal\para{0, 1}\) is the standard normal distribution.
+    where \(Z \sim \Normal\pqty{0, 1}\) is the standard normal distribution.
 \end{example}

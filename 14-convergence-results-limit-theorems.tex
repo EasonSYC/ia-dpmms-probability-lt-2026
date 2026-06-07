@@ -4,20 +4,20 @@
 
 \begin{definition}[Convergence in Probability]
     \label{def:convergence-in-probability}%
-    A sequence of random variables \(\para{X_n}_{n \in \NN}\) \emph{converges} to a random variable \(X\) \emph{in probability}, denoted as
+    A sequence of random variables \(\pqty{X_n}_{n \in \NN}\) \emph{converges} to a random variable \(X\) \emph{in probability}, denoted as
     \[
         X_n \toProb X,
     \]
     if
     \[
-        \forall \epsilon > 0: \Prob\para{\abs{X_n - X} > \epsilon} \to 0
+        \forall \epsilon > 0: \Prob\pqty{\abs{X_n - X} > \epsilon} \to 0
     \]
     as \(n \to \infty\).
 \end{definition}
 
 \begin{theorem}[Weak Law of Large Numbers]
     \label{thm:weak-law-of-large-numbers}%
-    Let \(\para{X_n}\) be independent and identically distributed distributions with finite mean \(\mu\). Let
+    Let \(\pqty{X_n}\) be independent and identically distributed distributions with finite mean \(\mu\). Let
     \[
         S_n = X_1 + \cdots + X_n
     \]
@@ -27,7 +27,7 @@
     \]
     as \(n \to \infty\). In other words,
     \[
-        \Prob\para{\abs{\frac{S_n}{n} - \mu} > \epsilon} \to 0
+        \Prob\pqty{\abs{\frac{S_n}{n} - \mu} > \epsilon} \to 0
     \]
     as \(n \to \infty\).
 \end{theorem}
@@ -37,8 +37,8 @@
 
     Let \(\sigma^2\) be the variance and is finite. Then we have
     \begin{align*}
-        \Prob\para{\abs{\frac{S_n}{n} - \mu} > \epsilon} &= \Prob\para{\abs{S_n - n \mu} > n \epsilon} \\
-        &\leq \frac{\Var\para{S_n}}{n^2 \epsilon^2} \\
+        \Prob\pqty{\abs{\frac{S_n}{n} - \mu} > \epsilon} &= \Prob\pqty{\abs{S_n - n \mu} > n \epsilon} \\
+        &\leq \frac{\Var\pqty{S_n}}{n^2 \epsilon^2} \\
         &= \frac{n \sigma^2}{n^2 \epsilon^2} \\
         &= \frac{\sigma^2}{n \epsilon^2} \\
         &\to 0,
@@ -48,9 +48,9 @@
 
 \begin{definition}[Almost Sure Convergence]
     \label{def:almost-sure-convergence}%
-    Let \(\para{X_n}_{n \in \NN}\) be a sequence of random variables, and let \(X\) be a random variable. We say that \(\para{X_n}\) converges to \(X\) \emph{almost surely} (a.s.) or \emph{with probability 1}, if
+    Let \(\pqty{X_n}_{n \in \NN}\) be a sequence of random variables, and let \(X\) be a random variable. We say that \(\pqty{X_n}\) converges to \(X\) \emph{almost surely} (a.s.) or \emph{with probability 1}, if
     \[
-        \Prob\para{\lim_{n \to \infty} X_n = X} = 1.
+        \Prob\pqty{\lim_{n \to \infty} X_n = X} = 1.
     \]
 
     We write \(X_n \to X\) as \(n \to \infty\) a.s., or \(X_n \toAlmostSure X\).
@@ -66,7 +66,7 @@
         \forall \epsilon > 0, \exists n_0 \in \NN, \forall n \geq n_0: \abs{X_n - X} \leq \epsilon.
     \]
 
-    When we say this has probability \(1\), this means that there is some set \(A \in \eventSpace\), with \(\Prob\para{A} = 1\), such that for all \(\omega \in A\), the above condition holds.
+    When we say this has probability \(1\), this means that there is some set \(A \in \eventSpace\), with \(\Prob\pqty{A} = 1\), such that for all \(\omega \in A\), the above condition holds.
 \end{remark}
 
 This notion of convergence is strictly stronger than our previous notion.
@@ -79,31 +79,31 @@ This notion of convergence is strictly stronger than our previous notion.
 \begin{proof}
     We need to show that
     \[
-        \Prob\para{\abs{X_n} \leq \epsilon} \to 1.
+        \Prob\pqty{\abs{X_n} \leq \epsilon} \to 1.
     \]
 
     We have
     \[
-        \Prob\para{\abs{X_n} \leq \epsilon} \geq \Prob\para{\bigcap_{m = n}^{\infty} \brce{\abs{X_m} \leq \epsilon}} = \Prob\para{A_n}.
+        \Prob\pqty{\abs{X_n} \leq \epsilon} \geq \Prob\pqty{\bigcap_{m = n}^{\infty} \Bqty{\abs{X_m} \leq \epsilon}} = \Prob\pqty{A_n}.
     \]
 
     Note that this sequence of events is increasing, i.e., \(A_n \subseteq A_{n + 1}\).
 
     Therefore,
     \[
-        \Prob\para{A_n} \to \Prob\para{\bigcup_{n \in \NN} A_n} = \Prob\para{\bigcup_{n \in \NN} \bigcap_{m = n}^{\infty} \brce{\abs{X_m} \leq \epsilon}}.
+        \Prob\pqty{A_n} \to \Prob\pqty{\bigcup_{n \in \NN} A_n} = \Prob\pqty{\bigcup_{n \in \NN} \bigcap_{m = n}^{\infty} \Bqty{\abs{X_m} \leq \epsilon}}.
     \]  
 
     Therefore,
     \[
-        \lim_{n \to \infty} \Prob\para{\abs{X_n} \geq \epsilon} \geq \Prob\para{\forall \epsilon > 0: \abs{X_m} \leq \epsilon \text{ for all sufficiently large }m} = 1
+        \lim_{n \to \infty} \Prob\pqty{\abs{X_n} \geq \epsilon} \geq \Prob\pqty{\forall \epsilon > 0: \abs{X_m} \leq \epsilon \text{ for all sufficiently large }m} = 1
     \]
     which finishes the proof.
 \end{proof}
 
 \begin{theorem}[Strong Law of Large Numbers (SLLN)]
     \label{thm:strong-law-of-large-numbers}%
-    Let \(\para{X_n}\) be independent and identically distributed distributions with finite mean \(\mu\). Let
+    Let \(\pqty{X_n}\) be independent and identically distributed distributions with finite mean \(\mu\). Let
     \[
         S_n = X_1 + \cdots + X_n
     \]
@@ -115,58 +115,58 @@ This notion of convergence is strictly stronger than our previous notion.
 \end{theorem}
 
 \begin{proof}[(Non-Examinable)]
-    Assume also that the fourth moment is finite, so \(\Expt\brac{X_1^4} < \infty\). This is not necessary for the theorem, but our proof requires this.
+    Assume also that the fourth moment is finite, so \(\Expt\bqty{X_1^4} < \infty\). This is not necessary for the theorem, but our proof requires this.
 
-    We set \(Y_i = X_i - \mu\), then \(\Expt\brac{Y_i} = 0\). Its moment satisfies
+    We set \(Y_i = X_i - \mu\), then \(\Expt\bqty{Y_i} = 0\). Its moment satisfies
     \[
-        \Expt\brac{Y_1^4} = \Expt\brac{\para{X_1 - \mu}^4} \leq 2^4 \cdot \para{\Expt\brac{X_1^4} + \mu^4} < \infty.
+        \Expt\bqty{Y_1^4} = \Expt\bqty{\pqty{X_1 - \mu}^4} \leq 2^4 \cdot \pqty{\Expt\bqty{X_1^4} + \mu^4} < \infty.
     \]
 
     Let \(S_n = \sum_{i = 1}^{n} Y_i\). We want to show that \(\frac{S_n}{n} \toAlmostSure 0\).
 
     Our goal to show that
     \[
-        \sum_{n = 1}^{\infty} \para{\frac{S_n}{n}}^4 < \infty
+        \sum_{n = 1}^{\infty} \pqty{\frac{S_n}{n}}^4 < \infty
     \]
     has probability 1. This then implies that \(\frac{S_n}{n} \to 0\) with probability 1.
 
     It suffices to show that
     \[
-        \Expt\brac{\sum_{n = 1}^{\infty} \para{\frac{S_n}{n}}^4} < \infty.
+        \Expt\bqty{\sum_{n = 1}^{\infty} \pqty{\frac{S_n}{n}}^4} < \infty.
     \]
 
     We have
     \begin{align*}
-        \Expt\brac{S_n^4} &= \Expt\brac{\para{Y_1 + \cdots + Y_n}^4} \\
-        &= \Expt\brac{\sum_{i = 1}^{n} Y_i^4 + \sum_{1 \leq i < j \leq n} Y_i^2 Y_j^2 + R}
+        \Expt\bqty{S_n^4} &= \Expt\bqty{\pqty{Y_1 + \cdots + Y_n}^4} \\
+        &= \Expt\bqty{\sum_{i = 1}^{n} Y_i^4 + \sum_{1 \leq i < j \leq n} Y_i^2 Y_j^2 + R}
     \end{align*}
     where \(R\) is a sum of terms of the form \(Y_i^3 Y_j, Y_i^2 Y_j Y_k, Y_i Y_j Y_k Y_l\) for distinct indices \(i, j, k, l\). But \(R\) has expectation zero due to independence and zero mean.
 
     We also have,
     \[
-        \Expt\brac{Y_i^2 Y_j^2} = \para{\Expt\brac{Y_1^2}}^2 \leq \Expt\brac{Y_i^4} < \infty
+        \Expt\bqty{Y_i^2 Y_j^2} = \pqty{\Expt\bqty{Y_1^2}}^2 \leq \Expt\bqty{Y_i^4} < \infty
     \]
     by Jensen's Inequality. Hence,
     \[
-        \Expt\brac{S_n^4} \leq n \Expt\brac{Y_i^4} + 6 \cdot \frac{n \para{n - 1}}{2} \Expt\brac{Y_i}^4 \leq 3n^2 \Expt\brac{Y_i^4}.
+        \Expt\bqty{S_n^4} \leq n \Expt\bqty{Y_i^4} + 6 \cdot \frac{n \pqty{n - 1}}{2} \Expt\bqty{Y_i}^4 \leq 3n^2 \Expt\bqty{Y_i^4}.
     \]
 
     Hence, we have
     \[
-        \Expt\brac{\sum_{n = 1}^{\infty} \para{\frac{S_n}{n}}^4} = \sum_{n = 1}^{\infty} \frac{1}{n^4} \Expt\brac{S_n^4} \leq \sum_{n = 1}^{\infty} \frac{3 \Expt\brac{Y_i}^4}{n^2} < \infty
+        \Expt\bqty{\sum_{n = 1}^{\infty} \pqty{\frac{S_n}{n}}^4} = \sum_{n = 1}^{\infty} \frac{1}{n^4} \Expt\bqty{S_n^4} \leq \sum_{n = 1}^{\infty} \frac{3 \Expt\bqty{Y_i}^4}{n^2} < \infty
     \]
     which finishes the proof.
 \end{proof}
 
 \begin{definition}[Converge in Distribution]
     \label{def:convergence-in-distribution}%    
-    A sequence of random variables \(\para{X_n}_{n \in \NN}\) \emph{converges} to a random variable \(X\) \emph{in distribution}, denoted as
+    A sequence of random variables \(\pqty{X_n}_{n \in \NN}\) \emph{converges} to a random variable \(X\) \emph{in distribution}, denoted as
     \[
         X_n \toDist X,
     \]
     if
     \[
-        \Prob\para{X_n \leq x} = F_{X_n} \para{x} \to F_X \para{x} = \Prob\para{X \leq x}
+        \Prob\pqty{X_n \leq x} = F_{X_n} \pqty{x} \to F_X \pqty{x} = \Prob\pqty{X \leq x}
     \]
     for all \(x \in \RR\) where \(F_X\) is continuous.
     
@@ -181,43 +181,43 @@ This notion of convergence is strictly stronger than our previous notion.
 \begin{proof}
     Let \(x\) be a continuity point of \(F_X\). Let \(\epsilon > 0\) be arbitrary. We have
     \[
-        \brce{X \leq x - \epsilon} \subseteq \brce{X_n \leq x} \cup \brce{\abs{X_n - X} > \epsilon},
+        \Bqty{X \leq x - \epsilon} \subseteq \Bqty{X_n \leq x} \cup \Bqty{\abs{X_n - X} > \epsilon},
     \]
     and
     \[
-        \brce{X_n \leq x} \subseteq \brce{X \leq x + \epsilon} \cup \brce{\abs{X_n - X} > \epsilon}.
+        \Bqty{X_n \leq x} \subseteq \Bqty{X \leq x + \epsilon} \cup \Bqty{\abs{X_n - X} > \epsilon}.
     \]
 
     Hence,
     \[
-        \Prob\para{X \leq x - \epsilon} \leq \Prob\para{X_n \leq x} + \Prob\para{\abs{X_n - X} > \epsilon},
+        \Prob\pqty{X \leq x - \epsilon} \leq \Prob\pqty{X_n \leq x} + \Prob\pqty{\abs{X_n - X} > \epsilon},
     \]
     and taking the limit inferior as \(n \to \infty\) gives
     \[
-        F_X \para{x - \epsilon} \leq \liminf_{n \to \infty} F_{X_n} \para{x}.
+        F_X \pqty{x - \epsilon} \leq \liminf_{n \to \infty} F_{X_n} \pqty{x}.
     \]
 
     Similarly,
     \[
-        \Prob\para{X_n \leq x} \leq \Prob\para{X \leq x + \epsilon} = \Prob\para{\abs{X_n - X} > \epsilon}
+        \Prob\pqty{X_n \leq x} \leq \Prob\pqty{X \leq x + \epsilon} = \Prob\pqty{\abs{X_n - X} > \epsilon}
     \]
     and taking the limit superior gives
     \[
-        \limsup_{n \to \infty} F_{X_n} \para{x} \leq F_X \para{x + \epsilon}.
+        \limsup_{n \to \infty} F_{X_n} \pqty{x} \leq F_X \pqty{x + \epsilon}.
     \]
 
     Hence,
     \[
-        F_{X} \para{x - \epsilon} \leq \liminf_{n \to \infty} F_{X_n} \para{x} \leq \limsup_{n \to \infty} F_{X_n} \para{x} \leq F_X \para{x + \epsilon}.
+        F_{X} \pqty{x - \epsilon} \leq \liminf_{n \to \infty} F_{X_n} \pqty{x} \leq \limsup_{n \to \infty} F_{X_n} \pqty{x} \leq F_X \pqty{x + \epsilon}.
     \]
 
     Letting \(\epsilon \to 0\), since \(x\) is a continuity point, we have
     \[
-        \lim_{\epsilon \to 0} F_X\para{x - \epsilon} = \lim_{\epsilon \to 0} F_X\para{x + \epsilon} = F_X\para{x}
+        \lim_{\epsilon \to 0} F_X\pqty{x - \epsilon} = \lim_{\epsilon \to 0} F_X\pqty{x + \epsilon} = F_X\pqty{x}
     \]
     and hence
     \[
-        \liminf_{n \to \infty} F_{X_n} \para{x} = \limsup_{n \to \infty} F_{X_n} \para{x} = F_X \para{x}
+        \liminf_{n \to \infty} F_{X_n} \pqty{x} = \limsup_{n \to \infty} F_{X_n} \pqty{x} = F_X \pqty{x}
     \]
     as desired.
 \end{proof}
@@ -228,21 +228,21 @@ Let \(X_1, X_2, \ldots\) be independent and identically distributed with mean \(
 
 By \autoref{thm:strong-law-of-large-numbers} (Strong Law of Large Numbers), we expect that \(S_n \approx n \mu\) for large \(n\). We also have the variance and mean of \(S_n\) satisfies
 \[
-    \Var\para{S_n - n \mu} = n \sigma^2, \quad \Expt\brac{S_n - n \mu} = 0,
+    \Var\pqty{S_n - n \mu} = n \sigma^2, \quad \Expt\bqty{S_n - n \mu} = 0,
 \]
 and hence we have
 \[
-    \frac{S_n - n \mu}{\sqrt{n \sigma^2}} = \frac{\frac{S_n}{n} - \mu}{\sqrt{\Var\para{\frac{S_n}{n} - \mu}}}
+    \frac{S_n - n \mu}{\sqrt{n \sigma^2}} = \frac{\frac{S_n}{n} - \mu}{\sqrt{\Var\pqty{\frac{S_n}{n} - \mu}}}
 \]
 has expectation \(0\) and variance \(1\).
 
-If \(X_1, \ldots\) are in fact normal distributions \(\Normal\para{\mu, \sigma^2}\), then we have
+If \(X_1, \ldots\) are in fact normal distributions \(\Normal\pqty{\mu, \sigma^2}\), then we have
 \[
-    S_n - n \mu \sim \Normal\para{0, n \sigma^2},
+    S_n - n \mu \sim \Normal\pqty{0, n \sigma^2},
 \]
 and we have
 \[
-    \frac{S_n - n \mu}{\sqrt{n \sigma^2}} \sim \Normal\para{0, 1}
+    \frac{S_n - n \mu}{\sqrt{n \sigma^2}} \sim \Normal\pqty{0, 1}
 \]
 is the standard normal.
 
@@ -254,11 +254,11 @@ In fact, the normal distribution is \emph{universal} as it appears as the limit 
     \[
         \frac{S_n - n \mu}{\sigma \sqrt{n}} \toDist Z
     \]
-    where \(Z\) is the standard normal \(Z \sim \Normal\para{0, 1}\).
+    where \(Z\) is the standard normal \(Z \sim \Normal\pqty{0, 1}\).
 
     In other words, for all \(x \in \RR\), we have
     \[
-        \Prob\para{\frac{S_n - n \mu}{\sigma \sqrt{n}} \leq x} \to \int_{\minusinfty}^{x}  \frac{e^{- y^2 / 2}}{\sqrt{2 \pi}} \Diff y = \sNormCdf\para{x}.
+        \Prob\pqty{\frac{S_n - n \mu}{\sigma \sqrt{n}} \leq x} \to \int_{\minusinfty}^{x}  \frac{e^{- \flatfrac{y^2}{2}}}{\sqrt{2 \pi}} \dd{y} = \sNormCdf\pqty{x}.
     \]
 \end{theorem}
 
@@ -266,16 +266,16 @@ We introduce this theorem on moment generating functions for the proof.
 
 \begin{theorem}[Continuity Property for Moment Generating Functions]
     \label{thm:continuity-property-mgf}%
-    Suppose \(\para{X_n}\) are random variables with
+    Suppose \(\pqty{X_n}\) are random variables with
     \[
-        m_n \para{\theta} = \Expt\brac{e^{\theta X_n}},
+        m_n \pqty{\theta} = \Expt\bqty{e^{\theta X_n}},
     \]
     for \(\theta \in \RR\), and \(X\) be a random variable with
     \[
-        m \para{\theta} = \Expt\brac{e^{\theta X}}.
+        m \pqty{\theta} = \Expt\bqty{e^{\theta X}}.
     \]
 
-    Assume \(m\para{\theta}\) is finite for some \(\theta \neq 0\). If \(m_n \para{\theta} \to m\para{\theta}\) for all \(\theta \in \RR\), then \(X_n \toDist X\) as \(n \to \infty\).
+    Assume \(m\pqty{\theta}\) is finite for some \(\theta \neq 0\). If \(m_n \pqty{\theta} \to m\pqty{\theta}\) for all \(\theta \in \RR\), then \(X_n \toDist X\) as \(n \to \infty\).
 \end{theorem}
 
 \begin{proof}[of \autoref{thm:clt} (Central Limit Theorem)]
@@ -283,57 +283,57 @@ We introduce this theorem on moment generating functions for the proof.
     \[
         Y_i = \frac{X_i - \mu}{\sigma},
     \]
-    then \(\Expt\brac{Y_i} = 0\) and \(\Var\para{Y_i} = 1\). Hence, it suffices to prove the theorem for \(X_1, X_2, \ldots\) with mean \(0\) and variance \(1\). We need to show
+    then \(\Expt\bqty{Y_i} = 0\) and \(\Var\pqty{Y_i} = 1\). Hence, it suffices to prove the theorem for \(X_1, X_2, \ldots\) with mean \(0\) and variance \(1\). We need to show
     \[
-        \frac{S_n}{\sqrt{n}} \toDist \Normal\para{0, 1}
+        \frac{S_n}{\sqrt{n}} \toDist \Normal\pqty{0, 1}
     \]
     as \(n \to \infty\).
 
     Furthermore, we assume there is some \(\delta > 0\), such that
     \[
-        \Expt\brac{e^{\delta X_1}} + \Expt\brac{e^{- \delta X_1}} < \infty.
+        \Expt\bqty{e^{\delta X_1}} + \Expt\bqty{e^{- \delta X_1}} < \infty.
     \]
 
-    Let \(m\para{\theta} = \Expt\brac{e^{\theta X_1}}\)/ By \autoref{thm:continuity-property-mgf} (Continuity Property of Moment Generating Function), it suffices to show
+    Let \(m\pqty{\theta} = \Expt\bqty{e^{\theta X_1}}\). By \autoref{thm:continuity-property-mgf} (Continuity Property of Moment Generating Function), it suffices to show
     \[
-        \Expt\brac{e^{\theta \frac{S_n}{\sqrt{n}}}} \to \Expt\brac{e^{\theta Z}} = e^{\frac{\theta^2}{2}}.
+        \Expt\bqty{e^{\theta \frac{S_n}{\sqrt{n}}}} \to \Expt\bqty{e^{\theta Z}} = e^{\frac{\theta^2}{2}}.
     \]
 
     Since the \(X_i\)s are independent and identically distributed with moment generating functions \(m\), we have
     \[
-        \Expt\brac{e^{\theta \frac{S_n}{\sqrt{n}}}} = \para{m\para{\frac{\theta}{\sqrt{n}}}}^{n}.
+        \Expt\bqty{e^{\theta \frac{S_n}{\sqrt{n}}}} = \pqty{m\pqty{\frac{\theta}{\sqrt{n}}}}^{n}.
     \]
 
     Hence,
     \[
-        m\para{\frac{\theta}{\sqrt{n}}} = \Expt\brac{e^{\theta \frac{S_n}{\sqrt{n}}}} = 1 + \frac{\theta^2}{2n} + \Expt\brac{\sum_{k \geq 3} \frac{\theta^k}{\para{\sqrt{n}}^k} \cdot \frac{1}{k!} X_1^k}.
+        m\pqty{\frac{\theta}{\sqrt{n}}} = \Expt\bqty{e^{\theta \frac{S_n}{\sqrt{n}}}} = 1 + \frac{\theta^2}{2n} + \Expt\bqty{\sum_{k \geq 3} \frac{\theta^k}{\pqty{\sqrt{n}}^k} \cdot \frac{1}{k!} X_1^k}.
     \]
 
     We claim that the expectation of the remaining part has
     \[
-        \abs{\Expt\brac{\sum_{k \geq 3} \theta^k \cdot \frac{1}{k!} X_1^k}} = \littleO\para{\abs{\theta}^2}
+        \abs{\Expt\bqty{\sum_{k \geq 3} \theta^k \cdot \frac{1}{k!} X_1^k}} = \littleO\pqty{\abs{\theta}^2}
     \]
     as \(\theta \to 0\). If this is indeed true, we have
     \[
-        m\para{\frac{\theta}{\sqrt{n}}} = 1 + \frac{\theta^2}{2n} + \littleO\para{\frac{\theta^2}{n}},
+        m\pqty{\frac{\theta}{\sqrt{n}}} = 1 + \frac{\theta^2}{2n} + \littleO\pqty{\frac{\theta^2}{n}},
     \]
     and hence
     \[
-        \para{m \para{\frac{\theta}{\sqrt{n}}}}^n \to e^{\theta^2 / 2}
+        \pqty{m \pqty{\frac{\theta}{\sqrt{n}}}}^n \to e^{\flatfrac{\theta^2}{2}}
     \]
     as \(n \to \infty\).
 
     Indeed, let \(\abs{\theta} \leq \frac{\delta}{2}\), then we have
     \begin{align*}
-        \abs{\Expt\brac{\sum_{k \geq 3} \frac{\theta^k X_1^k}{k!}}} &\leq \Expt\brac{\sum_{k \geq 3} \frac{\abs{\theta X_1}^k}{k!}} \\
-        &= \Expt\brac{\abs{\theta X_1}^3 \sum_{k \geq 0} \frac{\abs{\theta X_1}^k}{\para{k + 3}!}} \\
-        &\leq \Expt\brac{\abs{\theta X_1}^3 \exp\para{\abs{\theta X_1}}} \\
-        &\leq \Expt\brac{\abs{\theta X_1}^3 \cdot \exp\para{\frac{\delta}{2} \cdot \abs{X_1}}}.
+        \abs{\Expt\bqty{\sum_{k \geq 3} \frac{\theta^k X_1^k}{k!}}} &\leq \Expt\bqty{\sum_{k \geq 3} \frac{\abs{\theta X_1}^k}{k!}} \\
+        &= \Expt\bqty{\abs{\theta X_1}^3 \sum_{k \geq 0} \frac{\abs{\theta X_1}^k}{\pqty{k + 3}!}} \\
+        &\leq \Expt\bqty{\abs{\theta X_1}^3 \exp\pqty{\abs{\theta X_1}}} \\
+        &\leq \Expt\bqty{\abs{\theta X_1}^3 \cdot \exp\pqty{\frac{\delta}{2} \cdot \abs{X_1}}}.
     \end{align*}
 
     Observe that
     \[
-        \abs{\theta X_1}^3 = \abs{\theta}^3 \cdot \frac{\abs{\frac{\delta}{2} X_1}^3}{3!} \cdot \frac{3!}{\para{\frac{\delta}{2}}^3} \leq C \cdot \abs{\theta}^3 \cdot e^{\frac{\delta}{2} \abs{X_1}}
+        \abs{\theta X_1}^3 = \abs{\theta}^3 \cdot \frac{\abs{\frac{\delta}{2} X_1}^3}{3!} \cdot \frac{3!}{\pqty{\frac{\delta}{2}}^3} \leq C \cdot \abs{\theta}^3 \cdot e^{\frac{\delta}{2} \abs{X_1}}
     \]
     where
     \[
@@ -341,19 +341,19 @@ We introduce this theorem on moment generating functions for the proof.
     \]
     is a constant. Hence,
     \begin{align*}
-        \Expt\brac{\abs{\theta X_1}^3 \cdot \exp \para{\frac{\delta}{2} \cdot \abs{X_1}}} &\leq C \cdot \abs{\theta}^3 \cdot \Expt\brac{e^{\delta \abs{X_1}}} \\
-        &\leq C \cdot \abs{\theta}^3 \cdot \para{\Expt\brac{e^{\delta X_1} + e^{- \delta X_1}}}
+        \Expt\bqty{\abs{\theta X_1}^3 \cdot \exp \pqty{\frac{\delta}{2} \cdot \abs{X_1}}} &\leq C \cdot \abs{\theta}^3 \cdot \Expt\bqty{e^{\delta \abs{X_1}}} \\
+        &\leq C \cdot \abs{\theta}^3 \cdot \pqty{\Expt\bqty{e^{\delta X_1} + e^{- \delta X_1}}}
     \end{align*}
     and hence
     \[
-        \abs{\Expt\brac{\sum_{k \geq 3} \frac{\theta^k X_1^k}{k!}}} \leq C' \cdot \abs{\theta}^3
+        \abs{\Expt\bqty{\sum_{k \geq 3} \frac{\theta^k X_1^k}{k!}}} \leq C' \cdot \abs{\theta}^3
     \]
     for some constant \(C'\).
 \end{proof}
 
 A consequence of \autoref{thm:clt} (Central Limit Theorem) is
 \[
-    S_n \dot{\sim} \Normal\para{n \mu, n \sigma^2}
+    S_n \dot{\sim} \Normal\pqty{n \mu, n \sigma^2}
 \]
 for \(n\) large, and we have
 \[
@@ -364,37 +364,37 @@ for a standard normal \(Z\), for large \(n\).
 \begin{example}[Application of Central Limit Theorem]
     \label{ex:clt}%
     \begin{itemize}
-        \item Let \(S_n \sim \Binomial\para{n. p}\), then \(S_n = X_1 + \cdots + X_n\) for \(X_i\) being independent and identically distributed \(\Bernoulli \para{p}\).
+        \item Let \(S_n \sim \Binomial\pqty{n. p}\), then \(S_n = X_1 + \cdots + X_n\) for \(X_i\) being independent and identically distributed \(\Bernoulli \pqty{p}\).
 
         Hence,
         \[
-            \frac{S_n - np}{\sqrt{n p \para{1 - p}}} \toDist \Normal\para{0, 1}.
+            \frac{S_n - np}{\sqrt{n p \pqty{1 - p}}} \toDist \Normal\pqty{0, 1}.
         \]
 
         So
         \[
-            S_n \dot{\sim} \Normal\para{np, np\para{1 - p}}
+            S_n \dot{\sim} \Normal\pqty{np, np\pqty{1 - p}}
         \]
         for large \(n\).
 
-        \item Suppose instead that \(S_n \sim \Binomial\para{n, \frac{\lambda}{n}}\) for \(\lambda > 0\), and let \(S \sim \Poisson\para{\lambda}\). Then we have
+        \item Suppose instead that \(S_n \sim \Binomial\pqty{n, \frac{\lambda}{n}}\) for \(\lambda > 0\), and let \(S \sim \Poisson\pqty{\lambda}\). Then we have
         \[
-            \Prob\para{S_n = x} \to \Prob\para{S = x}.
+            \Prob\pqty{S_n = x} \to \Prob\pqty{S = x}.
         \]
 
-        \item Suppose now that \(S_n \sim \Poisson\para{n}\), then \(S_n = X_1 + \cdots + X_n\) for \(X_i\) being independent and identically distributed \(\Poisson \para{1}\). Hence,
+        \item Suppose now that \(S_n \sim \Poisson\pqty{n}\), then \(S_n = X_1 + \cdots + X_n\) for \(X_i\) being independent and identically distributed \(\Poisson \pqty{1}\). Hence,
         \[
-            \frac{S_n - n}{\sqrt{n}} \toDist \Normal\para{0, 1},
+            \frac{S_n - n}{\sqrt{n}} \toDist \Normal\pqty{0, 1},
         \]
         and hence
         \[
-            S_n \dot{\sim} \Normal\para{n, n}.
+            S_n \dot{\sim} \Normal\pqty{n, n}.
         \]
     \end{itemize}
 \end{example}
 
 \begin{example}[Sampling Error Estimation using Central Limit Theorem]
-    Suppose we hold a referendum, and a proportion \(p\) of individuals in inclined to vote `Yes'. In other words, every individual votes `Yes' with probability \(p\), and `No' with probability \(\para{1 - p}\), independently of each other.
+    Suppose we hold a referendum, and a proportion \(p\) of individuals in inclined to vote `Yes'. In other words, every individual votes `Yes' with probability \(p\), and `No' with probability \(\pqty{1 - p}\), independently of each other.
 
     We want to estimate \(p\). Sample \(N\) individuals at random, where \(N\) is large, and we record their votes. Let \(X_i\) be \(1\) if the \(i\)th individual voted `Yes', and \(0\) otherwise.
 
@@ -404,46 +404,46 @@ for a standard normal \(Z\), for large \(n\).
     \]
     by \autoref{thm:strong-law-of-large-numbers} (Strong Law of Large Numbers).
     
-    We have \(S_N \sim \Binomial\para{N, p}\).
+    We have \(S_N \sim \Binomial\pqty{N, p}\).
     
     Now, our goal is to estimate \(p\) with an accuracy of \(\pm 4\%\) with probability \(\geq 0.99\). How large should \(N\) to be to ensure this?
 
     By \autoref{thm:clt} (Central Limit Theorem),
     \[
-        S_N \approx Np + \sqrt{N p \para{1 - p}} Z
+        S_N \approx Np + \sqrt{N p \pqty{1 - p}} Z
     \]
-    for \(Z \sim \Normal\para{0, 1}\), where \(N\) is large. Rephrasing the question, we want to find \(N\), such that
+    for \(Z \sim \Normal\pqty{0, 1}\), where \(N\) is large. Rephrasing the question, we want to find \(N\), such that
     \[
-        \Prob\para{\abs{\hat{P}_N - p} \geq 0.04} \leq 0.01.
+        \Prob\pqty{\abs{\hat{P}_N - p} \geq 0.04} \leq 0.01.
     \]
 
     Hence, we have
     \[
-        \hat{P}_N = \frac{S_N}{N} \approx p + \frac{\sqrt{p \para{1 - p}}}{\sqrt{N}} \cdot Z
+        \hat{P}_N = \frac{S_N}{N} \approx p + \frac{\sqrt{p \pqty{1 - p}}}{\sqrt{N}} \cdot Z
     \]  
     for large \(N\). So we have
     \[
-        \abs{\hat{P}_N} - p \approx \frac{\sqrt{p \para{1 - p}}}{\sqrt{N}} \cdot \abs{Z}.
+        \abs{\hat{P}_N} - p \approx \frac{\sqrt{p \pqty{1 - p}}}{\sqrt{N}} \cdot \abs{Z}.
     \]
 
     Furthermore, we have
     \[
-        \Prob\para{\abs{Z} \geq z} = 2 \para{1 - \sNormCdf\para{z}}.
+        \Prob\pqty{\abs{Z} \geq z} = 2 \pqty{1 - \sNormCdf\pqty{z}}.
     \]
 
     Looking at standard tables, we have for \(z = 2.58\), we have
     \[
-        \Prob\para{\abs{Z} \geq z} = 0.01.
+        \Prob\pqty{\abs{Z} \geq z} = 0.01.
     \]
 
     Hence, we may choose a sufficiently large \(N\), such that
     \[
-        \frac{\sqrt{N}}{\sqrt{p \para{1 - p}}} \cdot 0.04 \geq 2.58.
+        \frac{\sqrt{N}}{\sqrt{p \pqty{1 - p}}} \cdot 0.04 \geq 2.58.
     \]
 
     But we want this to hold for any \(p\), and note that
     \[
-        \sqrt{p \para{1 - p}} \leq \frac{1}{2},
+        \sqrt{p \pqty{1 - p}} \leq \frac{1}{2},
     \]
     so taking \(N \approx 1040\) should be sufficient.
 \end{example}

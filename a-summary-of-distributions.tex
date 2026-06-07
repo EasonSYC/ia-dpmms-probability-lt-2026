@@ -10,28 +10,28 @@ Note that \(\dagger\) means that this distribution was not lectured.
     \centering
     \begin{tabular}{c|cc|cc|cc|c}
         \hline \hline
-        \textbf{Name} & \(X \sim\) & \textbf{Parameters} & \(\Prob\para{X = x}\) & \(x \in\) & \(\Expt\brac{X}\) & \(\Var\para{X}\) & \(\Expt\brac{z^X}\) \\
+        \textbf{Name} & \(X \sim\) & \textbf{Parameters} & \(\Prob\pqty{X = x}\) & \(x \in\) & \(\Expt\bqty{X}\) & \(\Var\pqty{X}\) & \(\Expt\bqty{z^X}\) \\
         \hline\hline
-        Bernoulli & \(\Bernoulli\para{p}\) & \(p \in \ccintv{0}{1}\) & \(p^x(1 - p)^{1 - x}\) & \(\brce{0, 1}\) & \(p\) & \(p \para{1 - p}\) & \(1 - p + pz\) \\
+        Bernoulli & \(\Bernoulli\pqty{p}\) & \(p \in \ccintv{0}{1}\) & \(p^x(1 - p)^{1 - x}\) & \(\Bqty{0, 1}\) & \(p\) & \(p \pqty{1 - p}\) & \(1 - p + pz\) \\
         \hline
-        Binomial & \(\Binomial\para{n, p}\) & \makecell{\(n \in \NN\) \\ \(p \in \ccintv{0}{1}\)} & \(\dsty \binom{n}{k} p^x (1 - p)^{n - x}\) & \(\brce{0, \ldots, n}\) & \(np\) &\(np\para{1 - p}\) & \(\para{1 - p + pz}^n\) \\
+        Binomial & \(\Binomial\pqty{n, p}\) & \makecell{\(n \in \NN\) \\ \(p \in \ccintv{0}{1}\)} & \(\dsty \binom{n}{k} p^x (1 - p)^{n - x}\) & \(\Bqty{0, \ldots, n}\) & \(np\) &\(np\pqty{1 - p}\) & \(\pqty{1 - p + pz}^n\) \\
         \hline 
-        Hypergeometric \(\dagger\) & \(\Hypergeometric\para{N, K, n}\) & \makecell{\(N \in \NN\) \\ \(K \in \NN_0\) \\ \(K \leq N\) \\ \(n \in \NN\) \\ \(n \leq N\)} & \(\dsty \frac{\binom{K}{x} \binom{N - K}{n - x}}{\binom{N}{n}}\) & \makecell{\(0 \leq x \leq K\) \\ \(n + K - N \leq x \leq n\)} & \(\dsty \frac{nK}{N}\) & \(\dsty \frac{n \para{N - n} K \para{N - K}}{N^2 \para{N - 1}}\) & / \\
+        Hypergeometric \(\dagger\) & \(\Hypergeometric\pqty{N, K, n}\) & \makecell{\(N \in \NN\) \\ \(K \in \NN_0\) \\ \(K \leq N\) \\ \(n \in \NN\) \\ \(n \leq N\)} & \(\dsty \frac{\binom{K}{x} \binom{N - K}{n - x}}{\binom{N}{n}}\) & \makecell{\(0 \leq x \leq K\) \\ \(n + K - N \leq x \leq n\)} & \(\dsty \frac{nK}{N}\) & \(\dsty \frac{n \pqty{N - n} K \pqty{N - K}}{N^2 \pqty{N - 1}}\) & / \\
         \hline
-        \makecell{Geometric \\ (Trials)} & \(\Geometric\para{p}\) & \(p \in \ocintv{0}{1}\) & \(p \para{1 - p}^{x - 1}\) & \(\NN\) & \(\dsty \frac{1}{p}\) & \(\dsty \frac{1 - p}{p^2}\) & \(\dsty \frac{pz}{1 - z\para{1 - p}}\) \\
+        \makecell{Geometric \\ (Trials)} & \(\Geometric\pqty{p}\) & \(p \in \ocintv{0}{1}\) & \(p \pqty{1 - p}^{x - 1}\) & \(\NN\) & \(\dsty \frac{1}{p}\) & \(\dsty \frac{1 - p}{p^2}\) & \(\dsty \frac{pz}{1 - z\pqty{1 - p}}\) \\
         \hline
-        \makecell{Geometric \\ (Failures)} & \(\Geometric\para{p}\) & \(p \in \ocintv{0}{1}\) & \(p \para{1 - p}^{x}\) & \(\NN \cup \brce{0}\) & \(\dsty \frac{1 - p}{p}\) & \(\dsty \frac{1 - p}{p^2}\) & \(\dsty \frac{p}{1 - z\para{1 - p}}\) \\
+        \makecell{Geometric \\ (Failures)} & \(\Geometric\pqty{p}\) & \(p \in \ocintv{0}{1}\) & \(p \pqty{1 - p}^{x}\) & \(\NN \cup \Bqty{0}\) & \(\dsty \frac{1 - p}{p}\) & \(\dsty \frac{1 - p}{p^2}\) & \(\dsty \frac{p}{1 - z\pqty{1 - p}}\) \\
         \hline
-        \makecell{Negative \\ Binomial}\(\dagger\) & \(\NegativeBinomial\para{r, p}\) & \makecell{\(r \in \NN\) \\ 
-        \(p \in \ccintv{0}{1}\)} & \(\dsty \binom{x + r - 1}{x} \para{1 - p}^x p^r\) & \(\NN \cup \brce{0}\) & \(\dsty \frac{r \para{1 - p}}{p}\) & \(\dsty \frac{r \para{1 - p}}{p^2}\) & \(\dsty \para{\frac{p}{1 - z \para{1 - p}}}^r\) \\
+        \makecell{Negative \\ Binomial}\(\dagger\) & \(\NegativeBinomial\pqty{r, p}\) & \makecell{\(r \in \NN\) \\ 
+        \(p \in \ccintv{0}{1}\)} & \(\dsty \binom{x + r - 1}{x} \pqty{1 - p}^x p^r\) & \(\NN \cup \Bqty{0}\) & \(\dsty \frac{r \pqty{1 - p}}{p}\) & \(\dsty \frac{r \pqty{1 - p}}{p^2}\) & \(\dsty \pqty{\frac{p}{1 - z \pqty{1 - p}}}^r\) \\
         \hline
-        Poisson & \(\Poisson\para{\lambda}\) & \(\lambda > 0\) & \(\dsty \frac{\lambda^x}{x!} \cdot e^{-\lambda}\) & \(\NN \cup \brce{0}\) & \(\lambda\) & \(\lambda\) & \(e^{\lambda(z - 1)}\) \\
+        Poisson & \(\Poisson\pqty{\lambda}\) & \(\lambda > 0\) & \(\dsty \frac{\lambda^x}{x!} \cdot e^{-\lambda}\) & \(\NN \cup \Bqty{0}\) & \(\lambda\) & \(\lambda\) & \(e^{\lambda(z - 1)}\) \\
         \hline \hline
-        \textbf{Name} & \(\vm{X} \sim\) & \textbf{Parameters} & \(\Prob\para{\vm{X} = \vm{x}}\) & \(\vm{x} \in\) & \(\Expt\brac{\vm{X}}\) & \(\Var\para{\vm{X}}\) & \(\Expt\brac{z_1^{X_1} \cdots z_n^{X_n}}\)\\
+        \textbf{Name} & \(\vb{X} \sim\) & \textbf{Parameters} & \(\Prob\pqty{\vb{X} = \vb{x}}\) & \(\vb{x} \in\) & \(\Expt\bqty{\vb{X}}\) & \(\Var\pqty{\vb{X}}\) & \(\Expt\bqty{z_1^{X_1} \cdots z_n^{X_n}}\)\\
         \hline \hline
-        Multinomial & \(\Multinomial\para{n, \vm{p}}\) & \makecell{\(n \in \NN\) \\ \(p_i \in \ccintv{0}{1}\) \\ \(\dsty \sum_{i = 1}^{k} p_i = 1\)} & \(\binom{n}{x_1, \ldots, x_k} p_1^{x_1} \cdots p_k^{x_k}\) & \makecell{\(x_i \in \NN \cup \brce{0}\) \\ \(\dsty \sum_{i = 1}^{k} x_i = n\)} & \(n \vm{p}\) & \makecell{\(\Var\para{X_i} = n p_i \para{1 - p_i}\) \\ \(\Cov\para{X_i, X_j} = -n p_i p_j, i \neq j\)} & \(\para{\vm{p}\transpose \vm{z}}^n\) \\
+        Multinomial & \(\Multinomial\pqty{n, \vb{p}}\) & \makecell{\(n \in \NN\) \\ \(p_i \in \ccintv{0}{1}\) \\ \(\dsty \sum_{i = 1}^{k} p_i = 1\)} & \(\binom{n}{x_1, \ldots, x_k} p_1^{x_1} \cdots p_k^{x_k}\) & \makecell{\(x_i \in \NN \cup \Bqty{0}\) \\ \(\dsty \sum_{i = 1}^{k} x_i = n\)} & \(n \vb{p}\) & \makecell{\(\Var\pqty{X_i} = n p_i \pqty{1 - p_i}\) \\ \(\Cov\pqty{X_i, X_j} = -n p_i p_j, i \neq j\)} & \(\pqty{\vb{p}\transpose \vb{z}}^n\) \\
         \hline
-        \makecell{Multivariate \\ Hypergeometric} \(\dagger\) & \(\MultivariateHypergeometric\para{N, \vm{K}, n}\) & \makecell{\(N \in \NN\) \\ \(K_i \in \NN_0\) \\ \(\sum_{i = 1}^{k} K_i = N\) \\ \(n \in \NN\) \\ \(n \leq N\)} & \(\dsty \frac{\prod_{i = 1}^{k} \binom{K_i}{x_i}}{\binom{N}{n}}\) & \makecell{\(x_i \in \NN \cup \brce{0}\) \\ \(x_i \leq K_i\)} & \(\dsty \frac{n \vm{K}}{N}\) & \makecell{\(\dsty \Var\para{X_i} = \frac{n \para{N - n} K_i \para{N - K_i}}{N^2 \para{N - 1}}\) \\ \(\dsty \Cov\para{X_i, X_j} = - \frac{n \para{N - n} K_i K_j}{N^2 \para{N - 1}}, i \neq j\)} & /
+        \makecell{Multivariate \\ Hypergeometric} \(\dagger\) & \(\MultivariateHypergeometric\pqty{N, \vb{K}, n}\) & \makecell{\(N \in \NN\) \\ \(K_i \in \NN_0\) \\ \(\sum_{i = 1}^{k} K_i = N\) \\ \(n \in \NN\) \\ \(n \leq N\)} & \(\dsty \frac{\prod_{i = 1}^{k} \binom{K_i}{x_i}}{\binom{N}{n}}\) & \makecell{\(x_i \in \NN \cup \Bqty{0}\) \\ \(x_i \leq K_i\)} & \(\dsty \frac{n \vb{K}}{N}\) & \makecell{\(\dsty \Var\pqty{X_i} = \frac{n \pqty{N - n} K_i \pqty{N - K_i}}{N^2 \pqty{N - 1}}\) \\ \(\dsty \Cov\pqty{X_i, X_j} = - \frac{n \pqty{N - n} K_i K_j}{N^2 \pqty{N - 1}}, i \neq j\)} & /
     \end{tabular}
     \caption{Summary of Discrete Distributions}
     \label{tab:summary-discrete-distribution}%
@@ -43,23 +43,23 @@ Note that \(\dagger\) means that this distribution was not lectured.
     \centering
     \begin{tabular}{c|cc|ccc|cc|c}
         \hline\hline
-        \textbf{Name} & \(X \sim\) & \textbf{Parameters} & \(f_X\para{x}\) & \(F_X\para{x}\) & \(x \in\) & \(\Expt\brac{X}\) & \(\Var\para{X}\) & \(\Expt\brac{e^{\theta X}}\) \\
+        \textbf{Name} & \(X \sim\) & \textbf{Parameters} & \(f_X\pqty{x}\) & \(F_X\pqty{x}\) & \(x \in\) & \(\Expt\bqty{X}\) & \(\Var\pqty{X}\) & \(\Expt\bqty{e^{\theta X}}\) \\
         \hline\hline
-        Uniform & \(\Uniform\ccintv{a}{b}\) & \(a < b\) & \(\dsty \frac{1}{b - a}\) & \(\dsty \frac{x - a}{b - a}\) & \(\ccintv{a}{b}\) &\(\dsty\frac{a + b}{2}\) & \(\dsty \frac{1}{12}\para{b - a}^2\) & \(\dsty\frac{e^{\theta b} - e^{\theta a}}{\theta (b - a)}\) \\
+        Uniform & \(\Uniform\ccintv{a}{b}\) & \(a < b\) & \(\dsty \frac{1}{b - a}\) & \(\dsty \frac{x - a}{b - a}\) & \(\ccintv{a}{b}\) &\(\dsty\frac{a + b}{2}\) & \(\dsty \frac{1}{12}\pqty{b - a}^2\) & \(\dsty\frac{e^{\theta b} - e^{\theta a}}{\theta (b - a)}\) \\
         \hline
-        Normal & \(\Normal\para{\lambda, \sigma^2}\) & \(\sigma > 0\) & \(\dsty \frac{1}{\sqrt{2\pi}\sigma}\exp\para{-\frac{(x - \mu)^2}{2\sigma^2}}\) & / & \(\RR\) & \(\mu\) & \(\sigma^2\) & \(e^{\theta\mu + \frac{1}{2}\theta^2\sigma^2}\)\\
+        Normal & \(\Normal\pqty{\lambda, \sigma^2}\) & \(\sigma > 0\) & \(\dsty \frac{1}{\sqrt{2\pi}\sigma}\exp\pqty{-\frac{(x - \mu)^2}{2\sigma^2}}\) & / & \(\RR\) & \(\mu\) & \(\sigma^2\) & \(e^{\theta\mu + \frac{1}{2}\theta^2\sigma^2}\)\\
         \hline
-        Exponential & \(\Exponential\para{\lambda}\) & \(\lambda > 0\) & \(\lambda e^{-\lambda x}\) & \(1 - e^{-\lambda x}\) & \(\cointv{0}{\plusinfty}\) & \(\dsty \frac{1}{\lambda}\) & \(\dsty \frac{1}{\lambda^2}\) & \(\dsty \frac{\lambda}{\lambda - \theta}\) \\
+        Exponential & \(\Exponential\pqty{\lambda}\) & \(\lambda > 0\) & \(\lambda e^{-\lambda x}\) & \(1 - e^{-\lambda x}\) & \(\cointv{0}{\plusinfty}\) & \(\dsty \frac{1}{\lambda}\) & \(\dsty \frac{1}{\lambda^2}\) & \(\dsty \frac{\lambda}{\lambda - \theta}\) \\
         \hline
-        \makecell{Gamma \\ (Integer)} & \(\Gamma\para{n, \lambda}\) & \makecell{\(n \in \NN\) \\ \(\lambda > 0\)} & \(\dsty \frac{e^{-\lambda x} \cdot \lambda^n \cdot x^{n - 1}}{\para{n - 1}!}\) & / & \(\cointv{0}{\plusinfty}\) & \(\dsty\frac{n}{\lambda}\) & \(\dsty \frac{n}{\lambda^2}\) & \(\dsty\para{\frac{\lambda}{\lambda - \theta}}^n\) \\
+        \makecell{Gamma \\ (Integer)} & \(\Gamma\pqty{n, \lambda}\) & \makecell{\(n \in \NN\) \\ \(\lambda > 0\)} & \(\dsty \frac{e^{-\lambda x} \cdot \lambda^n \cdot x^{n - 1}}{\pqty{n - 1}!}\) & / & \(\cointv{0}{\plusinfty}\) & \(\dsty\frac{n}{\lambda}\) & \(\dsty \frac{n}{\lambda^2}\) & \(\dsty\pqty{\frac{\lambda}{\lambda - \theta}}^n\) \\
         \hline
-        \makecell{Gamma \\ (General)} & \(\Gamma\para{\alpha, \lambda}\) & \makecell{\(\alpha > 0\) \\ \(\lambda > 0\)} & \(\dsty \frac{e^{-\lambda x} \cdot \lambda^{\alpha} \cdot x^{\alpha - 1}}{\Gamma\para{\alpha}}\) & / & \(\cointv{0}{\plusinfty}\) & \(\dsty\frac{\alpha}{\lambda}\) & \(\dsty \frac{\alpha}{\lambda^2}\) & \(\dsty\para{\frac{\lambda}{\lambda - \theta}}^{\alpha}\) \\
+        \makecell{Gamma \\ (General)} & \(\Gamma\pqty{\alpha, \lambda}\) & \makecell{\(\alpha > 0\) \\ \(\lambda > 0\)} & \(\dsty \frac{e^{-\lambda x} \cdot \lambda^{\alpha} \cdot x^{\alpha - 1}}{\Gamma\pqty{\alpha}}\) & / & \(\cointv{0}{\plusinfty}\) & \(\dsty\frac{\alpha}{\lambda}\) & \(\dsty \frac{\alpha}{\lambda^2}\) & \(\dsty\pqty{\frac{\lambda}{\lambda - \theta}}^{\alpha}\) \\
         \hline
-        Cauchy & Cauchy & N/A & \(\dsty \frac{1}{\pi\para{1 + x^2}}\) & \(\dsty \frac{\arctan x}{\pi} + \frac{1}{2}\) & \(\RR\) & -- & -- & Undefined for \(\theta \neq 0\) \\
+        Cauchy & Cauchy & N/A & \(\dsty \frac{1}{\pi\pqty{1 + x^2}}\) & \(\dsty \frac{\arctan x}{\pi} + \frac{1}{2}\) & \(\RR\) & -- & -- & Undefined for \(\theta \neq 0\) \\
         \hline \hline
-        \textbf{Name} & \(\vm{X} \sim\) & \textbf{Parameters} & \(f_{\vm{X}} \para{\vm{x}}\) & \(F_{\vm{X}} \para{\vm{x}}\) & \(\vm{x} \in\) & \(\Expt\brac{\vm{X}}\) & \(\Var\para{\vm{X}}\) & \(\Expt\brac{e^{\vmb{\theta}\transpose \vm{X}}}\)\\
+        \textbf{Name} & \(\vb{X} \sim\) & \textbf{Parameters} & \(f_{\vb{X}} \pqty{\vb{x}}\) & \(F_{\vb{X}} \pqty{\vb{x}}\) & \(\vb{x} \in\) & \(\Expt\bqty{\vb{X}}\) & \(\Var\pqty{\vb{X}}\) & \(\Expt\bqty{e^{\vb*{\theta}\transpose \vb{X}}}\)\\
         \hline \hline
-        \makecell{Multivariate \\ Gaussian \\ (Non-Degenerate)} & \(\Normal\para{\vmb{\mu}, \vm{V}}\) & \makecell{\(\vmb{\mu} \in \RR^n\) \\ \(\vm{V} \posDef 0\)} & \(\displaystyle \frac{\exp\para{- \frac{1}{2} \para{\vm{x} - \vmb{\mu}}\transpose \vm{V}\inverse \para{\vm{x} - \vmb{\mu}}}}{\sqrt{\para{2\pi}^n \det \vm{V}}}\) & / & \(\RR^n\) & \(\vmb{\mu}\) & \(\vm{V}\) & \(\dsty \exp\para{\vmb{\theta}\transpose \vmb{\mu} + \frac{1}{2} \vmb{\theta}\transpose \vm{V} \vmb{\theta}}\) 
+        \makecell{Multivariate \\ Gaussian \\ (Non-Degenerate)} & \(\Normal\pqty{\vb*{\mu}, \vb{V}}\) & \makecell{\(\vb*{\mu} \in \RR^n\) \\ \(\vb{V} \posDef 0\)} & \(\displaystyle \frac{\exp\pqty{- \frac{1}{2} \pqty{\vb{x} - \vb*{\mu}}\transpose \vb{V}\inverse \pqty{\vb{x} - \vb*{\mu}}}}{\sqrt{\pqty{2\pi}^n \det \vb{V}}}\) & / & \(\RR^n\) & \(\vb*{\mu}\) & \(\vb{V}\) & \(\dsty \exp\pqty{\vb*{\theta}\transpose \vb*{\mu} + \frac{1}{2} \vb*{\theta}\transpose \vb{V} \vb*{\theta}}\) 
     \end{tabular}
     \caption{Summary of Continuous Distributions}
     \label{tab:summary-continuous-distribution}%

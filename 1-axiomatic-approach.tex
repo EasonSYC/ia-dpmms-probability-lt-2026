@@ -2,11 +2,11 @@
 
 \begin{definition}[\(\sigma\)-Algebra]
     \label{def:sigma-algebra}%
-    Suppose \(\Omega\) is a set, and \(\eventSpace \subseteq \powerset\para{\Omega}\) is a collection of subsets of \(\Omega\). We say \(\eventSpace\) is a \emph{\(\sigma\)-algebra}, if the following hold:
+    Suppose \(\Omega\) is a set, and \(\eventSpace \subseteq \powerset\pqty{\Omega}\) is a collection of subsets of \(\Omega\). We say \(\eventSpace\) is a \emph{\(\sigma\)-algebra}, if the following hold:
     \begin{enumerate}
         \item \(\Omega \in \eventSpace\);
         \item if \(A \in \eventSpace\), then the complement \(A\compl \in \eventSpace\);
-        \item if \(\para{A_n}_{n \in \NN}\) is a countable collection of sets in \(\eventSpace\) (i.e. \(A_n \in \eventSpace\) for all \(n \in \NN\)), then
+        \item if \(\pqty{A_n}_{n \in \NN}\) is a countable collection of sets in \(\eventSpace\) (i.e. \(A_n \in \eventSpace\) for all \(n \in \NN\)), then
         \[
             \bigcup_{n \in \NN} A_n \in \eventSpace.
         \]
@@ -21,21 +21,21 @@
     \]
     is called a \emph{probability measure} if
     \begin{enumerate}
-        \item \(\Prob\para{\Omega} = 1\);
-        \item for any countable disjoint collection \(\para{A_n}_{n \in \NN}\) in \(\eventSpace\), we have
+        \item \(\Prob\pqty{\Omega} = 1\);
+        \item for any countable disjoint collection \(\pqty{A_n}_{n \in \NN}\) in \(\eventSpace\), we have
         \[
-            \Prob\para{\bigcup_{n \in \NN} A_n} = \sum_{n \in \NN} \Prob\para{A_n}.
+            \Prob\pqty{\bigcup_{n \in \NN} A_n} = \sum_{n \in \NN} \Prob\pqty{A_n}.
         \]
     \end{enumerate}
 
-    The value of \(\Prob\para{A}\) for some \(A \in \eventSpace\) is the \emph{probability of \(A\)}.
+    The value of \(\Prob\pqty{A}\) for some \(A \in \eventSpace\) is the \emph{probability of \(A\)}.
 \end{definition}
 
 \begin{definition}[Probability Space]
     \label{def:probability-space}%
     For a set \(\Omega\), a \(\sigma\)-algebra \(\eventSpace\) on \(\Omega\), and a probability measure \(\Prob\) on \(\eventSpace\) and \(\Omega\), the triple
     \[
-        \para{\Omega, \eventSpace, \Prob}
+        \pqty{\Omega, \eventSpace, \Prob}
     \]
     is a \emph{probability space}.
 \end{definition}
@@ -46,7 +46,7 @@
 \end{definition}
 
 \begin{remark}
-    By convention, if \(\Omega\) is countable, then we take \(\eventSpace\) to be \(\powerset\para{\Omega}\), the set of all subsets of \(\Omega\).
+    By convention, if \(\Omega\) is countable, then we take \(\eventSpace\) to be \(\powerset\pqty{\Omega}\), the set of all subsets of \(\Omega\).
 \end{remark}
 
 We note that we talk about probability of \emph{events}, rather than \emph{outcomes} -- the probability function is defined from \(\eventSpace\), the \(\sigma\)-algebra.
@@ -56,9 +56,9 @@ We may conclude some properties of the probability measure \(\Prob\) from the de
 \begin{proposition}[Properties of \(\Prob\)]
     \label{prop:properties-prob}%
     \begin{itemize}
-        \item \(\Prob\para{A\compl} = 1 - \Prob\para{A}\).
-        \item \(\Prob\para{\emptyset} = 0\).
-        \item \(\Prob\para{A} \leq \Prob\para{B}\) if \(A \subseteq B\).
-        \item \(\Prob\para{A \cup B} = \Prob\para{A} + \Prob\para{B} - \Prob\para{A \cap B}\).
+        \item \(\Prob\pqty{A\compl} = 1 - \Prob\pqty{A}\).
+        \item \(\Prob\pqty{\emptyset} = 0\).
+        \item \(\Prob\pqty{A} \leq \Prob\pqty{B}\) if \(A \subseteq B\).
+        \item \(\Prob\pqty{A \cup B} = \Prob\pqty{A} + \Prob\pqty{B} - \Prob\pqty{A \cap B}\).
     \end{itemize}
 \end{proposition}

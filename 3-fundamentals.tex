@@ -2,38 +2,38 @@
 
 \subsection{Properties of the Probability Measure}
 
-Let \(\para{\Omega, \eventSpace, \Prob}\) be a probability space. We give some useful properties of the probability measure \(\Prob\), other than those on the example sheets.
+Let \(\pqty{\Omega, \eventSpace, \Prob}\) be a probability space. We give some useful properties of the probability measure \(\Prob\), other than those on the example sheets.
 
 \begin{proposition}[Countable Subadditivity]
     \label{prop:countable-subadditivity}%
-    If \(\para{A_n}\) is a collection in \(\eventSpace\), then
+    If \(\pqty{A_n}\) is a collection in \(\eventSpace\), then
     \[
-        \Prob\para{\bigcup_{n \in \NN} A_n} \leq \sum_{n \in \NN} \Prob\para{A_n}.
+        \Prob\pqty{\bigcup_{n \in \NN} A_n} \leq \sum_{n \in \NN} \Prob\pqty{A_n}.
     \]
 \end{proposition}
 
 \begin{proof}
     Define \(B_1 = A_1\), and for \(n \geq 2\), we let
     \[
-        B_n = A_n \setminus \para{A_1 \cup A_2 \cup \cdots \cup A_{n - 1}}.
+        B_n = A_n \setminus \pqty{A_1 \cup A_2 \cup \cdots \cup A_{n - 1}}.
     \]
 
-    Then \(\para{B_n}\) is a disjoint collection of sets in \(\eventSpace\), and we have
+    Then \(\pqty{B_n}\) is a disjoint collection of sets in \(\eventSpace\), and we have
     \[
         \bigcup_{n \in \NN} B_n = \bigcup_{n \in \NN} A_n,
     \]
     so by the countable additivity property (see \autoref{def:probability-measure}, second point), we have
     \[
-        \Prob\para{\bigcup A_n} = \Prob\para{\bigcup B_n} = \sum \Prob\para{B_n} \leq \sum \Prob\para{A_n}
+        \Prob\pqty{\bigcup A_n} = \Prob\pqty{\bigcup B_n} = \sum \Prob\pqty{B_n} \leq \sum \Prob\pqty{A_n}
     \]
     since \(B_n \subseteq A_n\).
 \end{proof}
 
 \begin{proposition}[Continuity of Probability Measure]
     \label{prop:continuity-of-probability-measure}%
-    For some \emph{increasing} sequence of events \(\para{A_n}_{n \in \NN}\) in \(\eventSpace\) (i.e., we have \(A_n \subseteq A_{n + 1}\) for all \(n \in \NN\)), then we have \(\para{\Prob\para{A_n}}\) is increasing in \(n\), and converges to the limit
+    For some \emph{increasing} sequence of events \(\pqty{A_n}_{n \in \NN}\) in \(\eventSpace\) (i.e., we have \(A_n \subseteq A_{n + 1}\) for all \(n \in \NN\)), then we have \(\pqty{\Prob\pqty{A_n}}\) is increasing in \(n\), and converges to the limit
     \[
-        \Prob\para{A_n} \to \Prob\para{\bigcup_{n = 1}^{\infty} A_n}.
+        \Prob\pqty{A_n} \to \Prob\pqty{\bigcup_{n = 1}^{\infty} A_n}.
     \]
 \end{proposition}
 
@@ -43,18 +43,18 @@ Let \(\para{\Omega, \eventSpace, \Prob}\) be a probability space. We give some u
         B_n = A_n \setminus \bigcup_{m = 1}^{n - 1} A_m.
     \]
 
-    Then \(\para{B_n}\) are disjoint, and we have
+    Then \(\pqty{B_n}\) are disjoint, and we have
     \[
         \bigcup_{k = 1}^{n} B_k = A_n,
     \]
     so
     \[
-        \Prob\para{A_n} = \Prob\para{\bigcup_{k = 1}^{n} B_k} = \sum_{k = 1}^{n} \Prob\para{B_k} \to \sum_{k = 1}^{\infty} \Prob\para{B_k}.
+        \Prob\pqty{A_n} = \Prob\pqty{\bigcup_{k = 1}^{n} B_k} = \sum_{k = 1}^{n} \Prob\pqty{B_k} \to \sum_{k = 1}^{\infty} \Prob\pqty{B_k}.
     \]
 
     By the countable additivity property, we have
     \[
-        \Prob\para{\bigcup_{k = 1}^{\infty} B_k} = \sum_{k = 1}^{\infty} \Prob\para{B_k},
+        \Prob\pqty{\bigcup_{k = 1}^{\infty} B_k} = \sum_{k = 1}^{\infty} \Prob\pqty{B_k},
     \]
     and we also have
     \[
@@ -62,16 +62,16 @@ Let \(\para{\Omega, \eventSpace, \Prob}\) be a probability space. We give some u
     \]
     Therefore
     \[
-        \sum_{k = 1}^{\infty} \Prob\para{B_k} = \Prob\para{\bigcup_{k = 1}^{\infty} A_k},
+        \sum_{k = 1}^{\infty} \Prob\pqty{B_k} = \Prob\pqty{\bigcup_{k = 1}^{\infty} A_k},
     \]
     which finishes our proof.
 \end{proof}
 
 \begin{corollary}[Countinuity of Probability Measure for Decreasing Events]
     \label{cor:continuity-probability-measure-decreasing-sequence}%
-     For some \emph{decreasing} sequence of events \(\para{A_n}_{n \in \NN}\) in \(\eventSpace\) (i.e., we have \(A_n \supseteq A_{n + 1}\) for all \(n \in \NN\)), then we have \(\para{\Prob\para{A_n}}\) is decreasing in \(n\), and converges to the limit
+     For some \emph{decreasing} sequence of events \(\pqty{A_n}_{n \in \NN}\) in \(\eventSpace\) (i.e., we have \(A_n \supseteq A_{n + 1}\) for all \(n \in \NN\)), then we have \(\pqty{\Prob\pqty{A_n}}\) is decreasing in \(n\), and converges to the limit
     \[
-        \Prob\para{A_n} \to \Prob\para{\bigcap_{n = 1}^{\infty} A_n}.
+        \Prob\pqty{A_n} \to \Prob\pqty{\bigcap_{n = 1}^{\infty} A_n}.
     \]
 \end{corollary}
 
@@ -85,14 +85,14 @@ Let \(\para{\Omega, \eventSpace, \Prob}\) be a probability space. We give some u
 
 We recall that in terms of the cardinality (the cardinality measure on finite sets) that we have the Inclusion--Exclusion Principle. A similar formula holds for two events, \(A, B \in \eventSpace\), which says
 \[
-    \Prob\para{A \cup B} = \Prob\para{A} + \Prob\para{B} - \Prob\para{A \cap B}.
+    \Prob\pqty{A \cup B} = \Prob\pqty{A} + \Prob\pqty{B} - \Prob\pqty{A \cap B}.
 \]
 
 Applying this again to three events \(A, B, C \in \eventSpace\), we have
 \begin{align*}
-    \Prob\para{A \cup B \cup C} &=  \Prob\para{\para{A \cup B} \cup C}\\
-    &= \Prob\para{A \cup B} + \Prob\para{C} - \Prob\para{\para{A \cap C} \cup \para{B \cap C}} \\
-    &= \Prob\para{A} + \Prob\para{B} + \Prob\para{C} - \Prob\para{A \cap B} - \Prob\para{A \cap C} - \Prob\para{B \cap C} + \Prob\para{A \cap B \cap C}.
+    \Prob\pqty{A \cup B \cup C} &=  \Prob\pqty{\pqty{A \cup B} \cup C}\\
+    &= \Prob\pqty{A \cup B} + \Prob\pqty{C} - \Prob\pqty{\pqty{A \cap C} \cup \pqty{B \cap C}} \\
+    &= \Prob\pqty{A} + \Prob\pqty{B} + \Prob\pqty{C} - \Prob\pqty{A \cap B} - \Prob\pqty{A \cap C} - \Prob\pqty{B \cap C} + \Prob\pqty{A \cap B \cap C}.
 \end{align*}
 
 This leads to \autoref{thm:inclusion-exclusion}, the Inclusion--Exclusion Formula.
@@ -101,7 +101,7 @@ This leads to \autoref{thm:inclusion-exclusion}, the Inclusion--Exclusion Formul
     \label{thm:inclusion-exclusion}%%
     If we have events \(A_1, A_2, \ldots, \eventSpace\), then we have
     \[
-        \Prob\para{\bigcup_{i = 1}^{n} A_i} = \sum_{k = 1}^{n} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}.
+        \Prob\pqty{\bigcup_{i = 1}^{n} A_i} = \sum_{k = 1}^{n} \pqty{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\pqty{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}.
     \]
 \end{theorem}
 
@@ -110,51 +110,51 @@ This leads to \autoref{thm:inclusion-exclusion}, the Inclusion--Exclusion Formul
 
     We have
     \begin{align*}
-        \Prob\para{\bigcup_{i = 1}^{n} A_i} &= \Prob\para{\bigcup_{i = 1}^{n - 1} A_i \cup A_n} \\
-        &= \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} + \Prob\para{A_n} - \Prob\para{\bigcup_{i = 1}^{n - 1} A_i \cap A_n} \\
-        &= \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} + \Prob\para{A_n} - \Prob\para{\bigcup_{i = 1}^{n - 1} \para{A_i \cap A_n}}.
+        \Prob\pqty{\bigcup_{i = 1}^{n} A_i} &= \Prob\pqty{\bigcup_{i = 1}^{n - 1} A_i \cup A_n} \\
+        &= \Prob\pqty{\bigcup_{i = 1}^{n - 1} A_i} + \Prob\pqty{A_n} - \Prob\pqty{\bigcup_{i = 1}^{n - 1} A_i \cap A_n} \\
+        &= \Prob\pqty{\bigcup_{i = 1}^{n - 1} A_i} + \Prob\pqty{A_n} - \Prob\pqty{\bigcup_{i = 1}^{n - 1} \pqty{A_i \cap A_n}}.
     \end{align*}
 
     Now, we apply the induction hypothesis to the terms
     \[
-        \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} \quad \text{and} \quad \Prob\para{\bigcup_{i = 1}^{n - 1} \para{A_i \cap A_n}},
+        \Prob\pqty{\bigcup_{i = 1}^{n - 1} A_i} \qand \Prob\pqty{\bigcup_{i = 1}^{n - 1} \pqty{A_i \cap A_n}},
     \]
     and hence
     \[
-        \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} = \sum_{k = 1}^{n - 1} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}},
+        \Prob\pqty{\bigcup_{i = 1}^{n - 1} A_i} = \sum_{k = 1}^{n - 1} \pqty{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\pqty{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}},
     \]
     and if we let \(B_i = A_i \cap A_n\),
     \[
-        \Prob\para{\bigcup_{i = 1}^{n - 1} B_i} = \sum_{k = 1}^{n - 1} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k} \cap A_n}.
+        \Prob\pqty{\bigcup_{i = 1}^{n - 1} B_i} = \sum_{k = 1}^{n - 1} \pqty{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\pqty{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k} \cap A_n}.
     \]
 
     This gives exactly as desired.
 \end{proof}
 
 \begin{remark}
-    Let \(\Omega\) be a finite set, and \(\para{\Omega, \eventSpace, \Prob}\) be a probability space, where \(\Prob\) is the uniform measure
+    Let \(\Omega\) be a finite set, and \(\pqty{\Omega, \eventSpace, \Prob}\) be a probability space, where \(\Prob\) is the uniform measure
     \[
-        \Prob\para{A} = \frac{\abs{A}}{\abs{\Omega}}.
+        \Prob\pqty{A} = \frac{\abs{A}}{\abs{\Omega}}.
     \]
 
-    Taking \(A_1, A_2, \ldots, A_n \in \eventSpace\), applying \autoref{thm:inclusion-exclusion} (Inclusion--Exclusion Formula) to \(\Prob\para{\bigcup_{i = 1}^{n} A_i}\), we have
+    Taking \(A_1, A_2, \ldots, A_n \in \eventSpace\), applying \autoref{thm:inclusion-exclusion} (Inclusion--Exclusion Formula) to \(\Prob\pqty{\bigcup_{i = 1}^{n} A_i}\), we have
     \[
-        \abs{A_1 \cup A_2 \cup \cdots \cup A_n} = \sum_{k = 1}^{n} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_n \leq n} \abs{A_{i_1} \cap \cdots \cap A_{i_n}},
+        \abs{A_1 \cup A_2 \cup \cdots \cup A_n} = \sum_{k = 1}^{n} \pqty{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_n \leq n} \abs{A_{i_1} \cap \cdots \cap A_{i_n}},
     \]
     the Inclusion--Exclusion Principle on cardinalities. So the measure version implies the cardinality one.
 \end{remark}
 
 Now, if we truncate the above sums, in the small cases, we see for \(n = 2\)
 \[
-    \Prob\para{A \cup B} \leq \Prob\para{A} + \Prob\para{B},
+    \Prob\pqty{A \cup B} \leq \Prob\pqty{A} + \Prob\pqty{B},
 \]
 and for \(n = 3\),
 \[
-    \Prob\para{A \cup B \cup C} \geq \Prob\para{A} + \Prob\para{B} + \Prob\para{C} - \Prob\para{A \cap B} - \Prob\para{A \cap C} - \Prob\para{B \cap C}
+    \Prob\pqty{A \cup B \cup C} \geq \Prob\pqty{A} + \Prob\pqty{B} + \Prob\pqty{C} - \Prob\pqty{A \cap B} - \Prob\pqty{A \cap C} - \Prob\pqty{B \cap C}
 \]
 but
 \[
-    \Prob\para{A \cup B \cup C} \leq \Prob\para{A} + \Prob\para{B} + \Prob\para{C}.
+    \Prob\pqty{A \cup B \cup C} \leq \Prob\pqty{A} + \Prob\pqty{B} + \Prob\pqty{C}.
 \]
 
 This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
@@ -163,9 +163,9 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
     \label{prop:bonferroni-inequality}%
     We have
     \[
-        \Prob\para{\bigcup_{i = 1}^{n} A_i} \begin{cases}
-            \leq \sum_{k = 1}^{r} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}, & r \text{ is odd}, \\
-            \geq \sum_{k = 1}^{r} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}, & r \text{ is even}.
+        \Prob\pqty{\bigcup_{i = 1}^{n} A_i} \begin{cases}
+            \leq \sum_{k = 1}^{r} \pqty{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\pqty{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}, & r \text{ is odd}, \\
+            \geq \sum_{k = 1}^{r} \pqty{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\pqty{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}, & r \text{ is even}.
         \end{cases}
     \]
 \end{proposition}
@@ -175,17 +175,17 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
 
     If \(r\) is odd, let \(B_i = A_i \cap A_n\), and we have
     \[
-        \Prob\para{\bigcup_{i = 1}^{n} A_i} = \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} + \Prob\para{A_n} - \Prob\para{B_1 \cup B_2 \cup \cdots \cup B_{n - 1}}.
+        \Prob\pqty{\bigcup_{i = 1}^{n} A_i} = \Prob\pqty{\bigcup_{i = 1}^{n - 1} A_i} + \Prob\pqty{A_n} - \Prob\pqty{B_1 \cup B_2 \cup \cdots \cup B_{n - 1}}.
     \]
 
     We apply the induction hypothesis to \(r\) is odd for \(A_i\), giving
     \[
-        \Prob\para{\bigcup_{i = 1}^{n - 1} A_i} \leq \sum_{k = 1}^{r} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\para{A_{i_1} \cap \cdots \cap A_{i_k}},
+        \Prob\pqty{\bigcup_{i = 1}^{n - 1} A_i} \leq \sum_{k = 1}^{r} \pqty{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\pqty{A_{i_1} \cap \cdots \cap A_{i_k}},
     \]
     and to \(r - 1\) is even for \(B_i\), giving
     \begin{align*}
-        \Prob\para{\bigcup_{i = 1}^{n - 1} B_i} &\geq \sum_{k = 1}^{r - 1} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\para{B_{i_1} \cap \cdots \cap B_{i_k}} \\
-        &= \sum_{k = 1}^{r - 1} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\para{A_{i_1} \cap \cdots \cap A_{i_k} \cap A_n}.
+        \Prob\pqty{\bigcup_{i = 1}^{n - 1} B_i} &\geq \sum_{k = 1}^{r - 1} \pqty{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\pqty{B_{i_1} \cap \cdots \cap B_{i_k}} \\
+        &= \sum_{k = 1}^{r - 1} \pqty{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n - 1} \Prob\pqty{A_{i_1} \cap \cdots \cap A_{i_k} \cap A_n}.
     \end{align*}
 
     Substituting these in finishes the proof for \(r\) is odd, and the proof is similar for \(r\) is even.
@@ -195,7 +195,7 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
     \label{ex:counting-surjections}%
     Let
     \[
-        \Omega = \brce{\functiondomain{f}{\brce{1, 2, \ldots, n}}{\brce{1, 2, \ldots, m}}},
+        \Omega = \Bqty{\functiondomain{f}{\Bqty{1, 2, \ldots, n}}{\Bqty{1, 2, \ldots, m}}},
     \]
     and take the subset
     \[
@@ -209,7 +209,7 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
 
     Then we have
     \[
-        A = A_1\compl \cap A_2\compl \cap \cdots \cap A_m\compl = \para{A_1 \cup A_2 \cup \cdots \cup A_m}\compl.
+        A = A_1\compl \cap A_2\compl \cap \cdots \cap A_m\compl = \pqty{A_1 \cup A_2 \cup \cdots \cup A_m}\compl.
     \]
 
     Now, we have
@@ -218,12 +218,12 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
     \]
     and by the Inclusion--Exclusion Principle, we have
     \begin{align*}
-        \abs{A_1 \cup \cdots \cup A_m} &= \sum_{k = 1}^{m} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq m} \abs{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}} \\
-        &= \sum_{k = 1}^{m} \para{-1}^{k + 1} \binom{m}{k} \para{m - k}^n,
+        \abs{A_1 \cup \cdots \cup A_m} &= \sum_{k = 1}^{m} \pqty{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq m} \abs{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}} \\
+        &= \sum_{k = 1}^{m} \pqty{-1}^{k + 1} \binom{m}{k} \pqty{m - k}^n,
     \end{align*}
     so we have
     \[
-        \abs{A} = \sum_{k = 0}^{m} \para{-1}^{k} \binom{m}{k} \para{m - k}^{n}.
+        \abs{A} = \sum_{k = 0}^{m} \pqty{-1}^{k} \binom{m}{k} \pqty{m - k}^{n}.
     \]
 \end{example}
 
@@ -231,72 +231,72 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
     \label{ex:derangements}%
     \emph{Derangements} are permutations with no fixed points. Let the event space be
     \[
-        \Omega = \brce{\text{permutations of }\brce{1, 2, \ldots, n}}
+        \Omega = \Bqty{\text{permutations of }\Bqty{1, 2, \ldots, n}}
     \]
     and the event of derangements be
     \[
-        A = \brce{\text{derangements}} = \set{f \in \Omega}{\forall i = 1, 2, \ldots, n: f\para{i} \neq i}.
+        A = \Bqty{\text{derangements}} = \set{f \in \Omega}{\forall i = 1, 2, \ldots, n: f\pqty{i} \neq i}.
     \]
 
     What is the probability of \(A\)?
 
     For every \(i = 1, 2, \ldots, n\), we let
     \[
-        A_i = \set{f \in \Omega}{f\para{i} = i}.
+        A_i = \set{f \in \Omega}{f\pqty{i} = i}.
     \]
 
     Then, we have
     \[
-        A = A_1\compl \cap A_2\compl \cap \cdots \cap A_n\compl = \para{\bigcup_{i = 1}^{n} A_i} \compl.
+        A = A_1\compl \cap A_2\compl \cap \cdots \cap A_n\compl = \pqty{\bigcup_{i = 1}^{n} A_i} \compl.
     \]
 
     Therefore, by the additivity of the probability measure, we have
     \[
-        \Prob\para{A} = 1 - \Prob\para{\bigcup_{i = 1}^{n} A_i}.
+        \Prob\pqty{A} = 1 - \Prob\pqty{\bigcup_{i = 1}^{n} A_i}.
     \]
 
     Using \autoref{thm:inclusion-exclusion} (Inclusion--Exclusion formula), we have
     \[
-        \Prob\para{\bigcup_{i = 1}^{n} A_i} = \sum_{k = 1}^{n} \para{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}.
+        \Prob\pqty{\bigcup_{i = 1}^{n} A_i} = \sum_{k = 1}^{n} \pqty{-1}^{k + 1} \sum_{1 \leq i_1 < \cdots < i_k \leq n} \Prob\pqty{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}}.
     \]
 
     We have
     \[
-        \Prob\para{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}} = \frac{\para{n - k}!}{n!}
+        \Prob\pqty{A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_k}} = \frac{\pqty{n - k}!}{n!}
     \]
-    since we have \(k\) points fixed in the permutations, and therefore \(\para{n - k}\) places free.
+    since we have \(k\) points fixed in the permutations, and therefore \(\pqty{n - k}\) places free.
     
     Hence,
     \begin{align*}
-        \Prob\para{\bigcup_{i = 1}^{n} A_i} &= \sum_{k = 1}^{n} \para{-1}^{k + 1} \binom{n}{k} \frac{\para{n - k}!}{n!} \\
-        &= \sum_{k = 1}^{n} \para{-1}^{k + 1} \frac{1}{k!}.
+        \Prob\pqty{\bigcup_{i = 1}^{n} A_i} &= \sum_{k = 1}^{n} \pqty{-1}^{k + 1} \binom{n}{k} \frac{\pqty{n - k}!}{n!} \\
+        &= \sum_{k = 1}^{n} \pqty{-1}^{k + 1} \frac{1}{k!}.
     \end{align*}
 
     Hence, we have
     \[
-        \Prob\para{A} = 1 - \sum_{k = 1}^{n} \para{-1}^{k + 1} \frac{1}{k!} = \sum_{k = 0}^{n} \frac{\para{-1}^{k}}{k!}.
+        \Prob\pqty{A} = 1 - \sum_{k = 1}^{n} \pqty{-1}^{k + 1} \frac{1}{k!} = \sum_{k = 0}^{n} \frac{\pqty{-1}^{k}}{k!}.
     \]
 
     As \(n \to \infty\), we have the behaviour that
     \[
-        \Prob\para{A} \to \frac{1}{e}.
+        \Prob\pqty{A} \to \frac{1}{e}.
     \]
 \end{example}
 
 \subsection{Independence and Conditional Probability}
 
-Let \(\para{\Omega, \eventSpace, \Prob}\) be a probability space.
+Let \(\pqty{\Omega, \eventSpace, \Prob}\) be a probability space.
 
 \begin{definition}[Independence]
     \label{def:independence}%
     We say two events \(A, B \in \eventSpace\) are \emph{independent}, denoted as \(A \indp B\), if
     \[
-        \Prob\para{A \cap B} = \Prob\para{A} \cdot \Prob\para{B}.
+        \Prob\pqty{A \cap B} = \Prob\pqty{A} \cdot \Prob\pqty{B}.
     \]
 
-    A \emph{countable collection} of events \(\para{A_n}_{n \in \NN}\) is said to be \emph{independent}, if for any finite collection of indices \(I = \brce{i_1, i_2, \ldots, i_k} \subseteq \NN\), we have
+    A \emph{countable collection} of events \(\pqty{A_n}_{n \in \NN}\) is said to be \emph{independent}, if for any finite collection of indices \(I = \Bqty{i_1, i_2, \ldots, i_k} \subseteq \NN\), we have
     \[
-        \Prob\para{\bigcap_{i \in I} A_i} = \prod_{i \in I} \Prob\para{A_i}.
+        \Prob\pqty{\bigcap_{i \in I} A_i} = \prod_{i \in I} \Prob\pqty{A_i}.
     \]
 \end{definition}
 
@@ -308,28 +308,28 @@ Let \(\para{\Omega, \eventSpace, \Prob}\) be a probability space.
     \label{ex:pairwise-indep-does-not-imply-indep}
     We toss a fair coin twice. The sample space is
     \[
-        \Omega = \brce{\para{0, 0}, \para{0, 1}, \para{1, 0}, \para{1, 1}}
+        \Omega = \Bqty{\pqty{0, 0}, \pqty{0, 1}, \pqty{1, 0}, \pqty{1, 1}}
     \]
     equipped with probability measure
     \[
-        \Prob\para{\omega} = \frac{1}{4}
+        \Prob\pqty{\omega} = \frac{1}{4}
     \]  
     for all \(\omega \in \Omega\). Take
     \[
-        A = \brce{\para{0, 0}, \para{0, 1}}, B = \brce{\para{0, 0}, \para{1, 0}}, C = \brce{\para{1, 0}, \para{0, 1}}.
+        A = \Bqty{\pqty{0, 0}, \pqty{0, 1}}, B = \Bqty{\pqty{0, 0}, \pqty{1, 0}}, C = \Bqty{\pqty{1, 0}, \pqty{0, 1}}.
     \]
 
     We have
     \[
-        \Prob\para{A} = \Prob\para{B} = \Prob\para{C} = \frac{1}{2},
+        \Prob\pqty{A} = \Prob\pqty{B} = \Prob\pqty{C} = \frac{1}{2},
     \]
     and
     \[
-        \Prob\para{A \cap B} = \Prob\para{A \cap C} = \Prob\para{B \cap C} = \frac{1}{4},
+        \Prob\pqty{A \cap B} = \Prob\pqty{A \cap C} = \Prob\pqty{B \cap C} = \frac{1}{4},
     \]
-    so \(\brce{A, B, C}\) are \emph{pairwise} independent. But they are not \emph{independent}, since
+    so \(\Bqty{A, B, C}\) are \emph{pairwise} independent. But they are not \emph{independent}, since
     \[
-        \Prob\para{A \cap B \cap C} = \Prob\para{\emptyset} = 0.
+        \Prob\pqty{A \cap B \cap C} = \Prob\pqty{\emptyset} = 0.
     \]
 \end{example}
 
@@ -341,10 +341,10 @@ Let \(\para{\Omega, \eventSpace, \Prob}\) be a probability space.
 \begin{proof}
     Investigating the probability, we have
     \begin{align*}
-        \Prob\para{A \cap B\compl} &= \Prob\para{A} - \Prob\para{A \cap B} \\
-        &= \Prob\para{A} - \Prob\para{A} \cdot \Prob\para{B} \\
-        &= \Prob\para{A} \para{1 - \Prob\para{B}} \\
-        &= \Prob\para{A} \Prob\para{B\compl}.
+        \Prob\pqty{A \cap B\compl} &= \Prob\pqty{A} - \Prob\pqty{A \cap B} \\
+        &= \Prob\pqty{A} - \Prob\pqty{A} \cdot \Prob\pqty{B} \\
+        &= \Prob\pqty{A} \pqty{1 - \Prob\pqty{B}} \\
+        &= \Prob\pqty{A} \Prob\pqty{B\compl}.
     \end{align*}
 \end{proof}
 
@@ -352,75 +352,75 @@ An idea closely related is conditional probability.
 
 \begin{definition}[Conditional Probability]
     \label{def:conditional-prob}%
-    Let \(B \in \eventSpace\) with non-zero measure, \(\Prob\para{B} > 0\).
+    Let \(B \in \eventSpace\) with non-zero measure, \(\Prob\pqty{B} > 0\).
 
     For any \(A \in \eventSpace\), we define the conditional probability of \(A\) given \(B\), is given by
     \[
-        \Prob\para{\Conditional{A}{B}} = \frac{\Prob\para{A \cap B}}{\Prob\para{B}}.
+        \Prob\pqty{\Conditional{A}{B}} = \frac{\Prob\pqty{A \cap B}}{\Prob\pqty{B}}.
     \]
 \end{definition}
 
 If \(A \indp B\), then we have
 \[
-    \Prob\para{\Conditional{A}{B}} = \Prob\para{A}.
+    \Prob\pqty{\Conditional{A}{B}} = \Prob\pqty{A}.
 \]
 
 \begin{proposition}[Countable Additivity Property for Conditional Probability]
     \label{prop:countable-additivity-conditional}%
-    Let \(\para{A_n}_{n \in \NN}\) be a disjoint sequence of events in \(\eventSpace\). Then we have
+    Let \(\pqty{A_n}_{n \in \NN}\) be a disjoint sequence of events in \(\eventSpace\). Then we have
     \[
-        \Prob\para{\Conditional{\bigcup_n A_n}{B}} = \sum_{n} \Prob\para{\Conditional{A_n}{B}}.
+        \Prob\pqty{\Conditional{\bigcup_n A_n}{B}} = \sum_{n} \Prob\pqty{\Conditional{A_n}{B}}.
     \]
 \end{proposition}
 
 \begin{proof}
     By definition, we have
     \begin{align*}
-        \Prob\para{\Conditional{\bigcup_{n} A_n}{B}} &= \frac{\Prob\para{\bigcup_n A_n \cap B}}{\Prob\para{B}} \\
-        &= \frac{\Prob\para{\bigcup_n \para{A_n \cap B}}}{\Prob\para{B}} \\
-        &= \sum_{n} \frac{\Prob\para{A_n \cap B}}{\Prob\para{B}} \\
-        &= \sum_{n} \Prob\para{\Conditional{A_n}{B}}.
+        \Prob\pqty{\Conditional{\bigcup_{n} A_n}{B}} &= \frac{\Prob\pqty{\bigcup_n A_n \cap B}}{\Prob\pqty{B}} \\
+        &= \frac{\Prob\pqty{\bigcup_n \pqty{A_n \cap B}}}{\Prob\pqty{B}} \\
+        &= \sum_{n} \frac{\Prob\pqty{A_n \cap B}}{\Prob\pqty{B}} \\
+        &= \sum_{n} \Prob\pqty{\Conditional{A_n}{B}}.
     \end{align*}
 \end{proof}
 
 \begin{theorem}[Law of Total Probability]
     \label{thm:law-total-probability}%
-    Suppose that the events \(\para{B_n}_{n \in \NN}\) is a \emph{partition} of \(\Omega\), i.e. pairwise disjoint with union \(\Omega\), with positive measure. i.e. \(\Prob\para{B_n} > 0\).
+    Suppose that the events \(\pqty{B_n}_{n \in \NN}\) is a \emph{partition} of \(\Omega\), i.e. pairwise disjoint with union \(\Omega\), with positive measure. i.e. \(\Prob\pqty{B_n} > 0\).
 
     Let \(A \in \eventSpace\). We have
     \[
-        \Prob\para{A} = \sum_{n} \Prob\para{\Conditional{A}{B_n}} \Prob\para{B_n}.
+        \Prob\pqty{A} = \sum_{n} \Prob\pqty{\Conditional{A}{B_n}} \Prob\pqty{B_n}.
     \]
 \end{theorem}
 
 \begin{proof}
     We have
     \begin{align*}
-        \Prob\para{A} &= \Prob\para{A \cap \bigcup_{n} B_n} \\
-        &= \Prob\para{\bigcup_n \para{B_n \cap A}} \\
-        &= \sum_{n} \Prob\para{B_n \cap A} \\
-        &= \sum_{n} \Prob\para{\Conditional{A}{B_n}} \Prob\para{B_n}.
+        \Prob\pqty{A} &= \Prob\pqty{A \cap \bigcup_{n} B_n} \\
+        &= \Prob\pqty{\bigcup_n \pqty{B_n \cap A}} \\
+        &= \sum_{n} \Prob\pqty{B_n \cap A} \\
+        &= \sum_{n} \Prob\pqty{\Conditional{A}{B_n}} \Prob\pqty{B_n}.
     \end{align*}
 \end{proof}
 
 \begin{theorem}[Bayes' Formula]
     \label{thm:bayes}%
-    Let \(\para{B_n}\) be a partition of \(\Omega\) with positive measure. We have
+    Let \(\pqty{B_n}\) be a partition of \(\Omega\) with positive measure. We have
     \[
-        \Prob\para{\Conditional{B_n}{A}} = \frac{\Prob\para{\Conditional{A}{B_n}} \cdot \Prob\para{B_n}}{\sum_{k} \Prob\para{\Conditional{A}{B_k}} \cdot \Prob\para{B_k}}.
+        \Prob\pqty{\Conditional{B_n}{A}} = \frac{\Prob\pqty{\Conditional{A}{B_n}} \cdot \Prob\pqty{B_n}}{\sum_{k} \Prob\pqty{\Conditional{A}{B_k}} \cdot \Prob\pqty{B_k}}.
     \]
 \end{theorem}
 
 \begin{proof}
     Indeed, we have
     \begin{align*}
-        \Prob\para{\Conditional{B_n}{A}} &= \frac{\Prob\para{B_n \cap A}}{\Prob\para{A}} \\
-        &= \frac{\Prob\para{\Conditional{A}{B_n}} \cdot \Prob\para{B_n}}{\Prob\para{A}},
+        \Prob\pqty{\Conditional{B_n}{A}} &= \frac{\Prob\pqty{B_n \cap A}}{\Prob\pqty{A}} \\
+        &= \frac{\Prob\pqty{\Conditional{A}{B_n}} \cdot \Prob\pqty{B_n}}{\Prob\pqty{A}},
     \end{align*}
     and we apply \autoref{thm:law-total-probability} (Law of Total Probability) for the denominator.
 \end{proof}
 
-This formula is the basis of Bayesian statistics. If we know the probability of \(\Prob\para{B_n}\), and we have a model which gives us \(\Prob\para{\Conditional{A}{B_k}}\), with this formula we can find the posterior probability of \(B_n\) given that \(A\) occurs.
+This formula is the basis of Bayesian statistics. If we know the probability of \(\Prob\pqty{B_n}\), and we have a model which gives us \(\Prob\pqty{\Conditional{A}{B_k}}\), with this formula we can find the posterior probability of \(B_n\) given that \(A\) occurs.
 
 \begin{example}[False Positives for a Rare Condition]
     \label{ex:false-positives}%
@@ -430,37 +430,37 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
 
     We define the events
     \[
-        A = \brce{\text{individuals suffering from A}},
+        A = \Bqty{\text{individuals suffering from A}},
     \]
     and
     \[
-        P = \brce{\text{individuals tests positive}}.
+        P = \Bqty{\text{individuals tests positive}}.
     \]
 
-    We want to find \(\Prob\para{\Conditional{A}{P}}\). The given conditions state that
+    We want to find \(\Prob\pqty{\Conditional{A}{P}}\). The given conditions state that
     \[
-        \Prob\para{A} = 0.001, \quad \Prob\para{\Conditional{P}{A}} = 0.98, \quad \text{and} \quad \Prob\para{\Conditional{P}{A\compl}} = 0.01.
+        \Prob\pqty{A} = 0.001, \quad \Prob\pqty{\Conditional{P}{A}} = 0.98, \qand \Prob\pqty{\Conditional{P}{A\compl}} = 0.01.
     \]
 
     Hence, using \autoref{thm:bayes} (Bayes' Formula), we have
     \begin{align*}
-        \Prob\para{\Conditional{A}{P}} &= \frac{\Prob\para{\Conditional{P}{A}} \cdot \Prob\para{A}}{\Prob\para{\Conditional{P}{A}} \cdot \Prob\para{A} + \Prob\para{\Conditional{P}{A\compl}} \cdot \Prob\para{A\compl}} = 0.089 \approx 0.09
+        \Prob\pqty{\Conditional{A}{P}} &= \frac{\Prob\pqty{\Conditional{P}{A}} \cdot \Prob\pqty{A}}{\Prob\pqty{\Conditional{P}{A}} \cdot \Prob\pqty{A} + \Prob\pqty{\Conditional{P}{A\compl}} \cdot \Prob\pqty{A\compl}} = 0.089 \approx 0.09
     \end{align*}
     so
     \[
-        \Prob\para{\Conditional{A}{P}} \approx 0.09.
+        \Prob\pqty{\Conditional{A}{P}} \approx 0.09.
     \]
 
     This is counterintuitive. We have that
     \[
-        \Prob\para{\Conditional{A}{P}} = \frac{1}{1 + \frac{\Prob\para{\Conditional{P}{A\compl}} \cdot \Prob\para{A\compl}}{\Prob\para{\Conditional{P}{A}} \cdot \Prob\para{A}}}.
+        \Prob\pqty{\Conditional{A}{P}} = \frac{1}{1 + \frac{\Prob\pqty{\Conditional{P}{A\compl}} \cdot \Prob\pqty{A\compl}}{\Prob\pqty{\Conditional{P}{A}} \cdot \Prob\pqty{A}}}.
     \]
 
-    We have \(\Prob\para{A\compl}\) and \(\Prob\para{\Conditional{P}{A}}\) are both very close to \(1\), so the relevant ratio simplifies to \(\frac{\Prob\para{\Conditional{P}{A\compl}}}{\Prob\para{A}}\). But
+    We have \(\Prob\pqty{A\compl}\) and \(\Prob\pqty{\Conditional{P}{A}}\) are both very close to \(1\), so the relevant ratio simplifies to \(\frac{\Prob\pqty{\Conditional{P}{A\compl}}}{\Prob\pqty{A}}\). But
     \[
-        \Prob\para{\Conditional{P}{A\compl}} \gg \Prob\para{A}
+        \Prob\pqty{\Conditional{P}{A\compl}} \gg \Prob\pqty{A}
     \]
-    and this makes \(\Prob\para{\Conditional{A}{P}}\) is \emph{very small}.
+    and this makes \(\Prob\pqty{\Conditional{A}{P}}\) is \emph{very small}.
 
     Let's put in some concrete numbers. Suppose we have a population of \(1000\) people, with \(1\) suffering from A. Among the \(999\) not suffering, about \(10\) people will test positive. In total, there will be \(11\) people testing positive. Among those we pick one at random. So the probability of being positive, given they actually test positive, is only \(\frac{1}{11}\).
 \end{example}
@@ -474,34 +474,34 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
 
             We denote the events
             \[
-                \mathrm{BG} = \brce{\text{elder child is a boy, younger is a girl}},
+                \mathrm{BG} = \Bqty{\text{elder child is a boy, younger is a girl}},
             \]
             and the events \(\mathrm{GB}, \mathrm{GG}, \mathrm{BB}\). We want to find
             \[
-                \Prob\para{\Conditional{\mathrm{BB}}{\mathrm{BB} \cup \mathrm{BG} \cup \mathrm{GB}}} = \frac{\Prob\para{\mathrm{BB}}}{\Prob\para{\mathrm{BB} \cup \mathrm{BG} \cup \mathrm{GB}}} = \frac{\frac{1}{4}}{\frac{3}{4}} = \frac{1}{3}.
+                \Prob\pqty{\Conditional{\mathrm{BB}}{\mathrm{BB} \cup \mathrm{BG} \cup \mathrm{GB}}} = \frac{\Prob\pqty{\mathrm{BB}}}{\Prob\pqty{\mathrm{BB} \cup \mathrm{BG} \cup \mathrm{GB}}} = \frac{\frac{1}{4}}{\frac{3}{4}} = \frac{1}{3}.
             \]
 
         \item What is the probability that I have \(2\) boys, given the eldest one is a boy?
         
             We have
             \[
-                \Prob\para{\Conditional{\mathrm{BB}}{\mathrm{BB}} \cup \mathrm{BG}} = \frac{1}{2}.
+                \Prob\pqty{\Conditional{\mathrm{BB}}{\mathrm{BB}} \cup \mathrm{BG}} = \frac{1}{2}.
             \]
 
         \item What is the probability that I have \(2\) boys, given that one of them is a boy born on a Thursday?
         
         Let
         \[
-            \mathrm{TG} = \brce{\text{elder boy is a boy on Thursday, younger is a girl}},
+            \mathrm{TG} = \Bqty{\text{elder boy is a boy on Thursday, younger is a girl}},
         \]
         and \(\mathrm{GT}\) similarly, and
         \[
-            \mathrm{TN} = \brce{\text{elder boy is a boy on Thursday, younger is a boy not born on Thursday}},
+            \mathrm{TN} = \Bqty{\text{elder boy is a boy on Thursday, younger is a boy not born on Thursday}},
         \]
         and \(\mathrm{NT, TT}\) similarly. We want to find
         \begin{align*}
-            &\phantom{=} \Prob\para{\Conditional{\mathrm{TT} \cup \mathrm{TN} \cup \mathrm{NT}}{\mathrm{TT} \cup \mathrm{TG} \cup \mathrm{GT} \cup \mathrm{TN} \cup \mathrm{NT}}} \\
-            &= \frac{\Prob\para{\mathrm{TT} \cup \mathrm{TN} \cup \mathrm{NT}}}{\Prob\para{\mathrm{TT} \cup \mathrm{TG} \cup \mathrm{GT} \cup \mathrm{TN} \cup \mathrm{NT}}} \\
+            &\phantom{=} \Prob\pqty{\Conditional{\mathrm{TT} \cup \mathrm{TN} \cup \mathrm{NT}}{\mathrm{TT} \cup \mathrm{TG} \cup \mathrm{GT} \cup \mathrm{TN} \cup \mathrm{NT}}} \\
+            &= \frac{\Prob\pqty{\mathrm{TT} \cup \mathrm{TN} \cup \mathrm{NT}}}{\Prob\pqty{\mathrm{TT} \cup \mathrm{TG} \cup \mathrm{GT} \cup \mathrm{TN} \cup \mathrm{NT}}} \\
             &= \frac{\frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \frac{1}{7} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \mathbf{\frac{6}{7}} + \frac{1}{2} \cdot \mathbf{\frac{6}{7}} \cdot \frac{1}{2} \cdot \frac{1}{7}}{\frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \frac{1}{7} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} + \frac{1}{2} \cdot \frac{1}{7} \cdot \frac{1}{2} \cdot \mathbf{\frac{6}{7}} \cdot 2}
  \\
             &= \frac{13}{27}.
@@ -546,47 +546,47 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
 
     Let
     \begin{align*}
-        A &= \brce{\text{individual is admitted}}, \\
-        B &= \brce{\text{individual is from London}}, \\
-        B\compl &= \brce{\text{individual is from Cambridge}}, \\
-        C &= \brce{\text{state school}}, \\
-        C\compl &= \brce{\text{independent school}}.
+        A &= \Bqty{\text{individual is admitted}}, \\
+        B &= \Bqty{\text{individual is from London}}, \\
+        B\compl &= \Bqty{\text{individual is from Cambridge}}, \\
+        C &= \Bqty{\text{state school}}, \\
+        C\compl &= \Bqty{\text{independent school}}.
     \end{align*}
 
     We notice that from the latter two tables, that
     \begin{align*}
-        \Prob\para{\Conditional{A}{B \cap C}} &> \Prob\para{\Conditional{A}{B \cap C \compl}}, \\
-        \Prob\para{\Conditional{A}{B\compl \cap C}} &> \Prob\para{\Conditional{A}{B\compl \cap C \compl}}.
+        \Prob\pqty{\Conditional{A}{B \cap C}} &> \Prob\pqty{\Conditional{A}{B \cap C \compl}}, \\
+        \Prob\pqty{\Conditional{A}{B\compl \cap C}} &> \Prob\pqty{\Conditional{A}{B\compl \cap C \compl}}.
     \end{align*}
 
     However, we have from the first table, that
     \[
-        \Prob\para{\Conditional{A}{C}} < \Prob\para{\Conditional{A}{C\compl}}.
+        \Prob\pqty{\Conditional{A}{C}} < \Prob\pqty{\Conditional{A}{C\compl}}.
     \]
 
     Observe that from countable additivity of conditional probability,
     \begin{align*}
-        \Prob\para{\Conditional{A}{C}} &= \Prob\para{\Conditional{A \cap B}{C}} + \Prob\para{\Conditional{A \cap B\compl}{C}} \\
-        &= \frac{\Prob\para{A \cap B \cap C}}{\Prob\para{C}} + \frac{\Prob\para{A \cap B\compl \cap C}}{\Prob\para{C}} \\
-        &= \frac{\Prob\para{\Conditional{A}{B \cap C}} \cdot \Prob\para{B \cap C}}{\Prob\para{C}} + \frac{\Prob\para{\Conditional{A}{B \compl \cap C}} \cdot \Prob\para{B\compl \cap C}}{\Prob\para{C}} \\
-        &= \Prob\para{\Conditional{A}{B \cap C}} \cdot \Prob\para{\Conditional{B}{C}} + \Prob\para{\Conditional{A}{B\compl \cap C}} \cdot \Prob\para{\Conditional{B \compl}{C}} \\
-        &> \Prob\para{\Conditional{A}{B \cap C\compl}} \cdot \Prob\para{\Conditional{B}{C}} + \Prob\para{\Conditional{A}{B\compl \cap C\compl}} \cdot \Prob \para{\Conditional{B\compl}{C}}.
+        \Prob\pqty{\Conditional{A}{C}} &= \Prob\pqty{\Conditional{A \cap B}{C}} + \Prob\pqty{\Conditional{A \cap B\compl}{C}} \\
+        &= \frac{\Prob\pqty{A \cap B \cap C}}{\Prob\pqty{C}} + \frac{\Prob\pqty{A \cap B\compl \cap C}}{\Prob\pqty{C}} \\
+        &= \frac{\Prob\pqty{\Conditional{A}{B \cap C}} \cdot \Prob\pqty{B \cap C}}{\Prob\pqty{C}} + \frac{\Prob\pqty{\Conditional{A}{B \compl \cap C}} \cdot \Prob\pqty{B\compl \cap C}}{\Prob\pqty{C}} \\
+        &= \Prob\pqty{\Conditional{A}{B \cap C}} \cdot \Prob\pqty{\Conditional{B}{C}} + \Prob\pqty{\Conditional{A}{B\compl \cap C}} \cdot \Prob\pqty{\Conditional{B \compl}{C}} \\
+        &> \Prob\pqty{\Conditional{A}{B \cap C\compl}} \cdot \Prob\pqty{\Conditional{B}{C}} + \Prob\pqty{\Conditional{A}{B\compl \cap C\compl}} \cdot \Prob \pqty{\Conditional{B\compl}{C}}.
     \end{align*}
 
-    Now, note that if \(\Prob\para{\Conditional{B}{C}} = \Prob\para{\Conditional{B}{C\compl}}\), which is not valid here, then we would get
+    Now, note that if \(\Prob\pqty{\Conditional{B}{C}} = \Prob\pqty{\Conditional{B}{C\compl}}\), which is not valid here, then we would get
     \begin{align*}
-        \Prob\para{\Conditional{A}{C}} &> \Prob\para{\Conditional{A}{B \cap C\compl}} \cdot \Prob\para{\Conditional{B}{C}} + \Prob\para{\Conditional{A}{B\compl \cap C\compl}} \cdot \Prob \para{\Conditional{B\compl}{C}} \\
-        &= \Prob\para{\Conditional{A}{B \cap C\compl}} \cdot \Prob\para{\Conditional{B}{C\compl}} + \Prob\para{\Conditional{A}{B\compl \cap C\compl}} \cdot \Prob \para{\Conditional{B\compl}{C\compl}} \\
-        &= \Prob\para{\Conditional{A}{C\compl}}
+        \Prob\pqty{\Conditional{A}{C}} &> \Prob\pqty{\Conditional{A}{B \cap C\compl}} \cdot \Prob\pqty{\Conditional{B}{C}} + \Prob\pqty{\Conditional{A}{B\compl \cap C\compl}} \cdot \Prob \pqty{\Conditional{B\compl}{C}} \\
+        &= \Prob\pqty{\Conditional{A}{B \cap C\compl}} \cdot \Prob\pqty{\Conditional{B}{C\compl}} + \Prob\pqty{\Conditional{A}{B\compl \cap C\compl}} \cdot \Prob \pqty{\Conditional{B\compl}{C\compl}} \\
+        &= \Prob\pqty{\Conditional{A}{C\compl}}
     \end{align*}
     hence this does not hold.
 
     Effectively, we are dealing with inequalities
     \[
-        \frac{a_1}{a_2} > \frac{b_1}{b_2} \quad \text{and} \quad \frac{c_1}{c_2} > \frac{d_1}{d_2},
+        \frac{a_1}{a_2} > \frac{b_1}{b_2} \qand \frac{c_1}{c_2} > \frac{d_1}{d_2},
     \]
     but we cannot say anything about
     \[
-        \frac{a_1 + c_1}{a_2 + c_2} \quad \text{and} \quad \frac{b_1 + d_1}{b_2 + d_2}.
+        \frac{a_1 + c_1}{a_2 + c_2} \qand \frac{b_1 + d_1}{b_2 + d_2}.
     \]
 \end{example}

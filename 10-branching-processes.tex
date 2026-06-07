@@ -6,14 +6,14 @@ Branching Processes are also known as Galton--Watson processes (1874) or Bienaym
     \label{def:branching-process}%
     A \emph{branching process} is defined as follows. Let the population initially have \(X_0 = 1\), in generation \(0\). Let the number of offspring produced by each individual be \(X_1\), where
     \[
-        \Prob\para{X_1 = k} = g_k, \quad k = 0, 1, 2, \ldots.
+        \Prob\pqty{X_1 = k} = g_k, \quad k = 0, 1, 2, \ldots.
     \]
 
-    Each individual produces an independent number of offspring, with the same distributions as \(X_1\). Let \(\para{Y_{k, n} : k \geq 1, n \geq 0}\) be independent and identically distributed random variables with the same distribution of \(X_1\), and we define \(Y_{k, n}\) be the number of offspring the \(k\)th individual of generating \(n\) produces. We define
+    Each individual produces an independent number of offspring, with the same distributions as \(X_1\). Let \(\pqty{Y_{k, n} : k \geq 1, n \geq 0}\) be independent and identically distributed random variables with the same distribution of \(X_1\), and we define \(Y_{k, n}\) be the number of offspring the \(k\)th individual of generating \(n\) produces. We define
     \[
         X_{n + 1} = Y_{1, n} + Y_{2, n} + \cdots + Y_{X_n, n}
     \]
-    is the population at generation \(\para{n + 1}\).
+    is the population at generation \(\pqty{n + 1}\).
 \end{definition}
 
 Our questions are: what is the probability that this population goes extinct, and what is the concrete distribution behind \(X_i\)?
@@ -24,7 +24,7 @@ Our questions are: what is the probability that this population goes extinct, an
     \label{thm:branching-process-expt-generation}%
     The expectation of the number of individuals in each generation is given by
     \[
-        \Expt\brac{X_n} = \para{\Expt\brac{X_1}}^{n}.
+        \Expt\bqty{X_n} = \pqty{\Expt\bqty{X_1}}^{n}.
     \]
 \end{theorem}
 
@@ -33,52 +33,52 @@ Our questions are: what is the probability that this population goes extinct, an
 
     Then, we have
     \[
-        \Expt\brac{X_{n + 1}} = \Expt\brac{\Expt\brac{\Conditional{X_{n + 1}}{X_n}}}.
+        \Expt\bqty{X_{n + 1}} = \Expt\bqty{\Expt\bqty{\Conditional{X_{n + 1}}{X_n}}}.
     \]
 
     Conditioning upon the event \(X_n = m\), we have
     \begin{align*}
-        \Expt\brac{\Conditional{X_{n + 1}}{X_{n} = m}} &= \Expt\brac{Y_{1, n} + \cdots + Y_{m, n}} \\
-        &= m \cdot \Expt\brac{X_1}.
+        \Expt\bqty{\Conditional{X_{n + 1}}{X_{n} = m}} &= \Expt\bqty{Y_{1, n} + \cdots + Y_{m, n}} \\
+        &= m \cdot \Expt\bqty{X_1}.
     \end{align*}
 
     Therefore,
     \[
-        \Expt\brac{\Conditional{X_{n + 1}}{X_n}} = X_n \cdot \Expt\brac{X_1}.
+        \Expt\bqty{\Conditional{X_{n + 1}}{X_n}} = X_n \cdot \Expt\bqty{X_1}.
     \]
 
     Hence,
     \[
-        \Expt\brac{X_{n + 1}} = \Expt\brac{X_n \cdot \Expt\brac{X_1}} = \Expt\brac{X_1} \cdot \Expt\brac{X_n},
+        \Expt\bqty{X_{n + 1}} = \Expt\bqty{X_n \cdot \Expt\bqty{X_1}} = \Expt\bqty{X_1} \cdot \Expt\bqty{X_n},
     \]
     finishing the inductive step, as desired.
 \end{proof}
 
 \begin{theorem}[Probability Generating Function of each Generation]
     \label{thm:branching-processes-pgf}%
-    Let \(G\para{z} = \Expt\brac{z^{X_1}}\) and \(G_n\para{z} = \Expt\brac{z^{X_n}}\). Then
+    Let \(G\pqty{z} = \Expt\bqty{z^{X_1}}\) and \(G_n\pqty{z} = \Expt\bqty{z^{X_n}}\). Then
     \[
-        G_{n + 1} \para{z} = G\para{G_{n} \para{z}} = G_n\para{G\para{z}} = G\para{G\para{\cdots G\para{z} \cdots}}.
+        G_{n + 1} \pqty{z} = G\pqty{G_{n} \pqty{z}} = G_n\pqty{G\pqty{z}} = G\pqty{G\pqty{\cdots G\pqty{z} \cdots}}.
     \]  
 \end{theorem}
 
 \begin{proof}
     We show from definition. We have
     \begin{align*}
-        G_{n + 1} \para{z} &= \Expt\brac{z^{X_{n + 1}}} \\
-        &= \Expt\brac{\Expt\brac{\Conditional{z^{X_{n + 1}}}{X_n}}} \\
-        &= \Expt\brac{\Expt\brac{\Conditional{z^{Y_{1, n} + Y_{2, n} + \cdots + Y_{X_n, n}}}{X_n}}}.
+        G_{n + 1} \pqty{z} &= \Expt\bqty{z^{X_{n + 1}}} \\
+        &= \Expt\bqty{\Expt\bqty{\Conditional{z^{X_{n + 1}}}{X_n}}} \\
+        &= \Expt\bqty{\Expt\bqty{\Conditional{z^{Y_{1, n} + Y_{2, n} + \cdots + Y_{X_n, n}}}{X_n}}}.
     \end{align*}
 
     Conditioning on a particular value of \(X_n = m\), we have
     \begin{align*}
-        \Expt\brac{\Conditional{z^{Y_{1, n} + Y_{2, n} + \cdots + Y_{X_n, n}}}{X_n = m}} &= \Expt\brac{z^{Y_{1, n} + Y_{2, n} + \cdots + Y_{m, n}}} \\
-        &= \para{G\para{z}}^{m}.
+        \Expt\bqty{\Conditional{z^{Y_{1, n} + Y_{2, n} + \cdots + Y_{X_n, n}}}{X_n = m}} &= \Expt\bqty{z^{Y_{1, n} + Y_{2, n} + \cdots + Y_{m, n}}} \\
+        &= \pqty{G\pqty{z}}^{m}.
     \end{align*}
 
     Therefore,
     \[
-        G_{n + 1} \para{z} = \Expt\brac{\para{G\para{z}}^{X_n}} = G_n \para{G\para{z}}.
+        G_{n + 1} \pqty{z} = \Expt\bqty{\pqty{G\pqty{z}}^{X_n}} = G_n \pqty{G\pqty{z}}.
     \]
 \end{proof}
 
@@ -86,11 +86,11 @@ Our questions are: what is the probability that this population goes extinct, an
 
 We set
 \[
-    q = \Prob\para{X_n = 0 \text{ for some } n \geq 0},
+    q = \Prob\pqty{X_n = 0 \text{ for some } n \geq 0},
 \]
 and
 \[
-    q_n = \Prob\para{X_n = 0}.
+    q_n = \Prob\pqty{X_n = 0}.
 \]
 
 \begin{definition}[Extinction Probability]
@@ -98,46 +98,46 @@ and
     The value \(q\) above is defined as the \emph{extinction probability}.
 \end{definition}
 
-Since we have \(\brce{X_n = 0} \subseteq \brce{X_{n + 1} = 0}\), we have \(q_n\) is increasing and converging to \(q\), by the continuity of probability measure (see \autoref{prop:continuity-of-probability-measure}).
+Since we have \(\Bqty{X_n = 0} \subseteq \Bqty{X_{n + 1} = 0}\), we have \(q_n\) is increasing and converging to \(q\), by the continuity of probability measure (see \autoref{prop:continuity-of-probability-measure}).
 
 \begin{proposition}[Extinction Probability is a Fixed Point]
     We have
     \[
-        q_{n + 1} = G\para{q_n}, \quad \text{and} \quad q = G\para{q},
+        q_{n + 1} = G\pqty{q_n}, \qand q = G\pqty{q},
     \]
     where \(G\) is the probability generating function for \(X_1\).
 \end{proposition}
 
-\begin{proof}[of \(q = G\para{q}\) using \(q_{n + 1} = G\para{q_n}\)]
-    Since \(G\) is continuous and \(q_n\) converges to \(q\), we have \(q = G\para{q}\).
+\begin{proof}[of \(q = G\pqty{q}\) using \(q_{n + 1} = G\pqty{q_n}\)]
+    Since \(G\) is continuous and \(q_n\) converges to \(q\), we have \(q = G\pqty{q}\).
 \end{proof}
 
-\begin{proof}[of \(q_{n + 1} = G\para{q_n}\), using Probability Generating Function]
+\begin{proof}[of \(q_{n + 1} = G\pqty{q_n}\), using Probability Generating Function]
     We have
     \begin{align*}
-        q_{n + 1} &= \Prob\para{X_{n + 1} = 0} \\
-        &= G_{n + 1}\para{0} \\
-        &= G\para{G_{n} \para{0}} \\
-        &= G\para{\Prob\para{X_n} = 0} \\
-        &= G\para{q_n}.
+        q_{n + 1} &= \Prob\pqty{X_{n + 1} = 0} \\
+        &= G_{n + 1}\pqty{0} \\
+        &= G\pqty{G_{n} \pqty{0}} \\
+        &= G\pqty{\Prob\pqty{X_n} = 0} \\
+        &= G\pqty{q_n}.
     \end{align*}
 \end{proof}
 
-\begin{proof}[of \(q_{n + 1} = G\para{q_n}\), conditioning upon \(X_1\)]
-    Conditioning upon \(X_1 = m\), let \(X_n^{\para{1}}, \ldots, X_n^{\para{m}}\) be independent and identically distributed branching processes with the same offspring as the original one, i.e., \(X_1\).
+\begin{proof}[of \(q_{n + 1} = G\pqty{q_n}\), conditioning upon \(X_1\)]
+    Conditioning upon \(X_1 = m\), let \(X_n^{\pqty{1}}, \ldots, X_n^{\pqty{m}}\) be independent and identically distributed branching processes with the same offspring as the original one, i.e., \(X_1\).
 
     Then we have
     \[
-        X_{n + 1} = X_{n}^{\para{1}} + \cdots + X_n^{\para{m}}.
+        X_{n + 1} = X_{n}^{\pqty{1}} + \cdots + X_n^{\pqty{m}}.
     \]
 
     Therefore,
     \begin{align*}
-        q_{n + 1} &= \Prob\para{X_{n + 1} = 0} \\
-        &= \sum_{m} \Prob\para{\Conditional{X_{n + 1} = 0}{X_1 = m}} \cdot \Prob\para{X_1 = m} \\
-        &= \sum_{m} \Prob\para{\Conditional{X_n^{\para{1}} + \cdots + X_n^{\para{m}} = 0}{X_1 = m}} \cdot \Prob\para{X_1 = m} \\
-        &= \sum_{m} \frac{\para{\Prob\para{X_n^{\para{1}} = 0}^{m}}}{q_n} \cdot \Prob\para{X_1 = m} \\
-        &= G\para{q_n},
+        q_{n + 1} &= \Prob\pqty{X_{n + 1} = 0} \\
+        &= \sum_{m} \Prob\pqty{\Conditional{X_{n + 1} = 0}{X_1 = m}} \cdot \Prob\pqty{X_1 = m} \\
+        &= \sum_{m} \Prob\pqty{\Conditional{X_n^{\pqty{1}} + \cdots + X_n^{\pqty{m}} = 0}{X_1 = m}} \cdot \Prob\pqty{X_1 = m} \\
+        &= \sum_{m} \frac{\pqty{\Prob\pqty{X_n^{\pqty{1}} = 0}^{m}}}{q_n} \cdot \Prob\pqty{X_1 = m} \\
+        &= G\pqty{q_n},
     \end{align*}
     as desired.
 \end{proof}
@@ -145,14 +145,14 @@ Since we have \(\brce{X_n = 0} \subseteq \brce{X_{n + 1} = 0}\), we have \(q_n\)
 The expectation and the extinction probability are linked in the following way.
 
 \begin{itemize}
-    \item If \(\Expt\brac{X_1} < 1\), then we have \(\Expt\brac{X_n} \to 0\), so we would expect the extinction probability to be \(q = 1\).
+    \item If \(\Expt\bqty{X_1} < 1\), then we have \(\Expt\bqty{X_n} \to 0\), so we would expect the extinction probability to be \(q = 1\).
 
-    \item If \(\Expt\brac{X_1} > 1\), then we have \(\Expt\brac{X_n} \to \infty\), so we would expect \(q < 1\).
+    \item If \(\Expt\bqty{X_1} > 1\), then we have \(\Expt\bqty{X_n} \to \infty\), so we would expect \(q < 1\).
     
-    \item If \(\Expt\brac{X_1} = 1\), then we have \(\Expt\brac{X_n} = 1\) for all \(n\), but the value of \(q\) could be \(0\) (the trivial case) or \(1\) (everything else).
+    \item If \(\Expt\bqty{X_1} = 1\), then we have \(\Expt\bqty{X_n} = 1\) for all \(n\), but the value of \(q\) could be \(0\) (the trivial case) or \(1\) (everything else).
 \end{itemize}
 
-We want to find the extinction probability, so we solve the equation \(x = G\para{x}\). Note that \(x = 1\) is trivially a solution of this -- but we do not want that \(q = 1\), always.
+We want to find the extinction probability, so we solve the equation \(x = G\pqty{x}\). Note that \(x = 1\) is trivially a solution of this -- but we do not want that \(q = 1\), always.
 
 \begin{figure}[ht!]
     \centering
@@ -233,27 +233,27 @@ We want to find the extinction probability, so we solve the equation \(x = G\par
         \end{axis}
     \end{tikzpicture}
 
-    \caption{Graph of \(G\para{x}\) and \(x\)}
+    \caption{Graph of \(G\pqty{x}\) and \(x\)}
     \label{fig:extinction-probability}
 \end{figure}
 
-We refer to \autoref{fig:extinction-probability} Note that \(q_0 = \Prob\para{X_0 = 0} = 0\), \(q_1 = G\para{q_0}\), and that \(q_n = G\para{q_{n - 1}}\). As this iteration continues, we see that \(q\) approaches the first non-negative intersection of the two graphs.
+We refer to \autoref{fig:extinction-probability} Note that \(q_0 = \Prob\pqty{X_0 = 0} = 0\), \(q_1 = G\pqty{q_0}\), and that \(q_n = G\pqty{q_{n - 1}}\). As this iteration continues, we see that \(q\) approaches the first non-negative intersection of the two graphs.
 
 In the other case, if \(G\) does not intersect \(x\) at any point before \(1\), then the extinction probability will converge to \(1\).
 
-The gradient of the tangent of \(G\) at \(1\) is given by \(G'\para{1^-} = \Expt\brac{X_1}\). Note that in the first case, the slope is steeper than \(y = x\), so \(\Expt\brac{X_1} > 1\); and in the second case, the slope is shallower than \(y = x\), so \(\Expt\brac{X_1} < 1\).
+The gradient of the tangent of \(G\) at \(1\) is given by \(G'\pqty{1^-} = \Expt\bqty{X_1}\). Note that in the first case, the slope is steeper than \(y = x\), so \(\Expt\bqty{X_1} > 1\); and in the second case, the slope is shallower than \(y = x\), so \(\Expt\bqty{X_1} < 1\).
 
 These can be summarised into \autoref{thm:extinction-probability}.
 
 \begin{theorem}[Extinction Probability]
     \label{thm:extinction-probability}%
-    Suppose \(\Prob\para{X_1 = 1} < 1\). The extinction probability \(q\) is the minimal non-negative solution to the equation \(x = G\para{x}\).
+    Suppose \(\Prob\pqty{X_1 = 1} < 1\). The extinction probability \(q\) is the minimal non-negative solution to the equation \(x = G\pqty{x}\).
 
-    Moreover, \(q < 1\) if and only if \(\Expt\brac{X_1} > 1\).
+    Moreover, \(q < 1\) if and only if \(\Expt\bqty{X_1} > 1\).
 \end{theorem}
 
 \begin{proof}[of the Value of \(q\)]
-    We know that \(q = G\para{q}\). Let \(t\) be the smallest solution of \(x = G\para{x}\), and we will show that \(t = q\).
+    We know that \(q = G\pqty{q}\). Let \(t\) be the smallest solution of \(x = G\pqty{x}\), and we will show that \(t = q\).
 
     We will prove by induction that \(q_n \leq t\), and hence by taking \(n \to \infty\) we have \(q \leq t\). But since \(t\) is the minimal solution, we must have \(q = t\).
 
@@ -261,46 +261,46 @@ These can be summarised into \autoref{thm:extinction-probability}.
 
     We have
     \[
-        q_{n + 1} = G\para{q_n} \leq G\para{t} = t,
+        q_{n + 1} = G\pqty{q_n} \leq G\pqty{t} = t,
     \]
     since \(G\) is an increasing function. This finishes the proof.
 \end{proof}
 
 \begin{proof}[of the Relation with Expectation]
-    Now, we show that \(q < 1\) if and only if \(\Expt\brac{X_1} > 1\).
+    Now, we show that \(q < 1\) if and only if \(\Expt\bqty{X_1} > 1\).
 
-    If \(g_0 + g_1 = \Prob\para{X_1 \leq 1} = 1\), we have \(\Expt\brac{X_1} = g_1 < 1\), so \(G\para{z} = g_0 + g_1 z = 1 - \Expt\brac{X_1} + \Expt\brac{X_1} \cdot z\).
+    If \(g_0 + g_1 = \Prob\pqty{X_1 \leq 1} = 1\), we have \(\Expt\bqty{X_1} = g_1 < 1\), so \(G\pqty{z} = g_0 + g_1 z = 1 - \Expt\bqty{X_1} + \Expt\bqty{X_1} \cdot z\).
 
-    Since \(G\para{z} = z\), we have \(\para{1 - \Expt\brac{X_1}} \cdot z = 1 - \Expt\brac{X_1}\). Since \(\Expt\brac{X_1} = g_1 < 1\), it follows that the only solution is \(z = 1\), so the extinction probability \(q = 1\).
+    Since \(G\pqty{z} = z\), we have \(\pqty{1 - \Expt\bqty{X_1}} \cdot z = 1 - \Expt\bqty{X_1}\). Since \(\Expt\bqty{X_1} = g_1 < 1\), it follows that the only solution is \(z = 1\), so the extinction probability \(q = 1\).
 
-    Suppose from now on, assume that \(g_1 < 1\) and \(g_0 + g_1 < 1\). We want to show \(q < 1\) if and only if \(\Expt\brac{X_1} > 1\).
+    Suppose from now on, assume that \(g_1 < 1\) and \(g_0 + g_1 < 1\). We want to show \(q < 1\) if and only if \(\Expt\bqty{X_1} > 1\).
 
-    Define \(H\para{z} = G\para{z} - z = \sum_{r = 0}^{\infty} g_r z^r - z\), then we have \(H\para{1} = 0\). First we want to show that \(H\para{x}\) has at most one root in \(\ccintv{0}{1}\). We have
+    Define \(H\pqty{z} = G\pqty{z} - z = \sum_{r = 0}^{\infty} g_r z^r - z\), then we have \(H\pqty{1} = 0\). First we want to show that \(H\pqty{x}\) has at most one root in \(\ccintv{0}{1}\). We have
     \[
-        H''\para{z} = \sum_{r = 0}^{\infty} r \para{r - 1} g_r z^{r - 2} > 0
+        H''\pqty{z} = \sum_{r = 0}^{\infty} r \pqty{r - 1} g_r z^{r - 2} > 0
     \]
-    in \(oointv{0}{1}\), since \(g_0 + g_1 < 1\). So \(H'\para{z}\) is strictly increasing in \(\oointv{0}{1}\), and hence \(H\) can have at most one more root other than \(1\). (If not, say there are roots \(0 < z_1 < z_2 < 1\), then \(H' = 0\) somewhere between \(z_1\) and \(z_2\) by Rolle's Theorem.)
+    in \(oointv{0}{1}\), since \(g_0 + g_1 < 1\). So \(H'\pqty{z}\) is strictly increasing in \(\oointv{0}{1}\), and hence \(H\) can have at most one more root other than \(1\). (If not, say there are roots \(0 < z_1 < z_2 < 1\), then \(H' = 0\) somewhere between \(z_1\) and \(z_2\) by Rolle's Theorem.)
 
     There are now two cases.
     
     \begin{itemize}
         \item If \(H\) has no other root than \(1\), then we have \(q = 1\). We note
         \[
-            H'\para{1^-} = G'\para{1^-} - 1 = \Expt\brac{X_1} - 1.
+            H'\pqty{1^-} = G'\pqty{1^-} - 1 = \Expt\bqty{X_1} - 1.
         \]
 
-        We have \(H\para{0} = G\para{0} = g_0 \geq 0\), and \(H\para{1} = 0\), so \(H\para{z} \geq 0\) with \(z \in \ccintv{0}{1}\). Hence,
+        We have \(H\pqty{0} = G\pqty{0} = g_0 \geq 0\), and \(H\pqty{1} = 0\), so \(H\pqty{z} \geq 0\) with \(z \in \ccintv{0}{1}\). Hence,
         \[
-            H'\para{1^-} = \lim_{z \to 1^-}  \frac{H\para{z} - H\para{1}}{z - 1} \leq 0
+            H'\pqty{1^-} = \lim_{z \to 1^-}  \frac{H\pqty{z} - H\pqty{1}}{z - 1} \leq 0
         \]
-        so \(\Expt\brac{X_1} < 1\).
+        so \(\Expt\bqty{X_1} < 1\).
 
         \item If \(H\) has one more root, \(r < 1\), then \(r\) has to be the extinction probability.
         
-        We have \(H\para{r} = 0\) and \(H\para{1} = 0\), with \(r < 1\), so by Rolle's Theorem, we have some \(z \in \oointv{r}{1}\) with \(H'\para{z} = 0\). We have \(H'\para{1^-} = \Expt\brac{X_1} - 1\). \(H'\) is strictly increasing, and hence
+        We have \(H\pqty{r} = 0\) and \(H\pqty{1} = 0\), with \(r < 1\), so by Rolle's Theorem, we have some \(z \in \oointv{r}{1}\) with \(H'\pqty{z} = 0\). We have \(H'\pqty{1^-} = \Expt\bqty{X_1} - 1\). \(H'\) is strictly increasing, and hence
         \[
-            H'\para{z} < H'\para{1^-}
+            H'\pqty{z} < H'\pqty{1^-}
         \]
-        which gives \(0 < H'\para{1^-}\), so \(\Expt\brac{X_1} > 1\).
+        which gives \(0 < H'\pqty{1^-}\), so \(\Expt\bqty{X_1} > 1\).
     \end{itemize}
 \end{proof}

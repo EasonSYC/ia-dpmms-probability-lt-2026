@@ -4,43 +4,43 @@
 
 \begin{definition}[Distribution and Density of Joint Continuous Random Variable]
     \label{def:distribution-density-joint-crv}%
-    The joint continuous random variable \(\vm{X} = \para{X_1, \ldots, X_n} \in \RR^n\) has \emph{probability density function} \(f\), if for all \(x_1, \ldots, x_n\), that
+    The joint continuous random variable \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) has \emph{probability density function} \(f\), if for all \(x_1, \ldots, x_n\), that
     \[
-        \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n} = \int_{\minusinfty}^{x_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} \Diff y_n f\para{y_1, \ldots, y_n}.
+        \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n} = \int_{\minusinfty}^{x_1} \dd{y_1} \cdots \int_{\minusinfty}^{x_n} \dd{y_n} f\pqty{y_1, \ldots, y_n}.
     \]
 
     The left-hand side
     \[
-        F \para{x_1, \ldots, x_n} = \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n}
+        F \pqty{x_1, \ldots, x_n} = \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n}
     \]
-    is the \emph{probability distribution function} of \(\vm{X}\).
+    is the \emph{probability distribution function} of \(\vb{X}\).
 \end{definition}
 
 We have
 \[
-    f\para{x_1, \ldots, x_n} = \frac{\partial^n F}{\partial x_1 \cdots \partial x_n} \para{x_1, \ldots, x_n}.
+    f\pqty{x_1, \ldots, x_n} = \frac{\partial^n F}{\partial x_1 \cdots \partial x_n} \pqty{x_1, \ldots, x_n}.
 \]
 
 For all \(\mathcal{B} \subseteq \RR^n\), we have
 \[
-    \Prob\para{\para{X_1, \ldots, X_n} \in \mathcal{B}} = \int_{\mathcal{B}} f \para{y_1, \ldots, y_n} \Diff^n \vm{y}.
+    \Prob\pqty{\pqty{X_1, \ldots, X_n} \in \mathcal{B}} = \int_{\mathcal{B}} f \pqty{y_1, \ldots, y_n} \dd[n]{\vb{y}}.
 \]
 
 \begin{definition}[Independence of Continuous Random Vaiables]
     \label{def:independence-continuous-random-variables}%
     We say the continuous random variables \(X_1, \ldots, X_n\) are \emph{independent}, if for all \(x_1, \ldots, x_n\), we have
     \[
-        \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n} = \Prob\para{X_1 \leq x_1} \cdots \Prob\para{X_n \leq x_n}.
+        \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n} = \Prob\pqty{X_1 \leq x_1} \cdots \Prob\pqty{X_n \leq x_n}.
     \]
 \end{definition}
 
 \begin{theorem}[Independence if and only if Density is Separable]
     \label{thm:rv-independent-density-separable}%
-    Let \(\vm{X} = \para{X_1, \ldots, X_n}\) have density \(f\).
+    Let \(\vb{X} = \pqty{X_1, \ldots, X_n}\) have density \(f\).
     \begin{enumerate}
         \item Suppose \(X_1, \ldots, X_n\) are independent, with densities \(f_1, \ldots, f_n\) respectively. Then
         \[
-            f\para{x_1, \ldots, x_n} = f_1\para{x_1} \cdots f_n\para{x_n}
+            f\pqty{x_1, \ldots, x_n} = f_1\pqty{x_1} \cdots f_n\pqty{x_n}
         \]
         for all \(x_1, \ldots, x_n\).
         \item Suppose \(f\) factorises into above, for some non-negative functions \(f_1, \ldots, f_n\). Then \(X_1, \ldots, X_n\) are independent, with densities proportional to \(f_1, \ldots, f_n\) respectively (i.e. up to normalisation).
@@ -50,36 +50,36 @@ For all \(\mathcal{B} \subseteq \RR^n\), we have
 \begin{proof}[of First Part]
     We investigate the distribution function. We have
     \begin{align*}
-        \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n} &= \Prob\para{X_1 \leq x_1} \cdots \Prob\para{X_n \leq x_n} \\
-        &= \int_{\minusinfty}^{x_1} f_1 \para{y_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} f_n \para{y_n} \Diff y_n \\
-        &= \int_{\minusinfty}^{x_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} \Diff y_n f_1\para{y_1} f_2\para{y_2} \cdots f_n\para{y_n},
+        \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n} &= \Prob\pqty{X_1 \leq x_1} \cdots \Prob\pqty{X_n \leq x_n} \\
+        &= \int_{\minusinfty}^{x_1} f_1 \pqty{y_1} \dd{y_1} \cdots \int_{\minusinfty}^{x_n} f_n \pqty{y_n} \dd{y_n} \\
+        &= \int_{\minusinfty}^{x_1} \dd{y_1} \cdots \int_{\minusinfty}^{x_n} \dd{y_n} f_1\pqty{y_1} f_2\pqty{y_2} \cdots f_n\pqty{y_n},
     \end{align*}
     so
     \[
-        f\para{x_1, \ldots, x_n} = f_1\para{x_1} \cdots f_n\para{x_n}.
+        f\pqty{x_1, \ldots, x_n} = f_1\pqty{x_1} \cdots f_n\pqty{x_n}.
     \]
 \end{proof}
 
 \begin{proof}[of Second Part]
     We have that
     \begin{align*}
-        \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n} &= \int_{\minusinfty}^{x_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} \Diff y_n f\para{y_1, \ldots, y_n} \\
-        &= \int_{\minusinfty}^{x_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} \Diff y_n f_1\para{y_1} \cdots f_n\para{y_n} \\
-        &= \int_{\minusinfty}^{x_1} f_1\para{y_1} \Diff y_1 \cdots \int_{\minusinfty}^{x_n} f_n\para{y_n} \Diff y_n.
+        \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n} &= \int_{\minusinfty}^{x_1} \dd{y_1} \cdots \int_{\minusinfty}^{x_n} \dd{y_n} f\pqty{y_1, \ldots, y_n} \\
+        &= \int_{\minusinfty}^{x_1} \dd{y_1} \cdots \int_{\minusinfty}^{x_n} \dd{y_n} f_1\pqty{y_1} \cdots f_n\pqty{y_n} \\
+        &= \int_{\minusinfty}^{x_1} f_1\pqty{y_1} \dd{y_1} \cdots \int_{\minusinfty}^{x_n} f_n\pqty{y_n} \dd{y_n}.
     \end{align*}
 
     But we have that
     \[
-        \int_{\minusinfty}^{\plusinfty} \Diff x_1 \cdots \int_{\minusinfty}^{\plusinfty} \Diff x_n f_1\para{x_1} \cdots f_n\para{x_2} = 1,
+        \int_{\minusinfty}^{\plusinfty} \dd{x_1} \cdots \int_{\minusinfty}^{\plusinfty} \dd{x_n} f_1\pqty{x_1} \cdots f_n\pqty{x_2} = 1,
     \]
     and hence
     \[
-        \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n} = \frac{\int_{\minusinfty}^{x_1} f_1\para{y_1} \Diff y_1}{\int_{\minusinfty}^{\plusinfty} f_1\para{y_1} \Diff y_1} \cdots \frac{\int_{\minusinfty}^{x_1} f_n\para{y_n} \Diff y_n}{\int_{\minusinfty}^{\plusinfty} f_n\para{y_n} \Diff y_n}.
+        \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n} = \frac{\int_{\minusinfty}^{x_1} f_1\pqty{y_1} \dd{y_1}}{\int_{\minusinfty}^{\plusinfty} f_1\pqty{y_1} \dd{y_1}} \cdots \frac{\int_{\minusinfty}^{x_1} f_n\pqty{y_n} \dd{y_n}}{\int_{\minusinfty}^{\plusinfty} f_n\pqty{y_n} \dd{y_n}}.
     \]
 
     So \(X_1, \ldots, X_n\) are independent, with densities
     \[
-        \frac{f_i}{\int_{\minusinfty}^{\plusinfty} f_i\para{x} \Diff x}
+        \frac{f_i}{\int_{\minusinfty}^{\plusinfty} f_i\pqty{x} \dd{x}}
     \]
     respectively.
 \end{proof}
@@ -88,25 +88,25 @@ For all \(\mathcal{B} \subseteq \RR^n\), we have
 
 \begin{definition}[Marginal Distribution and Density]
     \label{def:marginal-distribution-density}%
-    For a joint continuous random variable \(\vm{X} = \para{X_1, X_2, \ldots, X_n}\), the \emph{marginal distribution} \(F_{X_i}\) and the \emph{marginal density} \(f_{X_i}\) of \(X_i\) are given by, respectively,
+    For a joint continuous random variable \(\vb{X} = \pqty{X_1, X_2, \ldots, X_n}\), the \emph{marginal distribution} \(F_{X_i}\) and the \emph{marginal density} \(f_{X_i}\) of \(X_i\) are given by, respectively,
     \[
-        F_{X_i} \para{x} = \Prob\para{X_i \leq x} = \Prob\para{X_1 \in \RR, \ldots, X_{i - 1} \in \RR, X_i \leq x, X_{i + 1} \in \RR, \ldots, X_n \in \RR}
+        F_{X_i} \pqty{x} = \Prob\pqty{X_i \leq x} = \Prob\pqty{X_1 \in \RR, \ldots, X_{i - 1} \in \RR, X_i \leq x, X_{i + 1} \in \RR, \ldots, X_n \in \RR}
     \]
     and
     \[
-        f_{X_i} \para{x} = F_{X_i}'\para{x}.
+        f_{X_i} \pqty{x} = F_{X_i}'\pqty{x}.
     \]
 \end{definition}
 
 \begin{proposition}[Integration Formula for Marginal Density and Distribution]
     \label{prop:marginal-distribution-density-formula}%
-    Suppose \(\vm{X} = \para{X_1, \ldots, X_n}\) has density \(f\). Then we have
+    Suppose \(\vb{X} = \pqty{X_1, \ldots, X_n}\) has density \(f\). Then we have
     \[
-        F_{X_1} \para{x} = \int_{\minusinfty}^{x} \Diff x_1 \cdot \int_{\minusinfty}^{\plusinfty} \Diff x_2 \cdots \int_{\minusinfty}^{\plusinfty} \Diff x_n f\para{x_1, \ldots, x_n},
+        F_{X_1} \pqty{x} = \int_{\minusinfty}^{x} \dd{x_1} \cdot \int_{\minusinfty}^{\plusinfty} \dd{x_2} \cdots \int_{\minusinfty}^{\plusinfty} \dd{x_n} f\pqty{x_1, \ldots, x_n},
     \]
     and
     \[
-        f_{X_1} \para{x} = \int_{\minusinfty}^{\plusinfty} \Diff x_2 \cdots \int_{\minusinfty}^{\plusinfty} \Diff x_n f\para{x, \ldots, x_n}.
+        f_{X_1} \pqty{x} = \int_{\minusinfty}^{\plusinfty} \dd{x_2} \cdots \int_{\minusinfty}^{\plusinfty} \dd{x_n} f\pqty{x, \ldots, x_n}.
     \]
 \end{proposition}
 
@@ -116,7 +116,7 @@ Suppose \(X\) and \(Y\) are independent random variables with densities \(f_X\) 
 
 In the discrete case, we recall this is given by the convolution
 \[
-    \Prob\para{X + Y = z} = \sum_{x = \minusinfty}^{\plusinfty} \Prob\para{X = x} \cdot \Prob\para{Y = z - x}.
+    \Prob\pqty{X + Y = z} = \sum_{x = \minusinfty}^{\plusinfty} \Prob\pqty{X = x} \cdot \Prob\pqty{Y = z - x}.
 \]
 
 The continuous case is similar.
@@ -125,19 +125,19 @@ The continuous case is similar.
     \label{prop:dist-sum-indp-crv}%
     Let \(X, Y\) be independent, continuous random variables. For the sum, we have
     \[
-        f_{X + Y}\para{z} = \int_{\minusinfty}^{\infty} f_X\para{x} f_Y\para{z - x} \Diff x.
+        f_{X + Y}\pqty{z} = \int_{\minusinfty}^{\infty} f_X\pqty{x} f_Y\pqty{z - x} \dd{x}.
     \]
 \end{proposition}
 
 \begin{proof}
     Investigating the distribution function, we have
     \begin{align*}
-        \Prob\para{X + Y \leq z} &= \Prob\para{\para{X, Y} \in \set{\para{x, y} \in \RR^2}{x + y \leq z}} \\
-        &= \iint_{x + y \leq z} \Diff^2 \para{x, y} f_{X, Y} \para{x, y} \\
-        &= \iint_{x + y \leq z} \Diff^2 \para{x, y} f_{X} \para{x} f_{Y} \para{y} \\
-        &= \int_{\minusinfty}^{\plusinfty} \Diff x \int_{\minusinfty}^{z - x} \Diff y f_X\para{x} f_Y\para{y} \\
-        &= \int_{\minusinfty}^{\plusinfty} \Diff x \int_{\minusinfty}^{z} \Diff y f_X\para{x} f_Y\para{y - z} \\
-        &= \int_{\minusinfty}^{z} \Diff y \para{\int_{\minusinfty}^{\plusinfty} f_X\para{x} f_Y\para{y - x} \Diff x}.
+        \Prob\pqty{X + Y \leq z} &= \Prob\pqty{\pqty{X, Y} \in \set{\pqty{x, y} \in \RR^2}{x + y \leq z}} \\
+        &= \iint_{x + y \leq z} \dd[2]{\pqty{x, y}} f_{X, Y} \pqty{x, y} \\
+        &= \iint_{x + y \leq z} \dd[2]{\pqty{x, y}} f_{X} \pqty{x} f_{Y} \pqty{y} \\
+        &= \int_{\minusinfty}^{\plusinfty} \dd{x} \int_{\minusinfty}^{z - x} \dd{y} f_X\pqty{x} f_Y\pqty{y} \\
+        &= \int_{\minusinfty}^{\plusinfty} \dd{x} \int_{\minusinfty}^{z} \dd{y} f_X\pqty{x} f_Y\pqty{y - z} \\
+        &= \int_{\minusinfty}^{z} \dd{y} \pqty{\int_{\minusinfty}^{\plusinfty} f_X\pqty{x} f_Y\pqty{y - x} \dd{x}}.
     \end{align*}
 
     Differentiating this gives the result, as desired.
@@ -147,7 +147,7 @@ The continuous case is similar.
     \label{def:convolution-crv}%
     Let \(X, Y\) be two continuous random variables. Then the distribution of \(X + Y\), given by
     \[
-        \int_{\minusinfty}^{\infty} f_X\para{x} f_Y\para{z - x} \Diff x
+        \int_{\minusinfty}^{\infty} f_X\pqty{x} f_Y\pqty{z - x} \dd{x}
     \]
     is known as the \emph{convolution} of the two random variables.
 \end{definition}
@@ -158,16 +158,16 @@ The continuous case is similar.
     \label{def:conditional-density}%
     Let \(X, Y\) be two continuous random variables, with joint density \(f_{X, Y}\) and marginal densities \(f_{X}\) and \(f_{Y}\). The \emph{conditional density} of \(X\) given \(Y = y\) is
     \[
-        f_{\bound{\Conditional{X}{Y}}} \para{\Conditional{x}{y}} = \frac{f_{X, Y}\para{x, y}}{f_Y\para{y}}
+        f_{\bound{\Conditional{X}{Y}}} \pqty{\Conditional{x}{y}} = \frac{f_{X, Y}\pqty{x, y}}{f_Y\pqty{y}}
     \]
-    for \(f_Y\para{y} > 0\).
+    for \(f_Y\pqty{y} > 0\).
 \end{definition}
 
 \begin{theorem}[Continuous Version of Law of Total Probability]
     \label{thm:cont-law-total-prob}%
     For continuous random variables \(X\) and \(Y\), we have
     \[
-        f_X\para{x} = \int_{\minusinfty}^{\plusinfty} f_{X, Y} \para{x, y} \Diff y = \int_{\minusinfty}^{\plusinfty} f_{\bound{\Conditional{X}{Y}}} \para{\Conditional{x}{y}} f_Y\para{y} \Diff y.
+        f_X\pqty{x} = \int_{\minusinfty}^{\plusinfty} f_{X, Y} \pqty{x, y} \dd{y} = \int_{\minusinfty}^{\plusinfty} f_{\bound{\Conditional{X}{Y}}} \pqty{\Conditional{x}{y}} f_Y\pqty{y} \dd{y}.
     \]
 \end{theorem}
 
@@ -175,11 +175,11 @@ The continuous case is similar.
     \label{def:conditional-expectation-crv}%
     For continuous random variables \(X\) and \(Y\), the \emph{conditional expectation} of \(X\) given \(Y\) is defined as
     \[
-        \Expt\brac{\Conditional{X}{Y}} = g\para{Y},
+        \Expt\bqty{\Conditional{X}{Y}} = g\pqty{Y},
     \]
     where we have
     \[
-        g\para{y} = \Expt\brac{\Conditional{X}{Y = y}} = \int_{\minusinfty}^{\plusinfty} x f_{\bound{\Conditional{X}{Y}}} \para{\Conditional{x}{y}} \Diff x.
+        g\pqty{y} = \Expt\bqty{\Conditional{X}{Y = y}} = \int_{\minusinfty}^{\plusinfty} x f_{\bound{\Conditional{X}{Y}}} \pqty{\Conditional{x}{y}} \dd{x}.
     \]
 \end{definition}
 
@@ -187,28 +187,28 @@ The continuous case is similar.
 
 \begin{theorem}[Transformation of Joint Continuous Random Variables]
     \label{thm:transformation-joint-continuous-random-variable}%
-    Let \(\vm{X}\) be a random variable with values in \(\mathcal{D} \subseteq \RR^n\) and density \(f\). Let
+    Let \(\vb{X}\) be a random variable with values in \(\mathcal{D} \subseteq \RR^n\) and density \(f\). Let
     \[
-        \functiondomain{g}{\mathcal{D}}{g\para{\mathcal{D}} \subseteq \RR^n}
+        \functiondomain{g}{\mathcal{D}}{g\pqty{\mathcal{D}} \subseteq \RR^n}
     \]
     be a bijection, with a continuous derivative on \(\mathcal{D}\), with
     \[
-        \det g'\para{\vm{x}} = \det \para{\PartialFrac{g\para{\vm{x}}_i}{x_j}} \neq 0
+        \det g'\pqty{\vb{x}} = \det \pqty{\pdv{g\pqty{\vb{x}}_i}{x_j}} \neq 0
     \]
-    for any \(\vm{x} \in \mathcal{D}\). Then for any \(\vm{y} \in g\para{\mathcal{D}}\), the random variable \(\vm{Y} = g\para{\vm{X}}\) has density
+    for any \(\vb{x} \in \mathcal{D}\). Then for any \(\vb{y} \in g\pqty{\mathcal{D}}\), the random variable \(\vb{Y} = g\pqty{\vb{X}}\) has density
     \[
-        f_{\vm{Y}}\para{\vm{y}} = f_{\vm{X}} \para{g\inverse\para{\vm{y}}} \cdot \abs{\det \vm{J}},
+        f_{\vb{Y}}\pqty{\vb{y}} = f_{\vb{X}} \pqty{g\inverse\pqty{\vb{y}}} \cdot \abs{\det \vb{J}},
     \]
-    where \(\vm{J}\) is the \emph{Jacobian}, given by
+    where \(\vb{J}\) is the \emph{Jacobian}, given by
     \[
-        J_{i, j} = \PartialFrac{x_i}{y_j}
+        J_{i, j} = \pdv{x_i}{y_j}
     \]
-    where \(\vm{y} = g\para{\vm{x}}\).
+    where \(\vb{y} = g\pqty{\vb{x}}\).
 \end{theorem}
 
 \begin{example}[Transformation of Cartesian and Polar Form]
     \label{ex:transformation-cartesian-polar}%
-    Let \(X, Y \sim \Normal\para{0, 1}\) be independent, and represent Cartesian coordinates in the plane. Let \(R, \Theta\) be the random variables for the usual polar coordinates, i.e.,
+    Let \(X, Y \sim \Normal\pqty{0, 1}\) be independent, and represent Cartesian coordinates in the plane. Let \(R, \Theta\) be the random variables for the usual polar coordinates, i.e.,
     \[
         X = R \cos \Theta, \quad Y = R \sin \Theta,
     \]
@@ -216,18 +216,18 @@ The continuous case is similar.
 
     Applying \autoref{thm:transformation-joint-continuous-random-variable}, we have
     \[
-        f_{\para{R, \Theta}} \para{r, \theta} = f_{\para{X, Y}} \para{r \cos \theta, r \sin \theta} \cdot \abs{\det \vm{J}},
+        f_{\pqty{R, \Theta}} \pqty{r, \theta} = f_{\pqty{X, Y}} \pqty{r \cos \theta, r \sin \theta} \cdot \abs{\det \vb{J}},
     \]
     where the Jacobian is given by
     \[
-        \vm{J} = \begin{pmatrix}
+        \vb{J} = \pmqty{
             \cos \theta & - r \sin \theta \\
             \sin \theta & r \cos \theta
-        \end{pmatrix},
+        },
     \]
-    and so \(\abs{\det \vm{J}} = r\). Hence, using independence,
+    and so \(\abs{\det \vb{J}} = r\). Hence, using independence,
     \begin{align*}
-        f_{\para{R, \Theta}} \para{r, \theta} &= f_X \para{r \cos \theta} \cdot f_Y \para{r \sin \theta} \cdot r \\
+        f_{\pqty{R, \Theta}} \pqty{r, \theta} &= f_X \pqty{r \cos \theta} \cdot f_Y \pqty{r \sin \theta} \cdot r \\
         &= r \cdot \frac{1}{\sqrt{2\pi}} \cdot e^{- \frac{r^2 \cos^2 \theta}{2}} \cdot \frac{1}{\sqrt{2 \pi}} \cdot e^{- \frac{r^2 \sin^2 \theta}{2}} \\
         &= \frac{1}{2\pi} \cdot r \cdot e^{- \frac{r^2}{2}}.
     \end{align*}
@@ -241,9 +241,9 @@ Let \(X_1, \ldots, X_n\) be independent and identically distributed random varia
 
 We order them from smallest to largest, which then gives
 \[
-    X_{\para{1}} \leq X_{\para{2}} \leq \cdots \leq X_{\para{n}},
+    X_{\pqty{1}} \leq X_{\pqty{2}} \leq \cdots \leq X_{\pqty{n}},
 \]
-and we let \(Y_i = X_{\para{i}}\).
+and we let \(Y_i = X_{\pqty{i}}\).
 
 \begin{definition}[Order Statistics]
     \label{def:order-statistics}%
@@ -254,21 +254,21 @@ and we let \(Y_i = X_{\para{i}}\).
     \label{ex:density-y1-yn}%
     For \(Y_1\), we have
     \[
-        \Prob\para{Y_1 \leq x} = 1 - \Prob\para{Y_1 > x} = 1 - \para{\Prob\para{X_1 > x}}^n = 1 - \para{1 - F\para{x}}^n,
+        \Prob\pqty{Y_1 \leq x} = 1 - \Prob\pqty{Y_1 > x} = 1 - \pqty{\Prob\pqty{X_1 > x}}^n = 1 - \pqty{1 - F\pqty{x}}^n,
     \]
     and hence
     \[
-        f_{Y_1} \para{x} = \DiffOp{x} \Prob\para{Y_1 \leq x} = n \para{1 - F\para{x}}^{n - 1} f\para{x}.
+        f_{Y_1} \pqty{x} = \dv{x} \Prob\pqty{Y_1 \leq x} = n \pqty{1 - F\pqty{x}}^{n - 1} f\pqty{x}.
     \]
 
     From a similar argument, we have
     \[
-        \Prob\para{Y_n \leq x} = \Prob\para{X_1 \leq x}^n = \para{F\para{x}}^n.
+        \Prob\pqty{Y_n \leq x} = \Prob\pqty{X_1 \leq x}^n = \pqty{F\pqty{x}}^n.
     \]
 
     Hence, differentiating gives
     \[
-        f_{Y_n} \para{x} = n \para{F\para{x}}^{n - 1} f\para{x}.
+        f_{Y_n} \pqty{x} = n \pqty{F\pqty{x}}^{n - 1} f\pqty{x}.
 \]
 \end{example}
 
@@ -276,8 +276,8 @@ and we let \(Y_i = X_{\para{i}}\).
     \label{prop:density-order-stats}%
     We have
     \[
-        f_{\para{Y_1, \ldots, Y_n}} \para{x_1, \ldots, x_n} = \begin{cases}
-            n! f\para{x_1} \cdots f\para{x_n}, & x_1 < \cdots < x_n, \\
+        f_{\pqty{Y_1, \ldots, Y_n}} \pqty{x_1, \ldots, x_n} = \begin{cases}
+            n! f\pqty{x_1} \cdots f\pqty{x_n}, & x_1 < \cdots < x_n, \\
             0, & \text{otherwise}.
         \end{cases}
     \]
@@ -286,17 +286,17 @@ and we let \(Y_i = X_{\para{i}}\).
 \begin{proof}
     For \(x_1 < x_2 < \cdots < x_n\), we have
     \begin{align*}
-        F_{\para{Y_1, \ldots, Y_n}} \para{x_1, \ldots, x_n} &= \Prob\para{Y_1 \leq x_1, \ldots, Y_n \leq x_n} \\
-        &= n! \cdot \Prob\para{X_1 \leq x_1, \ldots, X_n \leq x_n, X_1 \leq \cdots \leq X_n} \\
-        &= n! \cdot \int_{\RR} \Diff u_1 \cdots \int_{\RR} \Diff u_n \cdot f_{\para{X_1, \ldots, X_n}} \para{u_1, \ldots, u_n} \cdot \\
-        &\phantom{=} \quad \indicator \para{u_1 \leq x_1, \ldots, u_n \leq x_n, u_1 \leq \cdots \leq u_n} \\
-        &= n! \cdot \int_{\minusinfty}^{x_1} \Diff u_1 \int_{u_1}^{x_2} \Diff u_2 \cdots \int_{u_{n - 1}}^{x_n} \Diff u_n \cdot f\para{u_1} \cdots f\para{u_n}.
+        F_{\pqty{Y_1, \ldots, Y_n}} \pqty{x_1, \ldots, x_n} &= \Prob\pqty{Y_1 \leq x_1, \ldots, Y_n \leq x_n} \\
+        &= n! \cdot \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n, X_1 \leq \cdots \leq X_n} \\
+        &= n! \cdot \int_{\RR} \dd{u_1} \cdots \int_{\RR} \dd{u_n} \cdot f_{\pqty{X_1, \ldots, X_n}} \pqty{u_1, \ldots, u_n} \cdot \\
+        &\phantom{=} \quad \indicator \pqty{u_1 \leq x_1, \ldots, u_n \leq x_n, u_1 \leq \cdots \leq u_n} \\
+        &= n! \cdot \int_{\minusinfty}^{x_1} \dd{u_1} \int_{u_1}^{x_2} \dd{u_2} \cdots \int_{u_{n - 1}}^{x_n} \dd{u_n} \cdot f\pqty{u_1} \cdots f\pqty{u_n}.
     \end{align*}
 
     Differentiating gives us
     \[
-        f_{\para{Y_1, \ldots, Y_n}} \para{x_1, \ldots, x_n} = \begin{cases}
-            n! \cdot f\para{x_1} \cdots f\para{x_n}, & x_1 < \cdots < x_n, \\
+        f_{\pqty{Y_1, \ldots, Y_n}} \pqty{x_1, \ldots, x_n} = \begin{cases}
+            n! \cdot f\pqty{x_1} \cdots f\pqty{x_n}, & x_1 < \cdots < x_n, \\
             0, & \text{otherwise}.
         \end{cases}
     \]
@@ -306,53 +306,48 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
 
 \begin{example}[Order Statistics for Exponentials]
     \label{ex:order-statistics-exp}%
-    Let \(X \sim \Exponential \para{\lambda}\) and \(Y \sim \Exponential \para{\mu}\), with \(X \indp Y\) and \(\lambda, \mu > 0\). Set \(Z = \min\brce{X, Y}\).
+    Let \(X \sim \Exponential \pqty{\lambda}\) and \(Y \sim \Exponential \pqty{\mu}\), with \(X \indp Y\) and \(\lambda, \mu > 0\). Set \(Z = \min\Bqty{X, Y}\).
 
     We have for \(z > 0\), that
     \[
-        \Prob\para{Z \leq z} = 1 - \Prob\para{Z \geq z} = 1 - \Prob\para{X \geq z} \cdot \Prob\para{Y \geq z} = 1 - e^{- \para{\lambda + \mu} z}.
+        \Prob\pqty{Z \leq z} = 1 - \Prob\pqty{Z \geq z} = 1 - \Prob\pqty{X \geq z} \cdot \Prob\pqty{Y \geq z} = 1 - e^{- \pqty{\lambda + \mu} z}.
     \]
 
-    This gives \(Z \sim \Exponential\para{\lambda + \mu}\).
+    This gives \(Z \sim \Exponential\pqty{\lambda + \mu}\).
 
-    Similarly, if \(X_i \sim \Exponential \para{\lambda_i}\) are independent, we have
+    Similarly, if \(X_i \sim \Exponential \pqty{\lambda_i}\) are independent, we have
     \[
-        \min\brce{X_1, \ldots, X_n} \sim \Exponential\para{\sum_{i = 1}^{n} \lambda_i}.
+        \min\Bqty{X_1, \ldots, X_n} \sim \Exponential\pqty{\sum_{i = 1}^{n} \lambda_i}.
     \]
 
     Now, suppose \(\lambda_1 = \cdots = \lambda_n = \lambda\), and let \(Y_1, Y_2, \ldots, Y_n\) be the order statistics.
 
-    We \(Z_1 = Y_1, Z_2 = Y_2 - Y_1, \ldots, Z_i = Y_i - Y_{i - 1}\). We find the density of \(\para{Z_1, \ldots, Z_n}\).
+    We \(Z_1 = Y_1, Z_2 = Y_2 - Y_1, \ldots, Z_i = Y_i - Y_{i - 1}\). We find the density of \(\pqty{Z_1, \ldots, Z_n}\).
 
     Let
     \[
-        \vm{Z} = \begin{pmatrix}
-            Z_1 \\ \vdots \\ Z_n
-        \end{pmatrix},
-        \vm{Y} = \begin{pmatrix}
-            Y_1 \\ \vdots \\ Y_n
-        \end{pmatrix},
-        \vm{A} = \begin{pmatrix}
+        \vb{Z} = \pmqty{Z_1 \\ \vdots \\ Z_n},
+        \vb{Y} = \pmqty{Y_1 \\ \vdots \\ Y_n},
+        \vb{A} = \pmqty{
              1 &  0 & 0 & \cdots &  0 &  0 &  0 \\
             -1 &  1 & 0 & \cdots &  0 &  0 &  0 \\
              0 & -1 & 1 & \cdots &  0 &  0 &  0 \\
              \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
-
              0 &  0 & 0 & \cdots & -1 &  1 & 0 \\
              0 &  0 & 0 & \cdots &  0 & -1 & 1
-        \end{pmatrix},
+        },
     \]
-    so we have \(\vm{Z} = \vm{A} \vm{y}\), and \(\det \vm{A} = 1\). Hence, let \(\vm{z} = \vm{A} \vm{y}\), we have
+    so we have \(\vb{Z} = \vb{A} \vb{y}\), and \(\det \vb{A} = 1\). Hence, let \(\vb{z} = \vb{A} \vb{y}\), we have
     \begin{align*}
-        f_{\para{Z_1, \ldots, Z_n}} \para{z_1, \ldots, z_n} &= f_{\para{Y_1, \ldots, Y_n}} \para{y_1, \ldots, y_n} \abs{\det \vm{A}} \\
-        &= n! \cdot f\para{y_1} \cdots f\para{y_n} \\
+        f_{\pqty{Z_1, \ldots, Z_n}} \pqty{z_1, \ldots, z_n} &= f_{\pqty{Y_1, \ldots, Y_n}} \pqty{y_1, \ldots, y_n} \abs{\det \vb{A}} \\
+        &= n! \cdot f\pqty{y_1} \cdots f\pqty{y_n} \\
         &= n! \lambda e^{-\lambda y_1} \cdots \lambda e^{-\lambda y_n} \\
-        &= \prod_{i = 1}^{n} \para{\para{n - i + 1} \lambda e^{-\lambda \para{n - i + 1} z_i}}.
+        &= \prod_{i = 1}^{n} \pqty{\pqty{n - i + 1} \lambda e^{-\lambda \pqty{n - i + 1} z_i}}.
     \end{align*}
 
     So the \(Z_i\)s are independent, and
     \[
-        Z_i \sim \Exponential\para{\lambda \para{n - i + 1}}.
+        Z_i \sim \Exponential\pqty{\lambda \pqty{n - i + 1}}.
     \]
 \end{example}
 
@@ -360,20 +355,18 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
 
 \begin{definition}[Expectation and Variance of Multivariate Random Variable]
     \label{def:expt-var-multivariate}%
-    For a random variable \(\vm{X}\), we define the \emph{mean}
+    For a random variable \(\vb{X}\), we define the \emph{mean}
     \[
-        \vmb{\mu} = \Expt\brac{\vm{X}} = \begin{pmatrix}
-            \Expt\brac{X_1} \\ \vdots \\ \Expt\brac{X_n}
-        \end{pmatrix},
+        \vb*{\mu} = \Expt\bqty{\vb{X}} = \pmqty{\Expt\bqty{X_1} \\ \vdots \\ \Expt\bqty{X_n}},
     \]
     and the \emph{variance}
     \[
-        \Var\para{\vm{X}} = \Expt\brac{\para{\vm{X} - \vmb{\mu}} \para{\vm{X} - \vmb{\mu}}\transpose}.
+        \Var\pqty{\vb{X}} = \Expt\bqty{\pqty{\vb{X} - \vb*{\mu}} \pqty{\vb{X} - \vb*{\mu}}\transpose}.
     \]
 
     Equivalently, the variance is defined as
     \[
-        \Var\para{\vm{X}} = \para{\Cov\para{X_i, X_j}}_{i, j}.
+        \Var\pqty{\vb{X}} = \pqty{\Cov\pqty{X_i, X_j}}_{i, j}.
     \]
 \end{definition}
 
@@ -381,32 +374,32 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
     \label{prop:expt-var-transform-multivariate-rv}%
     We have
     \[
-        \Expt\brac{\vm{u} \transpose \vm{X}} = \vm{u}\transpose \Expt\brac{\vm{X}}
+        \Expt\bqty{\vb{u} \transpose \vb{X}} = \vb{u}\transpose \Expt\bqty{\vb{X}}
     \]
     and
     \[
-        \Var\para{\vm{u} \transpose \vm{X}} = \vm{u}\transpose \Var\para{\vm{X}} \vm{u}.
+        \Var\pqty{\vb{u} \transpose \vb{X}} = \vb{u}\transpose \Var\pqty{\vb{X}} \vb{u}.
     \]
 \end{proposition}
 
 \begin{proof}
     \[
-        \Expt\brac{\vm{u} \transpose \vm{X}} = \Expt\brac{\sum_{i = 1}^{n} u_i X_i} = \sum_{i = 1}^{n} u_i \Expt\brac{X_i} = \vm{u}\transpose \Expt\brac{X},
+        \Expt\bqty{\vb{u} \transpose \vb{X}} = \Expt\bqty{\sum_{i = 1}^{n} u_i X_i} = \sum_{i = 1}^{n} u_i \Expt\bqty{X_i} = \vb{u}\transpose \Expt\bqty{X},
     \]
     and
     \[
-        \Var\para{\vm{u} \transpose \vm{X}} = \Var\para{\sum_{i = 1}^{n} u_i X_i} = \sum_{i, j = 1}^{n} u_i \Cov\para{X_i, X_j} u_j = \vm{u}\transpose \vm{\Var\para{\vm{X}}} \vm{u}. 
+        \Var\pqty{\vb{u} \transpose \vb{X}} = \Var\pqty{\sum_{i = 1}^{n} u_i X_i} = \sum_{i, j = 1}^{n} u_i \Cov\pqty{X_i, X_j} u_j = \vb{u}\transpose \vb{\Var\pqty{\vb{X}}} \vb{u}. 
     \]
 \end{proof}
 
 \begin{definition}[Positive/Negative Definiteness]
     \label{def:positive-negative-definiteness}%
-    Let \(\vm{M}\) be an \(n \times n\) real symmetric matrix. Then we say it is
+    Let \(\vb{M}\) be an \(n \times n\) real symmetric matrix. Then we say it is
     \begin{itemize}
-        \item \emph{positive definite}, denoted as \(\vm{M} \posDef 0\), if for all \(\vm{u} \in \RR^n \setminus \brce{\vm{0}}\), we have \(\vm{u}\transpose \vm{M} \vm{u} > 0\);
-        \item \emph{positive semi-definite}, or \emph{non-negative definite}, denoted as \(\vm{M} \posDefEq 0\), if for all \(\vm{u} \in \RR^n\), we have \(\vm{u} \transpose \vm{M} \vm{u} \geq 0\);
-        \item \emph{negative definite}, denoted as \(\vm{M} \negDef 0\), if for all \(\vm{u} \in \RR^n \setminus \brce{\vm{0}}\), we have \(\vm{u}\transpose \vm{M} \vm{u} < 0\);
-        \item \emph{negative semi-definite}, or \emph{non-positive definite}, denoted as \(\vm{M} \negDefEq 0\), if for all \(\vm{u} \in \RR^n\), we have \(\vm{u} \transpose \vm{M} \vm{u} \leq 0\).
+        \item \emph{positive definite}, denoted as \(\vb{M} \posDef 0\), if for all \(\vb{u} \in \RR^n \setminus \Bqty{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} > 0\);
+        \item \emph{positive semi-definite}, or \emph{non-negative definite}, denoted as \(\vb{M} \posDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose \vb{M} \vb{u} \geq 0\);
+        \item \emph{negative definite}, denoted as \(\vb{M} \negDef 0\), if for all \(\vb{u} \in \RR^n \setminus \Bqty{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} < 0\);
+        \item \emph{negative semi-definite}, or \emph{non-positive definite}, denoted as \(\vb{M} \negDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose \vb{M} \vb{u} \leq 0\).
     \end{itemize}
 
     Equivalently, in terms of eigenvalues, it is
@@ -426,43 +419,35 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
 \begin{proof}
     We have
     \[
-        \Var\para{\vm{u}\transpose \vm{X}} = \vm{u}\transpose \Var\para{\vm{X}} \vm{u} \geq 0.
+        \Var\pqty{\vb{u}\transpose \vb{X}} = \vb{u}\transpose \Var\pqty{\vb{X}} \vb{u} \geq 0.
     \]
 \end{proof}
 
 \begin{definition}[Square Root of Non-Negative Definite Matrix]
     \label{def:sqrt-non-negative-definite-matrix}%
-    Let \(\vm{V}\) be a non-negative definite matrix, and let its orthogonal decomposition be
+    Let \(\vb{V}\) be a non-negative definite matrix, and let its orthogonal decomposition be
     \[
-        \vm{V} = \vm{U}\transpose \vm{D} \vm{U}
+        \vb{V} = \vb{U}\transpose \vb{D} \vb{U}
     \]
-    for an orthogonal matrix \(\vm{U}\transpose = \vm{U}\inverse\), and \(\vm{D}\) diagonal with
+    for an orthogonal matrix \(\vb{U}\transpose = \vb{U}\inverse\), and \(\vb{D}\) diagonal with
     \[
-        \vm{D} = \diag\para{\lambda_1, \ldots, \lambda_n} = \begin{pmatrix}
-            \lambda_1 & & 0 \\
-             & \ddots & \\
-            0 & & \lambda_n
-        \end{pmatrix}
+        \vb{D} = \diag\pqty{\lambda_1, \ldots, \lambda_n} = \pmqty{\dmat{\lambda_1, \ddots, \lambda_n}}
     \]
     with \(\lambda_i \geq 0\) for \(i = 1, \ldots, n\).
 
-    The \emph{square root} of \(\vm{V}\) is defined as
+    The \emph{square root} of \(\vb{V}\) is defined as
     \[
-        \vmb{\sigma} = \vm{U}\transpose \sqrt{\vm{D}} \vm{U}
+        \vb*{\sigma} = \vb{U}\transpose \sqrt{\vb{D}} \vb{U}
     \]
     where
     \[
-        \sqrt{\vm{D}} = \diag\para{\sqrt{\lambda_1}, \ldots, \sqrt{\lambda_n}} = \begin{pmatrix}
-            \sqrt{\lambda_1} & & 0 \\
-             & \ddots & \\
-            0 & & \sqrt{\lambda_n}
-        \end{pmatrix}
+        \sqrt{\vb{D}} = \diag\pqty{\sqrt{\lambda_1}, \ldots, \sqrt{\lambda_n}} = \pmqty{\dmat{\sqrt{\lambda_1}, \ddots, \sqrt{\lambda_n}}}
     \]
 \end{definition}
 
 \begin{claim}[Independence implies Variance is Diagonal]
     \label{claim:indep-diagonal-variance}%
-    If \(X_1, \ldots, X_n\) are independent, then \(\vm{V}\) is a diagonal matrix.
+    If \(X_1, \ldots, X_n\) are independent, then \(\vb{V}\) is a diagonal matrix.
 \end{claim}
 
 \begin{proof}
@@ -471,13 +456,13 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
 
 \subsection{Correlation}
 
-We restrict us to the two-dimensional case. Set \(\mu_1 = \Expt\brac{X_1}, \mu_2 = \Expt\brac{X_2}, \sigma_1^2 = \Var\para{X_1}, \sigma_2^2 = \Var\para{X_2}\).
+We restrict us to the two-dimensional case. Set \(\mu_1 = \Expt\bqty{X_1}, \mu_2 = \Expt\bqty{X_2}, \sigma_1^2 = \Var\pqty{X_1}, \sigma_2^2 = \Var\pqty{X_2}\).
 
 \begin{definition}[Correlation]
    \label{def:corr}%
     For two random variables \(X_1\) and \(X_2\), their \emph{correlation} is defined as
     \[
-        \rho = \Corr\para{X_1, X_2} = \frac{\Cov\para{X_1, X_2}}{\sqrt{\Var\para{X_1} \Var\para{X_2}}}.
+        \rho = \Corr\pqty{X_1, X_2} = \frac{\Cov\pqty{X_1, X_2}}{\sqrt{\Var\pqty{X_1} \Var\pqty{X_2}}}.
     \]
 \end{definition}
 
@@ -494,22 +479,21 @@ We restrict us to the two-dimensional case. Set \(\mu_1 = \Expt\brac{X_1}, \mu_2
     \label{claim:var-mat-corr}%
     Let \(\sigma_1, \sigma_2 > 0\) and \(\rho \in \ccintv{-1}{1}\). Then the matrix
     \[
-        \vm{V} = \begin{pmatrix}
-            \sigma_1^2 & \rho \sigma_1 \sigma_2 \\ \rho \sigma_1 \sigma_2 & \sigma_2^2
-        \end{pmatrix}
+        \vb{V} = \pmqty{
+            \sigma_1^2 & \rho \sigma_1 \sigma_2 \\
+            \rho \sigma_1 \sigma_2 & \sigma_2^2
+        }
     \]
     is non-negative definite.
 \end{claim}
 
 \begin{proof}
-    Let \(\vm{u} \in \RR^2\) be arbitrary, and let \(\vm{u} = \begin{pmatrix}
-        u_1 \\ u_2
-    \end{pmatrix}\).
+    Let \(\vb{u} \in \RR^2\) be arbitrary, and let \(\vb{u} = \pmqty{u_1 \\ u_2}\).
 
     We have
     \begin{align*}
-        \vm{u}\transpose \vm{V} \vm{u} &= \para{1 - \rho} \para{\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2} + \rho \para{\sigma_1 u_1 + \sigma_2 u_2}^2 \\
-        &= \para{1 + \rho} \para{\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2} - \rho \para{\sigma_1 u_1 - \sigma_2 u_2}^2.
+        \vb{u}\transpose \vb{V} \vb{u} &= \pqty{1 - \rho} \pqty{\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2} + \rho \pqty{\sigma_1 u_1 + \sigma_2 u_2}^2 \\
+        &= \pqty{1 + \rho} \pqty{\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2} - \rho \pqty{\sigma_1 u_1 - \sigma_2 u_2}^2.
     \end{align*}
 
     If \(\rho \in \ccintv{-1}{0}\) we use the second equality, and if \(\rho \in \ccintv{0}{1}\) we use the first equality.
