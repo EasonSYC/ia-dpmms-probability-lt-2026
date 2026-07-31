@@ -405,7 +405,7 @@ For a Gaussian random variable, we have the converse of \autoref{claim:indep-dia
     Let \(\vb{X} \sim \Normal\pqty{\vb*{\mu}, \vb{V}}\) where \(\vb{V}\) is positive definite. If \(\vb{V}\) is diagonal, then the \(X_i\)s are independent.
 \end{lemma}
 
-\begin{proof}[using Probability Density Function]
+\begin{proof}[\proofname\ using Probability Density Function]
     Let
     \[
         \vb{V} = \diag\pqty{\lambda_1, \ldots, \lambda_n},
@@ -423,7 +423,7 @@ For a Gaussian random variable, we have the converse of \autoref{claim:indep-dia
     and the density function factorises. Therefore, \(X_i \sim \Normal\pqty{\mu_i, \lambda_i}\) is independent.
 \end{proof}
 
-\begin{proof}[using Moment Generating Function]
+\begin{proof}[\proofname\ using Moment Generating Function]
     We inspect the moment generation function. Recall that
     \[
         \vb*{\theta}\transpose \vb{X} \sim \Normal\pqty{\vb*{\theta}\transpose \vb*{\mu}, \vb*{\theta}\transpose \vb{V} \vb*{\theta}}.

@@ -108,11 +108,11 @@ Since we have \(\Bqty{X_n = 0} \subseteq \Bqty{X_{n + 1} = 0}\), we have \(q_n\)
     where \(G\) is the probability generating function for \(X_1\).
 \end{proposition}
 
-\begin{proof}[of \(q = G\pqty{q}\) using \(q_{n + 1} = G\pqty{q_n}\)]
+\begin{proof}[\proofname\ of \(q = G\pqty{q}\) using \(q_{n + 1} = G\pqty{q_n}\)]
     Since \(G\) is continuous and \(q_n\) converges to \(q\), we have \(q = G\pqty{q}\).
 \end{proof}
 
-\begin{proof}[of \(q_{n + 1} = G\pqty{q_n}\), using Probability Generating Function]
+\begin{proof}[\proofname\ of \(q_{n + 1} = G\pqty{q_n}\), using Probability Generating Function]
     We have
     \begin{align*}
         q_{n + 1} &= \Prob\pqty{X_{n + 1} = 0} \\
@@ -123,7 +123,7 @@ Since we have \(\Bqty{X_n = 0} \subseteq \Bqty{X_{n + 1} = 0}\), we have \(q_n\)
     \end{align*}
 \end{proof}
 
-\begin{proof}[of \(q_{n + 1} = G\pqty{q_n}\), conditioning upon \(X_1\)]
+\begin{proof}[\proofname\ of \(q_{n + 1} = G\pqty{q_n}\), conditioning upon \(X_1\)]
     Conditioning upon \(X_1 = m\), let \(X_n^{\pqty{1}}, \ldots, X_n^{\pqty{m}}\) be independent and identically distributed branching processes with the same offspring as the original one, i.e., \(X_1\).
 
     Then we have
@@ -252,7 +252,7 @@ These can be summarised into \autoref{thm:extinction-probability}.
     Moreover, \(q < 1\) if and only if \(\Expt\bqty{X_1} > 1\).
 \end{theorem}
 
-\begin{proof}[of the Value of \(q\)]
+\begin{proof}[\proofname\ of the Value of \(q\)]
     We know that \(q = G\pqty{q}\). Let \(t\) be the smallest solution of \(x = G\pqty{x}\), and we will show that \(t = q\).
 
     We will prove by induction that \(q_n \leq t\), and hence by taking \(n \to \infty\) we have \(q \leq t\). But since \(t\) is the minimal solution, we must have \(q = t\).
@@ -266,7 +266,7 @@ These can be summarised into \autoref{thm:extinction-probability}.
     since \(G\) is an increasing function. This finishes the proof.
 \end{proof}
 
-\begin{proof}[of the Relation with Expectation]
+\begin{proof}[\proofname\ of the Relation with Expectation]
     Now, we show that \(q < 1\) if and only if \(\Expt\bqty{X_1} > 1\).
 
     If \(g_0 + g_1 = \Prob\pqty{X_1 \leq 1} = 1\), we have \(\Expt\bqty{X_1} = g_1 < 1\), so \(G\pqty{z} = g_0 + g_1 z = 1 - \Expt\bqty{X_1} + \Expt\bqty{X_1} \cdot z\).

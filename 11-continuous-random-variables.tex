@@ -70,7 +70,7 @@ The probability distribution function satisfies the following properties.
     \end{enumerate}
 \end{proposition}
 
-\begin{proof}[of Second Property]
+\begin{proof}[\proofname\ of Second Property]
     We have
     \begin{align*}
         \Prob\pqty{a < X \leq b} &= \Prob\pqty{X \leq b, X > a} \\
@@ -80,7 +80,7 @@ The probability distribution function satisfies the following properties.
     \end{align*}
 \end{proof}
 
-\begin{proof}[of RCLL Property]
+\begin{proof}[\proofname\ of RCLL Property]
     We first prove the right-continuity. Let \(\pqty{x_n}\) be a decreasing sequence such that \(x_n \to x^+\) as \(n \to \infty\). We need to show \(F\pqty{x_n} \to F\pqty{x}\) as \(n \to \infty\).
 
     We define the events
@@ -102,7 +102,7 @@ The probability distribution function satisfies the following properties.
     due to monotonic property.
 \end{proof}
 
-\begin{proof}[of Left Limit]
+\begin{proof}[\proofname\ of Left Limit]
     We note
     \[
         F\pqty{x^-} = \lim_{n \to \infty} F\pqty{x - \frac{1}{n}}.
@@ -359,7 +359,7 @@ Recall in the discrete case, we have
 
 Inspired by this, we may provide another proof.
 
-\begin{proof}[(Alternative, Slightly Unjustified)]
+\begin{proof}[\proofname\ (Alternative, Slightly Unjustified)]
     For the continuous case, we have
     \[
         X = \int_{0}^{\plusinfty} \indicator\pqty{X \geq x} \dd{x},
@@ -400,14 +400,14 @@ The variance is defined identically to the discrete case
     \]
 \end{proposition}
 
-\begin{proof}[from Definition]
+\begin{proof}[\proofname\ from Definition]
     We have
     \[
         \Expt\bqty{X} = \int_{0}^{\plusinfty} x \cdot \lambda \cdot e^{-\lambda x} \dd{x} = \frac{1}{\lambda}.
     \]
 \end{proof}
 
-\begin{proof}[from \autoref{lem:formula-expectation-non-negative-continuous-random-variable}]
+\begin{proof}[\proofname\ from \autoref{lem:formula-expectation-non-negative-continuous-random-variable}]
     We have
     \[
         \Expt\bqty{X} = \int_{0}^{\plusinfty} \Prob\pqty{X \geq x} \dd{x} = \int_{0}^{\plusinfty} e^{-\lambda x} \dd{x} = \frac{1}{\lambda}.
