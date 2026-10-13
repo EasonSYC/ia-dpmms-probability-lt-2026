@@ -4,7 +4,7 @@
 
 \begin{definition}[Distribution and Density of Joint Continuous Random Variable]
     \label{def:distribution-density-joint-crv}%
-    The joint continuous random variable \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) has \emph{probability density function} \(f\), if for all \(x_1, \ldots, x_n\), that
+    The joint continuous random variable \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) has \term{probability density function} \(f\), if for all \(x_1, \ldots, x_n\), that
     \[
         \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n} = \int_{\minusinfty}^{x_1} \dd{y_1} \cdots \int_{\minusinfty}^{x_n} \dd{y_n} f\pqty{y_1, \ldots, y_n}.
     \]
@@ -13,7 +13,7 @@
     \[
         F \pqty{x_1, \ldots, x_n} = \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n}
     \]
-    is the \emph{probability distribution function} of \(\vb{X}\).
+    is the \term{probability distribution function} of \(\vb{X}\).
 \end{definition}
 
 We have
@@ -28,7 +28,7 @@ For all \(\mathcal{B} \subseteq \RR^n\), we have
 
 \begin{definition}[Independence of Continuous Random Vaiables]
     \label{def:independence-continuous-random-variables}%
-    We say the continuous random variables \(X_1, \ldots, X_n\) are \emph{independent}, if for all \(x_1, \ldots, x_n\), we have
+    We say the continuous random variables \(X_1, \ldots, X_n\) are \term{independent}, if for all \(x_1, \ldots, x_n\), we have
     \[
         \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n} = \Prob\pqty{X_1 \leq x_1} \cdots \Prob\pqty{X_n \leq x_n}.
     \]
@@ -88,7 +88,7 @@ For all \(\mathcal{B} \subseteq \RR^n\), we have
 
 \begin{definition}[Marginal Distribution and Density]
     \label{def:marginal-distribution-density}%
-    For a joint continuous random variable \(\vb{X} = \pqty{X_1, X_2, \ldots, X_n}\), the \emph{marginal distribution} \(F_{X_i}\) and the \emph{marginal density} \(f_{X_i}\) of \(X_i\) are given by, respectively,
+    For a joint continuous random variable \(\vb{X} = \pqty{X_1, X_2, \ldots, X_n}\), the \term{marginal distribution} \(F_{X_i}\) and the \term{marginal density} \(f_{X_i}\) of \(X_i\) are given by, respectively,
     \[
         F_{X_i} \pqty{x} = \Prob\pqty{X_i \leq x} = \Prob\pqty{X_1 \in \RR, \ldots, X_{i - 1} \in \RR, X_i \leq x, X_{i + 1} \in \RR, \ldots, X_n \in \RR}
     \]
@@ -149,14 +149,14 @@ The continuous case is similar.
     \[
         \int_{\minusinfty}^{\infty} f_X\pqty{x} f_Y\pqty{z - x} \dd{x}
     \]
-    is known as the \emph{convolution} of the two random variables.
+    is known as the \term{convolution} of the two random variables.
 \end{definition}
 
 \subsection{Conditional Density}
 
 \begin{definition}[Conditional Density]
     \label{def:conditional-density}%
-    Let \(X, Y\) be two continuous random variables, with joint density \(f_{X, Y}\) and marginal densities \(f_{X}\) and \(f_{Y}\). The \emph{conditional density} of \(X\) given \(Y = y\) is
+    Let \(X, Y\) be two continuous random variables, with joint density \(f_{X, Y}\) and marginal densities \(f_{X}\) and \(f_{Y}\). The \term{conditional density} of \(X\) given \(Y = y\) is
     \[
         f_{\bound{\Conditional{X}{Y}}} \pqty{\Conditional{x}{y}} = \frac{f_{X, Y}\pqty{x, y}}{f_Y\pqty{y}}
     \]
@@ -173,7 +173,7 @@ The continuous case is similar.
 
 \begin{definition}[Conditional Expectation for Continuous Random Variable]
     \label{def:conditional-expectation-crv}%
-    For continuous random variables \(X\) and \(Y\), the \emph{conditional expectation} of \(X\) given \(Y\) is defined as
+    For continuous random variables \(X\) and \(Y\), the \term{conditional expectation} of \(X\) given \(Y\) is defined as
     \[
         \Expt\bqty{\Conditional{X}{Y}} = g\pqty{Y},
     \]
@@ -199,7 +199,7 @@ The continuous case is similar.
     \[
         f_{\vb{Y}}\pqty{\vb{y}} = f_{\vb{X}} \pqty{g\inverse\pqty{\vb{y}}} \cdot \abs{\det \vb{J}},
     \]
-    where \(\vb{J}\) is the \emph{Jacobian}, given by
+    where \(\vb{J}\) is the \term{Jacobian}, given by
     \[
         J_{i, j} = \pdv{x_i}{y_j}
     \]
@@ -247,7 +247,7 @@ and we let \(Y_i = X_{\pqty{i}}\).
 
 \begin{definition}[Order Statistics]
     \label{def:order-statistics}%
-    The \(Y_i\)s found above are the \emph{order statistics} of the sample.
+    The \(Y_i\)s found above are the \term{order statistics} of the sample.
 \end{definition}
 
 \begin{example}[Density of \(Y_1\) and \(Y_n\)]
@@ -355,11 +355,11 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
 
 \begin{definition}[Expectation and Variance of Multivariate Random Variable]
     \label{def:expt-var-multivariate}%
-    For a random variable \(\vb{X}\), we define the \emph{mean}
+    For a random variable \(\vb{X}\), we define the \term{mean}
     \[
         \vb*{\mu} = \Expt\bqty{\vb{X}} = \pmqty{\Expt\bqty{X_1} \\ \vdots \\ \Expt\bqty{X_n}},
     \]
-    and the \emph{variance}
+    and the \term{variance}
     \[
         \Var\pqty{\vb{X}} = \Expt\bqty{\pqty{\vb{X} - \vb*{\mu}} \pqty{\vb{X} - \vb*{\mu}}\transpose}.
     \]
@@ -396,18 +396,18 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
     \label{def:positive-negative-definiteness}%
     Let \(\vb{M}\) be an \(n \times n\) real symmetric matrix. Then we say it is
     \begin{itemize}
-        \item \emph{positive definite}, denoted as \(\vb{M} \posDef 0\), if for all \(\vb{u} \in \RR^n \setminus \Bqty{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} > 0\);
-        \item \emph{positive semi-definite}, or \emph{non-negative definite}, denoted as \(\vb{M} \posDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose \vb{M} \vb{u} \geq 0\);
-        \item \emph{negative definite}, denoted as \(\vb{M} \negDef 0\), if for all \(\vb{u} \in \RR^n \setminus \Bqty{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} < 0\);
-        \item \emph{negative semi-definite}, or \emph{non-positive definite}, denoted as \(\vb{M} \negDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose \vb{M} \vb{u} \leq 0\).
+        \item \term{positive definite}, denoted as \(\vb{M} \posDef 0\), if for all \(\vb{u} \in \RR^n \setminus \Bqty{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} > 0\);
+        \item \term{positive semi-definite}, or \term{non-negative definite}, denoted as \(\vb{M} \posDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose \vb{M} \vb{u} \geq 0\);
+        \item \term{negative definite}, denoted as \(\vb{M} \negDef 0\), if for all \(\vb{u} \in \RR^n \setminus \Bqty{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} < 0\);
+        \item \term{negative semi-definite}, or \term{non-positive definite}, denoted as \(\vb{M} \negDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose \vb{M} \vb{u} \leq 0\).
     \end{itemize}
 
     Equivalently, in terms of eigenvalues, it is
     \begin{itemize}
-        \item \emph{positive definite}, if all its eigenvalues are positive;
-        \item \emph{positive semi-definite}, or \emph{non-negative definite}, if all its eigenvalues are non-negative;
-        \item \emph{negative definite}, if all its eigenvalues are negative;
-        \item \emph{negative semi-definite}, or \emph{non-positive definite}, if all its eigenvalues are non-positive.
+        \item \term{positive definite}, if all its eigenvalues are positive;
+        \item \term{positive semi-definite}, or \term{non-negative definite}, if all its eigenvalues are non-negative;
+        \item \term{negative definite}, if all its eigenvalues are negative;
+        \item \term{negative semi-definite}, or \term{non-positive definite}, if all its eigenvalues are non-positive.
     \end{itemize}
 \end{definition}
 
@@ -435,7 +435,7 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
     \]
     with \(\lambda_i \geq 0\) for \(i = 1, \ldots, n\).
 
-    The \emph{square root} of \(\vb{V}\) is defined as
+    The \term{square root} of \(\vb{V}\) is defined as
     \[
         \vb*{\sigma} = \vb{U}\transpose \sqrt{\vb{D}} \vb{U}
     \]
@@ -460,7 +460,7 @@ We restrict us to the two-dimensional case. Set \(\mu_1 = \Expt\bqty{X_1}, \mu_2
 
 \begin{definition}[Correlation]
    \label{def:corr}%
-    For two random variables \(X_1\) and \(X_2\), their \emph{correlation} is defined as
+    For two random variables \(X_1\) and \(X_2\), their \term{correlation} is defined as
     \[
         \rho = \Corr\pqty{X_1, X_2} = \frac{\Cov\pqty{X_1, X_2}}{\sqrt{\Var\pqty{X_1} \Var\pqty{X_2}}}.
     \]

@@ -2,7 +2,7 @@
 
 \begin{definition}[\(\sigma\)-Algebra]
     \label{def:sigma-algebra}%
-    Suppose \(\Omega\) is a set, and \(\eventSpace \subseteq \powerset\pqty{\Omega}\) is a collection of subsets of \(\Omega\). We say \(\eventSpace\) is a \emph{\(\sigma\)-algebra}, if the following hold:
+    Suppose \(\Omega\) is a set, and \(\eventSpace \subseteq \powerset\pqty{\Omega}\) is a collection of subsets of \(\Omega\). We say \(\eventSpace\) is a \term{\(\sigma\)-algebra}, if the following hold:
     \begin{enumerate}
         \item \(\Omega \in \eventSpace\);
         \item if \(A \in \eventSpace\), then the complement \(A\compl \in \eventSpace\);
@@ -19,7 +19,7 @@
     \[
         \functiondomain{\Prob}{\eventSpace}{\ccintv{0}{1}}
     \]
-    is called a \emph{probability measure} if
+    is called a \term{probability measure} if
     \begin{enumerate}
         \item \(\Prob\pqty{\Omega} = 1\);
         \item for any countable disjoint collection \(\pqty{A_n}_{n \in \NN}\) in \(\eventSpace\), we have
@@ -28,7 +28,7 @@
         \]
     \end{enumerate}
 
-    The value of \(\Prob\pqty{A}\) for some \(A \in \eventSpace\) is the \emph{probability of \(A\)}.
+    The value of \(\Prob\pqty{A}\) for some \(A \in \eventSpace\) is the \term{probability of \(A\)}.
 \end{definition}
 
 \begin{definition}[Probability Space]
@@ -37,12 +37,12 @@
     \[
         \pqty{\Omega, \eventSpace, \Prob}
     \]
-    is a \emph{probability space}.
+    is a \term{probability space}.
 \end{definition}
 
 \begin{definition}[Outcomes, Events]
     \label{def:outcome-event}%
-    The elements of the set \(\Omega\) are called \emph{outcomes}, and the elements of the \(\sigma\)-algebra \(\eventSpace\) are called \emph{events}.
+    The elements of the set \(\Omega\) are called \term{outcomes}, and the elements of the \(\sigma\)-algebra \(\eventSpace\) are called \term{events}.
 \end{definition}
 
 \begin{remark}

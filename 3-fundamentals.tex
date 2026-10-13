@@ -229,7 +229,7 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
 
 \begin{example}[Derangements]
     \label{ex:derangements}%
-    \emph{Derangements} are permutations with no fixed points. Let the event space be
+    \term{Derangements} are permutations with no fixed points. Let the event space be
     \[
         \Omega = \Bqty{\text{permutations of }\Bqty{1, 2, \ldots, n}}
     \]
@@ -289,12 +289,12 @@ Let \(\pqty{\Omega, \eventSpace, \Prob}\) be a probability space.
 
 \begin{definition}[Independence]
     \label{def:independence}%
-    We say two events \(A, B \in \eventSpace\) are \emph{independent}, denoted as \(A \indp B\), if
+    We say two events \(A, B \in \eventSpace\) are \term{independent}, denoted as \(A \indp B\), if
     \[
         \Prob\pqty{A \cap B} = \Prob\pqty{A} \cdot \Prob\pqty{B}.
     \]
 
-    A \emph{countable collection} of events \(\pqty{A_n}_{n \in \NN}\) is said to be \emph{independent}, if for any finite collection of indices \(I = \Bqty{i_1, i_2, \ldots, i_k} \subseteq \NN\), we have
+    A \emph{countable collection} of events \(\pqty{A_n}_{n \in \NN}\) is said to be \term{independent}, if for any finite collection of indices \(I = \Bqty{i_1, i_2, \ldots, i_k} \subseteq \NN\), we have
     \[
         \Prob\pqty{\bigcap_{i \in I} A_i} = \prod_{i \in I} \Prob\pqty{A_i}.
     \]
@@ -327,7 +327,7 @@ Let \(\pqty{\Omega, \eventSpace, \Prob}\) be a probability space.
     \[
         \Prob\pqty{A \cap B} = \Prob\pqty{A \cap C} = \Prob\pqty{B \cap C} = \frac{1}{4},
     \]
-    so \(\Bqty{A, B, C}\) are \emph{pairwise} independent. But they are not \emph{independent}, since
+    so \(\Bqty{A, B, C}\) are \term{pairwise} independent. But they are not \emph{independent}, since
     \[
         \Prob\pqty{A \cap B \cap C} = \Prob\pqty{\emptyset} = 0.
     \]
@@ -385,7 +385,7 @@ If \(A \indp B\), then we have
 
 \begin{theorem}[Law of Total Probability]
     \label{thm:law-total-probability}%
-    Suppose that the events \(\pqty{B_n}_{n \in \NN}\) is a \emph{partition} of \(\Omega\), i.e. pairwise disjoint with union \(\Omega\), with positive measure. i.e. \(\Prob\pqty{B_n} > 0\).
+    Suppose that the events \(\pqty{B_n}_{n \in \NN}\) is a \term{partition} of \(\Omega\), i.e. pairwise disjoint with union \(\Omega\), with positive measure. i.e. \(\Prob\pqty{B_n} > 0\).
 
     Let \(A \in \eventSpace\). We have
     \[
@@ -542,7 +542,7 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
 
 \begin{example}[Simpson's Paradox]
     \label{ex:simpson-paradox}%
-    We refer to \autoref{tab:simpson-paradox-data}. This phenomenon is called \emph{confounding} in statistics. It arises when we aggregate data from disparate populations.
+    We refer to \autoref{tab:simpson-paradox-data}. This phenomenon is called \term{confounding} in statistics. It arises when we aggregate data from disparate populations.
 
     Let
     \begin{align*}

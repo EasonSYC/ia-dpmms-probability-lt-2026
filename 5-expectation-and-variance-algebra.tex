@@ -4,11 +4,11 @@
 
 Let \(\Omega\) be finite or uncountable, and let \(\functiondomain{X}{\Omega}{\RR}\) be a discrete random variable.
 
-We say \(X\) is \emph{non-negative} if \(X \geq 0\). We first define the expectation for a non-negative random variable (see later for motivation).
+We say \(X\) is \term{non-negative} if \(X \geq 0\). We first define the expectation for a non-negative random variable (see later for motivation).
 
 \begin{definition}[Expectation of Non-Negative Random Variable]
     \label{def:expectation-non-negative}%
-    The \emph{expectation}, or \emph{mean/average} of a non-negative random variable is given by
+    The \term{expectation}, or \term{mean/average} of a non-negative random variable is given by
     \[
         \Expt \bqty{X} = \sum_{\omega \in \Omega} \Prob\pqty{\Bqty{\omega}} \cdot X\pqty{\omega}.
     \]
@@ -76,19 +76,19 @@ Suppose \(X\) is discrete. Using \autoref{def:expectation-non-negative}, we have
 
 \begin{definition}[Expectation of General Random Variable]
     \label{def:expectation-general-random-variable}%
-    Let \(X\) be a discrete random variable and \(X^+\) and \(X^-\) be defined as above. If at least one of \(\Expt\bqty{X^+}\) and \(\Expt\bqty{X^-}\) is finite, then we define the \emph{expectation} of \(X\) as
+    Let \(X\) be a discrete random variable and \(X^+\) and \(X^-\) be defined as above. If at least one of \(\Expt\bqty{X^+}\) and \(\Expt\bqty{X^-}\) is finite, then we define the \term{expectation} of \(X\) as
     \[
         \Expt\bqty{X} = \Expt\bqty{X^+} - \Expt\bqty{X^-}.
     \]
 
-    If both of them are infinite, then the expectation of \(X\) is \emph{undefined}.
+    If both of them are infinite, then the expectation of \(X\) is \term{undefined}.
 \end{definition}
 
 When we write \(\Expt\bqty{X}\), we implicitly imply that it is defined.
 
 \begin{definition}[Integrablility of Random Variable]
     \label{def:integrability-random-variable}%
-    If \(\Expt\bqty{\abs{X}} < \infty\), then we say \(X\) is \emph{integrable}.
+    If \(\Expt\bqty{\abs{X}} < \infty\), then we say \(X\) is \term{integrable}.
 \end{definition}
 
 When \(\Expt\bqty{X}\) is well-defined, then we have
@@ -125,7 +125,7 @@ When \(\Expt\bqty{X}\) is well-defined, then we have
 
 \begin{example}[Expectation of Indicator]
     \label{ex:expectation-indicator}%
-    Recall the definition of the \emph{indicator} of an event \(A \in \eventSpace\) is \(\indicator\pqty{A}\). Let \(X = \indicator\pqty{A}\), then \(X\pqty{\omega} = \indicator\pqty{\omega \in A}\). Therefore, \(\Expt\bqty{X} = \Prob\pqty{A}\).
+    Recall the definition of the \term{indicator} of an event \(A \in \eventSpace\) is \(\indicator\pqty{A}\). Let \(X = \indicator\pqty{A}\), then \(X\pqty{\omega} = \indicator\pqty{\omega \in A}\). Therefore, \(\Expt\bqty{X} = \Prob\pqty{A}\).
 \end{example}
 
 \begin{proposition}[Expectation of Function of Random Variable]
@@ -231,12 +231,12 @@ Defining the expectation allows us to define several other important things abou
 
 \begin{definition}[Moment]
     \label{def:moment}%
-    Let \(X\) be a random variable, and \(r \in \NN\). \(\Expt\bqty{X^r}\), i well-defined, is the \emph{\(r\)-th moment} of \(X\).
+    Let \(X\) be a random variable, and \(r \in \NN\). \(\Expt\bqty{X^r}\), i well-defined, is the \term{\(r\)-th moment} of \(X\).
 \end{definition}
 
 \begin{definition}[Variance]
     \label{def:variance}%
-    The \emph{variance} of \(X\) is given as
+    The \term{variance} of \(X\) is given as
     \[
         \Var\pqty{X} = \Expt\bqty{\pqty{X - \Expt\bqty{X}}^2}.
     \]
@@ -246,7 +246,7 @@ The variance is a `measure' of how well concentrated \(X\) is around its expecta
 
 \begin{definition}[Standard Deviation]
     \label{def:std-deviation}%
-    \(\sqrt{\Var\pqty{X}}\) is known as the \emph{standard deviation}.
+    \(\sqrt{\Var\pqty{X}}\) is known as the \term{standard deviation}.
 \end{definition}
 
 \begin{proposition}[Properties of the Variance]
@@ -352,7 +352,7 @@ The variance is a `measure' of how well concentrated \(X\) is around its expecta
     \[
         \Cov\pqty{X, Y} = \Expt\bqty{\pqty{X - \Expt\bqty{X}} \pqty{Y - \Expt\bqty{Y}}}
     \]
-    be the \emph{covariance} of \(X\) and \(Y\).
+    be the \term{covariance} of \(X\) and \(Y\).
 \end{definition}
 
 It is a `measure' of how dependent \(X\) and \(Y\) are.

@@ -2,21 +2,21 @@
 
 \begin{definition}[Random/Stochastic Process]
     \label{def:random-stochastic-process}%
-    A \emph{random/stochastic process} is a sequence of random variables \(\pqty{X_n}_{n \in \NN}\).
+    A \term{random/stochastic process} is a sequence of random variables \(\pqty{X_n}_{n \in \NN}\).
 \end{definition}
 
 \begin{definition}[Random Walk]
     \label{def:random-walk}%
-    A \emph{random walk} is a random process that can be expressed in the following way:
+    A \term{random walk} is a random process that can be expressed in the following way:
     \[
         X_n = x + \sum_{i = 1}^{n} Y_i,
     \]
-    where \(x\) is a deterministic number, and \(\pqty{Y_i}_{n \in \NN}\)s are independent and identically distributed (i.i.d.). The random variables \(Y_i\)s the \emph{steps} of the random walk.
+    where \(x\) is a deterministic number, and \(\pqty{Y_i}_{n \in \NN}\)s are independent and identically distributed (i.i.d.). The random variables \(Y_i\)s the \term{steps} of the random walk.
 \end{definition}
 
 \begin{definition}[Simple Random Walk]
     \label{def:simple-random-walk}%
-    A random walk is \emph{simple} if the steps can only take values \(\pm 1\).
+    A random walk is \term{simple} if the steps can only take values \(\pm 1\).
 \end{definition}
 
 In this case, we may set \(\Prob\pqty{Y_i = 1} = p\) and \(\Prob\pqty{Y_i = -1} = q\), with \(p + q = 1\) and \(p, q \geq 0\).
@@ -44,7 +44,7 @@ In this case, we may set \(\Prob\pqty{Y_i = 1} = p\) and \(\Prob\pqty{Y_i = -1} 
     We now consider particular cases of \(p\) and \(q\).
 
     \begin{itemize}
-        \item If \(p = q = \frac{1}{2}\), this is called \emph{simple symmetric random walk}, and the system reduces to \(h\pqty{x} = \frac{1}{2} h \pqty{x + 1} + \frac{1}{2} h \pqty{x - 1}\).
+        \item If \(p = q = \frac{1}{2}\), this is called \term{simple symmetric random walk}, and the system reduces to \(h\pqty{x} = \frac{1}{2} h \pqty{x + 1} + \frac{1}{2} h \pqty{x - 1}\).
         
         Notice that simplifying this gives
         \[
@@ -71,7 +71,7 @@ In this case, we may set \(\Prob\pqty{Y_i = 1} = p\) and \(\Prob\pqty{Y_i = -1} 
 
 \begin{example}[Time to Absorption]
     \label{ex:time-to-absorption}%
-    We use a similar setup as \autoref{ex:gambler-ruin-estimates}. Let the \emph{time to absorption} be
+    We use a similar setup as \autoref{ex:gambler-ruin-estimates}. Let the \term{time to absorption} be
     \[
         T = \min \set{n \geq 0}{X_n \in \Bqty{0, a}}.
     \]

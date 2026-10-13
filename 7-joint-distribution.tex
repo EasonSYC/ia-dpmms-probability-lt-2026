@@ -6,7 +6,7 @@ Recall that, if \(X\) is a discrete random variable then the distribution of \(X
 
 \begin{definition}[Joint Distribution for Discrete Variables]
     \label{def:joint-distribution-discrete}%
-    Let \(X_1, \ldots, X_n\) be discrete random variables. Their \emph{joint distribution} is defined to be
+    Let \(X_1, \ldots, X_n\) be discrete random variables. Their \term{joint distribution} is defined to be
     \[
         \Prob\pqty{X_1 = x_1, \ldots, X_n = x_n}
     \]
@@ -17,11 +17,11 @@ Note that we could recover the individual distribution of a single random variab
 \[
     \Prob\pqty{X_1 = x_1} = \sum_{x_2, \ldots, x_n \in \RR} \Prob\pqty{X_1 = x_1, \ldots, X_n = x_n}
 \]
-where we note that this sum is countable since \(x_i\)s only take countably many values. We call this the \emph{marginal distribution} of \(X_1\).
+where we note that this sum is countable since \(x_i\)s only take countably many values. We call this the \term{marginal distribution} of \(X_1\).
 
 \begin{definition}[Conditional Distribution for Discrete Variables]
     \label{def:conditional-distribution-discrete}%
-    Let \(X\) and \(Y\) be two discrete random variables. The \emph{conditional distribution} of \(X\), given \(Y = y\) (where \(y\) is fixed) is defined to be
+    Let \(X\) and \(Y\) be two discrete random variables. The \term{conditional distribution} of \(X\), given \(Y = y\) (where \(y\) is fixed) is defined to be
     \[
         \Prob\pqty{\Conditional{X = x}{Y = y}} = \frac{\Prob\pqty{X = x, Y = y}}{\Prob\pqty{Y = y}}
     \]
@@ -52,7 +52,7 @@ noting that this sum is similarly countable.
     \[
         \sum_{y \in \RR} \Prob\pqty{X = z - y} \cdot \Prob\pqty{Y = y}
     \]
-    is known as the \emph{convolution} of the two random variables.
+    is known as the \term{convolution} of the two random variables.
 \end{definition}
 
 \begin{example}[Sum of Poisson Random Variables]
@@ -84,7 +84,7 @@ noting that this sum is similarly countable.
 
 \begin{definition}[Conditonal Expectation upon an Event]
     \label{def:conditional-expectation-upon-event}%
-    The \emph{conditional expectation} of a random variable \(X\) with respect to an event \(B\), where \(\Prob\pqty{B} > 0\), is given by
+    The \term{conditional expectation} of a random variable \(X\) with respect to an event \(B\), where \(\Prob\pqty{B} > 0\), is given by
     \[
         \Expt\bqty{\Conditional{X}{B}} = \frac{\Expt\bqty{X \cdot \indicator\pqty{B}}}{\Prob\pqty{B}}.
     \]

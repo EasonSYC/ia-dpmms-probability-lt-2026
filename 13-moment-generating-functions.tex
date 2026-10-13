@@ -2,7 +2,7 @@
 
 \begin{definition}[Moment Generating Function]
     \label{def:moment-generating-fn}%
-    Let \(X\) be a random variable with density \(f\). The \emph{moment generating function} of \(X\) is defined to be
+    Let \(X\) be a random variable with density \(f\). The \term{moment generating function} of \(X\) is defined to be
     \[
         m\pqty{\theta} = \Expt\bqty{e^{\theta X}} = \int_{\RR} e^{\theta x} f\pqty{x} \dd{x}
     \]
@@ -36,7 +36,7 @@ We may very easily find the moment generating function of the sum of independent
 
 \begin{definition}[Gamma Distribution]
     \label{def:gamma-distribution}%
-    The \emph{Gamma Distribution} with parameters \(n \in \NN\) and \(\lambda > 0\), denoted by \(\Gamma\pqty{n, \lambda}\), is given by the density function
+    The \term{Gamma Distribution} with parameters \(n \in \NN\) and \(\lambda > 0\), denoted by \(\Gamma\pqty{n, \lambda}\), is given by the density function
     \[
         f\pqty{x} = \frac{e^{-\lambda x} \cdot \lambda^n \cdot x^{n - 1}}{\pqty{n - 1}!}
     \]
@@ -108,14 +108,14 @@ We may very easily find the moment generating function of the sum of independent
     \[
         f\pqty{x} = \frac{e^{-\lambda x} \cdot \lambda^{\alpha} \cdot x^{\alpha - 1}}{\Gamma\pqty{\alpha}}
     \]
-    where \(\Gamma\) is the \emph{Gamma Function}
+    where \(\Gamma\) is the \term{Gamma Function}
     \[
         \Gamma\pqty{\alpha} = \int_{0}^{\plusinfty} e^{-x} \cdot x^{\alpha - 1} \dd{x}.
     \]
 \end{remark}
 
 \begin{definition}[Cauchy Distribution]
-    The \emph{Cauchy Distribution} is the continuous random variable defined by the density function
+    The \term{Cauchy Distribution} is the continuous random variable defined by the density function
     \[
         f\pqty{x} = \frac{1}{\pi \pqty{1 + x^2}}
     \]
@@ -175,7 +175,7 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
 
 \begin{definition}[Multivariate Moment Generating Function]
     \label{def:multivariate-mgf}%
-    Let \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) be an \(n\)-dimensional random variable. Its \emph{moment generating function} is defined to be
+    Let \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) be an \(n\)-dimensional random variable. Its \term{moment generating function} is defined to be
     \[
         m\pqty{\vb*{\theta}} = \Expt\bqty{e^{\vb*{\theta}\transpose \vb{X}}} = \Expt\bqty{e^{\sum_{i = 1}^{n} \theta_i X_i}}
     \]
@@ -213,13 +213,13 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
 
 \begin{definition}[Multivariate Gaussian Random Variable]
     \label{def:multivariate-gaussian-rv}%
-    A random variable \(X\) with values in \(\RR\) is \emph{Gaussian}, if it could be written as
+    A random variable \(X\) with values in \(\RR\) is \term{Gaussian}, if it could be written as
     \[
         X = \mu + \sigma Z
     \]
     where \(Z \sim \Normal\pqty{0, 1}\) and \(\mu \in \RR, \sigma \geq 0\). (This includes all normal distributions defined before and the trivial distribution.)
 
-    Let \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) be a random variable. Then \(\vb{X}\) is \emph{Gaussian}, if for any \(\vb{u} = \pqty{u_1, \ldots, u_n}\transpose \in \RR^n\), the dot product
+    Let \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) be a random variable. Then \(\vb{X}\) is \term{Gaussian}, if for any \(\vb{u} = \pqty{u_1, \ldots, u_n}\transpose \in \RR^n\), the dot product
     \[
         \vb{u}\transpose \vb{X} = \sum_{i = 1}^{n} u_i X_i
     \]
@@ -444,7 +444,7 @@ Therefore, combining \autoref{claim:indep-diagonal-variance} and \autoref{lem:di
 
 \begin{definition}[Bivariate Gaussian Vector]
     \label{def:bivariate-gaussian-vector}%
-    The 2-Dimensional case of a multivariate Gaussian random variable, defined in \autoref{def:multivariate-gaussian-rv}, is known as a \emph{Bivariate Gaussian Vector}.
+    The 2-Dimensional case of a multivariate Gaussian random variable, defined in \autoref{def:multivariate-gaussian-rv}, is known as a \term{Bivariate Gaussian Vector}.
 \end{definition}
 
 \begin{proposition}[Conditional Expectation for Bivariate Gaussian]
