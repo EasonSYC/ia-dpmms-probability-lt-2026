@@ -136,7 +136,7 @@ Since we have \(\Bqty{X_n = 0} \subseteq \Bqty{X_{n + 1} = 0}\), we have \(q_n\)
         q_{n + 1} &= \Prob\pqty{X_{n + 1} = 0} \\
         &= \sum_{m} \Prob\pqty{\Conditional{X_{n + 1} = 0}{X_1 = m}} \cdot \Prob\pqty{X_1 = m} \\
         &= \sum_{m} \Prob\pqty{\Conditional{X_n^{\pqty{1}} + \cdots + X_n^{\pqty{m}} = 0}{X_1 = m}} \cdot \Prob\pqty{X_1 = m} \\
-        &= \sum_{m} \frac{\pqty{\Prob\pqty{X_n^{\pqty{1}} = 0}^{m}}}{q_n} \cdot \Prob\pqty{X_1 = m} \\
+        &= \sum_{m} \pqty{\Prob\pqty{X_n^{\pqty{1}} = 0}}^{m} \cdot \Prob\pqty{X_1 = m} \\
         &= G\pqty{q_n},
     \end{align*}
     as desired.

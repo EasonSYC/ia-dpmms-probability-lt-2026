@@ -275,10 +275,10 @@ We introduce this theorem on moment generating functions for the proof.
         m \pqty{\theta} = \Expt\bqty{e^{\theta X}}.
     \]
 
-    Assume \(m\pqty{\theta}\) is finite for some \(\theta \neq 0\). If \(m_n \pqty{\theta} \to m\pqty{\theta}\) for all \(\theta \in \RR\), then \(X_n \toDist X\) as \(n \to \infty\).
+    Assume \(m\pqty{\theta}\) is finite for some \(\theta \neq 0\). If \(m_n \pqty{\theta} \to m\pqty{\theta}\) for all \(\theta\) in that interval, then \(X_n \toDist X\) as \(n \to \infty\).
 \end{theorem}
 
-\begin{proof}[\proofname\ of \autoref{thm:clt} (Central Limit Theorem)]
+\begin{proof}[\proofname\ of \autoref{thm:clt} (Central Limit Theorem) under additional assumptions]
     Consider
     \[
         Y_i = \frac{X_i - \mu}{\sigma},
@@ -289,7 +289,7 @@ We introduce this theorem on moment generating functions for the proof.
     \]
     as \(n \to \infty\).
 
-    Furthermore, we assume there is some \(\delta > 0\), such that
+    For this proof, assume additionally that there is some \(\delta > 0\), such that
     \[
         \Expt\bqty{e^{\delta X_1}} + \Expt\bqty{e^{- \delta X_1}} < \infty.
     \]
