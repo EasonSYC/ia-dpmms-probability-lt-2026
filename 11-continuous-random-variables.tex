@@ -234,7 +234,7 @@ For \(k \in \NN\), we have
 \end{align*}
 and so we see \(T_n \sim \Geometric\pqty{1 - e^{- \flatfrac{\lambda}{n}}}\), where we use the convention starting from zero (failures), and if \(n\) is large,
 \[
-    e^{- \frac{\lambda}{n}} \approx \frac{\lambda}{n}
+    1 - e^{- \frac{\lambda}{n}} \approx \frac{\lambda}{n}
 \]
 as \(n\) becomes large. We have
 \[
@@ -474,7 +474,7 @@ We first prove that the density function is indeed a distribution.
 
     Noticing the second function is odd about \(\mu\), it must integrate to zero, so we have \(\Expt\bqty{X} = \mu\).
 
-    For the variance, we have, using the substitution \(u = \frac{x - \mu}{\sigma^2}\)
+    For the variance, we have, using the substitution \(u = \frac{x - \mu}{\sigma}\)
     \begin{align*}
         \Var\pqty{X} &= \Expt\bqty{\pqty{X - \mu}^2} \\
         &=  \int_{\minusinfty}^{\plusinfty} \pqty{x - \mu}^2 \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\pqty{-\frac{\pqty{x - \mu}^2}{2 \sigma^2}} \dd{x} \\
@@ -491,7 +491,7 @@ We first prove that the density function is indeed a distribution.
     \]
     and its distribution function is denoted by
     \[
-        \sNormCdf\pqty{x} = \int_{\minusinfty}^{x} \sNormPdf\pqty{x} \dd{x}.
+        \sNormCdf\pqty{x} = \int_{\minusinfty}^{x} \sNormPdf\pqty{t} \dd{t}.
     \]  
 \end{definition}
 
@@ -537,7 +537,7 @@ Now we restrict ourselves to the case where the transformation is linear.
     \begin{align*}
         f_Y\pqty{y} &= f_X\pqty{g\inverse\pqty{y}} \cdot \abs{\dv{y} g\inverse\pqty{y}} \\
         &= \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\pqty{- \frac{\pqty{\frac{y - b}{a} - \mu}^2}{2 \sigma^2}} \cdot \frac{1}{\abs{a}} \\
-        &= \frac{1}{\sqrt{2 \pi \pqty{a \sigma}^2}} \exp\pqty{- \frac{\pqty{y - \pqty{a\mu + b}^2}}{2 a^2 \sigma^2}},
+        &= \frac{1}{\sqrt{2 \pi \pqty{a \sigma}^2}} \exp\pqty{- \frac{\pqty{y - \pqty{a\mu + b}}^2}{2 a^2 \sigma^2}},
     \end{align*}
     and so \(Y \sim \Normal\pqty{a \mu + b, \pqty{a \sigma}^2}\).
 \end{proof}
@@ -546,7 +546,7 @@ In particular, if \(X \sim \Normal\pqty{\mu, \sigma^2}\), we have
 \[
     \frac{X - \mu}{\sigma} \sim \Normal\pqty{0, 1}
 \]
-is the standard normal. This is very useful. For example, if we want to find the probability that a normal distribution lies with in two standard deviations of the mean, we have
+is the standard normal. This is very useful. For example, if we want to find the probability that a normal distribution lies within two standard deviations of the mean, we have
 \begin{align*}
     \Prob\pqty{\mu - 2 \sigma < X < \mu + 2 \sigma} &= \Prob\pqty{-2\sigma < X - \mu < 2\sigma} \\
     &= \Prob\pqty{-2 < \frac{X - \mu}{\sigma} < 2} \\
@@ -557,7 +557,7 @@ By symmetry, we have \(\sNormCdf\pqty{x} + \sNormCdf\pqty{-x} = 2 \sNormCdf\pqty
 
 \subsection{Median}
 
-\begin{definition}[Median of Condinuous Random Variable]
+\begin{definition}[Median of Continuous Random Variable]
     \label{def:median-continuous-rv}%
     Let \(X\) be a continuous random variable. The median of \(X\), denoted by \(m\), is the number satisfying
     \[

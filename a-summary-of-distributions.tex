@@ -3,7 +3,11 @@
 
 Note that \(\dagger\) means that this distribution was not lectured.
 
+Denote \(V_i = \Var\pqty{X_i}\) and \(C_{ij} = \Cov\pqty{X_i, X_j}\) for \(i, j = 1, \ldots, n\) as a shorthand for multivariate distributions.
+
 \newcommand{\dsty}{\displaystyle}
+
+\clearpage
 
 \subsection{Discrete distributions}
 \begin{table}[ht!]
@@ -29,9 +33,9 @@ Note that \(\dagger\) means that this distribution was not lectured.
         \hline \hline
         \textbf{Name} & \(\vb{X} \sim\) & \textbf{Parameters} & \(\Prob\pqty{\vb{X} = \vb{x}}\) & \(\vb{x} \in\) & \(\Expt\bqty{\vb{X}}\) & \(\Var\pqty{\vb{X}}\) & \(\Expt\bqty{z_1^{X_1} \cdots z_n^{X_n}}\)\\
         \hline \hline
-        Multinomial & \(\Multinomial\pqty{n, \vb{p}}\) & \makecell{\(n \in \NN\) \\ \(p_i \in \ccintv{0}{1}\) \\ \(\dsty \sum_{i = 1}^{k} p_i = 1\)} & \(\binom{n}{x_1, \ldots, x_k} p_1^{x_1} \cdots p_k^{x_k}\) & \makecell{\(x_i \in \NN \cup \Bqty{0}\) \\ \(\dsty \sum_{i = 1}^{k} x_i = n\)} & \(n \vb{p}\) & \makecell{\(\Var\pqty{X_i} = n p_i \pqty{1 - p_i}\) \\ \(\Cov\pqty{X_i, X_j} = -n p_i p_j, i \neq j\)} & \(\pqty{\vb{p}\transpose \vb{z}}^n\) \\
+        Multinomial & \(\Multinomial\pqty{n, \vb{p}}\) & \makecell{\(n \in \NN\) \\ \(p_i \in \ccintv{0}{1}\) \\ \(\dsty \sum_{i = 1}^{k} p_i = 1\)} & \(\binom{n}{x_1, \ldots, x_k} p_1^{x_1} \cdots p_k^{x_k}\) & \makecell{\(x_i \in \NN \cup \Bqty{0}\) \\ \(\dsty \sum_{i = 1}^{k} x_i = n\)} & \(n \vb{p}\) & \makecell{\(V_i = n p_i \pqty{1 - p_i}\) \\ \(C_{ij} = -n p_i p_j, i \neq j\)} & \(\pqty{\vb{p}\transpose \vb{z}}^n\) \\
         \hline
-        \makecell{Multivariate \\ Hypergeometric} \(\dagger\) & \(\MultivariateHypergeometric\pqty{N, \vb{K}, n}\) & \makecell{\(N \in \NN\) \\ \(K_i \in \NN_0\) \\ \(\sum_{i = 1}^{k} K_i = N\) \\ \(n \in \NN\) \\ \(n \leq N\)} & \(\dsty \frac{\prod_{i = 1}^{k} \binom{K_i}{x_i}}{\binom{N}{n}}\) & \makecell{\(x_i \in \NN \cup \Bqty{0}\) \\ \(x_i \leq K_i\)} & \(\dsty \frac{n \vb{K}}{N}\) & \makecell{\(\dsty \Var\pqty{X_i} = \frac{n \pqty{N - n} K_i \pqty{N - K_i}}{N^2 \pqty{N - 1}}\) \\ \(\dsty \Cov\pqty{X_i, X_j} = - \frac{n \pqty{N - n} K_i K_j}{N^2 \pqty{N - 1}}, i \neq j\)} & /
+        \makecell{Multivariate \\ Hypergeometric} \(\dagger\) & \(\MultivariateHypergeometric\pqty{N, \vb{K}, n}\) & \makecell{\(N \in \NN\) \\ \(K_i \in \NN_0\) \\ \(\sum_{i = 1}^{k} K_i = N\) \\ \(n \in \NN\) \\ \(n \leq N\)} & \(\dsty \frac{\prod_{i = 1}^{k} \binom{K_i}{x_i}}{\binom{N}{n}}\) & \makecell{\(x_i \in \NN \cup \Bqty{0}\) \\ \(x_i \leq K_i\)} & \(\dsty \frac{n \vb{K}}{N}\) & \makecell{\(\dsty V_i = \frac{n \pqty{N - n} K_i \pqty{N - K_i}}{N^2 \pqty{N - 1}}\) \\ \(\dsty C_{ij} = - \frac{n \pqty{N - n} K_i K_j}{N^2 \pqty{N - 1}}, i \neq j\)} & /
     \end{tabular}
     \caption{Summary of Discrete Distributions}
     \label{tab:summary-discrete-distribution}%
@@ -47,7 +51,7 @@ Note that \(\dagger\) means that this distribution was not lectured.
         \hline\hline
         Uniform & \(\Uniform\ccintv{a}{b}\) & \(a < b\) & \(\dsty \frac{1}{b - a}\) & \(\dsty \frac{x - a}{b - a}\) & \(\ccintv{a}{b}\) &\(\dsty\frac{a + b}{2}\) & \(\dsty \frac{1}{12}\pqty{b - a}^2\) & \(\dsty\frac{e^{\theta b} - e^{\theta a}}{\theta (b - a)}\) \\
         \hline
-        Normal & \(\Normal\pqty{\lambda, \sigma^2}\) & \(\sigma > 0\) & \(\dsty \frac{1}{\sqrt{2\pi}\sigma}\exp\pqty{-\frac{(x - \mu)^2}{2\sigma^2}}\) & / & \(\RR\) & \(\mu\) & \(\sigma^2\) & \(e^{\theta\mu + \frac{1}{2}\theta^2\sigma^2}\)\\
+        Normal & \(\Normal\pqty{\mu, \sigma^2}\) & \(\sigma > 0\) & \(\dsty \frac{1}{\sqrt{2\pi}\sigma}\exp\pqty{-\frac{(x - \mu)^2}{2\sigma^2}}\) & / & \(\RR\) & \(\mu\) & \(\sigma^2\) & \(e^{\theta\mu + \frac{1}{2}\theta^2\sigma^2}\)\\
         \hline
         Exponential & \(\Exponential\pqty{\lambda}\) & \(\lambda > 0\) & \(\lambda e^{-\lambda x}\) & \(1 - e^{-\lambda x}\) & \(\cointv{0}{\plusinfty}\) & \(\dsty \frac{1}{\lambda}\) & \(\dsty \frac{1}{\lambda^2}\) & \(\dsty \frac{\lambda}{\lambda - \theta}\) \\
         \hline

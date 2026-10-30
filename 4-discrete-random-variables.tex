@@ -83,11 +83,11 @@ The Binomial distribution is a generalisation of the Bernoulli distribution by h
     using the multinomial coefficient.
 \end{example}
 
-Alternatively, we can also model this as a polyhedron landing on different faces, with unequal probability (as opposing to a coin only having two sides). Although, obviously, there are no polyhedrons with at most 3 faces, but this is probably good enough.
+Alternatively, we can also model this as a polyhedron landing on different faces, with unequal probabilities (as opposed to a coin having only two sides). Although there are no polyhedra with at most three faces, this is a useful generalisation.
 
-\begin{example}[Polyhedron landing on Different sides]
+\begin{example}[Polyhedron Landing on Different Sides]
     \label{ex:polyhedron-different-sides}%
-    We have a \(k\)-sided polyhedron with a probability of \(p_i\) landing on side \(i\). Throwing the polyhedron \(n\) times, the probability that it being landing on side \(i\) for \(n_i\) times respectively, for \(\sum n_i = n\), gives the same probability distribution as above.
+    We have a \(k\)-sided polyhedron with probability \(p_i\) of landing on side \(i\). Throwing the polyhedron \(n\) times, the probability of landing on side \(i\) exactly \(n_i\) times, where \(\sum n_i = n\), gives the same probability distribution as above.
 \end{example}
 
 \begin{definition}[Multinomial Distribution]
@@ -261,7 +261,7 @@ We now restrict back our view to discrete probability distributions.
     \label{def:probability-mass-function}%
     Suppose a discrete random variable \(X\) satisfies \(\img X = S \subseteq \RR\), which is countable. For every \(x \in S\), we denote
     \[
-        p_x = \Prob\pqty{X = x} = \Prob\pqty{\set{\omega \in \Omega}{X\pqty{\omega = x}}},
+        p_x = \Prob\pqty{X = x} = \Prob\pqty{\set{\omega \in \Omega}{X\pqty{\omega} = x}},
     \]
     and we call \(\pqty{p_x}_{x \in S}\) the \term{probability mass function} or the \term{distribution} of \(X\).
 \end{definition}

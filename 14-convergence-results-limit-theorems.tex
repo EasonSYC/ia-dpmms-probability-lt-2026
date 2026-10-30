@@ -17,7 +17,7 @@
 
 \begin{theorem}[Weak Law of Large Numbers]
     \label{thm:weak-law-of-large-numbers}%
-    Let \(\pqty{X_n}\) be independent and identically distributed distributions with finite mean \(\mu\). Let
+    Let \(\pqty{X_n}\) be independent and identically distributed random variables with finite mean \(\mu\). Let
     \[
         S_n = X_1 + \cdots + X_n
     \]
@@ -103,7 +103,7 @@ This notion of convergence is strictly stronger than our previous notion.
 
 \begin{theorem}[Strong Law of Large Numbers (SLLN)]
     \label{thm:strong-law-of-large-numbers}%
-    Let \(\pqty{X_n}\) be independent and identically distributed distributions with finite mean \(\mu\). Let
+    Let \(\pqty{X_n}\) be independent and identically distributed random variables with finite mean \(\mu\). Let
     \[
         S_n = X_1 + \cdots + X_n
     \]
@@ -364,7 +364,7 @@ for a standard normal \(Z\), for large \(n\).
 \begin{example}[Application of Central Limit Theorem]
     \label{ex:clt}%
     \begin{itemize}
-        \item Let \(S_n \sim \Binomial\pqty{n. p}\), then \(S_n = X_1 + \cdots + X_n\) for \(X_i\) being independent and identically distributed \(\Bernoulli \pqty{p}\).
+        \item Let \(S_n \sim \Binomial\pqty{n, p}\), then \(S_n = X_1 + \cdots + X_n\) for \(X_i\) being independent and identically distributed \(\Bernoulli \pqty{p}\).
 
         Hence,
         \[
@@ -398,7 +398,7 @@ for a standard normal \(Z\), for large \(n\).
 
     We want to estimate \(p\). Sample \(N\) individuals at random, where \(N\) is large, and we record their votes. Let \(X_i\) be \(1\) if the \(i\)th individual voted `Yes', and \(0\) otherwise.
 
-    Set \(S_N = X_1 + \cdots + X_n\) be the number of `Yes' votes, and denote
+    Set \(S_N = X_1 + \cdots + X_N\) to be the number of `Yes' votes, and denote
     \[
         \hat{P}_N = \frac{S_N}{N} \toAlmostSure p
     \]
@@ -423,7 +423,7 @@ for a standard normal \(Z\), for large \(n\).
     \]  
     for large \(N\). So we have
     \[
-        \abs{\hat{P}_N} - p \approx \frac{\sqrt{p \pqty{1 - p}}}{\sqrt{N}} \cdot \abs{Z}.
+        \abs{\hat{P}_N - p} \approx \frac{\sqrt{p \pqty{1 - p}}}{\sqrt{N}} \cdot \abs{Z}.
     \]
 
     Furthermore, we have

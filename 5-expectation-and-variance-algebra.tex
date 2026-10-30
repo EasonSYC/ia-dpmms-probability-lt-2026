@@ -2,7 +2,7 @@
 
 \subsection{Expectation}
 
-Let \(\Omega\) be finite or uncountable, and let \(\functiondomain{X}{\Omega}{\RR}\) be a discrete random variable.
+Let \(\Omega\) be finite or countable, and let \(\functiondomain{X}{\Omega}{\RR}\) be a discrete random variable.
 
 We say \(X\) is \term{non-negative} if \(X \geq 0\). We first define the expectation for a non-negative random variable (see later for motivation).
 
@@ -23,7 +23,7 @@ then the expectation satisfies
     \Expt\bqty{X} &= \sum_{\omega \in \Omega} X\pqty{\omega} \Prob\pqty{\Bqty{\omega}} \\
     &= \sum_{x \in \Omega_X} \sum_{\omega \in \Bqty{X = x}} X\pqty{\omega} \cdot \Prob\pqty{\Bqty{\omega}} \\
     &= \sum_{x \in \Omega_X} \sum_{\omega \in \Bqty{X = x}} x \cdot \Prob\pqty{\Bqty{\omega}} \\
-    &= \sum_{x \in \Omega_X} x \sum_{\omega \in \Bqty{X = x}} \cdot \Prob\pqty{\Bqty{\omega}} \\
+    &= \sum_{x \in \Omega_X} x \sum_{\omega \in \Bqty{X = x}} \Prob\pqty{\Bqty{\omega}} \\
     &= \sum_{x \in \Omega_X} x \cdot \Prob\pqty{X = x}.
 \end{align*}
 
@@ -86,7 +86,7 @@ Suppose \(X\) is discrete. Using \autoref{def:expectation-non-negative}, we have
 
 When we write \(\Expt\bqty{X}\), we implicitly imply that it is defined.
 
-\begin{definition}[Integrablility of Random Variable]
+\begin{definition}[Integrability of Random Variable]
     \label{def:integrability-random-variable}%
     If \(\Expt\bqty{\abs{X}} < \infty\), then we say \(X\) is \term{integrable}.
 \end{definition}
@@ -292,7 +292,7 @@ The variance is a `measure' of how well concentrated \(X\) is around its expecta
 
     Then, we have
     \[
-        f\pqty{c} = \Expt\bqty{X^2} = 2c \Expt\bqty{X} + c^2.
+        f\pqty{c} = \Expt\bqty{X^2} - 2c\Expt\bqty{X} + c^2.
     \]
 
     Hence, differentiating gives that

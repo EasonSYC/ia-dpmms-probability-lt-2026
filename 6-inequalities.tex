@@ -31,7 +31,7 @@
 \begin{proof}
     Take \(Y = \pqty{X - \Expt\bqty{X}}^2\) and \(a' = a^2\). Applying Markov's inequality, we have
     \begin{align*}
-        \Prob\pqty{\abs{X - \Expt\bqty{X}} > a} &= \Prob\pqty{\abs{X - \Expt\bqty{X}}^2 \geq a^2} \\
+        \Prob\pqty{\abs{X - \Expt\bqty{X}} \geq a} &= \Prob\pqty{\abs{X - \Expt\bqty{X}}^2 \geq a^2} \\
         &\leq \frac{\Expt\bqty{\pqty{X - \Expt\bqty{X}}^2}}{a^2} \\
         &= \frac{\Var\pqty{X}}{a^2}.
     \end{align*}

@@ -60,8 +60,8 @@ noting that this sum is similarly countable.
 
     \begin{align*}
         \Prob\pqty{X + Y = n} &= \sum_{k = 0}^{n} \Prob\pqty{X = n - k} \cdot \Prob\pqty{Y = k} \\
-        &= \sum_{k = 0}^{m} e^{-\lambda} \cdot \frac{\lambda^{n - k}}{\pqty{n - k}!} \cdot e^{-\mu} \cdot \frac{\mu^k}{k!} \\
-        &= e^{-\pqty{\lambda + \mu}}{n!} \cdot \sum_{k = 0}^{n} \binom{n}{k} \cdot \lambda^{n - k} \cdot \mu^k \\
+        &= \sum_{k = 0}^{n} e^{-\lambda} \cdot \frac{\lambda^{n - k}}{\pqty{n - k}!} \cdot e^{-\mu} \cdot \frac{\mu^k}{k!} \\
+        &= \frac{e^{-\pqty{\lambda + \mu}}}{n!} \cdot \sum_{k = 0}^{n} \binom{n}{k} \cdot \lambda^{n - k} \cdot \mu^k \\
         &= e^{-\pqty{\lambda + \mu}} \cdot \frac{\pqty{\lambda + \mu}^n}{n!}.
     \end{align*}
 
@@ -82,7 +82,7 @@ noting that this sum is similarly countable.
 
 \subsection{Conditional Expectation}
 
-\begin{definition}[Conditonal Expectation upon an Event]
+\begin{definition}[Conditional Expectation upon an Event]
     \label{def:conditional-expectation-upon-event}%
     The \term{conditional expectation} of a random variable \(X\) with respect to an event \(B\), where \(\Prob\pqty{B} > 0\), is given by
     \[
@@ -100,7 +100,7 @@ Note that with \(X = \indicator\pqty{A}\), we do recover consistent definitions 
     \label{thm:law-of-total-expectation}%
     Let \(X\) be a random variable, \(\pqty{\Omega_i}\) be a partition of \(\Omega\) into disjoint sets, with \(\Prob\pqty{\Omega_i} > 0\) for all \(i = 1, 2, \ldots ,n\). Then we have
     \[
-        \Expt\bqty{X} = \sum_{i = 1}^{n} \Expt\bqty{\Conditional{X}{\Omega_n}} \cdot \Prob\pqty{\Omega_n}.
+        \Expt\bqty{X} = \sum_{i = 1}^{n} \Expt\bqty{\Conditional{X}{\Omega_i}} \cdot \Prob\pqty{\Omega_i}.
     \]
 \end{theorem}
 
@@ -110,7 +110,7 @@ Note that with \(X = \indicator\pqty{A}\), we do recover consistent definitions 
         \Expt\bqty{X} &= \Expt\bqty{X \cdot \indicator\pqty{\Omega}} \\
         &= \Expt\bqty{X \cdot \sum_{i = 1}^{n} \indicator \pqty{\Omega_i}} \\
         &= \sum_{i = 1}^{n} \Expt\bqty{X \cdot \indicator \pqty{\Omega_i}} \\
-        &= \sum_{i = 1}^{N} \Expt\bqty{\Conditional{X}{\Omega_n}} \cdot \Prob\pqty{\Omega_n}
+        &= \sum_{i = 1}^{n} \Expt\bqty{\Conditional{X}{\Omega_i}} \cdot \Prob\pqty{\Omega_i}
     \end{align*}
 \end{proof}
 

@@ -1,6 +1,6 @@
 \section{Simulation of Random Variables}
 
-\begin{example}[Simulating of Random Variable from Uniform Distribution]
+\begin{example}[Simulating a Random Variable from a Uniform Distribution]
     \label{ex:simulation-from-uniform}%
     Suppose \(X\) is a random variable with probability distribution function \(F\pqty{x} = \Prob\pqty{X \leq x}\), and suppose we know how to simulate \(U \sim \Uniform \ccintv{0}{1}\). How may we generate \(X\)?
 
@@ -84,7 +84,7 @@
     We have
     \begin{align*}
         \Prob\pqty{\vb{X} \in B} &= \Prob\pqty{\vb{U}_N \in B} \\
-        &= \sum_{n = 1}^{\infty} \Prob\pqty{\vb{U}_n \in N, N = n} \\
+        &= \sum_{n = 1}^{\infty} \Prob\pqty{\vb{U}_n \in B, N = n} \\
         &= \sum_{n = 1}^{\infty} \Prob\pqty{\vb{U}_n \in B, \vb{U}_n \in A, \vb{U}_{n - 1} \notin A, \ldots, \vb{U}_1 \notin A} \\
         &= \sum_{n = 1}^{\infty} \Prob\pqty{\vb{U}_n \in B \cap A} \cdot \pqty{\Prob\pqty{\vb{U}_1 \notin A}}^{n - 1} \\
         &= \sum_{n = 1}^{\infty} \abs{B \cap A} \pqty{1 - \abs{A}}^{n - 1} \\

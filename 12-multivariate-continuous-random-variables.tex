@@ -26,7 +26,7 @@ For all \(\mathcal{B} \subseteq \RR^n\), we have
     \Prob\pqty{\pqty{X_1, \ldots, X_n} \in \mathcal{B}} = \int_{\mathcal{B}} f \pqty{y_1, \ldots, y_n} \dd[n]{\vb{y}}.
 \]
 
-\begin{definition}[Independence of Continuous Random Vaiables]
+\begin{definition}[Independence of Continuous Random Variables]
     \label{def:independence-continuous-random-variables}%
     We say the continuous random variables \(X_1, \ldots, X_n\) are \term{independent}, if for all \(x_1, \ldots, x_n\), we have
     \[
@@ -70,11 +70,11 @@ For all \(\mathcal{B} \subseteq \RR^n\), we have
 
     But we have that
     \[
-        \int_{\minusinfty}^{\plusinfty} \dd{x_1} \cdots \int_{\minusinfty}^{\plusinfty} \dd{x_n} f_1\pqty{x_1} \cdots f_n\pqty{x_2} = 1,
+        \int_{\minusinfty}^{\plusinfty} \dd{x_1} \cdots \int_{\minusinfty}^{\plusinfty} \dd{x_n} f_1\pqty{x_1} \cdots f_n\pqty{x_n} = 1,
     \]
     and hence
     \[
-        \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n} = \frac{\int_{\minusinfty}^{x_1} f_1\pqty{y_1} \dd{y_1}}{\int_{\minusinfty}^{\plusinfty} f_1\pqty{y_1} \dd{y_1}} \cdots \frac{\int_{\minusinfty}^{x_1} f_n\pqty{y_n} \dd{y_n}}{\int_{\minusinfty}^{\plusinfty} f_n\pqty{y_n} \dd{y_n}}.
+        \Prob\pqty{X_1 \leq x_1, \ldots, X_n \leq x_n} = \frac{\int_{\minusinfty}^{x_1} f_1\pqty{y_1} \dd{y_1}}{\int_{\minusinfty}^{\plusinfty} f_1\pqty{y_1} \dd{y_1}} \cdots \frac{\int_{\minusinfty}^{x_n} f_n\pqty{y_n} \dd{y_n}}{\int_{\minusinfty}^{\plusinfty} f_n\pqty{y_n} \dd{y_n}}.
     \]
 
     So \(X_1, \ldots, X_n\) are independent, with densities
@@ -136,7 +136,7 @@ The continuous case is similar.
         &= \iint_{x + y \leq z} \dd[2]{\pqty{x, y}} f_{X, Y} \pqty{x, y} \\
         &= \iint_{x + y \leq z} \dd[2]{\pqty{x, y}} f_{X} \pqty{x} f_{Y} \pqty{y} \\
         &= \int_{\minusinfty}^{\plusinfty} \dd{x} \int_{\minusinfty}^{z - x} \dd{y} f_X\pqty{x} f_Y\pqty{y} \\
-        &= \int_{\minusinfty}^{\plusinfty} \dd{x} \int_{\minusinfty}^{z} \dd{y} f_X\pqty{x} f_Y\pqty{y - z} \\
+        &= \int_{\minusinfty}^{\plusinfty} \dd{x} \int_{\minusinfty}^{z} \dd{y} f_X\pqty{x} f_Y\pqty{y - x} \\
         &= \int_{\minusinfty}^{z} \dd{y} \pqty{\int_{\minusinfty}^{\plusinfty} f_X\pqty{x} f_Y\pqty{y - x} \dd{x}}.
     \end{align*}
 
@@ -322,7 +322,7 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
 
     Now, suppose \(\lambda_1 = \cdots = \lambda_n = \lambda\), and let \(Y_1, Y_2, \ldots, Y_n\) be the order statistics.
 
-    We \(Z_1 = Y_1, Z_2 = Y_2 - Y_1, \ldots, Z_i = Y_i - Y_{i - 1}\). We find the density of \(\pqty{Z_1, \ldots, Z_n}\).
+    Let \(Z_1 = Y_1, Z_2 = Y_2 - Y_1, \ldots, Z_i = Y_i - Y_{i - 1}\). We find the density of \(\pqty{Z_1, \ldots, Z_n}\).
 
     Let
     \[
