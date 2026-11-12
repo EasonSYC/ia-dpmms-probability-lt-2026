@@ -16,26 +16,26 @@ Denote \(V_i = \Var\pqty{X_i}\) and \(C_{ij} = \Cov\pqty{X_i, X_j}\) for \(i, j 
         \hline \hline
         \textbf{Name} & \(X \sim\) & \textbf{Parameters} & \(\Prob\pqty{X = x}\) & \(x \in\) & \(\Expt\bqty{X}\) & \(\Var\pqty{X}\) & \(\Expt\bqty{z^X}\) \\
         \hline\hline
-        Bernoulli & \(\Bernoulli\pqty{p}\) & \(p \in \ccintv{0}{1}\) & \(p^x(1 - p)^{1 - x}\) & \(\Bqty{0, 1}\) & \(p\) & \(p \pqty{1 - p}\) & \(1 - p + pz\) \\
+        Bernoulli & \(\Bernoulli\pqty{p}\) & \(p \in \ccintv{0}{1}\) & \(p^x(1 - p)^{1 - x}\) & \(\set{0, 1}\) & \(p\) & \(p \pqty{1 - p}\) & \(1 - p + pz\) \\
         \hline
-        Binomial & \(\Binomial\pqty{n, p}\) & \makecell{\(n \in \NN\) \\ \(p \in \ccintv{0}{1}\)} & \(\dsty \binom{n}{k} p^x (1 - p)^{n - x}\) & \(\Bqty{0, \ldots, n}\) & \(np\) &\(np\pqty{1 - p}\) & \(\pqty{1 - p + pz}^n\) \\
+        Binomial & \(\Binomial\pqty{n, p}\) & \makecell{\(n \in \NN\) \\ \(p \in \ccintv{0}{1}\)} & \(\dsty \binom{n}{k} p^x (1 - p)^{n - x}\) & \(\set{0, \ldots, n}\) & \(np\) &\(np\pqty{1 - p}\) & \(\pqty{1 - p + pz}^n\) \\
         \hline 
         Hypergeometric \(\dagger\) & \(\Hypergeometric\pqty{N, K, n}\) & \makecell{\(N \in \NN\) \\ \(K \in \NN_0\) \\ \(K \leq N\) \\ \(n \in \NN\) \\ \(n \leq N\)} & \(\dsty \frac{\binom{K}{x} \binom{N - K}{n - x}}{\binom{N}{n}}\) & \makecell{\(0 \leq x \leq K\) \\ \(n + K - N \leq x \leq n\)} & \(\dsty \frac{nK}{N}\) & \(\dsty \frac{n \pqty{N - n} K \pqty{N - K}}{N^2 \pqty{N - 1}}\) & / \\
         \hline
         \makecell{Geometric \\ (Trials)} & \(\Geometric\pqty{p}\) & \(p \in \ocintv{0}{1}\) & \(p \pqty{1 - p}^{x - 1}\) & \(\NN\) & \(\dsty \frac{1}{p}\) & \(\dsty \frac{1 - p}{p^2}\) & \(\dsty \frac{pz}{1 - z\pqty{1 - p}}\) \\
         \hline
-        \makecell{Geometric \\ (Failures)} & \(\Geometric\pqty{p}\) & \(p \in \ocintv{0}{1}\) & \(p \pqty{1 - p}^{x}\) & \(\NN \cup \Bqty{0}\) & \(\dsty \frac{1 - p}{p}\) & \(\dsty \frac{1 - p}{p^2}\) & \(\dsty \frac{p}{1 - z\pqty{1 - p}}\) \\
+        \makecell{Geometric \\ (Failures)} & \(\Geometric\pqty{p}\) & \(p \in \ocintv{0}{1}\) & \(p \pqty{1 - p}^{x}\) & \(\NN \cup \set{0}\) & \(\dsty \frac{1 - p}{p}\) & \(\dsty \frac{1 - p}{p^2}\) & \(\dsty \frac{p}{1 - z\pqty{1 - p}}\) \\
         \hline
         \makecell{Negative \\ Binomial}\(\dagger\) & \(\NegativeBinomial\pqty{r, p}\) & \makecell{\(r \in \NN\) \\ 
-        \(p \in \ccintv{0}{1}\)} & \(\dsty \binom{x + r - 1}{x} \pqty{1 - p}^x p^r\) & \(\NN \cup \Bqty{0}\) & \(\dsty \frac{r \pqty{1 - p}}{p}\) & \(\dsty \frac{r \pqty{1 - p}}{p^2}\) & \(\dsty \pqty{\frac{p}{1 - z \pqty{1 - p}}}^r\) \\
+        \(p \in \ccintv{0}{1}\)} & \(\dsty \binom{x + r - 1}{x} \pqty{1 - p}^x p^r\) & \(\NN \cup \set{0}\) & \(\dsty \frac{r \pqty{1 - p}}{p}\) & \(\dsty \frac{r \pqty{1 - p}}{p^2}\) & \(\dsty \pqty{\frac{p}{1 - z \pqty{1 - p}}}^r\) \\
         \hline
-        Poisson & \(\Poisson\pqty{\lambda}\) & \(\lambda > 0\) & \(\dsty \frac{\lambda^x}{x!} \cdot e^{-\lambda}\) & \(\NN \cup \Bqty{0}\) & \(\lambda\) & \(\lambda\) & \(e^{\lambda(z - 1)}\) \\
+        Poisson & \(\Poisson\pqty{\lambda}\) & \(\lambda > 0\) & \(\dsty \frac{\lambda^x}{x!} \cdot e^{-\lambda}\) & \(\NN \cup \set{0}\) & \(\lambda\) & \(\lambda\) & \(e^{\lambda(z - 1)}\) \\
         \hline \hline
         \textbf{Name} & \(\vb{X} \sim\) & \textbf{Parameters} & \(\Prob\pqty{\vb{X} = \vb{x}}\) & \(\vb{x} \in\) & \(\Expt\bqty{\vb{X}}\) & \(\Var\pqty{\vb{X}}\) & \(\Expt\bqty{z_1^{X_1} \cdots z_n^{X_n}}\)\\
         \hline \hline
-        Multinomial & \(\Multinomial\pqty{n, \vb{p}}\) & \makecell{\(n \in \NN\) \\ \(p_i \in \ccintv{0}{1}\) \\ \(\dsty \sum_{i = 1}^{k} p_i = 1\)} & \(\binom{n}{x_1, \ldots, x_k} p_1^{x_1} \cdots p_k^{x_k}\) & \makecell{\(x_i \in \NN \cup \Bqty{0}\) \\ \(\dsty \sum_{i = 1}^{k} x_i = n\)} & \(n \vb{p}\) & \makecell{\(V_i = n p_i \pqty{1 - p_i}\) \\ \(C_{ij} = -n p_i p_j, i \neq j\)} & \(\pqty{\vb{p}\transpose \vb{z}}^n\) \\
+        Multinomial & \(\Multinomial\pqty{n, \vb{p}}\) & \makecell{\(n \in \NN\) \\ \(p_i \in \ccintv{0}{1}\) \\ \(\dsty \sum_{i = 1}^{k} p_i = 1\)} & \(\binom{n}{x_1, \ldots, x_k} p_1^{x_1} \cdots p_k^{x_k}\) & \makecell{\(x_i \in \NN \cup \set{0}\) \\ \(\dsty \sum_{i = 1}^{k} x_i = n\)} & \(n \vb{p}\) & \makecell{\(V_i = n p_i \pqty{1 - p_i}\) \\ \(C_{ij} = -n p_i p_j, i \neq j\)} & \(\pqty{\vb{p}\transpose \vb{z}}^n\) \\
         \hline
-        \makecell{Multivariate \\ Hypergeometric} \(\dagger\) & \(\MultivariateHypergeometric\pqty{N, \vb{K}, n}\) & \makecell{\(N \in \NN\) \\ \(K_i \in \NN_0\) \\ \(\sum_{i = 1}^{k} K_i = N\) \\ \(n \in \NN\) \\ \(n \leq N\)} & \(\dsty \frac{\prod_{i = 1}^{k} \binom{K_i}{x_i}}{\binom{N}{n}}\) & \makecell{\(x_i \in \NN \cup \Bqty{0}\) \\ \(x_i \leq K_i\)} & \(\dsty \frac{n \vb{K}}{N}\) & \makecell{\(\dsty V_i = \frac{n \pqty{N - n} K_i \pqty{N - K_i}}{N^2 \pqty{N - 1}}\) \\ \(\dsty C_{ij} = - \frac{n \pqty{N - n} K_i K_j}{N^2 \pqty{N - 1}}, i \neq j\)} & /
+        \makecell{Multivariate \\ Hypergeometric} \(\dagger\) & \(\MultivariateHypergeometric\pqty{N, \vb{K}, n}\) & \makecell{\(N \in \NN\) \\ \(K_i \in \NN_0\) \\ \(\sum_{i = 1}^{k} K_i = N\) \\ \(n \in \NN\) \\ \(n \leq N\)} & \(\dsty \frac{\prod_{i = 1}^{k} \binom{K_i}{x_i}}{\binom{N}{n}}\) & \makecell{\(x_i \in \NN \cup \set{0}\) \\ \(x_i \leq K_i\)} & \(\dsty \frac{n \vb{K}}{N}\) & \makecell{\(\dsty V_i = \frac{n \pqty{N - n} K_i \pqty{N - K_i}}{N^2 \pqty{N - 1}}\) \\ \(\dsty C_{ij} = - \frac{n \pqty{N - n} K_i K_j}{N^2 \pqty{N - 1}}, i \neq j\)} & /
     \end{tabular}
     \caption{Summary of Discrete Distributions}
     \label{tab:summary-discrete-distribution}%
