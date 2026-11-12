@@ -197,9 +197,9 @@ The continuous case is similar.
     \]
     for any \(\vb{x} \in \mathcal{D}\). Then for any \(\vb{y} \in g\pqty{\mathcal{D}}\), the random variable \(\vb{Y} = g\pqty{\vb{X}}\) has density
     \[
-        f_{\vb{Y}}\pqty{\vb{y}} = f_{\vb{X}} \pqty{g\inverse\pqty{\vb{y}}} \cdot \abs{\det \vb{J}},
+        f_{\vb{Y}}\pqty{\vb{y}} = f_{\vb{X}} \pqty{g\inverse\pqty{\vb{y}}} \cdot \abs{\det J},
     \]
-    where \(\vb{J}\) is the \term{Jacobian}, given by
+    where \(J\) is the \term{Jacobian}, given by
     \[
         J_{i, j} = \pdv{x_i}{y_j}
     \]
@@ -216,16 +216,16 @@ The continuous case is similar.
 
     Applying \autoref{thm:transformation-joint-continuous-random-variable}, we have
     \[
-        f_{\pqty{R, \Theta}} \pqty{r, \theta} = f_{\pqty{X, Y}} \pqty{r \cos \theta, r \sin \theta} \cdot \abs{\det \vb{J}},
+        f_{\pqty{R, \Theta}} \pqty{r, \theta} = f_{\pqty{X, Y}} \pqty{r \cos \theta, r \sin \theta} \cdot \abs{\det J},
     \]
     where the Jacobian is given by
     \[
-        \vb{J} = \pmqty{
+        J = \pmqty{
             \cos \theta & - r \sin \theta \\
             \sin \theta & r \cos \theta
         },
     \]
-    and so \(\abs{\det \vb{J}} = r\). Hence, using independence,
+    and so \(\abs{\det J} = r\). Hence, using independence,
     \begin{align*}
         f_{\pqty{R, \Theta}} \pqty{r, \theta} &= f_X \pqty{r \cos \theta} \cdot f_Y \pqty{r \sin \theta} \cdot r \\
         &= r \cdot \frac{1}{\sqrt{2\pi}} \cdot e^{- \frac{r^2 \cos^2 \theta}{2}} \cdot \frac{1}{\sqrt{2 \pi}} \cdot e^{- \frac{r^2 \sin^2 \theta}{2}} \\
@@ -328,7 +328,7 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
     \[
         \vb{Z} = \pmqty{Z_1 \\ \vdots \\ Z_n},
         \vb{Y} = \pmqty{Y_1 \\ \vdots \\ Y_n},
-        \vb{A} = \pmqty{
+        A = \pmqty{
              1 &  0 & 0 & \cdots &  0 &  0 &  0 \\
             -1 &  1 & 0 & \cdots &  0 &  0 &  0 \\
              0 & -1 & 1 & \cdots &  0 &  0 &  0 \\
@@ -337,9 +337,9 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
              0 &  0 & 0 & \cdots &  0 & -1 & 1
         },
     \]
-    so we have \(\vb{Z} = \vb{A} \vb{y}\), and \(\det \vb{A} = 1\). Hence, let \(\vb{z} = \vb{A} \vb{y}\), we have
+    so we have \(\vb{Z} = A \vb{y}\), and \(\det A = 1\). Hence, let \(\vb{z} = A \vb{y}\), we have
     \begin{align*}
-        f_{\pqty{Z_1, \ldots, Z_n}} \pqty{z_1, \ldots, z_n} &= f_{\pqty{Y_1, \ldots, Y_n}} \pqty{y_1, \ldots, y_n} \abs{\det \vb{A}} \\
+        f_{\pqty{Z_1, \ldots, Z_n}} \pqty{z_1, \ldots, z_n} &= f_{\pqty{Y_1, \ldots, Y_n}} \pqty{y_1, \ldots, y_n} \abs{\det A} \\
         &= n! \cdot f\pqty{y_1} \cdots f\pqty{y_n} \\
         &= n! \lambda e^{-\lambda y_1} \cdots \lambda e^{-\lambda y_n} \\
         &= \prod_{i = 1}^{n} \pqty{\pqty{n - i + 1} \lambda e^{-\lambda \pqty{n - i + 1} z_i}}.
@@ -388,18 +388,18 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
     \]
     and
     \[
-        \Var\pqty{\vb{u} \transpose \vb{X}} = \Var\pqty{\sum_{i = 1}^{n} u_i X_i} = \sum_{i, j = 1}^{n} u_i \Cov\pqty{X_i, X_j} u_j = \vb{u}\transpose \vb{\Var\pqty{\vb{X}}} \vb{u}. 
+        \Var\pqty{\vb{u} \transpose \vb{X}} = \Var\pqty{\sum_{i = 1}^{n} u_i X_i} = \sum_{i, j = 1}^{n} u_i \Cov\pqty{X_i, X_j} u_j = \vb{u}\transpose \Var\pqty{\vb{X}} \vb{u}.
     \]
 \end{proof}
 
 \begin{definition}[Positive/Negative Definiteness]
     \label{def:positive-negative-definiteness}%
-    Let \(\vb{M}\) be an \(n \times n\) real symmetric matrix. Then we say it is
+    Let \(M\) be an \(n \times n\) real symmetric matrix. Then we say it is
     \begin{itemize}
-        \item \term{positive definite}, denoted as \(\vb{M} \posDef 0\), if for all \(\vb{u} \in \RR^n \setminus \set{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} > 0\);
-        \item \term{positive semi-definite}, or \term{non-negative definite}, denoted as \(\vb{M} \posDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose \vb{M} \vb{u} \geq 0\);
-        \item \term{negative definite}, denoted as \(\vb{M} \negDef 0\), if for all \(\vb{u} \in \RR^n \setminus \set{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} < 0\);
-        \item \term{negative semi-definite}, or \term{non-positive definite}, denoted as \(\vb{M} \negDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose \vb{M} \vb{u} \leq 0\).
+        \item \term{positive definite}, denoted as \(M \posDef 0\), if for all \(\vb{u} \in \RR^n \setminus \set{\vb{0}}\), we have \(\vb{u}\transpose M \vb{u} > 0\);
+        \item \term{positive semi-definite}, or \term{non-negative definite}, denoted as \(M \posDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose M \vb{u} \geq 0\);
+        \item \term{negative definite}, denoted as \(M \negDef 0\), if for all \(\vb{u} \in \RR^n \setminus \set{\vb{0}}\), we have \(\vb{u}\transpose M \vb{u} < 0\);
+        \item \term{negative semi-definite}, or \term{non-positive definite}, denoted as \(M \negDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose M \vb{u} \leq 0\).
     \end{itemize}
 
     Equivalently, in terms of eigenvalues, it is
@@ -425,29 +425,29 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
 
 \begin{definition}[Square Root of Non-Negative Definite Matrix]
     \label{def:sqrt-non-negative-definite-matrix}%
-    Let \(\vb{V}\) be a non-negative definite matrix, and let its orthogonal decomposition be
+    Let \(V\) be a non-negative definite matrix, and let its orthogonal decomposition be
     \[
-        \vb{V} = \vb{U}\transpose \vb{D} \vb{U}
+        V = U\transpose D U
     \]
-    for an orthogonal matrix \(\vb{U}\transpose = \vb{U}\inverse\), and \(\vb{D}\) diagonal with
+    for an orthogonal matrix \(U\transpose = U\inverse\), and \(D\) diagonal with
     \[
-        \vb{D} = \diag\pqty{\lambda_1, \ldots, \lambda_n} = \pmqty{\dmat{\lambda_1, \ddots, \lambda_n}}
+        D = \diag\pqty{\lambda_1, \ldots, \lambda_n} = \pmqty{\dmat{\lambda_1, \ddots, \lambda_n}}
     \]
     with \(\lambda_i \geq 0\) for \(i = 1, \ldots, n\).
 
-    The \term{square root} of \(\vb{V}\) is defined as
+    The \term{square root} of \(V\) is defined as
     \[
-        \vb*{\sigma} = \vb{U}\transpose \sqrt{\vb{D}} \vb{U}
+        \sigma = U\transpose \sqrt{D} U
     \]
     where
     \[
-        \sqrt{\vb{D}} = \diag\pqty{\sqrt{\lambda_1}, \ldots, \sqrt{\lambda_n}} = \pmqty{\dmat{\sqrt{\lambda_1}, \ddots, \sqrt{\lambda_n}}}
+        \sqrt{D} = \diag\pqty{\sqrt{\lambda_1}, \ldots, \sqrt{\lambda_n}} = \pmqty{\dmat{\sqrt{\lambda_1}, \ddots, \sqrt{\lambda_n}}}
     \]
 \end{definition}
 
 \begin{claim}[Independence implies Variance is Diagonal]
     \label{claim:indep-diagonal-variance}%
-    If \(X_1, \ldots, X_n\) are independent, then \(\vb{V}\) is a diagonal matrix.
+    If \(X_1, \ldots, X_n\) are independent, then \(V\) is a diagonal matrix.
 \end{claim}
 
 \begin{proof}
@@ -479,7 +479,7 @@ We restrict us to the two-dimensional case. Set \(\mu_1 = \Expt\bqty{X_1}, \mu_2
     \label{claim:var-mat-corr}%
     Let \(\sigma_1, \sigma_2 > 0\) and \(\rho \in \ccintv{-1}{1}\). Then the matrix
     \[
-        \vb{V} = \pmqty{
+        V = \pmqty{
             \sigma_1^2 & \rho \sigma_1 \sigma_2 \\
             \rho \sigma_1 \sigma_2 & \sigma_2^2
         }
@@ -492,7 +492,7 @@ We restrict us to the two-dimensional case. Set \(\mu_1 = \Expt\bqty{X_1}, \mu_2
 
     We have
     \begin{align*}
-        \vb{u}\transpose \vb{V} \vb{u} &= \pqty{1 - \rho} \pqty{\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2} + \rho \pqty{\sigma_1 u_1 + \sigma_2 u_2}^2 \\
+        \vb{u}\transpose V \vb{u} &= \pqty{1 - \rho} \pqty{\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2} + \rho \pqty{\sigma_1 u_1 + \sigma_2 u_2}^2 \\
         &= \pqty{1 + \rho} \pqty{\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2} - \rho \pqty{\sigma_1 u_1 - \sigma_2 u_2}^2.
     \end{align*}
 

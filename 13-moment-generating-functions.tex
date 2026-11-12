@@ -228,27 +228,27 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
 
 \begin{claim}[Affine Transformation of Gaussian is Gaussian]
     \label{claim:affine-transformation-preserves-gaussian}%
-    Let \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) be Gaussian. Let \(\vb{A}\) be an \(m \times n\) matrix, and \(\vb{b} \in \RR^m\). Then the result
+    Let \(\vb{X} = \pqty{X_1, \ldots, X_n} \in \RR^n\) be Gaussian. Let \(A\) be an \(m \times n\) matrix, and \(\vb{b} \in \RR^m\). Then the result
     \[
-        \vb{A} \vb{X} + \vb{b}
+        A \vb{X} + \vb{b}
     \]
     is also Gaussian.
 \end{claim}
 
 \begin{proof}
-    Let \(\vb{u} = \pqty{u_1, \ldots, u_m} \transpose \in \RR^m\) be arbitrary. We want to show \(\vb{u}\transpose \pqty{\vb{A} \vb{X} + \vb{b}}\) is Gaussian in \(\RR\). We have
+    Let \(\vb{u} = \pqty{u_1, \ldots, u_m} \transpose \in \RR^m\) be arbitrary. We want to show \(\vb{u}\transpose \pqty{A \vb{X} + \vb{b}}\) is Gaussian in \(\RR\). We have
     \[
-        \vb{u}\transpose \pqty{\vb{A} \vb{X} + \vb{b}} = \vb{u}\transpose \vb{A} \vb{X} + \vb{u}\transpose \vb{b}.
+        \vb{u}\transpose \pqty{A \vb{X} + \vb{b}} = \vb{u}\transpose A \vb{X} + \vb{u}\transpose \vb{b}.
     \]
 
-    Let \(\vb{v} = \vb{A}\transpose \vb{u}\). Then we have
+    Let \(\vb{v} = A\transpose \vb{u}\). Then we have
     \[
-        \vb{u}\transpose \pqty{\vb{A} \vb{X} + \vb{b}} = \vb{v}\transpose \vb{X} + \vb{u}\transpose \vb{b}.
+        \vb{u}\transpose \pqty{A \vb{X} + \vb{b}} = \vb{v}\transpose \vb{X} + \vb{u}\transpose \vb{b}.
     \]
 
     \(\vb{v}\transpose \vb{X}\) is Gaussian in \(\RR\), since \(\vb{X}\) is Gaussian. Adding a constant to a Gaussian will still produce a Gaussian in \(\RR\). So
     \[
-        \vb{u}\transpose \pqty{\vb{A} \vb{X} + \vb{b}}
+        \vb{u}\transpose \pqty{A \vb{X} + \vb{b}}
     \]
     is Gaussian in \(\RR\), as desired.
 \end{proof}
@@ -257,18 +257,18 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
     \label{prop:mgf-multivariate-gaussian}%
     Let \(\vb{X} = \pqty{X_1, \ldots, X_n}\) be a multivariate Gaussian random variable. Then its moment generating function, \(m\pqty{\vb*{\lambda}}\), is given by
     \[
-        m\pqty{\vb*{\lambda}} = \Expt\bqty{e^{\vb*{\lambda} \transpose \vb{X}}} = \exp\pqty{\vb*{\lambda} \transpose \vb*{\mu} + \frac{\vb*{\lambda} \transpose \vb{V} \vb*{\lambda}}{2}},
+        m\pqty{\vb*{\lambda}} = \Expt\bqty{e^{\vb*{\lambda} \transpose \vb{X}}} = \exp\pqty{\vb*{\lambda} \transpose \vb*{\mu} + \frac{\vb*{\lambda} \transpose V \vb*{\lambda}}{2}},
     \]
     where
     \[
-        \vb*{\mu} = \Expt\bqty{\vb{X}}, \quad \vb{V} = \Var\pqty{\vb{X}}.
+        \vb*{\mu} = \Expt\bqty{\vb{X}}, \quad V = \Var\pqty{\vb{X}}.
     \]
 \end{proposition}
 
 \begin{proof}
     Note that \(\vb*{\lambda \transpose \vb{X}}\) is a normal distribution with parameters
     \[
-        \Normal\pqty{\vb*{\lambda}\transpose\vb*{\mu}, \vb*{\lambda}\transpose \vb{V} \vb*{\lambda}}
+        \Normal\pqty{\vb*{\lambda}\transpose\vb*{\mu}, \vb*{\lambda}\transpose V \vb*{\lambda}}
     \]
     by \autoref{prop:expt-var-transform-multivariate-rv}. The result follows.
 \end{proof}
@@ -276,9 +276,9 @@ Note that multiples of the Cauchy distribution therefore would have the same mom
 Since the moment generating function (on an open set) uniquely characterises the distribution, it is sufficient to know the mean and the variance to characterise the multivariate Gaussian distribution.
 
 \begin{notation}
-    We write the Multivariate Gaussian distribution \(\vb{X}\) with mean \(\vb*{\mu} \in \RR^n\), and non-negative definite matrix \(\vb{V}\), as
+    We write the Multivariate Gaussian distribution \(\vb{X}\) with mean \(\vb*{\mu} \in \RR^n\), and non-negative definite matrix \(V\), as
     \[
-        \vb{X} \sim \Normal\pqty{\vb*{\mu}, \vb{V}}.
+        \vb{X} \sim \Normal\pqty{\vb*{\mu}, V}.
     \]
 \end{notation}
 
@@ -292,7 +292,7 @@ The next question is, does the multivariate Gaussian always exist, for any speci
     \]
     is Gaussian. In particular,
     \[
-        \vb{Z} \sim \Normal\pqty{\vb{0}, \identityM_n}.
+        \vb{Z} \sim \Normal\pqty{\vb{0}, I_n}.
     \]
 \end{lemma}
 
@@ -315,74 +315,74 @@ The next question is, does the multivariate Gaussian always exist, for any speci
 
 \begin{lemma}[Construction of Multivariate Gaussian]
     \label{lem:construction-multivariate-gaussian}%
-    Let \(\vb*{\mu} \in \RR^n\), and \(\vb{V}\) be a non-negative definite matrix. Let \(Z_1, \ldots, Z_n\) be identically and independently distributed with \(\Normal\pqty{0, 1}\). Let \(\vb{Z} = \pqty{Z_1, \ldots, Z_n}\).
+    Let \(\vb*{\mu} \in \RR^n\), and \(V\) be a non-negative definite matrix. Let \(Z_1, \ldots, Z_n\) be identically and independently distributed with \(\Normal\pqty{0, 1}\). Let \(\vb{Z} = \pqty{Z_1, \ldots, Z_n}\).
 
     Then the random variable
     \[
-        \vb{X} = \vb*{\mu} + \vb*{\sigma} \vb{Z}
+        \vb{X} = \vb*{\mu} + \sigma \vb{Z}
     \]
-    is Gaussian, with \(X \sim \Normal\pqty{\vb*{\mu}, \vb{V}}\), where \(\vb*{\sigma}\) is the square-root of \(\vb{V}\).
+    is Gaussian, with \(X \sim \Normal\pqty{\vb*{\mu}, V}\), where \(\sigma\) is the square-root of \(V\).
 \end{lemma}
 
 \begin{proof}
     First, \(\vb{X}\) is Gaussian since it is a linear transformation of a Gaussian vector. We have \(\Expt\bqty{\vb{X}} = \vb*{\mu}\). For the variance, we have
     \begin{align*}
         \Var\pqty{\vb{X}} &= \Expt\bqty{\pqty{\vb{X} - \vb*{\mu}} \pqty{\vb{X} - \vb*{\mu}}\transpose} \\
-        &= \Expt\bqty{\pqty{\vb*{\sigma} \vb{Z}} \pqty{\vb{Z}\transpose \vb*{\sigma}\transpose}} \\
-        &= \vb*{\sigma} \Expt\bqty{\vb{Z} \vb{Z}\transpose} \vb*{\sigma}\transpose \\
-        &= \vb*{\sigma} \identityM_n \vb*{\sigma}\transpose \\
-        &= \vb*{\sigma} \vb*{\sigma}\transpose \\
-        &= \vb{V}.
+        &= \Expt\bqty{\pqty{\sigma \vb{Z}} \pqty{\vb{Z}\transpose \sigma\transpose}} \\
+        &= \sigma \Expt\bqty{\vb{Z} \vb{Z}\transpose} \sigma\transpose \\
+        &= \sigma I_n \sigma\transpose \\
+        &= \sigma \sigma\transpose \\
+        &= V.
     \end{align*}
 \end{proof}
 
 We aim to find the density of a multivariate Gaussian next.
 
 \begin{proposition}[Density of Multivariate Gaussian with Positive Definite Variance]
-    If \(\vb{V}\) is positive definite, then the density of \(\Normal\pqty{\vb*{\mu}, \vb{V}}\) is given by
+    If \(V\) is positive definite, then the density of \(\Normal\pqty{\vb*{\mu}, V}\) is given by
     \[
-        f_{\vb{X}}\pqty{\vb{x}} = \frac{1}{\sqrt{\pqty{2\pi}^n \det \vb{V}}} \exp\pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}}\transpose \vb{V}\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}}.
+        f_{\vb{X}}\pqty{\vb{x}} = \frac{1}{\sqrt{\pqty{2\pi}^n \det V}} \exp\pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}}\transpose V\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}}.
     \]
 \end{proposition}
 
 \begin{proof}
-    We have \(\vb{X} = \vb*{\mu} + \vb*{\sigma} \vb{Z}\), where \(\vb{Z} \sim \Normal\pqty{\vb{0}, \identityM_n}\).
+    We have \(\vb{X} = \vb*{\mu} + \sigma \vb{Z}\), where \(\vb{Z} \sim \Normal\pqty{\vb{0}, I_n}\).
 
-    Therefore, \(\vb{Z} = \vb*{\sigma}\inverse \pqty{\vb{X} - \vb*{\mu}}\).
+    Therefore, \(\vb{Z} = \sigma\inverse \pqty{\vb{X} - \vb*{\mu}}\).
 
     Hence,
     \[
-        f_{\vb{X}} \pqty{\vb{x}} = f_{\vb{Z}} \pqty{\vb*{\sigma}\inverse \pqty{\vb{x} - \vb*{\mu}}} \cdot \abs{\det \vb{J}},
+        f_{\vb{X}} \pqty{\vb{x}} = f_{\vb{Z}} \pqty{\sigma\inverse \pqty{\vb{x} - \vb*{\mu}}} \cdot \abs{\det J},
     \]
-    where \(\vb{J} = \vb*{\sigma}\inverse\).
+    where \(J = \sigma\inverse\).
 
     Hence,
     \begin{align*}
-        f_{\vb{X}} \pqty{\vb{x}} &= f_{\vb{Z}} \pqty{\vb*{\sigma}\inverse \pqty{\vb{x} - \vb*{\mu}}} \cdot \abs{\det \vb{J}} \\
-        &= f_{\vb{Z}} \pqty{z_1, \cdots, z_n} \cdot \det\pqty{\vb*{\sigma} \inverse} \\
-        &= \frac{1}{\pqty{2 \pi}^{\flatfrac{n}{2}}} \exp\pqty{- \frac{\abs{\vb{z}}^2}{2}} \cdot \det\pqty{\vb*{\sigma}\inverse} \\
-        &= \frac{1}{\pqty{2 \pi}^{\flatfrac{n}{2}}} \exp\pqty{- \frac{\vb{z}\transpose \vb{z}}{2}} \frac{1}{\det \vb*{\sigma}}.
+        f_{\vb{X}}\pqty{\vb{x}} &= f_{\vb{Z}} \pqty{\sigma\inverse \pqty{\vb{x} - \vb*{\mu}}} \cdot \abs{\det J} \\
+        &= f_{\vb{Z}} \pqty{z_1, \cdots, z_n} \cdot \det\pqty{\sigma \inverse} \\
+        &= \frac{1}{\pqty{2 \pi}^{\flatfrac{n}{2}}} \exp\pqty{- \frac{\abs{\vb{z}}^2}{2}} \cdot \det\pqty{\sigma\inverse} \\
+        &= \frac{1}{\pqty{2 \pi}^{\flatfrac{n}{2}}} \exp\pqty{- \frac{\vb{z}\transpose \vb{z}}{2}} \frac{1}{\det \sigma}.
     \end{align*}
 
     Hence,
     \[
-        f_{\vb{X}}\pqty{\vb{x}} = \frac{1}{\pqty{2 \pi}^{\flatfrac{n}{2}} \det \vb*{\sigma}} \exp\pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}}\transpose \pqty{\vb*{\sigma}\inverse}\transpose \vb*{\sigma}\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}}.
+        f_{\vb{X}}\pqty{\vb{x}} = \frac{1}{\pqty{2 \pi}^{\flatfrac{n}{2}} \det \sigma} \exp\pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}}\transpose \pqty{\sigma\inverse}\transpose \sigma\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}}.
     \]
 
-    We have \(\pqty{\vb*{\sigma}\inverse}\transpose = \vb*{\sigma}\inverse\), and \(\det\vb*{\sigma} = \sqrt{\det \vb{V}}\), and hence
+    We have \(\pqty{\sigma\inverse}\transpose = \sigma\inverse\), and \(\det\sigma = \sqrt{\det V}\), and hence
     \[
-        f_{\vb{X}}\pqty{\vb{x}} = \frac{1}{\sqrt{\pqty{2\pi}^n \det \vb{V}}} \exp\pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}}\transpose \vb{V}\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}}
+        f_{\vb{X}}\pqty{\vb{x}} = \frac{1}{\sqrt{\pqty{2\pi}^n \det V}} \exp\pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}}\transpose V\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}}
     \]
     as desired.
 \end{proof}
 
-Now we look at the degenerate case, where one or more of the entries \(\lambda_i = 0\). By an orthogonal change of basis, we can assume that \(\vb{V}\) takes the form of
+Now we look at the degenerate case, where one or more of the entries \(\lambda_i = 0\). By an orthogonal change of basis, we can assume that \(V\) takes the form of
 \[
-    \vb{V} = \pmqty{
-        \vb{U} & \vb{0}\transpose \\ \vb{0} & \zeroM
+    V = \pmqty{
+        U & \vb{0}\transpose \\ \vb{0} & O
     }
 \]
-where \(\vb{U}\) is a positive definite \(m \times m\) matrix, where \(m < n\).
+where \(U\) is a positive definite \(m \times m\) matrix, where \(m < n\).
 
 Under this change of basis, we have
 \[
@@ -392,9 +392,9 @@ for \(\vb*{\lambda} \in \RR^m, \vb*{\nu} \in \RR^{n - m}\). Hence, we can write 
 \[
     \vb{X} = \pmqty{\vb{Y} \\ \vb*{\nu}}
 \]
-where \(\vb{Y} \sim \Normal\pqty{\vb*{\lambda}, \vb{U}}\) and \(\vb{Y} \in \RR^m\). Hence, it has density
+where \(\vb{Y} \sim \Normal\pqty{\vb*{\lambda}, U}\) and \(\vb{Y} \in \RR^m\). Hence, it has density
 \[
-    f_{\vb{Y}} \pqty{\vb{y}} = \frac{1}{\sqrt{\pqty{2 \pi}^m \det \vb{U}}} \exp \pqty{- \frac{\pqty{\vb{y} - \vb*{\lambda}}\transpose \vb{U}\inverse \pqty{\vb{y} - \vb*{\lambda}}}{2}}
+    f_{\vb{Y}} \pqty{\vb{y}} = \frac{1}{\sqrt{\pqty{2 \pi}^m \det U}} \exp \pqty{- \frac{\pqty{\vb{y} - \vb*{\lambda}}\transpose U\inverse \pqty{\vb{y} - \vb*{\lambda}}}{2}}
 \]
 for the first \(m\) components.
 
@@ -402,13 +402,13 @@ For a Gaussian random variable, we have the converse of \autoref{claim:indep-dia
 
 \begin{lemma}[Diagonal Variance implies Independence for Gaussian]
     \label{lem:diagonal-variance-independence-gaussian}%
-    Let \(\vb{X} \sim \Normal\pqty{\vb*{\mu}, \vb{V}}\) where \(\vb{V}\) is positive definite. If \(\vb{V}\) is diagonal, then the \(X_i\)s are independent.
+    Let \(\vb{X} \sim \Normal\pqty{\vb*{\mu}, V}\) where \(V\) is positive definite. If \(V\) is diagonal, then the \(X_i\)s are independent.
 \end{lemma}
 
 \begin{proof}[\proofname\ using Probability Density Function]
     Let
     \[
-        \vb{V} = \diag\pqty{\lambda_1, \ldots, \lambda_n},
+        V = \diag\pqty{\lambda_1, \ldots, \lambda_n},
     \]
     and
     \[
@@ -417,8 +417,8 @@ For a Gaussian random variable, we have the converse of \autoref{claim:indep-dia
 
     The probability density function of \(\vb{X}\) is given by
     \begin{align*}
-        f_{\vb{X}} \pqty{\vb{x}} &= \frac{1}{\sqrt{\pqty{2 \pi}^n \det \vb{V}}} \exp \pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}} \transpose \vb{V}\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}} \\
-        &= \frac{1}{\sqrt{\pqty{2\pi}^n \det \vb{V}}} \cdot \exp\pqty{- \sum_{i = 1}^{n} \frac{\pqty{x_i - \mu_i}^2}{2 \lambda_i}},
+        f_{\vb{X}} \pqty{\vb{x}} &= \frac{1}{\sqrt{\pqty{2 \pi}^n \det V}} \exp \pqty{- \frac{\pqty{\vb{x} - \vb*{\mu}} \transpose V\inverse \pqty{\vb{x} - \vb*{\mu}}}{2}} \\
+        &= \frac{1}{\sqrt{\pqty{2\pi}^n \det V}} \cdot \exp\pqty{- \sum_{i = 1}^{n} \frac{\pqty{x_i - \mu_i}^2}{2 \lambda_i}},
     \end{align*}
     and the density function factorises. Therefore, \(X_i \sim \Normal\pqty{\mu_i, \lambda_i}\) is independent.
 \end{proof}
@@ -426,12 +426,12 @@ For a Gaussian random variable, we have the converse of \autoref{claim:indep-dia
 \begin{proof}[\proofname\ using Moment Generating Function]
     We inspect the moment generation function. Recall that
     \[
-        \vb*{\theta}\transpose \vb{X} \sim \Normal\pqty{\vb*{\theta}\transpose \vb*{\mu}, \vb*{\theta}\transpose \vb{V} \vb*{\theta}}.
+        \vb*{\theta}\transpose \vb{X} \sim \Normal\pqty{\vb*{\theta}\transpose \vb*{\mu}, \vb*{\theta}\transpose V \vb*{\theta}}.
     \]
     
     We have
     \begin{align*}
-        m\pqty{\vb*{\theta}} &= \exp\pqty{\vb*{\theta}\transpose \vb*{\mu} + \frac{\vb*{\theta}\transpose \vb{V} \vb*{\theta}}{2}} \\
+        m\pqty{\vb*{\theta}} &= \exp\pqty{\vb*{\theta}\transpose \vb*{\mu} + \frac{\vb*{\theta}\transpose V \vb*{\theta}}{2}} \\
         &= \exp\pqty{\sum_{i = 1}^{n} \theta_i \mu_i + \sum_{i = 1}^{n} \frac{\theta_i^2 \lambda_i}{2}} \\
         &= \prod_{i = 1}^{n} \exp\pqty{\theta_i \mu_i + \frac{\theta_i^2 \lambda_i}{2}}
     \end{align*}

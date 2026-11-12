@@ -63,7 +63,7 @@ Denote \(V_i = \Var\pqty{X_i}\) and \(C_{ij} = \Cov\pqty{X_i, X_j}\) for \(i, j 
         \hline \hline
         \textbf{Name} & \(\vb{X} \sim\) & \textbf{Parameters} & \(f_{\vb{X}} \pqty{\vb{x}}\) & \(F_{\vb{X}} \pqty{\vb{x}}\) & \(\vb{x} \in\) & \(\Expt\bqty{\vb{X}}\) & \(\Var\pqty{\vb{X}}\) & \(\Expt\bqty{e^{\vb*{\theta}\transpose \vb{X}}}\)\\
         \hline \hline
-        \makecell{Multivariate \\ Gaussian \\ (Non-Degenerate)} & \(\Normal\pqty{\vb*{\mu}, \vb{V}}\) & \makecell{\(\vb*{\mu} \in \RR^n\) \\ \(\vb{V} \posDef 0\)} & \(\displaystyle \frac{\exp\pqty{- \frac{1}{2} \pqty{\vb{x} - \vb*{\mu}}\transpose \vb{V}\inverse \pqty{\vb{x} - \vb*{\mu}}}}{\sqrt{\pqty{2\pi}^n \det \vb{V}}}\) & / & \(\RR^n\) & \(\vb*{\mu}\) & \(\vb{V}\) & \(\dsty \exp\pqty{\vb*{\theta}\transpose \vb*{\mu} + \frac{1}{2} \vb*{\theta}\transpose \vb{V} \vb*{\theta}}\) 
+        \makecell{Multivariate \\ Gaussian \\ (Non-Degenerate)} & \(\Normal\pqty{\vb*{\mu}, V}\) & \makecell{\(\vb*{\mu} \in \RR^n\) \\ \(V \posDef 0\)} & \(\displaystyle \frac{\exp\pqty{- \frac{1}{2} \pqty{\vb{x} - \vb*{\mu}}\transpose V\inverse \pqty{\vb{x} - \vb*{\mu}}}}{\sqrt{\pqty{2\pi}^n \det V}}\) & / & \(\RR^n\) & \(\vb*{\mu}\) & \(V\) & \(\dsty \exp\pqty{\vb*{\theta}\transpose \vb*{\mu} + \frac{1}{2} \vb*{\theta}\transpose V \vb*{\theta}}\)
     \end{tabular}
     \caption{Summary of Continuous Distributions}
     \label{tab:summary-continuous-distribution}%
