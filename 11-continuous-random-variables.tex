@@ -4,7 +4,7 @@
 
 We return to the axiomatic approach. Recall that in \autoref{def:random-variable}, we required that
 \[
-    \Bqty{X \leq x} = \set{\omega}{X\pqty{\omega} \leq x} \in \eventSpace.
+    \set{X \leq x} = \set{\omega}{X\pqty{\omega} \leq x} \in \eventSpace.
 \]
 
 Recall we defined in \autoref{def:probability-distribution-function} the Probability/Cumulative Distribution Function. These look like \autoref{fig:cdf-discrete} for discrete random variables.
@@ -85,7 +85,7 @@ The probability distribution function satisfies the following properties.
 
     We define the events
     \[
-        A_n = \Bqty{x < X \leq x_n},
+        A_n = \set{x < X \leq x_n},
     \]
     and hence we have \(\Prob\pqty{A_n} = F\pqty{x_n} - F\pqty{x}\).
 
@@ -110,14 +110,14 @@ The probability distribution function satisfies the following properties.
 
     Define the events
     \[
-        B_n = \Bqty{X \leq x - \frac{1}{n}}.
+        B_n = \set{X \leq x - \frac{1}{n}}.
     \]
 
     We have \(B_n \subseteq B_{n + 1}\), and hence by \autoref{prop:continuity-of-probability-measure} (Continuity of Probability Measure),
     \[
         \Prob\pqty{B_n} \to \Prob\pqty{\bigcup_{n \in \NN} B_n} = \Prob\pqty{X < x}
     \]
-    since \(\bigcup_{n \in \NN} B_n = \Bqty{X < x}\).
+    since \(\bigcup_{n \in \NN} B_n = \set{X < x}\).
 \end{proof}
 
 We may now define a continuous random variable as follows.
@@ -323,7 +323,7 @@ In fact, the exponential random variable is the only positive random variable wi
         \Expt\bqty{g\pqty{X}} = \int_{\minusinfty}^{\plusinfty} g\pqty{x} f\pqty{x} \dd{x}.
     \]
 
-    For a general continuous random variable \(X\), let \(X_+ = \max\Bqty{X, 0}\) and \(X_- = \max\Bqty{-X, 0}\). If one of \(\Expt\bqty{X_+}\) and \(\Expt\bqty{X_-}\) is not infinity, then we may define
+    For a general continuous random variable \(X\), let \(X_+ = \max\set{X, 0}\) and \(X_- = \max\set{-X, 0}\). If one of \(\Expt\bqty{X_+}\) and \(\Expt\bqty{X_-}\) is not infinity, then we may define
     \[
         \Expt\bqty{X} = \Expt\bqty{X_+} - \Expt\bqty{X_-} = \int_{\minusinfty}^{\plusinfty} x f\pqty{x} \dd{x}.
     \]  

@@ -195,7 +195,7 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
     \label{ex:counting-surjections}%
     Let
     \[
-        \Omega = \Bqty{\functiondomain{f}{\Bqty{1, 2, \ldots, n}}{\Bqty{1, 2, \ldots, m}}},
+        \Omega = \set{\functiondomain{f}{\set{1, 2, \ldots, n}}{\set{1, 2, \ldots, m}}},
     \]
     and take the subset
     \[
@@ -231,11 +231,11 @@ This leads to \autoref{prop:bonferroni-inequality}, the Bonferroni Inequalities.
     \label{ex:derangements}%
     \term{Derangements} are permutations with no fixed points. Let the event space be
     \[
-        \Omega = \Bqty{\text{permutations of }\Bqty{1, 2, \ldots, n}}
+        \Omega = \set{\text{permutations of }\set{1, 2, \ldots, n}}
     \]
     and the event of derangements be
     \[
-        A = \Bqty{\text{derangements}} = \set{f \in \Omega}{\forall i = 1, 2, \ldots, n: f\pqty{i} \neq i}.
+        A = \set{\text{derangements}} = \set{f \in \Omega}{\forall i = 1, 2, \ldots, n: f\pqty{i} \neq i}.
     \]
 
     What is the probability of \(A\)?
@@ -294,7 +294,7 @@ Let \(\pqty{\Omega, \eventSpace, \Prob}\) be a probability space.
         \Prob\pqty{A \cap B} = \Prob\pqty{A} \cdot \Prob\pqty{B}.
     \]
 
-    A \emph{countable collection} of events \(\pqty{A_n}_{n \in \NN}\) is said to be \term{independent}, if for any finite collection of indices \(I = \Bqty{i_1, i_2, \ldots, i_k} \subseteq \NN\), we have
+    A \emph{countable collection} of events \(\pqty{A_n}_{n \in \NN}\) is said to be \term{independent}, if for any finite collection of indices \(I = \set{i_1, i_2, \ldots, i_k} \subseteq \NN\), we have
     \[
         \Prob\pqty{\bigcap_{i \in I} A_i} = \prod_{i \in I} \Prob\pqty{A_i}.
     \]
@@ -308,7 +308,7 @@ Let \(\pqty{\Omega, \eventSpace, \Prob}\) be a probability space.
     \label{ex:pairwise-indep-does-not-imply-indep}
     We toss a fair coin twice. The sample space is
     \[
-        \Omega = \Bqty{\pqty{0, 0}, \pqty{0, 1}, \pqty{1, 0}, \pqty{1, 1}}
+        \Omega = \set{\pqty{0, 0}, \pqty{0, 1}, \pqty{1, 0}, \pqty{1, 1}}
     \]
     equipped with probability measure
     \[
@@ -316,7 +316,7 @@ Let \(\pqty{\Omega, \eventSpace, \Prob}\) be a probability space.
     \]  
     for all \(\omega \in \Omega\). Take
     \[
-        A = \Bqty{\pqty{0, 0}, \pqty{0, 1}}, B = \Bqty{\pqty{0, 0}, \pqty{1, 0}}, C = \Bqty{\pqty{1, 0}, \pqty{0, 1}}.
+        A = \set{\pqty{0, 0}, \pqty{0, 1}}, B = \set{\pqty{0, 0}, \pqty{1, 0}}, C = \set{\pqty{1, 0}, \pqty{0, 1}}.
     \]
 
     We have
@@ -327,7 +327,7 @@ Let \(\pqty{\Omega, \eventSpace, \Prob}\) be a probability space.
     \[
         \Prob\pqty{A \cap B} = \Prob\pqty{A \cap C} = \Prob\pqty{B \cap C} = \frac{1}{4},
     \]
-    so \(\Bqty{A, B, C}\) are \term{pairwise} independent. But they are not \emph{independent}, since
+    so \(\set{A, B, C}\) are \term{pairwise} independent. But they are not \emph{independent}, since
     \[
         \Prob\pqty{A \cap B \cap C} = \Prob\pqty{\emptyset} = 0.
     \]
@@ -430,11 +430,11 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
 
     We define the events
     \[
-        A = \Bqty{\text{individuals suffering from A}},
+        A = \set{\text{individuals suffering from A}},
     \]
     and
     \[
-        P = \Bqty{\text{individuals tests positive}}.
+        P = \set{\text{individuals tests positive}}.
     \]
 
     We want to find \(\Prob\pqty{\Conditional{A}{P}}\). The given conditions state that
@@ -474,7 +474,7 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
 
             We denote the events
             \[
-                \mathrm{BG} = \Bqty{\text{elder child is a boy, younger is a girl}},
+                \mathrm{BG} = \set{\text{elder child is a boy, younger is a girl}},
             \]
             and the events \(\mathrm{GB}, \mathrm{GG}, \mathrm{BB}\). We want to find
             \[
@@ -492,11 +492,11 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
         
         Let
         \[
-            \mathrm{TG} = \Bqty{\text{elder boy is a boy on Thursday, younger is a girl}},
+            \mathrm{TG} = \set{\text{elder boy is a boy on Thursday, younger is a girl}},
         \]
         and \(\mathrm{GT}\) similarly, and
         \[
-            \mathrm{TN} = \Bqty{\text{elder boy is a boy on Thursday, younger is a boy not born on Thursday}},
+            \mathrm{TN} = \set{\text{elder boy is a boy on Thursday, younger is a boy not born on Thursday}},
         \]
         and \(\mathrm{NT, TT}\) similarly. We want to find
         \begin{align*}
@@ -546,11 +546,11 @@ This formula is the basis of Bayesian statistics. If we know the probability of 
 
     Let
     \begin{align*}
-        A &= \Bqty{\text{individual is admitted}}, \\
-        B &= \Bqty{\text{individual is from London}}, \\
-        B\compl &= \Bqty{\text{individual is from Cambridge}}, \\
-        C &= \Bqty{\text{state school}}, \\
-        C\compl &= \Bqty{\text{independent school}}.
+        A &= \set{\text{individual is admitted}}, \\
+        B &= \set{\text{individual is from London}}, \\
+        B\compl &= \set{\text{individual is from Cambridge}}, \\
+        C &= \set{\text{state school}}, \\
+        C\compl &= \set{\text{independent school}}.
     \end{align*}
 
     We notice that from the latter two tables, that

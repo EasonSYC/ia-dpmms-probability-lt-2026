@@ -84,14 +84,14 @@ This notion of convergence is strictly stronger than our previous notion.
 
     We have
     \[
-        \Prob\pqty{\abs{X_n} \leq \epsilon} \geq \Prob\pqty{\bigcap_{m = n}^{\infty} \Bqty{\abs{X_m} \leq \epsilon}} = \Prob\pqty{A_n}.
+        \Prob\pqty{\abs{X_n} \leq \epsilon} \geq \Prob\pqty{\bigcap_{m = n}^{\infty} \set{\abs{X_m} \leq \epsilon}} = \Prob\pqty{A_n}.
     \]
 
     Note that this sequence of events is increasing, i.e., \(A_n \subseteq A_{n + 1}\).
 
     Therefore,
     \[
-        \Prob\pqty{A_n} \to \Prob\pqty{\bigcup_{n \in \NN} A_n} = \Prob\pqty{\bigcup_{n \in \NN} \bigcap_{m = n}^{\infty} \Bqty{\abs{X_m} \leq \epsilon}}.
+        \Prob\pqty{A_n} \to \Prob\pqty{\bigcup_{n \in \NN} A_n} = \Prob\pqty{\bigcup_{n \in \NN} \bigcap_{m = n}^{\infty} \set{\abs{X_m} \leq \epsilon}}.
     \]  
 
     Therefore,
@@ -181,11 +181,11 @@ This notion of convergence is strictly stronger than our previous notion.
 \begin{proof}
     Let \(x\) be a continuity point of \(F_X\). Let \(\epsilon > 0\) be arbitrary. We have
     \[
-        \Bqty{X \leq x - \epsilon} \subseteq \Bqty{X_n \leq x} \cup \Bqty{\abs{X_n - X} > \epsilon},
+        \set{X \leq x - \epsilon} \subseteq \set{X_n \leq x} \cup \set{\abs{X_n - X} > \epsilon},
     \]
     and
     \[
-        \Bqty{X_n \leq x} \subseteq \Bqty{X \leq x + \epsilon} \cup \Bqty{\abs{X_n - X} > \epsilon}.
+        \set{X_n \leq x} \subseteq \set{X \leq x + \epsilon} \cup \set{\abs{X_n - X} > \epsilon}.
     \]
 
     Hence,

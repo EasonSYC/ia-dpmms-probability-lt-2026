@@ -10,20 +10,20 @@ We say \(X\) is \term{non-negative} if \(X \geq 0\). We first define the expecta
     \label{def:expectation-non-negative}%
     The \term{expectation}, or \term{mean/average} of a non-negative random variable is given by
     \[
-        \Expt \bqty{X} = \sum_{\omega \in \Omega} \Prob\pqty{\Bqty{\omega}} \cdot X\pqty{\omega}.
+        \Expt \bqty{X} = \sum_{\omega \in \Omega} \Prob\pqty{\set{\omega}} \cdot X\pqty{\omega}.
     \]
 \end{definition}
 
 Equivalently, we may define the expectation as follows. If we let the range of the random variable be \(\Omega_X = \set{X\pqty{x}}{\omega \in \Omega}\), and partition the sample space as
 \[
-    \Omega = \bigcup_{x \in \Omega_X} \Bqty{X = x},
+    \Omega = \bigcup_{x \in \Omega_X} \set{X = x},
 \]
 then the expectation satisfies
 \begin{align*}
-    \Expt\bqty{X} &= \sum_{\omega \in \Omega} X\pqty{\omega} \Prob\pqty{\Bqty{\omega}} \\
-    &= \sum_{x \in \Omega_X} \sum_{\omega \in \Bqty{X = x}} X\pqty{\omega} \cdot \Prob\pqty{\Bqty{\omega}} \\
-    &= \sum_{x \in \Omega_X} \sum_{\omega \in \Bqty{X = x}} x \cdot \Prob\pqty{\Bqty{\omega}} \\
-    &= \sum_{x \in \Omega_X} x \sum_{\omega \in \Bqty{X = x}} \Prob\pqty{\Bqty{\omega}} \\
+    \Expt\bqty{X} &= \sum_{\omega \in \Omega} X\pqty{\omega} \Prob\pqty{\set{\omega}} \\
+    &= \sum_{x \in \Omega_X} \sum_{\omega \in \set{X = x}} X\pqty{\omega} \cdot \Prob\pqty{\set{\omega}} \\
+    &= \sum_{x \in \Omega_X} \sum_{\omega \in \set{X = x}} x \cdot \Prob\pqty{\set{\omega}} \\
+    &= \sum_{x \in \Omega_X} x \sum_{\omega \in \set{X = x}} \Prob\pqty{\set{\omega}} \\
     &= \sum_{x \in \Omega_X} x \cdot \Prob\pqty{X = x}.
 \end{align*}
 
@@ -68,7 +68,7 @@ Now we define the expectation of a general random variable \(X\). The reason why
 
 However, if we straight-away define it for a general random variable using the same sum, and if the series is only \emph{conditionally convergent}, then changing the order of summation will change the limit, which makes the expectation change. Therefore, we will formalise this considering the sum of the positive and negative values separately.
 
-Let \(X^+ = \max\Bqty{X, 0}\) and \(X^- = \min\Bqty{-X, 0}\).
+Let \(X^+ = \max\set{X, 0}\) and \(X^- = \min\set{-X, 0}\).
 
 We therefore have \(X = X^+ - X^-\) and \(\abs{X} = X^+ + X^-\).
 
@@ -117,8 +117,8 @@ When \(\Expt\bqty{X}\) is well-defined, then we have
 \begin{proof}[\proofname\ on Linearity over Countable Collection]
     We have
     \begin{align*}
-        \Expt\bqty{\sum_{n \in \NN} X_n} &= \sum_{\omega \in \Omega} \pqty{\sum_{n \in \NN} X_n \pqty{\omega}} \cdot \Prob\pqty{\Bqty{\omega}} \\
-        &= \sum_{n \in \NN} \sum_{\omega \in \Omega} X_n \pqty{\omega} \Prob\pqty{\Bqty{\omega}} \\
+        \Expt\bqty{\sum_{n \in \NN} X_n} &= \sum_{\omega \in \Omega} \pqty{\sum_{n \in \NN} X_n \pqty{\omega}} \cdot \Prob\pqty{\set{\omega}} \\
+        &= \sum_{n \in \NN} \sum_{\omega \in \Omega} X_n \pqty{\omega} \Prob\pqty{\set{\omega}} \\
         &= \sum_{n \in \NN} \Expt\bqty{X_n}.
     \end{align*}
 \end{proof}
@@ -149,17 +149,17 @@ When \(\Expt\bqty{X}\) is well-defined, then we have
 
     Now, note that the event can be simplified as
     \begin{align*}
-        \Bqty{Y = y} &= \set{\omega \in \Omega}{Y \pqty{\omega} = y} \\
+        \set{Y = y} &= \set{\omega \in \Omega}{Y \pqty{\omega} = y} \\
         &= \set{\omega \in \Omega}{g\pqty{X\pqty{\omega}} = y} \\
-        &= \set{\omega \in \Omega}{X\pqty{\omega} \in g\inverse \pqty{\Bqty{y}}} \\
-        &= \Bqty{X \in g\inverse \pqty{\Bqty{y}}}.
+        &= \set{\omega \in \Omega}{X\pqty{\omega} \in g\inverse \pqty{\set{y}}} \\
+        &= \set{X \in g\inverse \pqty{\set{y}}}.
     \end{align*}
 
     Therefore,
     \begin{align*}
-        \Expt\bqty{Y} &= \sum_{y \in \Omega_Y} y \cdot \Prob\pqty{X \in g\inverse\pqty{\Bqty{y}}} \\
-        &= \sum_{y \in \Omega_Y} y \cdot \sum_{x \in g\inverse\pqty{\Bqty{y}}} \Prob\pqty{X = x} \\
-        &= \sum_{y \in \Omega_Y} \sum_{x \in g\inverse\pqty{\Bqty{y}}} g\pqty{x} \cdot \Prob\pqty{X = x} \\
+        \Expt\bqty{Y} &= \sum_{y \in \Omega_Y} y \cdot \Prob\pqty{X \in g\inverse\pqty{\set{y}}} \\
+        &= \sum_{y \in \Omega_Y} y \cdot \sum_{x \in g\inverse\pqty{\set{y}}} \Prob\pqty{X = x} \\
+        &= \sum_{y \in \Omega_Y} \sum_{x \in g\inverse\pqty{\set{y}}} g\pqty{x} \cdot \Prob\pqty{X = x} \\
         &= \sum_{x \in \Omega_X} g\pqty{x} \Prob\pqty{X = x}.
     \end{align*}
 \end{proof}

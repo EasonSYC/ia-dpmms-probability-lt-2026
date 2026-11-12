@@ -306,7 +306,7 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
 
 \begin{example}[Order Statistics for Exponentials]
     \label{ex:order-statistics-exp}%
-    Let \(X \sim \Exponential \pqty{\lambda}\) and \(Y \sim \Exponential \pqty{\mu}\), with \(X \indp Y\) and \(\lambda, \mu > 0\). Set \(Z = \min\Bqty{X, Y}\).
+    Let \(X \sim \Exponential \pqty{\lambda}\) and \(Y \sim \Exponential \pqty{\mu}\), with \(X \indp Y\) and \(\lambda, \mu > 0\). Set \(Z = \min\set{X, Y}\).
 
     We have for \(z > 0\), that
     \[
@@ -317,7 +317,7 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
 
     Similarly, if \(X_i \sim \Exponential \pqty{\lambda_i}\) are independent, we have
     \[
-        \min\Bqty{X_1, \ldots, X_n} \sim \Exponential\pqty{\sum_{i = 1}^{n} \lambda_i}.
+        \min\set{X_1, \ldots, X_n} \sim \Exponential\pqty{\sum_{i = 1}^{n} \lambda_i}.
     \]
 
     Now, suppose \(\lambda_1 = \cdots = \lambda_n = \lambda\), and let \(Y_1, Y_2, \ldots, Y_n\) be the order statistics.
@@ -396,9 +396,9 @@ In particular, note from the above that the \(Y_i\)s are not independent -- alth
     \label{def:positive-negative-definiteness}%
     Let \(\vb{M}\) be an \(n \times n\) real symmetric matrix. Then we say it is
     \begin{itemize}
-        \item \term{positive definite}, denoted as \(\vb{M} \posDef 0\), if for all \(\vb{u} \in \RR^n \setminus \Bqty{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} > 0\);
+        \item \term{positive definite}, denoted as \(\vb{M} \posDef 0\), if for all \(\vb{u} \in \RR^n \setminus \set{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} > 0\);
         \item \term{positive semi-definite}, or \term{non-negative definite}, denoted as \(\vb{M} \posDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose \vb{M} \vb{u} \geq 0\);
-        \item \term{negative definite}, denoted as \(\vb{M} \negDef 0\), if for all \(\vb{u} \in \RR^n \setminus \Bqty{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} < 0\);
+        \item \term{negative definite}, denoted as \(\vb{M} \negDef 0\), if for all \(\vb{u} \in \RR^n \setminus \set{\vb{0}}\), we have \(\vb{u}\transpose \vb{M} \vb{u} < 0\);
         \item \term{negative semi-definite}, or \term{non-positive definite}, denoted as \(\vb{M} \negDefEq 0\), if for all \(\vb{u} \in \RR^n\), we have \(\vb{u} \transpose \vb{M} \vb{u} \leq 0\).
     \end{itemize}
 

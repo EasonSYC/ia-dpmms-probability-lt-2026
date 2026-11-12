@@ -264,9 +264,9 @@ As a function, we may define it for \(\omega \in \Omega\),
 
     We have
     \begin{align*}
-        \Prob\pqty{g\pqty{Y} = w, Z = z} &= \sum_{y \in g\inverse\pqty{\Bqty{w}}} \Prob\pqty{Y = y, Z = z} \\
-        &= \sum_{y \in g\inverse\pqty{\Bqty{w}}} \Prob\pqty{Y = y} \cdot \Prob\pqty{Z = z} \\
-        &= \Prob\pqty{Z = z} \cdot \sum_{y \in g\inverse\pqty{\Bqty{w}}} \Prob\pqty{Y = y} \\
+        \Prob\pqty{g\pqty{Y} = w, Z = z} &= \sum_{y \in g\inverse\pqty{\set{w}}} \Prob\pqty{Y = y, Z = z} \\
+        &= \sum_{y \in g\inverse\pqty{\set{w}}} \Prob\pqty{Y = y} \cdot \Prob\pqty{Z = z} \\
+        &= \Prob\pqty{Z = z} \cdot \sum_{y \in g\inverse\pqty{\set{w}}} \Prob\pqty{Y = y} \\
         &= \Prob\pqty{Z = z} \cdot \Prob\pqty{g\pqty{Y} = w}.
     \end{align*}
 
